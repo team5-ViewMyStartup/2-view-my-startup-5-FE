@@ -1,5 +1,5 @@
 .nav {
-  position: relative;
+  position: sticky;
   z-index: 1;
   padding: 15px 0;
   background-color: #131313;
