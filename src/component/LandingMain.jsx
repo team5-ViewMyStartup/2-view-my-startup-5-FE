@@ -13,7 +13,7 @@ const LandingMain = () => {
         <p className={Styles.landing_main_already}>이미 계정이 있다면?</p>
         <p className={Styles.landing_main_login}>로그인하러 가기</p>
       </div>
-      <button className={Styles.landing_main_around_button}>둘러보기</button>
+      <button className={Styles.landing_main_around_button}> 둘러보기</button>
     </div>
   );
 };
