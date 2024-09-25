@@ -1,11 +1,11 @@
 // TODO: 추후에 Link 사용하여 login 페이지 이동 기능 추가해야함
 
 import React from "react";
-import Styles from "./LandingMain.module.css";
+import Styles from "./Landing.module.css";
 import mainImg from "../assets/logo1.svg";
 import { Link } from "react-router-dom";
 
-const LandingMain = () => {
+function Landing() {
   return (
     <div className={Styles.landing_main_container}>
       <img className={Styles.landing_main_img} src={mainImg} alt="main-image" />
@@ -16,6 +16,6 @@ const LandingMain = () => {
       <button className={Styles.landing_main_around_button}>둘러보기</button>
     </div>
   );
-};
+}
 
-export default LandingMain;
+export default Landing;
