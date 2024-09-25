@@ -7,19 +7,36 @@ function Details() {
       {/* TODO: 1. api를 받아와야함 2. 페이지네이션 */}
       <div className={styles.corporate_information}>
         <div className={styles.corporate_name}>
-          <h2>codeit</h2>
-          <span>에듀테크</span>
+          <h3>코드잇</h3>
+          <h4 className={styles.cor_type}>에듀테크</h4> <hr />
         </div>
         <div className={styles.corporate_status}>
-          <div className={styles.overview}></div>
-          <div className={styles.introduction}></div>
+          <div className={styles.overview_wrapper}>
+            <div className={styles.overview}>
+              <h5>누적 투자 금액</h5>
+              <p>억 원</p>
+            </div>
+            <div className={styles.overview}>
+              <h5>매출액</h5>
+              <p>억 원</p>
+            </div>
+            <div className={styles.overview}>
+              <h5>고용 인원</h5>
+              <p> 명</p>
+            </div>
+          </div>
+          <div className={styles.introduction}>
+            <h5>기업 소개</h5>
+            <p>코드잇은 '온라인 코딩 교육 서비스'를 운영하는 EdTech 스타트업입니다.</p>
+          </div>
         </div>
       </div>
       <div className={styles.investment_received}>
-        <div>
-          <h2>View My Startup에서 받은 투자</h2>
-          <button>기업투자하기</button>
+        <div className={styles.invest_wrapper}>
+          <h3>View My Startup에서 받은 투자</h3>
+          <button className={styles.invest_button}>기업투자하기</button>
         </div>
+        <hr />
         <div>총 00억원</div>
         <table>
           <thead>

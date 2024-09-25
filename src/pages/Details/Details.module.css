@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+hr {
+  border: solid 1px #2e2e2e;
+}
+.corporate {
+  padding: 60px;
+}
+
+.cor_type {
+  color: #747474;
+}
+
+.overview_wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.overview,
+.introduction {
+  background-color: #282828;
+  margin: 10px;
+  border-radius: 7px;
+}
+.overview {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 400px;
+  height: 70px;
+}
+
+.introduction {
+  padding: 20px;
+}
+.invest_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invest_button {
+  background-color: #eb5230;
+  color: white;
+  border-radius: 50px;
+  width: 150px;
+}
