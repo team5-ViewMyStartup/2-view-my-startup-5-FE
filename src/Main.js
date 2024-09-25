@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./components/App";
 import Landing from "./pages/Landing/Landing";
 import Login from "./pages/Login/Login";
+import Details from "./pages/Details/Details";
 
 function Main() {
   return (
@@ -10,6 +11,7 @@ function Main() {
         <Route path="/" element={<App />}>
           <Route index element={<Landing />}></Route>
           <Route path="login" element={<Login />}></Route>
+          <Route path="details" element={<Details />}></Route>
           {/* <Route> 여기에 페이지들을 추가</Route> */}
         </Route>
       </Routes>
