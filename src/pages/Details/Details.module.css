@@ -6,7 +6,7 @@ hr {
   border: solid 1px #2e2e2e;
 }
 .corporate {
-  padding: 60px;
+  padding: 0 200px;
 }
 
 .cor_type {
@@ -15,35 +15,67 @@ hr {
 
 .overview_wrapper {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 
 .overview,
 .introduction {
   background-color: #282828;
-  margin: 10px;
+  margin: 15px 0;
   border-radius: 7px;
 }
 .overview {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 400px;
+  width: 600px;
   height: 70px;
 }
 
 .introduction {
   padding: 20px;
 }
+
 .invest_wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .invest_button {
   background-color: #eb5230;
   color: white;
   border-radius: 50px;
-  width: 150px;
+  width: 140px;
+  height: 40px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+}
+
+.detail_table_head {
+  background-color: #2e2e2e;
+  height: 40px;
+  border: none;
+}
+
+.table_inform {
+  width: 100px;
+}
+
+tbody {
+  background-color: #212121;
+}
+
+tbody td {
+  margin-top: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+tbody td:first-child {
+  border-left: none;
 }

@@ -37,17 +37,32 @@ function Details() {
           <button className={styles.invest_button}>기업투자하기</button>
         </div>
         <hr />
-        <div>총 00억원</div>
+        <div>
+          <h3>총 00억원</h3>
+        </div>
         <table>
-          <thead>
+          <thead className={styles.detail_table_head}>
             <tr>
-              <th>투자자 이름</th>
-              <th>순위</th>
-              <th>투자 금액</th>
+              <th className={styles.table_inform}>투자자 이름</th>
+              <th className={styles.table_inform}>순위</th>
+              <th className={styles.table_inform}>투자 금액</th>
               <th>투자 코멘트</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            <tr>
+              <td>dafs</td>
+              <td>dfaf</td>
+              <td>dafs</td>
+              <td>dfaf</td>
+            </tr>
+            <tr>
+              <td>dafs</td>
+              <td>dfaf</td>
+              <td>dafs</td>
+              <td>dfaf</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
