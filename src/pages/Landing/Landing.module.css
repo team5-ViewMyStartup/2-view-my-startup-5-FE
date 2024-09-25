@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+.landing_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90vh;
+}
+p {
+  color: white;
+}
+span {
+  color: #eb5230;
+}
+button {
+  background-color: #eb5230;
+  color: white;
+}
