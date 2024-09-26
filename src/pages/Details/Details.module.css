@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+hr {
+  border: solid 1px #2e2e2e;
+}
+.corporate {
+  padding: 0 200px;
+}
+
+.cor_type {
+  color: #747474;
+}
+
+.overview_wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.overview,
+.introduction {
+  background-color: #282828;
+  margin: 15px 0;
+  border-radius: 7px;
+}
+.overview {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 400px;
+  height: 70px;
+  flex-grow: 1;
+}
+
+.account {
+  flex-grow: 1;
+  min-width: 250px;
+  margin: 15px;
+}
+
+.introduction {
+  padding: 20px;
+}
+
+.invest_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.invest_button {
+  background-color: #eb5230;
+  color: white;
+  border-radius: 50px;
+  width: 140px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.investment_container {
+  width: 100%;
+  text-align: center;
+}
+
+.investment_list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.investment_header {
+  display: flex;
+  font-weight: bold;
+  background-color: #2e2e2e;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.investment_item {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #212121;
+  align-items: center;
+}
+
+.investment_item:last-child {
+  border-bottom: none;
+}
+
+.investment_item span {
+  padding: 5px 0;
+}
+
+.invest_inform {
+  min-width: 100px;
+}
+
+.investment_comment {
+  flex-grow: 1;
+}
+
+.comment_content {
+  margin: 0 50px;
+}
+
+.select_img {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.page_button {
+  padding: 12px 15px;
+  margin: 0 4px;
+  cursor: pointer;
+  background-color: #2e2e2e;
+  border-radius: 7px;
+  color: #747474;
+  border: none;
+}
+
+.page_button:hover {
+  background-color: #eb5230;
+  opacity: 0.5;
+}
+
+.page_button:disabled {
+  cursor: not-allowed;
+}
+
+.active {
+  font-weight: bold;
+  background-color: #eb5230;
+  color: white;
+}
