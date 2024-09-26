@@ -52,30 +52,51 @@ hr {
   cursor: pointer;
 }
 
-table {
+.investment_container {
   width: 100%;
-}
-
-.detail_table_head {
-  background-color: #2e2e2e;
-  height: 40px;
-  border: none;
-}
-
-.table_inform {
-  width: 100px;
-}
-
-tbody {
-  background-color: #212121;
-}
-
-tbody td {
-  margin-top: 10px;
-  padding: 15px;
   text-align: center;
 }
 
-tbody td:first-child {
-  border-left: none;
+.investment_list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border-collapse: collapse;
+}
+
+.investment_header {
+  display: flex;
+  font-weight: bold;
+  background-color: #2e2e2e;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.investment_item {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #212121;
+  align-items: center;
+}
+
+.investment_item:last-child {
+  border-bottom: none;
+}
+
+.investment_item span {
+  padding: 5px 0;
+}
+
+.invest_inform {
+  min-width: 100px;
+}
+
+.investment_comment {
+  flex-grow: 1;
+}
+
+.comment_content {
+  text-align: left;
+  margin: 0 50px;
 }
