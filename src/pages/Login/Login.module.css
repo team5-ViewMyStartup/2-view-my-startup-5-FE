@@ -1,0 +1,73 @@
+body {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+
+label,
+p {
+  color: white;
+}
+
+input {
+  border-radius: 12px;
+  padding: 16px 24px;
+  width: 640px;
+  border: none;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  height: 100vh;
+}
+
+.email,
+.nick,
+.pw,
+.pw_check {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toggle_img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.login_button {
+  width: 640px;
+  border-radius: 40px;
+  padding: 16px 124px;
+  border: none;
+  gap: 10px;
+  background-color: #eb5230;
+}
+
+.info {
+  display: flex;
+  gap: 4px;
+}
+
+.go_to_signup {
+  color: #eb5230;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+}
+
+.pw,
+.pw_check {
+  position: relative;
+}
+
+.toggle_img {
+  position: absolute;
+  top: 45px;
+  right: 16px;
+  bottom: 16px;
+}

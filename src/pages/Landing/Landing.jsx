@@ -19,6 +19,7 @@ function Landing() {
           <p className={styles.landing_main_login}>로그인하러 가기</p>
         </Link>
       </div>
+
       <Link to="all-company">
         <button className={styles.landing_main_around_button}>둘러보기</button>
       </Link>

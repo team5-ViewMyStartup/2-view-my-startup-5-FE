@@ -4,6 +4,7 @@ import styles from "./Signup.module.css";
 import logoImg from "../../assets/logo1.svg";
 import toggle from "../../assets/btn_visibility_on_24px.svg";
 
+
 function Signup() {
   return (
     <div className={styles.signup}>
@@ -51,7 +52,9 @@ function Signup() {
           id="pw-check-connection"
           placeholder="비밀번호를 다시 한 번 입력해주세요"
         />
+
         <img className={styles.toggle_img} src={toggle} alt="eye Image" type="password" />
+
       </div>
       <button className={styles.signup_button}>회원가입</button>
       <div className={styles.info}>
