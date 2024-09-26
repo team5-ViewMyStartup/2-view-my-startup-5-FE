@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import select from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 const ITEM_PER_PAGE = 5;
 
 function Details() {
   const [company, setCompany] = useState();
+  const [selcetDropdown, SetSelectDropdown] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalInvestmentAmount = company
@@ -32,7 +34,9 @@ function Details() {
   if (!company) {
     return <div>데이터 불러오지 못했습니다</div>;
   }
-
+  const handleSelect = () => {
+    SetSelectDropdown();
+  };
   const totalPages = Math.ceil(company.investments.length / ITEM_PER_PAGE);
 
   const handlePageChange = (pageNumber) => {
@@ -98,6 +102,7 @@ function Details() {
                 <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
                 <span className={styles.invest_inform}>{investment.amount} 억 원</span>
                 <span className={styles.comment_content}>{investment.comment}</span>
+                <img src={select} alt="select icon" className={styles.select_img} />
               </li>
             ))}
           </ul>
