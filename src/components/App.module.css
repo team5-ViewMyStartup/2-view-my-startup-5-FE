@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  word-break: keep-all;
+}
+
+html {
+  background-color: #131313;
+  color: #ffffff;
+}
+
+body {
+  margin: 0;
+}
+
+a,
+a:hover,
+a:active,
+a:visited {
+  color: #747474;
+  text-decoration: none;
+}
+
+:root {
+  --box-shadow: 5px 5px 10px 0 rgb(0 0 0 / 5%);
+}
+
+:global(#root) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.nav {
+  flex: none;
+}
+
+.body {
+  position: relative;
+  flex-grow: 1;
+}
