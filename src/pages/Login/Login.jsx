@@ -1,55 +1,48 @@
-// import { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-// import Label from "../components/Label";
-// import Input from "../components/Input";
-// import Button from "../components/Button";
-// import HorizontalRule from "../components/HorizontalRule";
-// import Link from "../components/Link";
-import GoogleImage from "../../images/google.svg";
 import styles from "./Login.module.css";
+import logoImg from "../../images/logo1.svg";
 
-function LoginPage() {
+function Login() {
   return (
-    <>
-      <h1 className={styles.heading}>로그인</h1>
-      {/* <form className={styles.Form} onSubmit={handleSubmit}> */}
-      <form className={styles.Form}>
-        <label className={styles.Label} htmlFor="email">
+    <div className={styles.signup}>
+      <Link to="/">
+        <img className={styles.signup_logoImg} src={logoImg} alt="logo Image" />
+      </Link>
+
+      <div className={styles.email}>
+        <label className={styles.email_label} htmlFor="email-login">
           이메일
         </label>
         <input
-          id="email"
-          className={styles.Input}
-          name="email"
-          type="email"
-          placeholder="이메일"
-          // value={values.email}
-          // onChange={handleChange}
+          className={styles.email_input}
+          id="email-login"
+          placeholder="이메일을 입력해주세요"
         />
-        <label className={styles.label} htmlFor="password">
+      </div>
+
+      <div className={styles.pw}>
+        <label className={styles.pw_label} htmlFor="pw-login">
           비밀번호
         </label>
         <input
-          id="password"
-          className={styles.Input}
-          name="password"
+          className={styles.pw_input}
+          id="pw-login"
+          placeholder="비밀번호를 입력해주세요"
           type="password"
-          placeholder="비밀번호"
-          // value={values.password}
-          // onChange={handleChange}
         />
-        <button className={styles.Button}>로그인</button>
-        <p className={styles.HorizontalRule}>또는</p>
-        <button className={styles.GoogleButton} type="button" appearance="secondary" as={Link}>
-          <img src={GoogleImage} alt="Google" />
-          구글로 시작하기
-        </button>
-        <div className={styles.Footer}>
-          회원이 아니신가요? <Link to="/register">회원가입하기</Link>
-        </div>
-      </form>
-    </>
+      </div>
+
+      <button className={styles.signup_button}>로그인</button>
+
+      <div className={styles.info}>
+        <p className={styles.not_member}>처음이신가요?</p>
+        <Link to="/signup">
+          <p className={styles.go_to_login}>회원가입</p>
+        </Link>
+      </div>
+    </div>
   );
 }
 
-export default LoginPage;
+export default Login;
