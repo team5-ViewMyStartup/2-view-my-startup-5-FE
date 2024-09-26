@@ -44,42 +44,42 @@ function StartupList() {
                 : "고용 인원 적은순"}
               <img className={styles.dropdown_icon} src={dropdownIcon} alt="dropdown" />
             </div>
-            <div className={styles.dropdown_menu}>
-              {dropdown && (
-                <ul className={styles.dropdown_list}>
-                  <li
-                    className={styles.investment_high}
-                    onClick={() => handleOptionClick("investment-high")}
-                  >
-                    누적 투자 금액 높은순
-                  </li>
-                  <li
-                    className={styles.investment_low}
-                    onClick={() => handleOptionClick("investment-low")}
-                  >
-                    누적 투자 금액 낮은순
-                  </li>
-                  <li className={styles.sales_high} onClick={() => handleOptionClick("sales-high")}>
-                    매출액 높은순
-                  </li>
-                  <li className={styles.sales_low} onClick={() => handleOptionClick("sales-low")}>
-                    매출액 낮은순
-                  </li>
-                  <li
-                    className={styles.employeeNum_high}
-                    onClick={() => handleOptionClick("employeeNum-high")}
-                  >
-                    고용 인원 많은순
-                  </li>
-                  <li
-                    className={styles.employeeNum_low}
-                    onClick={() => handleOptionClick("employeeNum-low")}
-                  >
-                    고용 인원 적은순
-                  </li>
-                </ul>
-              )}
-            </div>
+            {/* <div className={styles.dropdown_menu}> */}
+            {dropdown && (
+              <ul className={styles.dropdown_list}>
+                <li
+                  className={styles.investment_high}
+                  onClick={() => handleOptionClick("investment-high")}
+                >
+                  누적 투자 금액 높은순
+                </li>
+                <li
+                  className={styles.investment_low}
+                  onClick={() => handleOptionClick("investment-low")}
+                >
+                  누적 투자 금액 낮은순
+                </li>
+                <li className={styles.sales_high} onClick={() => handleOptionClick("sales-high")}>
+                  매출액 높은순
+                </li>
+                <li className={styles.sales_low} onClick={() => handleOptionClick("sales-low")}>
+                  매출액 낮은순
+                </li>
+                <li
+                  className={styles.employeeNum_high}
+                  onClick={() => handleOptionClick("employeeNum-high")}
+                >
+                  고용 인원 많은순
+                </li>
+                <li
+                  className={styles.employeeNum_low}
+                  onClick={() => handleOptionClick("employeeNum-low")}
+                >
+                  고용 인원 적은순
+                </li>
+              </ul>
+            )}
+            {/* </div> */}
           </div>
         </div>
       </div>
