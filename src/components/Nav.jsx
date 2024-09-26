@@ -16,7 +16,7 @@ function Nav() {
     <div className={styles.nav}>
       <Container className={styles.container}>
         <Link to="/">
-          <img src={logoImg} alt="Codethat Logo" />
+          <img src={logoImg} alt="View my startup Logo" />
         </Link>
         <ul className={styles.menu}>
           <li>

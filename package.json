@@ -1,5 +1,7 @@
 {
-  "name": "fefe",
+
+  "name": "2-view-my-startup-5-fe",
+
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -36,8 +38,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "husky": "^9.1.6"
+
   }
 }
