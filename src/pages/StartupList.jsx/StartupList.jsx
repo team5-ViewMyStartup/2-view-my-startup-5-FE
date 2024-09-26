@@ -51,13 +51,13 @@ function StartupList() {
                   className={styles.investment_high}
                   onClick={() => handleOptionClick("investment-high")}
                 >
-                  누적 투자 금액 높은순
+                  누적 투자금액 높은순
                 </li>
                 <li
                   className={styles.investment_low}
                   onClick={() => handleOptionClick("investment-low")}
                 >
-                  누적 투자 금액 낮은순
+                  누적 투자금액 낮은순
                 </li>
                 <li className={styles.sales_high} onClick={() => handleOptionClick("sales-high")}>
                   매출액 높은순
