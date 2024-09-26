@@ -125,7 +125,8 @@ hr {
 }
 
 .page_button:hover {
-  background-color: #ffadad;
+  background-color: #eb5230;
+  opacity: 0.5;
 }
 
 .page_button:disabled {

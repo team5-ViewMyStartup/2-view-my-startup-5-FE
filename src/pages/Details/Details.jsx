@@ -14,12 +14,11 @@ function Details() {
 
   const indexOfLastItem = currentPage * ITEM_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEM_PER_PAGE;
-  const currentInvestments = company
-    ? company.investments.slice(indexOfFirstItem, indexOfLastItem)
-    : [];
+  const sortedAmount = company ? [...company.investments].sort((a, b) => b.amount - a.amount) : [];
+  const currentInvestments = company ? sortedAmount.slice(indexOfFirstItem, indexOfLastItem) : [];
 
   useEffect(() => {
-    fetch("/companyData.json")
+    fetch("/detailsData.json")
       .then((response) => {
         if (!response.ok) {
           throw new Error("데이터 불러오지 못함");
@@ -50,7 +49,6 @@ function Details() {
 
   return (
     <div className={styles.corporate}>
-      {/* TODO: 1. api를 받아와야함 2. 페이지네이션 */}
       <div className={styles.corporate_information}>
         <div className={styles.corporate_name}>
           <h3>{company.name}</h3>
@@ -97,7 +95,7 @@ function Details() {
             {currentInvestments.map((investment, index) => (
               <li key={index + indexOfFirstItem} className={styles.investment_item}>
                 <span className={styles.invest_inform}>{investment.investorName}</span>
-                <span className={styles.invest_inform}>{investment.rank} 위</span>
+                <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
                 <span className={styles.invest_inform}>{investment.amount} 억 원</span>
                 <span className={styles.comment_content}>{investment.comment}</span>
               </li>
