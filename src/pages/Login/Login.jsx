@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
-import logoImg from "../../images/logo1.svg";
+import logoImg from "../../imagesjun/logo1.svg";
 
 function Login() {
   return (
-    <div className={styles.signup}>
+    <div className={styles.login}>
       <Link to="/">
-        <img className={styles.signup_logoImg} src={logoImg} alt="logo Image" />
+        <img className={styles.login_logoImg} src={logoImg} alt="logo Image" />
       </Link>
 
       <div className={styles.email}>
@@ -33,12 +33,12 @@ function Login() {
         />
       </div>
 
-      <button className={styles.signup_button}>로그인</button>
+      <button className={styles.login_button}>로그인</button>
 
       <div className={styles.info}>
         <p className={styles.not_member}>처음이신가요?</p>
         <Link to="/signup">
-          <p className={styles.go_to_login}>회원가입</p>
+          <p className={styles.go_to_signup}>회원가입</p>
         </Link>
       </div>
     </div>
