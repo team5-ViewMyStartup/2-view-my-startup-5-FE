@@ -161,26 +161,42 @@
   width: 1200px;
   text-align: center;
   background-color: #2e2e2e;
+  border-radius: 10px;
 }
 
 .category_kind {
   padding: 0;
   margin: 0;
-  border-collapse: collapse;
+  /* border-collapse: collapse; */
+  background-color: black;
 }
 
-.category_header {
+.category_header,
+.category_body {
+  background-color: #2e2e2e;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: content-box;
+}
+
+.category_header {
+  margin-bottom: 16px;
   border-radius: 4px;
+}
+
+.category_body:nth-child(2) {
+  border-radius: 4px 4px 0 0;
+}
+
+.category_body:last-child {
+  border-radius: 0 0 4px 4px;
 }
 
 .category_rank {
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
-  white-space: nowrap;
   width: 68px;
   height: 39px;
   gap: 10px;
@@ -193,7 +209,6 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
-  white-space: nowrap;
   width: 213px;
   height: 39px;
   gap: 10px;
@@ -206,7 +221,6 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
-  white-space: nowrap;
   width: 304px;
   height: 39px;
   gap: 10px;
@@ -221,7 +235,6 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
-  white-space: nowrap;
   width: 153.75px;
   height: 39px;
   gap: 10px;
@@ -230,15 +243,35 @@
   display: flex;
 }
 
+/* .category_header > .category_employee_num {
+  border-bottom: 16px black solid;
+} */
+
 .category_employee_num {
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
-  white-space: nowrap;
   width: 153.75px;
   height: 39px;
   gap: 10px;
   align-items: center;
   justify-content: center;
   display: flex;
+}
+
+.category_body > .category_company_info {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 304px;
+  height: 64px;
+  padding: 15px 16px;
+  gap: 10px;
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.category_body {
+  background-color: #212121;
 }

@@ -3,24 +3,16 @@ import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
 import dropdownIcon from "../../assets/dropdown.svg";
 
-function StartupList() {
-  const viewCompanyNum = 10;
+const PageNationHook = () => {
+  const [allProduct, setAllProduct] = useState(0);
+  const [isLoadedData, setIsLoadedData] = useState(true);
+};
 
+function StartupList() {
   const [orderBy, setOrderBy] = useState("investment-high");
   const [dropdown, setDropDown] = useState(false);
   const [company, setCompany] = useState([]);
-
-  useEffect(() => {
-    fetch("/allCompanyData.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("데이터 불러오지 못함");
-        }
-        return response.json();
-      })
-      .then((data) => setCompany(data[0]))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
+  const [page, setPage] = useState(1);
 
   const toggleDropdown = () => {
     setDropDown(!dropdown);
@@ -29,6 +21,30 @@ function StartupList() {
   const handleOptionClick = (value) => {
     setOrderBy(value);
     setDropDown(false);
+  };
+
+  useEffect(async () => {
+    try {
+      const response = await fetch(`/allCompanyData.json`);
+      if (!response.ok) throw new Error("데이터 불러오지 못 함");
+      const data = await response.json();
+      setCompany(data);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
+  }, []);
+
+  if (!company) {
+    return <div>데이터를 불러오지 못했습니다.</div>;
+  }
+
+  const renderPaginationList = () => {
+    const pageNumbers = [];
+    const viewCompanyInfoNum = 10;
+    let companyInfoNum = company.length();
+    let maxPageNumbers = companyInfoNum / viewCompanyInfoNum;
+    let startPage = Math.max(1, page - Math.floor(maxPageNumbers / 2));
+    let endPage = Math.min();
   };
 
   return (
@@ -107,17 +123,17 @@ function StartupList() {
             <span className={styles.category_sales}>매출액</span>
             <span className={styles.category_employee_num}>고용 인원</span>
           </li>
-          {/* {company &&
-            company.results.map((info) => (
-              <li>
-                <span>{info.name}</span>
-                <span>{info.description}</span>
-                <span>{info.category}</span>
-                <span>{info.totalInvestment}</span>
-                <span>{info.revenue}</span>
-                <span>{info.employees}</span>
-              </li>
-            ))} */}
+          {company.map((info, index) => (
+            <li className={styles.category_body}>
+              <span className={styles.category_rank}>{index + 1} 위</span>
+              <span className={styles.category_company_name}>{info.name}</span>
+              <span className={styles.category_company_info}>{info.description}</span>
+              <span className={styles.category_category}>{info.category}</span>
+              <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
+              <span className={styles.category_sales}>{info.revenue}</span>
+              <span className={styles.category_employee_num}>{info.employees}</span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
