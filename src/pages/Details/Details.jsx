@@ -5,7 +5,6 @@ const ITEM_PER_PAGE = 5;
 
 function Details() {
   const [company, setCompany] = useState();
-  const [selcetDropdown, SetSelectDropdown] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalInvestmentAmount = company

@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
 import dropdownIcon from "../../assets/dropdown.svg";
 
 function StartupList() {
+  const viewCompanyNum = 10;
+
   const [orderBy, setOrderBy] = useState("investment-high");
   const [dropdown, setDropDown] = useState(false);
+  const [company, setCompany] = useState([]);
+
+  useEffect(() => {
+    fetch("/allCompanyData.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("데이터 불러오지 못함");
+        }
+        return response.json();
+      })
+      .then((data) => setCompany(data[0]))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   const toggleDropdown = () => {
     setDropDown(!dropdown);
@@ -44,7 +59,6 @@ function StartupList() {
                 : "고용 인원 적은순"}
               <img className={styles.dropdown_icon} src={dropdownIcon} alt="dropdown" />
             </div>
-            {/* <div className={styles.dropdown_menu}> */}
             {dropdown && (
               <ul className={styles.dropdown_list}>
                 <li
@@ -79,9 +93,32 @@ function StartupList() {
                 </li>
               </ul>
             )}
-            {/* </div> */}
           </div>
         </div>
+      </div>
+      <div className={styles.category_box}>
+        <ul className={styles.category_kind}>
+          <li className={styles.category_header}>
+            <span className={styles.category_rank}>순위</span>
+            <span className={styles.category_company_name}>기업 명</span>
+            <span className={styles.category_company_info}>기업 소개</span>
+            <span className={styles.category_category}>카테고리</span>
+            <span className={styles.category_investment_amount}>누적 투자 금액</span>
+            <span className={styles.category_sales}>매출액</span>
+            <span className={styles.category_employee_num}>고용 인원</span>
+          </li>
+          {/* {company &&
+            company.results.map((info) => (
+              <li>
+                <span>{info.name}</span>
+                <span>{info.description}</span>
+                <span>{info.category}</span>
+                <span>{info.totalInvestment}</span>
+                <span>{info.revenue}</span>
+                <span>{info.employees}</span>
+              </li>
+            ))} */}
+        </ul>
       </div>
     </div>
   );
