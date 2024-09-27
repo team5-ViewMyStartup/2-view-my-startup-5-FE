@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import logoImg from "../../imagesjun/logo1.svg";
@@ -7,7 +7,7 @@ function Login() {
   return (
     <div className={styles.login}>
       <Link to="/">
-        <img className={styles.login_logoImg} src={logoImg} alt="logo Image" />
+        <img className={styles.login_logo_img} src={logoImg} alt="logo Image" />
       </Link>
 
       <div className={styles.email}>
