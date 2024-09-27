@@ -1,0 +1,45 @@
+.delete_modal_container {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete_modal_content {
+  background-color: #212121;
+  padding: 30px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  z-index: 1001;
+}
+.delete_title {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.delete_input {
+  background-color: #212121;
+  border-color: solid 1px #747474;
+  width: 448px;
+  margin-bottom: 20px;
+}
+
+.delete_button {
+  background-color: #eb5230;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+}

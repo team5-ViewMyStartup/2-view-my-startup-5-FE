@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import select from "../../images/select_img.svg";
+import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
+import DeleteModal from "./DeleteModal";
+
 const ITEM_PER_PAGE = 5;
 
 function Details() {
   const [company, setCompany] = useState();
-  const [selcetDropdown, SetSelectDropdown] = useState();
+  const [activeDropdown, setActiveDropdown] = useState("revise");
   const [currentPage, setCurrentPage] = useState(1);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const totalInvestmentAmount = company
     ? company.investments.reduce((total, investment) => {
@@ -19,24 +22,26 @@ function Details() {
   const sortedAmount = company ? [...company.investments].sort((a, b) => b.amount - a.amount) : [];
   const currentInvestments = company ? sortedAmount.slice(indexOfFirstItem, indexOfLastItem) : [];
 
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   useEffect(() => {
-    fetch("/detailsData.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("데이터 불러오지 못함");
-        }
-        return response.json();
-      })
-      .then((data) => setCompany(data[0]))
-      .catch((error) => console.error("Error fetching data:", error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/detailsData.json");
+        if (!response.ok) throw new Error("데이터 못불러옴");
+        const data = await response.json();
+        setCompany(data[0]);
+      } catch (err) {}
+    };
+
+    fetchData();
   }, []);
 
   if (!company) {
     return <div>데이터 불러오지 못했습니다</div>;
   }
-  const handleSelect = () => {
-    SetSelectDropdown();
-  };
+
   const totalPages = Math.ceil(company.investments.length / ITEM_PER_PAGE);
 
   const handlePageChange = (pageNumber) => {
@@ -49,6 +54,14 @@ function Details() {
 
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const toggleDropdown = (index) => {
+    setActiveDropdown(activeDropdown === index ? null : index);
+  };
+
+  const handleImgClick = (index) => {
+    toggleDropdown(index);
   };
 
   return (
@@ -102,7 +115,18 @@ function Details() {
                 <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
                 <span className={styles.invest_inform}>{investment.amount} 억 원</span>
                 <span className={styles.comment_content}>{investment.comment}</span>
-                <img src={select} alt="select icon" className={styles.select_img} />
+                <span className={styles.select_box}>
+                  <div onClick={() => handleImgClick(index + indexOfFirstItem)}>
+                    <img src={select_icon} alt="select icon" className={styles.select_img} />
+                    {activeDropdown === index + indexOfFirstItem && (
+                      <div className={styles.dropdown_select}>
+                        <div onClick={() => setActiveDropdown("revise")}>수정하기</div>
+                        <div onClick={openModal}>삭제하기</div>
+                        {<DeleteModal isOpen={modalOpen} isClose={closeModal} />}
+                      </div>
+                    )}
+                  </div>
+                </span>
               </li>
             ))}
           </ul>
@@ -136,4 +160,5 @@ function Details() {
     </div>
   );
 }
+
 export default Details;
