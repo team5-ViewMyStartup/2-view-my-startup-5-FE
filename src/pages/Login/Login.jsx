@@ -3,18 +3,23 @@ import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import logoImg from "../../imagesjun/logo1.svg";
 import { useNavigate } from "react-router-dom";
-
+import toggleOn from "../../imagesjun/btn_visibility_on_24px.svg";
+import toggleOff from "../../imagesjun/btn_visibility_off_24px.svg";
 const USER_DATA = [
   { email: "test@test.com", password: "testest!" },
   { email: "test1@test.com", password: "testest1!" },
 ];
 /**
  * TODO
+ * 다음업무: 비밀번호를 맞게 입력해도 틀렸다는 오류 해결 예정
+ * 메모:
  * 1. 제어 컴포넌트 적용완료 / 유효성 검사 기능 완료/
  * 2. 이후 로그인 기능 실제 백엔드와 함꼐 구현한다면 관련 코드 추가  /
- * 3. 토글 기능 추가 예정
- * 4. 모달 팝업 기능 등은 추가 논의 필요
- * 5. 로그인 이후 페이지 이동 기능 추가 예정
+ * 3. 토글 기능 추가 완료
+ * 4. setError > throw Error로 변경 완료
+ * 5. 로그인 이후료전체리스트로 이동 구현 예정
+ *
+ *
  */
 
 const validateEmail = (email) => {
@@ -37,6 +42,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -49,13 +55,16 @@ function Login() {
 
       if (user) {
         console.log("로그인 성공!");
-        navigate("/home");
+        navigate("/all-company");
       } else {
-        setError("이메일 또는 비밀번호가 잘못되었습니다.");
+        throw new Error("이메일 또는 비밀번호가 잘못되었습니다.");
       }
     } catch (err) {
       setError(err.message);
     }
+  };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -85,9 +94,15 @@ function Login() {
             className={styles.pw_input}
             id="pw-login"
             placeholder="비밀번호를 입력해주세요"
-            type="password"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <img
+            className={styles.toggle_img}
+            src={showPassword ? toggleOff : toggleOn}
+            alt="toggle visibility"
+            onClick={togglePasswordVisibility}
           />
         </div>
 
