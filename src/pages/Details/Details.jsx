@@ -7,10 +7,10 @@ const ITEM_PER_PAGE = 5;
 
 function Details() {
   const [company, setCompany] = useState();
-  const [activeDropdown, setActiveDropdown] = useState("revise");
+  const [activeDropdown, setActiveDropdown] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedInvestment, setSelectedInvestment] = useState(null); // 선택된 투자자를 추적
+  const [selectedInvestment, setSelectedInvestment] = useState(null);
 
   const totalInvestmentAmount = company
     ? company.investments.reduce((total, investment) => {
@@ -24,13 +24,13 @@ function Details() {
   const currentInvestments = company ? sortedAmount.slice(indexOfFirstItem, indexOfLastItem) : [];
 
   const openModal = (investment) => {
-    setSelectedInvestment(investment); // 모달에 전달할 투자 항목 설정
+    setSelectedInvestment(investment);
     setModalOpen(true);
   };
 
   const closeModal = () => {
     setModalOpen(false);
-    setSelectedInvestment(null); // 선택된 투자 항목 초기화
+    setSelectedInvestment(null);
   };
 
   useEffect(() => {
@@ -126,13 +126,13 @@ function Details() {
                 <span className={styles.select_box}>
                   <div onClick={() => handleImgClick(index + indexOfFirstItem)}>
                     <img src={select_icon} alt="select icon" className={styles.select_img} />
-                    {activeDropdown === index + indexOfFirstItem && (
-                      <div className={styles.dropdown_select}>
-                        <div onClick={() => setActiveDropdown("revise")}>수정하기</div>
-                        <div onClick={() => openModal(investment)}>삭제하기</div>
-                      </div>
-                    )}
                   </div>
+                  {activeDropdown === index + indexOfFirstItem && (
+                    <div className={styles.dropdown_select}>
+                      <div onClick={() => setActiveDropdown(null)}>수정하기</div>
+                      <div onClick={() => openModal(investment)}>삭제하기</div>
+                    </div>
+                  )}
                 </span>
               </li>
             ))}

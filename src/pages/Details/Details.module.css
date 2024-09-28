@@ -113,7 +113,24 @@ hr {
   margin: 0 50px;
 }
 
-.select_img {
+.select_box {
+  position: relative;
+  margin-left: auto;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.dropdown_select {
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  background-color: #131313;
+  padding: 10px;
+  width: 168px;
+  border: 1px solid #747474;
+  border-radius: 10px;
+  color: #d8d8d8;
+  z-index: 1000;
 }
 
 .pagination {
@@ -145,22 +162,4 @@ hr {
   font-weight: bold;
   background-color: #eb5230;
   color: white;
-}
-
-.drop_down_wrapper {
-}
-.select_img {
-  /* position: absolute; */
-}
-.dropdown_select {
-  right: 5;
-  flex-direction: column;
-  width: 168px;
-  height: auto;
-  border: 1px solid #747474;
-  border-radius: 10px;
-  padding: 10px;
-  color: #d8d8d8;
-  font-weight: 400;
-  z-index: 1;
 }
