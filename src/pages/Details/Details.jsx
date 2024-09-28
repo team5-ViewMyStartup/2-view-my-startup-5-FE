@@ -157,17 +157,22 @@ function Details() {
                       </div>
                       {activeDropdown === index + indexOfFirstItem && (
                         <div className={styles.dropdown_select}>
-                          <div
-                            className={styles.dropbox_item}
-                            onClick={() => openEditModal(investment)}
-                          >
-                            수정하기
-                          </div>
-                          <div
-                            className={styles.dropbox_item}
-                            onClick={() => openDeleteModal(investment)}
-                          >
-                            삭제하기
+                          <div className={styles.dropbox_item}>
+                            <ul>
+                              <li
+                                className={styles.dropbox_item}
+                                onClick={() => openEditModal(investment)}
+                              >
+                                수정하기
+                              </li>
+                              <div className={styles.line}></div>
+                              <li
+                                className={styles.dropbox_item}
+                                onClick={() => openDeleteModal(investment)}
+                              >
+                                삭제하기
+                              </li>
+                            </ul>
                           </div>
                         </div>
                       )}

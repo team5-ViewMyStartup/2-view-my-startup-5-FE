@@ -19,6 +19,7 @@
   max-width: 90%;
   z-index: 1001;
 }
+
 .title_wrapper {
   display: flex;
   justify-content: space-between;
@@ -29,6 +30,7 @@
 
 .close:hover {
   opacity: 0.5;
+  cursor: pointer;
 }
 
 .input {
@@ -53,4 +55,5 @@
   height: 50px;
   border-radius: 20px;
   border: none;
+  cursor: pointer;
 }
