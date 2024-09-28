@@ -1,4 +1,4 @@
-.delete_modal_container {
+.modal_container {
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   top: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
 }
 
-.delete_modal_content {
+.modal_content {
   background-color: #212121;
   padding: 30px;
   border-radius: 8px;
@@ -19,21 +19,32 @@
   max-width: 90%;
   z-index: 1001;
 }
-.delete_title {
+.title_wrapper {
   display: flex;
   justify-content: space-between;
   font-weight: 700;
   font-size: 20px;
+  margin-bottom: 30px;
 }
 
-.delete_input {
+.close:hover {
+  opacity: 0.5;
+}
+
+.input {
   background-color: #212121;
-  border-color: solid 1px #747474;
+  border: solid 1px #747474;
   width: 448px;
   margin-bottom: 20px;
+  color: white;
 }
 
-.delete_button {
+.button_container {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
   background-color: #eb5230;
   color: white;
   font-size: 16px;
