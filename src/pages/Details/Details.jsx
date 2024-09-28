@@ -10,6 +10,7 @@ function Details() {
   const [activeDropdown, setActiveDropdown] = useState("revise");
   const [currentPage, setCurrentPage] = useState(1);
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedInvestment, setSelectedInvestment] = useState(null); // 선택된 투자자를 추적
 
   const totalInvestmentAmount = company
     ? company.investments.reduce((total, investment) => {
@@ -22,8 +23,15 @@ function Details() {
   const sortedAmount = company ? [...company.investments].sort((a, b) => b.amount - a.amount) : [];
   const currentInvestments = company ? sortedAmount.slice(indexOfFirstItem, indexOfLastItem) : [];
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+  const openModal = (investment) => {
+    setSelectedInvestment(investment); // 모달에 전달할 투자 항목 설정
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setSelectedInvestment(null); // 선택된 투자 항목 초기화
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,8 +112,8 @@ function Details() {
         <div className={styles.investment_container}>
           <ul className={styles.investment_list}>
             <li className={styles.investment_header}>
-              <span className={styles.invest_inform}>순위</span>
               <span className={styles.invest_inform}>투자자 이름</span>
+              <span className={styles.invest_inform}>순위</span>
               <span className={styles.invest_inform}>투자 금액</span>
               <span className={styles.investment_comment}>투자 코멘트</span>
             </li>
@@ -121,8 +129,7 @@ function Details() {
                     {activeDropdown === index + indexOfFirstItem && (
                       <div className={styles.dropdown_select}>
                         <div onClick={() => setActiveDropdown("revise")}>수정하기</div>
-                        <div onClick={openModal}>삭제하기</div>
-                        {<DeleteModal isOpen={modalOpen} isClose={closeModal} />}
+                        <div onClick={() => openModal(investment)}>삭제하기</div>
                       </div>
                     )}
                   </div>
@@ -157,6 +164,10 @@ function Details() {
           &gt;
         </button>
       </div>
+
+      {modalOpen && (
+        <DeleteModal isOpen={modalOpen} isClose={closeModal} investment={selectedInvestment} />
+      )}
     </div>
   );
 }
