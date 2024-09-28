@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import logoImg from "../../imagesjun/logo1.svg";
 
-
 const USER_DATA = [
   { email: "test@test.com", password: "testest!" },
   { email: "test1@test.com", password: "testest1!" },
 ];
+/**
+ * TODO
+ * 1. 제어 컴포넌트하면 진행하면 여기서는 문제없이 작동 및 완료
+ * 2. 이후 로그인 기능 실제 백엔드와 함꼐 구현한다면 이후FE쪽 서버 아이디패스워드 API 코드 추가  /
+ *
+ */
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -35,32 +40,24 @@ function Login() {
     try {
       validateEmail(email);
       validatePassword(password);
-/** 
-      *TODO 로그인 로직 구현
-      *useState는 값이 변할때 사용, 현재로서는 필요없음
-      *유효성 검사 후 로그인 로직 구현 , 폼 제출 이벤트 핸들러 추가
 
-      */
       const user = USER_DATA.find((user) => user.email === email && user.password === password);
 
       if (user) {
-        console.log("로그인 성공!"); 
+        console.log("로그인 성공!");
       } else {
-        throw new Error("이메일 또는 비밀번호가 잘못되었습니다."); 
+        setError("이메일 또는 비밀번호가 잘못되었습니다.");
       }
     } catch (err) {
       setError(err.message);
     }
   };
 
-
-function Login() {
   return (
     <div className={styles.login}>
       <Link to="/">
         <img className={styles.login_logo_img} src={logoImg} alt="logo Image" />
       </Link>
-
       <form onSubmit={handleSubmit}>
         <div className={styles.email}>
           <label className={styles.email_label} htmlFor="email-login">
@@ -72,7 +69,7 @@ function Login() {
             placeholder="이메일을 입력해주세요"
           />
         </div>
-
+        {/* TODO:제어 컴포넌트 만들어서 적용하기 ( 릭엑 데이터쪽) */}
         <div className={styles.pw}>
           <label className={styles.pw_label} htmlFor="pw-login">
             비밀번호
@@ -87,9 +84,7 @@ function Login() {
 
         <button className={styles.login_button}>로그인</button>
       </form>
-
-    {error && <p className={styles.error}>{error}</p>} 
-
+      {error && <p className={styles.error}>{error}</p>}
       <div className={styles.info}>
         <p className={styles.not_member}>처음이신가요?</p>
         <Link to="/signup">
