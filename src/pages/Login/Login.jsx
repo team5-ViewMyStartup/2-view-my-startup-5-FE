@@ -9,16 +9,16 @@ const USER_DATA = [
 ];
 /**
  * TODO
- * 1. 제어 컴포넌트하면 진행하면 여기서는 문제없이 작동 및 완료
- * 2. 이후 로그인 기능 실제 백엔드와 함꼐 구현한다면 이후FE쪽 서버 아이디패스워드 API 코드 추가  /
- *
+ * 1. 제어 컴포넌트 적용완료 / 유효성 검사 기능 완료
+ * 2. 이후 로그인 기능 실제 백엔드와 함꼐 구현한다면 관련 코드 추가  /
+ * 3. 토글 기능 추가 예정
  */
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   const isValidateEmail = regex.test(email);
   if (!isValidateEmail) {
-    throw new Error("이메일 아님");
+    throw new Error("이메일 다시써주삼 ");
   }
 };
 
@@ -26,7 +26,7 @@ const validatePassword = (password) => {
   const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
   const isValidatePassword = regex.test(password);
   if (!isValidatePassword) {
-    throw new Error("비번 아님.");
+    throw new Error("비번 틀렸음.");
   }
 };
 
@@ -67,9 +67,11 @@ function Login() {
             className={styles.email_input}
             id="email-login"
             placeholder="이메일을 입력해주세요"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        {/* TODO:제어 컴포넌트 만들어서 적용하기 ( 릭엑 데이터쪽) */}
+
         <div className={styles.pw}>
           <label className={styles.pw_label} htmlFor="pw-login">
             비밀번호
@@ -79,6 +81,8 @@ function Login() {
             id="pw-login"
             placeholder="비밀번호를 입력해주세요"
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
