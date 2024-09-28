@@ -84,6 +84,24 @@ function Details() {
     toggleDropdown(index);
   };
 
+  const corporateField = [
+    {
+      title: "누적 투자 금액",
+      value: `${totalInvestmentAmount} 억 원`,
+      className: "",
+    },
+    {
+      title: "매출액",
+      value: `${company.revenue} 억 원`,
+      className: `${styles.account}`,
+    },
+    {
+      title: "고용 인원",
+      value: `${company.employees} 명`,
+      className: "",
+    },
+  ];
+
   /** TODO
    * 1. map 형식으로 바꾸기
    * 2. pagination
@@ -102,18 +120,12 @@ function Details() {
         </div>
         <div className={styles.corporate_status}>
           <div className={styles.overview_wrapper}>
-            <div className={styles.overview}>
-              <h5>누적 투자 금액</h5>
-              <p>{totalInvestmentAmount}억 원</p>
-            </div>
-            <div className={`${styles.overview} ${styles.account}`}>
-              <h5>매출액</h5>
-              <p>{company.revenue} 억 원</p>
-            </div>
-            <div className={styles.overview}>
-              <h5>고용 인원</h5>
-              <p>{company.employees} 명</p>
-            </div>
+            {corporateField.map((field, index) => (
+              <div key={index} className={`${styles.overview} ${field.className}`}>
+                <h5>{field.title}</h5>
+                <p>{field.value}</p>
+              </div>
+            ))}
           </div>
           <div className={styles.introduction}>
             <h5>기업 소개</h5>
@@ -167,7 +179,7 @@ function Details() {
                               </li>
                               <div className={styles.line}></div>
                               <li
-                                className={styles.dropbox_item}
+                                className={`${styles.dropbox_item} ${styles.dropbox_item_last}`}
                                 onClick={() => openDeleteModal(investment)}
                               >
                                 삭제하기
