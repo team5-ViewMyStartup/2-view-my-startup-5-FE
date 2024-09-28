@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import logoImg from "../../imagesjun/logo1.svg";
+import { useNavigate } from "react-router-dom";
 
 const USER_DATA = [
   { email: "test@test.com", password: "testest!" },
@@ -9,9 +10,11 @@ const USER_DATA = [
 ];
 /**
  * TODO
- * 1. 제어 컴포넌트 적용완료 / 유효성 검사 기능 완료
+ * 1. 제어 컴포넌트 적용완료 / 유효성 검사 기능 완료/
  * 2. 이후 로그인 기능 실제 백엔드와 함꼐 구현한다면 관련 코드 추가  /
  * 3. 토글 기능 추가 예정
+ * 4. 모달 팝업 기능 등은 추가 논의 필요
+ * 5. 로그인 이후 페이지 이동 기능 추가 예정
  */
 
 const validateEmail = (email) => {
@@ -34,6 +37,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +49,7 @@ function Login() {
 
       if (user) {
         console.log("로그인 성공!");
+        navigate("/home");
       } else {
         setError("이메일 또는 비밀번호가 잘못되었습니다.");
       }
@@ -55,7 +60,7 @@ function Login() {
 
   return (
     <div className={styles.login}>
-      <Link to="/">
+      <Link to="/all-company">
         <img className={styles.login_logo_img} src={logoImg} alt="logo Image" />
       </Link>
       <form onSubmit={handleSubmit}>
