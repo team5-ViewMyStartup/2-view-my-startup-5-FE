@@ -1,8 +1,9 @@
 import React from "react";
+import useCompany from "../../hooks/usePageHandler";
 import styles from "./Company.module.css";
 import codeitIcon from "../../assets/icon_codeit.jpg";
 
-const Company = ({ company }) => {
+const Company = ({ company, rank }) => {
   const companyName = company.name;
   const companyDescription = company.description;
   const companyCategory = company.category;
@@ -10,17 +11,19 @@ const Company = ({ company }) => {
   const companyRevenue = company.revenue;
   const companyEmployees = company.employees;
 
+  if (!company) {
+    return <div>데이터를 불러오지 못했습니다</div>;
+  }
+
   return (
-    <div className={styles.companies}>
-      <div className={styles.company_text}>
-        <img className={styles.company_img} src={codeitIcon} alt={company.name} />
-        <p className={styles.category_company_name}>{companyName}</p>
-        <p className={styles.category_company_info}>{companyDescription}</p>
-        <p className={styles.category_category}>{companyCategory}</p>
-        <p className={styles.category_investment_amount}>{companyTotalInvestment}</p>
-        <p className={styles.category_sales}>{companyRevenue}</p>
-        <p className={styles.category_employee_num}>{companyEmployees}</p>
-      </div>
+    <div className={styles.company}>
+      <span className={styles.category_rank}>{rank} 위</span>
+      <h3>{companyName}</h3>
+      <p>{companyDescription}</p>
+      <p>{companyCategory}</p>
+      <p>{companyTotalInvestment}</p>
+      <p>{companyRevenue}</p>
+      <p>{companyEmployees}</p>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useCompany from "../../hooks/useCompany";
+import useCompany from "../../hooks/usePageHandler";
 import Company from "./Company";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
@@ -126,7 +126,7 @@ function StartupList() {
         <div className={styles.category_body}>
           {/* <span className={styles.category_rank}>{index + 1} 위</span> */}
           {company.map((info, index) => (
-            <Company company={info} />
+            <Company key={info.name} company={info} rank={index + 1} />
           ))}
         </div>
         <div className={styles.pagination}>

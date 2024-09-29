@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import select from "../../images/select_img.svg";
 import styles from "./Details.module.css";
+import usePageHandler from "../../hooks/usePageHandler";
+import Pagination from "../../components/Pagination/Pagination";
 const ITEM_PER_PAGE = 5;
 
 function Details() {
   const [company, setCompany] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
+  const { currentPage, handlePageChange } = usePageHandler(totalPages);
 
   const totalInvestmentAmount = company
     ? company.investments.reduce((total, investment) => {
@@ -34,19 +37,19 @@ function Details() {
     return <div>데이터 불러오지 못했습니다</div>;
   }
 
-  const totalPages = Math.ceil(company.investments.length / ITEM_PER_PAGE);
+  const totalPages = Math.ceil((company.investments.length || 0) / ITEM_PER_PAGE);
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  // const handlePageChange = (pageNumber) => {
+  //   setCurrentPage(pageNumber);
+  // };
 
-  const handlePrevious = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
+  // const handlePrevious = () => {
+  //   if (currentPage > 1) setCurrentPage(currentPage - 1);
+  // };
 
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
+  // const handleNext = () => {
+  //   if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  // };
 
   return (
     <div className={styles.corporate}>
@@ -105,7 +108,7 @@ function Details() {
           </ul>
         </div>
       </div>
-      <div className={styles.pagination}>
+      {/* <div className={styles.pagination}>
         <button
           className={styles.page_button}
           onClick={handlePrevious}
@@ -129,7 +132,13 @@ function Details() {
         >
           &gt;
         </button>
-      </div>
+      </div> */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        hasNext={currentPage < totalPages}
+      />
     </div>
   );
 }
