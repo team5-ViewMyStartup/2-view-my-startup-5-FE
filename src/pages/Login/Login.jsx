@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import logoImg from "../../imagesjun/logo1.svg";
 import { useNavigate } from "react-router-dom";
-import toggleOn from "../../imagesjun/btn_visibility_on_24px.svg";
-import toggleOff from "../../imagesjun/btn_visibility_off_24px.svg";
+import toggleOn from "../../imagesjun/btn_visibility_on_24px.png";
+import toggleOff from "../../imagesjun/btn_visibility_off_24px.png";
 const USER_DATA = [
   { email: "test@test.com", password: "testtest1!" },
   { email: "test1@test.com", password: "testtest!" },
