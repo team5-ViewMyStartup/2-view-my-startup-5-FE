@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+.compare_main_container {
+  padding: 0 200px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+comapare_heading_text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.compare_head_Wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(100% - 48px); /* Innerbox와 동일한 width */
+  max-width: 1156px;
+  margin-top: 30px;
+}
