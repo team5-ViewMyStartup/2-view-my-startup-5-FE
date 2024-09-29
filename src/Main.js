@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import StartupList from "./pages/StartupList.jsx/StartupList";
 import Details from "./pages/Details/Details";
+import CompareStatus from "./pages/CompareStatus/CompareStatus";
 
 function Main() {
   return (
@@ -16,6 +17,7 @@ function Main() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/all-company" element={<StartupList />} />
           <Route path="details" element={<Details />} />
+          <Route path="/compare-status" element={<CompareStatus />} />
           {/* <Route> 여기에 페이지들을 추가</Route> */}
         </Route>
       </Routes>
