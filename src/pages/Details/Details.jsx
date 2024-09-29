@@ -33,9 +33,7 @@ function Details() {
   if (!company) {
     return <div>데이터 불러오지 못했습니다</div>;
   }
-  const handleSelect = () => {
-    SetSelectDropdown();
-  };
+
   const totalPages = Math.ceil(company.investments.length / ITEM_PER_PAGE);
 
   const handlePageChange = (pageNumber) => {

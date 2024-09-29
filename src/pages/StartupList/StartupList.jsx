@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
+import useCompany from "../../hooks/useCompany";
+import Company from "./Company";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
 import dropdownIcon from "../../assets/dropdown.svg";
-
-const PageNationHook = () => {
-  const [allProduct, setAllProduct] = useState(0);
-  const [isLoadedData, setIsLoadedData] = useState(true);
-};
+import rightArrow from "../../assets/btn_right.svg";
+import leftArrow from "../../assets/btn_left.svg";
 
 function StartupList() {
+  const viewCompanyInfoNum = 10;
+  const [page, setPage] = useState(1);
   const [orderBy, setOrderBy] = useState("investment-high");
   const [dropdown, setDropDown] = useState(false);
-  const [company, setCompany] = useState([]);
-  const [page, setPage] = useState(1);
+  const { company, companyNum, isLoadedData } = useCompany(page, orderBy);
+
+  const totalPages = Math.ceil(companyNum / viewCompanyInfoNum);
 
   const toggleDropdown = () => {
     setDropDown(!dropdown);
@@ -23,28 +25,25 @@ function StartupList() {
     setDropDown(false);
   };
 
-  useEffect(async () => {
-    try {
-      const response = await fetch(`/allCompanyData.json`);
-      if (!response.ok) throw new Error("데이터 불러오지 못 함");
-      const data = await response.json();
-      setCompany(data);
-    } catch (err) {
-      console.error("Error fetching data:", err);
-    }
-  }, []);
-
-  if (!company) {
-    return <div>데이터를 불러오지 못했습니다.</div>;
-  }
+  if (isLoadedData) return <div>Loading...</div>;
 
   const renderPaginationList = () => {
     const pageNumbers = [];
-    const viewCompanyInfoNum = 10;
-    let companyInfoNum = company.length();
-    let maxPageNumbers = companyInfoNum / viewCompanyInfoNum;
+    const maxPageNumbers = 5;
     let startPage = Math.max(1, page - Math.floor(maxPageNumbers / 2));
-    let endPage = Math.min();
+    let endPage = Math.min(totalPages, startPage + maxPageNumbers - 1);
+
+    if (endPage - startPage < maxPageNumbers - 1)
+      startPage = Math.max(1, endPage - maxPageNumbers + 1);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNumbers.push(
+        <button key={i} onClick={() => setPage(i)} className={page === i ? "active" : ""}>
+          {i}
+        </button>,
+      );
+    }
+    return pageNumbers;
   };
 
   return (
@@ -123,18 +122,22 @@ function StartupList() {
             <span className={styles.category_sales}>매출액</span>
             <span className={styles.category_employee_num}>고용 인원</span>
           </li>
-          {company.map((info, index) => (
-            <li className={styles.category_body}>
-              <span className={styles.category_rank}>{index + 1} 위</span>
-              <span className={styles.category_company_name}>{info.name}</span>
-              <span className={styles.category_company_info}>{info.description}</span>
-              <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
-              <span className={styles.category_sales}>{info.revenue}</span>
-              <span className={styles.category_employee_num}>{info.employees}</span>
-            </li>
-          ))}
         </ul>
+        <div className={styles.category_body}>
+          {/* <span className={styles.category_rank}>{index + 1} 위</span> */}
+          {company.map((info, index) => (
+            <Company company={info} />
+          ))}
+        </div>
+        <div className={styles.pagination}>
+          <button onClick={() => setPage(page - 1)} disabled={page === 1}>
+            <img src={leftArrow} alt="left" />
+          </button>
+          {renderPaginationList()}
+          <button onClick={() => setPage(page + 1)} disabled={page === totalPages}>
+            <img src={rightArrow} alt="right" />
+          </button>
+        </div>
       </div>
     </div>
   );

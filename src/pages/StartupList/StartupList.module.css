@@ -108,6 +108,7 @@
   padding: 0;
   z-index: 2;
   top: 100%;
+  background-color: #131313;
 }
 
 .investment_high {
@@ -264,6 +265,7 @@
   height: 64px;
   padding: 15px 16px;
   display: -webkit-box;
+  display: box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-height: 1.5;
