@@ -9,6 +9,11 @@ hr {
   padding: 0 200px;
 }
 
+.corporate_wrapper {
+  display: flex;
+  padding: 20px;
+}
+
 .cor_type {
   color: #747474;
 }

@@ -103,7 +103,7 @@ function Details() {
   ];
 
   /** TODO
-   * 1. map 형식으로 바꾸기
+   * 1. map 형식으로 바꾸기 (완료)
    * 2. pagination
    * 3. api 연결
    * 4. 수정/삭제 모달 확인
@@ -114,10 +114,14 @@ function Details() {
   return (
     <div className={styles.corporate}>
       <div className={styles.corporate_information}>
-        <div className={styles.corporate_name}>
-          <h3>{company.name}</h3>
-          <h4 className={styles.cor_type}>{company.category}</h4> <hr />
+        <div className={styles.corporate_wrapper}>
+          <img src={select_icon} alt="임시이미지" width="20px" />
+          <div className={styles.corporate_name}>
+            <h3>{company.name}</h3>
+            <h4 className={styles.cor_type}>{company.category}</h4>
+          </div>
         </div>
+        <hr />
         <div className={styles.corporate_status}>
           <div className={styles.overview_wrapper}>
             {corporateField.map((field, index) => (
