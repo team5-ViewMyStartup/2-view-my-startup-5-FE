@@ -8,8 +8,8 @@ export const companyOptions = [
 ];
 
 export const compareOptions = [
-  { label: "선택 횟수 높은순", value: "selection-high", className: "selection_high" },
-  { label: "선택 횟수 낮은순", value: "selection-low", className: "selection_low" },
+  { label: "나의 기업 선택 횟수 높은순", value: "selection-high", className: "selection_high" },
+  { label: "나의 기업 선택 횟수 낮은순", value: "selection-low", className: "selection_low" },
   {
     label: "실제 누적 투자 금액 높은 순",
     value: "actual-investment-high",

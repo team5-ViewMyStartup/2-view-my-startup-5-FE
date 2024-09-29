@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Dropdown.module.css";
 import dropdownIcon from "../../assets/dropdown.svg";
 
-const Dropdown = ({ options, selectedOption, onSelect }) => {
+const Dropdown = ({ options, selectedOption, onSelect, isCompanyOptions }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const toggleDropdown = () => {
@@ -15,7 +15,7 @@ const Dropdown = ({ options, selectedOption, onSelect }) => {
   };
 
   return (
-    <div className={styles.dropdown}>
+    <div className={`${styles.dropdown} ${isCompanyOptions ? styles.company_dropdown : ""}`}>
       <div className={styles.dropdown_select} onClick={toggleDropdown}>
         {selectedOption}
         <img className={styles.dropdown_icon} src={dropdownIcon} alt="dropdown" />

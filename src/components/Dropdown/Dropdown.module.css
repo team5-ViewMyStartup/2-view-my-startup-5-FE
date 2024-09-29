@@ -6,6 +6,11 @@
   width: 300px;
 }
 
+.company_dropdown {
+  position: relative;
+  width: 200px;
+}
+
 .dropdown_select {
   background-color: #131313;
   color: #fff;
