@@ -3,7 +3,7 @@ import styles from "./Compare.module.css";
 import icRestart from "../../imagesjun/ic_restart.png";
 import icAdd from "../../imagesjun/ic_add.png";
 import btnPlus from "../../imagesjun/btn_plus.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Compare() {
   /*TODO
@@ -14,6 +14,31 @@ function Compare() {
   const [isComparisonVisible, setIsComparisonVisible] = useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [additionalCompanies, setAdditionalCompanies] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const getCompanies = async () => {
+      // TODO: API를 통해 기업 데이터를 가져오기
+      // try {
+      //   const companies = await fetchCompanies();
+      //   setSelectedCompanies(companies);
+      // } catch (error) {
+      //   console.error("기업 데이터를 가져오는데 실패했습니다.", error);
+      // }
+    };
+    getCompanies();
+  }, []);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    console.log("열려라 참달!");
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+    console.log("닫혀라 모께!");
+  };
+
   const handleResetButtonClick = () => {
     setResetBtnText("초기화 완료");
     /*TODO
@@ -32,6 +57,10 @@ function Compare() {
      *비교 기능 구현
      */
     console.log("비교 시작");
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   return (
@@ -62,11 +91,11 @@ function Compare() {
               </div>
             ))
           ) : (
-            <div className={styles.addButtonWrapper}>
-              <div className={styles.addButton}></div>
-              <img src={btnPlus} alt="add" className={styles.btn_plus} />
-              <div className={styles.addButton}></div>
-              <p className={styles.add_company_text}>기업 추가</p>
+            <div className={styles.add_button_wrapper}>
+              <div className={styles.add_button} onClick={openModal}>
+                <img src={btnPlus} alt="add" className={styles.btn_plus} />
+                <p className={styles.add_company_text}>기업 추가</p>
+              </div>
             </div>
           )}
         </div>
@@ -75,6 +104,29 @@ function Compare() {
       <div className={styles.btn_wrapper}>
         <button onClick={handleComparisonClick}>기업 비교하기</button>
       </div>
+
+      {isModalOpen && (
+        <div className={styles.modal}>
+          <div className={styles.modal_header}>
+            {" "}
+            <span>비교할 기업 선택하기</span>
+            <button className={styles.close_btn} onClick={closeModal}>
+              {" "}
+              &times;
+            </button>
+          </div>
+          <div className={styles.search_input_container}>
+            {" "}
+            <span className={styles.search_icon}>&#128269;</span>
+            <input
+              type="text"
+              placeholder="검색어를 입력해주세요"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

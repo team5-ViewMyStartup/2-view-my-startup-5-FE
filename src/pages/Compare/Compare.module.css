@@ -21,6 +21,12 @@ comapare_heading_text {
   margin-bottom: 20px;
 }
 
+.add_button_wrapper {
+}
+
+.add_button {
+}
+
 .reset_btn {
 }
 
@@ -57,4 +63,70 @@ comapare_heading_text {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+/* Modal Container */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background_color: #333; /* Dark gray background */
+  border_radius: 10px; /* Rounded corners */
+  padding: 20px;
+  width: 300px; /* Adjust width as needed */
+  box_shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Drop shadow */
+  z_index: 1000;
+  color: white; /* White text color */
+}
+
+/* Modal Header (Title and Close Button) */
+.modal_header {
+  display: flex;
+  justify_content: space_between;
+  align_items: center;
+  color: white;
+  font_size: 16px;
+  font_weight: bold;
+}
+
+/* Close Button */
+.close_btn {
+  cursor: pointer;
+  font_size: 18px;
+  color: white;
+  border: none;
+  background: none;
+}
+
+/* Search Input Container */
+.search_input_container {
+  display: flex;
+  align_items: center;
+  background_color: #444; /* Slightly lighter gray for input background */
+  border_radius: 20px; /* Rounded corners for the input */
+  padding: 5px 10px;
+  margin_top: 10px;
+  border: 1px solid #555; /* Optional: subtle border for input */
+}
+
+.search_input_container input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font_size: 14px;
+  width: 100%;
+  padding_left: 10px;
+}
+
+.search_input_container input::placeholder {
+  color: #aaa; /* Placeholder color */
+}
+
+/* Search Icon */
+.search_icon {
+  margin_right: 10px;
+  color: white; /* Same color as text */
+  font_size: 16px;
 }
