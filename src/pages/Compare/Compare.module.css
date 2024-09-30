@@ -7,7 +7,12 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.compare_head_wrapper {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 comapare_heading_text {
@@ -16,11 +21,40 @@ comapare_heading_text {
   margin-bottom: 20px;
 }
 
-.compare_head_Wrapper {
+.reset_btn {
+}
+
+.ic_restart {
+}
+
+.compare_btn {
+}
+
+.inner_box {
+  background-color: #212121;
+  height: 100%;
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  padding: 0 2px;
+  gap: 1px;
+}
+
+.add_company_text {
+}
+.ic_add {
+}
+
+.btn_wrapper {
+  background-color: var(--black-100);
+  color: var(--gray-200);
+  border-radius: 50px;
+  border: none;
+
+  display: flex;
+  justify-content: center;
   align-items: center;
-  width: calc(100% - 48px); /* Innerbox와 동일한 width */
-  max-width: 1156px;
-  margin-top: 30px;
+  cursor: pointer;
 }
