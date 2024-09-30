@@ -21,10 +21,37 @@ comapare_heading_text {
   margin-bottom: 20px;
 }
 
-.add_button_wrapper {
+.reset_btn_wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
 }
 
-.add_button {
+.add_button_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add_company_btn {
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.add_company_text {
+  white-space: nowrap;
 }
 
 .reset_btn {
@@ -38,7 +65,7 @@ comapare_heading_text {
 
 .inner_box {
   background-color: #212121;
-  height: 100%;
+  height: 300px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -48,8 +75,6 @@ comapare_heading_text {
   gap: 1px;
 }
 
-.add_company_text {
-}
 .ic_add {
 }
 

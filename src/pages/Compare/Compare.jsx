@@ -17,6 +17,14 @@ function Compare() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
+  const sampleCompanies = [
+    { id: 1, name: "삼성전자" },
+    { id: 2, name: "LG전자" },
+    { id: 3, name: "현대자동차" },
+    { id: 4, name: "카카오" },
+    { id: 5, name: "네이버" },
+  ];
+
   useEffect(() => {
     const getCompanies = async () => {
       // TODO: API를 통해 기업 데이터를 가져오기
@@ -68,17 +76,11 @@ function Compare() {
       <div className={styles.compare_head} />
       <div className={styles.compare_head_wrapper}>
         <h1 className={styles.compare_heading_text}>나의 기업을 선택해 주세요!</h1>
-        <div className={styles.add_btn_wrapper}>
-          {resetBtnText === "전체 초기화" ? (
-            <button className={styles.reset_btn} onClick={handleResetButtonClick}>
-              <img src={icRestart} alt="restart" className={styles.ic_restart} />
-              {resetBtnText}
-            </button>
-          ) : (
-            <button className={styles.compare_btn} onClick={handleResetButtonClick}>
-              다른 기업 비교하기
-            </button>
-          )}
+        <div className={styles.reset_btn_wrapper}>
+          <button className={styles.reset_btn} onClick={handleResetButtonClick}>
+            <img src={icRestart} alt="restart" className={styles.ic_restart} />
+            전체 초기화
+          </button>
         </div>
       </div>
       <div>
@@ -92,8 +94,8 @@ function Compare() {
             ))
           ) : (
             <div className={styles.add_button_wrapper}>
-              <div className={styles.add_button} onClick={openModal}>
-                <img src={btnPlus} alt="add" className={styles.btn_plus} />
+              <div className={styles.modal_button} onClick={openModal}>
+                <img src={btnPlus} alt="add" className={styles.add_company_btn} />
                 <p className={styles.add_company_text}>기업 추가</p>
               </div>
             </div>
