@@ -5,7 +5,6 @@ const ITEM_PER_PAGE = 5;
 
 function Details() {
   const [company, setCompany] = useState();
-  const [selcetDropdown, SetSelectDropdown] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalInvestmentAmount = company
@@ -34,10 +33,8 @@ function Details() {
   if (!company) {
     return <div>데이터 불러오지 못했습니다</div>;
   }
-  const handleSelect = () => {
-    SetSelectDropdown();
-  };
-  const totalPages = Math.ceil(company.investments.length / ITEM_PER_PAGE);
+
+  const totalPages = Math.ceil((company.investments.length || 0) / ITEM_PER_PAGE);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
