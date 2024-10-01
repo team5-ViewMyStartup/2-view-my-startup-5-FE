@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  gap: 10px;
 }
 
 .button {
@@ -19,13 +20,18 @@
 }
 
 .page_button {
-  padding: 12px 15px;
-  margin: 0 4px;
   cursor: pointer;
   background-color: #2e2e2e;
   border-radius: 7px;
   color: #747474;
   border: none;
+  width: 48px;
+  height: 48px;
+}
+
+.page_number_button {
+  display: flex;
+  gap: 4px;
 }
 
 .page_button:hover {

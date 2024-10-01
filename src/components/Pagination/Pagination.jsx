@@ -13,25 +13,27 @@ const Pagination = ({ currentPage, totalPages, onPageChange, hasNext }) => {
   return (
     <div className={styles.pagination}>
       <button
-        className={`${styles.button} ${styles.leftButton}`}
+        className={`${styles.button} ${styles.left_button}`}
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         &lt;
       </button>
-      <div className={styles.pageNumberButton}>
+      <div className={styles.page_number_button}>
         {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
           <button
             key={startPage + index}
             onClick={() => onPageChange(startPage + index)}
-            className={`${styles.button} ${startPage + index === currentPage ? styles.active : ""}`}
+            className={`${styles.page_button} ${
+              startPage + index === currentPage ? styles.active : ""
+            }`}
           >
             {startPage + index}
           </button>
         ))}
       </div>
       <button
-        className={`${styles.button} ${styles.rightButton}`}
+        className={`${styles.button} ${styles.right_button}`}
         onClick={() => onPageChange(currentPage + 1)}
         disabled={!hasNext || currentPage === totalPages}
       >

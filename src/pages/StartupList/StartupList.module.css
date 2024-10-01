@@ -8,8 +8,8 @@
   flex-direction: column;
   width: 1200px;
   height: 100vh;
-  justify-content: center;
   margin: 0 auto;
+  margin-top: 40px;
 }
 
 .startup_list {
@@ -263,12 +263,12 @@
   text-overflow: ellipsis;
   width: 304px;
   height: 64px;
-  padding: 15px 16px;
+  /* padding: 15px 16px; */
   display: -webkit-box;
   display: box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  line-height: 1.5;
+  line-height: 32px;
 }
 
 .category_body {
