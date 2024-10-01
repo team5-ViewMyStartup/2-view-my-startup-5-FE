@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.page_button {
+  padding: 12px 15px;
+  margin: 0 4px;
+  cursor: pointer;
+  background-color: #2e2e2e;
+  border-radius: 7px;
+  color: #747474;
+  border: none;
+}
+
+.page_button:hover {
+  background-color: #eb5230;
+  opacity: 0.5;
+}
+
+.page_button:disabled {
+  cursor: not-allowed;
+}
+
+.active {
+  font-weight: bold;
+  background-color: #eb5230;
+  color: white;
+}

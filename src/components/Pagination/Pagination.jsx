@@ -2,8 +2,13 @@ import React from "react";
 import styles from "./Pagination.module.css";
 
 const Pagination = ({ currentPage, totalPages, onPageChange, hasNext }) => {
-  const startPage = Math.floor((currentPage - 1) / 5) * 5 + 1;
-  const endPage = math.min(startPage + 4, totalPages);
+  const maxPageNumbers = 5;
+  let startPage = Math.max(1, currentPage - Math.floor(maxPageNumbers / 2));
+  let endPage = Math.min(totalPages, startPage + maxPageNumbers - 1);
+
+  if (endPage - startPage < maxPageNumbers - 1) {
+    startPage = Math.max(1, endPage - maxPageNumbers + 1);
+  }
 
   return (
     <div className={styles.pagination}>

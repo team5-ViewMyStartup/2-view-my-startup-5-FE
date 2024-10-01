@@ -4,17 +4,19 @@ import Company from "./Company";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
 import dropdownIcon from "../../assets/dropdown.svg";
-import rightArrow from "../../assets/btn_right.svg";
-import leftArrow from "../../assets/btn_left.svg";
+import Pagination from "../../components/Pagination/Pagination";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
-  const [page, setPage] = useState(1);
+  // const [page, setPage] = useState(1);
   const [orderBy, setOrderBy] = useState("investment-high");
   const [dropdown, setDropDown] = useState(false);
-  const { company, companyNum, isLoadedData } = useCompany(page, orderBy);
+  const [company, setCompany] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  // const { company, companyNum, isLoadedData } = useCompany(page, orderBy);
 
-  const totalPages = Math.ceil(companyNum / viewCompanyInfoNum);
+  // const totalPages = Math.ceil(companyNum / viewCompanyInfoNum);
+  const totalPages = 15; // 임시적으로 정해둔 데이터
 
   const toggleDropdown = () => {
     setDropDown(!dropdown);
@@ -25,25 +27,10 @@ function StartupList() {
     setDropDown(false);
   };
 
-  if (isLoadedData) return <div>Loading...</div>;
+  // if (isLoadedData) return <div>Loading...</div>;
 
-  const renderPaginationList = () => {
-    const pageNumbers = [];
-    const maxPageNumbers = 5;
-    let startPage = Math.max(1, page - Math.floor(maxPageNumbers / 2));
-    let endPage = Math.min(totalPages, startPage + maxPageNumbers - 1);
-
-    if (endPage - startPage < maxPageNumbers - 1)
-      startPage = Math.max(1, endPage - maxPageNumbers + 1);
-
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(
-        <button key={i} onClick={() => setPage(i)} className={page === i ? "active" : ""}>
-          {i}
-        </button>,
-      );
-    }
-    return pageNumbers;
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
   };
 
   return (
@@ -129,7 +116,7 @@ function StartupList() {
             <Company key={info.name} company={info} rank={index + 1} />
           ))}
         </div>
-        <div className={styles.pagination}>
+        {/* <div className={styles.pagination}>
           <button onClick={() => setPage(page - 1)} disabled={page === 1}>
             <img src={leftArrow} alt="left" />
           </button>
@@ -137,7 +124,13 @@ function StartupList() {
           <button onClick={() => setPage(page + 1)} disabled={page === totalPages}>
             <img src={rightArrow} alt="right" />
           </button>
-        </div>
+        </div> */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          hasNext={currentPage < totalPages}
+        />
       </div>
     </div>
   );
