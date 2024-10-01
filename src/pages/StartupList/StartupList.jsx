@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import useCompany from "../../hooks/usePageHandler";
-import Company from "./Company";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
 import dropdownIcon from "../../assets/dropdown.svg";
@@ -8,15 +6,33 @@ import Pagination from "../../components/Pagination/Pagination";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
-  // const [page, setPage] = useState(1);
   const [orderBy, setOrderBy] = useState("investment-high");
   const [dropdown, setDropDown] = useState(false);
-  const [company, setCompany] = useState();
+  const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  // const { company, companyNum, isLoadedData } = useCompany(page, orderBy);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/allCompanyData.json");
+        if (!response.ok) throw new Error("데이터를 불러오지 못 함");
+        const data = await response.json();
+        console.log("data:", data);
+        setCompany(data);
+        console.log("company", company);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   // const totalPages = Math.ceil(companyNum / viewCompanyInfoNum);
-  const totalPages = 15; // 임시적으로 정해둔 데이터
+  // 임시적으로 정해둔 데이터
+  const totalPages = 15;
+  const indexOfLastItem = currentPage * viewCompanyInfoNum;
+  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
 
   const toggleDropdown = () => {
     setDropDown(!dropdown);
@@ -109,13 +125,18 @@ function StartupList() {
             <span className={styles.category_sales}>매출액</span>
             <span className={styles.category_employee_num}>고용 인원</span>
           </li>
+          {company.map((info, index) => {
+            <li key={index + indexOfFirstItem} className={styles.category_body}>
+              <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+              <span className={styles.category_company_name}>{info.name} 억 원</span>
+              <span className={styles.category_company_info}>{info.description}</span>
+              <span className={styles.category_category}>{info.category}</span>
+              <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
+              <span className={styles.category_sales}>{info.revenue}</span>
+              <span className={styles.category_employee_num}>{info.employees}</span>
+            </li>;
+          })}
         </ul>
-        <div className={styles.category_body}>
-          {/* <span className={styles.category_rank}>{index + 1} 위</span> */}
-          {company.map((info, index) => (
-            <Company key={info.name} company={info} rank={index + 1} />
-          ))}
-        </div>
         {/* <div className={styles.pagination}>
           <button onClick={() => setPage(page - 1)} disabled={page === 1}>
             <img src={leftArrow} alt="left" />
