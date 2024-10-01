@@ -19,6 +19,11 @@ comapare_heading_text {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
+  font-family: "Pretendard";
+}
+compare_sub_text {
+  font-size: 16px;
+  font-family: "Pretendard";
 }
 
 /* reset btn */
@@ -30,11 +35,12 @@ comapare_heading_text {
 }
 
 .reset_btn {
+  font-family: "Pretendard";
   border-radius: 50px;
   border: none;
   width: 149px;
   height: 40px;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
   line-height: 19.09px;
   padding: 8px, 24px, 8px, 24px;
@@ -45,10 +51,6 @@ comapare_heading_text {
   background-color: #eb5230;
   color: #ffffff;
   border: none;
-  padding: 15px 30px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
   white-space: nowrap;
 }
 
@@ -90,11 +92,6 @@ comapare_heading_text {
 .add_company_text {
   white-space: nowrap;
 }
-.ic_restart {
-}
-
-.compare_btn {
-}
 
 .inner_box {
   background-color: #212121;
@@ -107,21 +104,6 @@ comapare_heading_text {
   padding: 0 2px;
   gap: 1px;
   margin-bottom: 2rem;
-}
-
-.ic_add {
-}
-
-.btn_wrapper {
-  background-color: var(--black-100);
-  color: var(--gray-200);
-  border-radius: 50px;
-  border: none;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 }
 
 /* Modal Container */
