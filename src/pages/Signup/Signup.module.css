@@ -75,6 +75,8 @@ input {
 .error_message {
   color: red;
   font-size: 12px;
-  display: inline-block;
-  margin-left: 10px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  text-align: center;
+  display: block;
 }
