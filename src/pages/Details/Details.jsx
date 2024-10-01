@@ -3,27 +3,35 @@ import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
+import { fetchInvestmentsData } from "../../api/api";
+import { useParams } from "react-router-dom";
 
 const ITEM_PER_PAGE = 5;
 
 function Details() {
+  const { companyId } = useParams();
   const [company, setCompany] = useState();
+  const [investments, setInvestments] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(null);
 
-  const totalInvestmentAmount = company
-    ? company.investments.reduce((total, investment) => {
+  const totalInvestmentAmount = investments
+    ? investments.reduce((total, investment) => {
         return total + investment.amount;
       }, 0)
     : 0;
 
   const indexOfLastItem = currentPage * ITEM_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEM_PER_PAGE;
-  const sortedAmount = company ? [...company.investments].sort((a, b) => b.amount - a.amount) : [];
-  const currentInvestments = company ? sortedAmount.slice(indexOfFirstItem, indexOfLastItem) : [];
+  const currentInvestments =
+    investments.length > 0
+      ? [...investments]
+          .sort((a, b) => b.amount - a.amount)
+          .slice(indexOfFirstItem, indexOfLastItem)
+      : [];
 
   const openDeleteModal = (investment) => {
     setSelectedInvestment(investment);
@@ -46,17 +54,31 @@ function Details() {
   };
 
   useEffect(() => {
+    fetch("/detailsData.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("데이터 불러오지 못함");
+        }
+        return response.json();
+      })
+      .then((data) => setCompany(data[0]))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/detailsData.json");
-        if (!response.ok) throw new Error("데이터 못불러옴");
-        const data = await response.json();
-        setCompany(data[0]);
-      } catch (err) {}
-    };
+        // const companyData = await fetchCompanyData(1); // 기업은 임시
+        // setCompany(companyData);
 
+        const investmentData = await fetchInvestmentsData(companyId);
+        setInvestments(investmentData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
     fetchData();
-  }, []);
+  }, [companyId]);
 
   if (!company) {
     return <div>데이터 불러오지 못했습니다</div>;
