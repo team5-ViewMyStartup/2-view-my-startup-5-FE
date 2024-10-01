@@ -115,23 +115,7 @@ function Compare() {
       </div>
 
       <div>
-        <div className={styles.inner_box}>
-          {selectedCompanies.length > 0 ? (
-            selectedCompanies.map((company, index) => (
-              <div key={index}>
-                <p>{company.name}</p>
-                <p>선택 취소</p>
-              </div>
-            ))
-          ) : (
-            <div className={styles.add_button_wrapper}>
-              <div className={styles.modal_button} onClick={openModal}>
-                <img src={btnPlus} alt="add" className={styles.add_company_btn} />
-                <p className={styles.add_company_text}>기업 추가</p>
-              </div>
-            </div>
-          )}
-        </div>
+        <div className={styles.inner_box}></div>
       </div>
 
       <div className={styles.btn_wrapper}>
