@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Signup.module.css";
 import logoImg from "../../assets/logo1.svg";
-import toggle from "../../assets/btn_visibility_on_24px.svg";
+import toggle from "../../assets/btn_visibility_off_24px.svg";
 import { useState } from "react";
 
 /**
