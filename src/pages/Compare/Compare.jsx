@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Compare.module.css";
 import icRestart from "../../imagesjun/ic_restart.png";
+import icRestartWhite from "../../imagesjun/ic_restart_white.svg";
 import icAdd from "../../imagesjun/ic_add.png";
 import btnPlus from "../../imagesjun/btn_plus.png";
 import { useState, useEffect } from "react";
@@ -78,7 +79,7 @@ function Compare() {
         <h1 className={styles.compare_heading_text}>나의 기업을 선택해 주세요!</h1>
         <div className={styles.reset_btn_wrapper}>
           <button className={styles.reset_btn} onClick={handleResetButtonClick}>
-            <img src={icRestart} alt="restart" className={styles.ic_restart} />
+            <img src={icRestartWhite} alt="restart" className={styles.ic_restart} />
             전체 초기화
           </button>
         </div>
@@ -103,8 +104,40 @@ function Compare() {
         </div>
       </div>
 
+      <div className={styles.compare_head_wrapper}>
+        <h1 className={styles.compare_heading_text}>어떤 기업이 궁금하세요?</h1>
+        <p> (최대 5개)</p>
+        <div className={styles.reset_btn_wrapper}>
+          <button className={styles.reset_btn} onClick={handleComparisonClick}>
+            기업 추가하기
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <div className={styles.inner_box}>
+          {selectedCompanies.length > 0 ? (
+            selectedCompanies.map((company, index) => (
+              <div key={index}>
+                <p>{company.name}</p>
+                <p>선택 취소</p>
+              </div>
+            ))
+          ) : (
+            <div className={styles.add_button_wrapper}>
+              <div className={styles.modal_button} onClick={openModal}>
+                <img src={btnPlus} alt="add" className={styles.add_company_btn} />
+                <p className={styles.add_company_text}>기업 추가</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
       <div className={styles.btn_wrapper}>
-        <button onClick={handleComparisonClick}>기업 비교하기</button>
+        <button className={styles.reset_btn} onClick={handleComparisonClick}>
+          기업 비교하기
+        </button>
       </div>
 
       {isModalOpen && (

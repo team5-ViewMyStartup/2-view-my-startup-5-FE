@@ -21,6 +21,7 @@ comapare_heading_text {
   margin-bottom: 20px;
 }
 
+/* reset btn */
 .reset_btn_wrapper {
   display: flex;
   justify-content: flex-end;
@@ -28,6 +29,42 @@ comapare_heading_text {
   margin-left: auto;
 }
 
+.reset_btn {
+  border-radius: 50px;
+  border: none;
+  width: 149px;
+  height: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19.09px;
+  padding: 8px, 24px, 8px, 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #eb5230;
+  color: #ffffff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.reset_btn:hover {
+  background-color: #e84a37;
+}
+.reset_btn:active {
+  background-color: #eb5230;
+}
+.reset_btn:disabled {
+  background-color: var(black);
+  color: var(gray);
+  cursor: not-allowed;
+}
+
+/* 기업 추가 */
 .add_button_wrapper {
   display: flex;
   flex-direction: column;
@@ -53,10 +90,6 @@ comapare_heading_text {
 .add_company_text {
   white-space: nowrap;
 }
-
-.reset_btn {
-}
-
 .ic_restart {
 }
 
@@ -73,6 +106,7 @@ comapare_heading_text {
   position: relative;
   padding: 0 2px;
   gap: 1px;
+  margin-bottom: 2rem;
 }
 
 .ic_add {
