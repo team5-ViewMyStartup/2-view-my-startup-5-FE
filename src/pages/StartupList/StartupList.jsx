@@ -4,7 +4,7 @@ import searchIcon from "../../assets/ic_search.svg";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import ListHeader from "../../components/List/ListHeader";
-import { companyHeader, investmentHeader } from "../../components/List/HeaderOption";
+import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
 
 function StartupList() {
@@ -81,8 +81,9 @@ function StartupList() {
           </div>
         </div>
       </div>
+
+      <ListHeader headers={companyHeader} />
       <div className={styles.category_box}>
-        <ListHeader headers={companyHeader} />
         <ul className={styles.category_kind}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
             <li key={index + indexOfFirstItem} className={styles.category_body}>
