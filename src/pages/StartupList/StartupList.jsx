@@ -82,7 +82,7 @@ function StartupList() {
         </div>
       </div>
 
-      <ListHeader headers={companyHeader} />
+      <ListHeader headers={companyHeader} type="company" />
       <div className={styles.category_box}>
         <ul className={styles.category_kind}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
