@@ -11,18 +11,8 @@ const USER_DATA = [
 ];
 /**
  * TODO
- * 진행 중 업무 및 오늘까지 끝내야할 업무
- * 1. 66번째 줄 setError > throw Er심or로 변경 완료 ( 그러나 69번쨰 줄에는 여전히 setError 필요.. 꼭 없에야 하는건지.. 방법 모르겠음)
  *
- *
- *
- * 메모:
- * 1. 제어 컴포넌트 적용완료 / 유효성 검사 기능 완료/
- * 2. 이후 로그인 기능 실제 백엔드와 함꼐 구현한다면 관련 코드 추가  /
- * 3. 토글 기능 추가 완료
- * 4. 비밀번호를 맞게 입력해도 틀렸다는 오류 해결 예정
- * 5. 로그인 이후 전체리스트로 이동 구현 완료
- *
+ *동적 오류 메세지 구현
  */
 
 const validateEmail = (email) => {
@@ -36,7 +26,7 @@ const validatePassword = (password) => {
   const isValidatePassword = regex.test(password);
   if (!isValidatePassword) {
     throw new Error(
-      `최소 한개이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해주세요.`,
+      `최소 한 개 이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해주세요.`,
     );
   }
 };
