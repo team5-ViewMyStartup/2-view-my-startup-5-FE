@@ -28,8 +28,7 @@ const USER_DATA = [
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
   const isValidateEmail = regex.test(email);
-  if (!isValidateEmail)
-    throw new Error("주인님 용서해주세요 ㅠㅠ.. 혹시, 잘못된 이메일 형식이 아닌가요? ");
+  if (!isValidateEmail) throw new Error("잘못된 이메일 형식입니다.");
 };
 
 const validatePassword = (password) => {
@@ -37,7 +36,7 @@ const validatePassword = (password) => {
   const isValidatePassword = regex.test(password);
   if (!isValidatePassword) {
     throw new Error(
-      `최초 한개이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해 주셨을까요?:)`,
+      `최소 한개이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해주세요.`,
     );
   }
 };
@@ -58,12 +57,9 @@ function Login() {
       const user = USER_DATA.find((user) => user.email === email && user.password === password);
 
       if (user) {
-        console.log(
-          "어서오세요 주인님. 쫌 오래걸렸지만 로그인에 드디어 성공했습니다! 퇴근하셔도 되겠네요!",
-        );
         navigate("/all-company");
       } else {
-        throw new Error("앗! 이메일 또는 비밀번호가 잘못되었다고 하네요 ? ㅠㅠ");
+        throw new Error("이메일 또는 비밀번호가 일치하지 않습니다.");
       }
     } catch (err) {
       setError(err.message);
