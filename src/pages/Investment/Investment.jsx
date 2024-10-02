@@ -65,7 +65,7 @@ function Investment() {
         </div>
       </div>
       <div className={styles.investment_body}>
-        <ListHeader headers={investmentHeader} />
+        <ListHeader className={styles.list_header} headers={investmentHeader} />
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
             <li key={index + indexOfFirstItem} className={styles.category_body}>
@@ -73,8 +73,8 @@ function Investment() {
               <span className={styles.category_company_name}>{info.name}</span>
               <span className={styles.category_company_info}>{info.description}</span>
               <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_startupInvestment}>{info.startupInvestment}</span>
-              <span className={styles.category_totalInvestment}>{info.totalInvestment}</span>
+              <span className={styles.category_startup_investment}>{info.startupInvestment}</span>
+              <span className={styles.category_total_investment}>{info.totalInvestment}</span>
             </li>
           ))}
         </ul>
