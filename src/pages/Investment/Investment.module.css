@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+.investment {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.investment_header {
+  width: 1200px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.investment_status {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  display: flex;
+  flex-grow: 1;
+  white-space: nowrap;
+  gap: 919px;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
