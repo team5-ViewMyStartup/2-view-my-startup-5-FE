@@ -84,18 +84,10 @@ function Details() {
     return <div>데이터 불러오지 못했습니다</div>;
   }
 
-  const totalPages = Math.ceil(company.investments.length / ITEM_PER_PAGE);
+  const totalPages = Math.ceil(investments.length / ITEM_PER_PAGE);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-  };
-
-  const handlePrevious = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
   const toggleDropdown = (index) => {
@@ -219,34 +211,6 @@ function Details() {
                 ))}
               </ul>
             </div>
-
-            <div className={styles.pagination}>
-              <button
-                className={styles.page_button}
-                onClick={handlePrevious}
-                disabled={currentPage === 1}
-              >
-                &lt;
-              </button>
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index + 1}
-                  className={`${styles.page_button} ${
-                    currentPage === index + 1 ? styles.active : ""
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              ))}
-              <button
-                className={styles.page_button}
-                onClick={handleNext}
-                disabled={currentPage === totalPages}
-              >
-                &gt;
-              </button>
-            </div>
           </>
         )}
       </div>
@@ -276,6 +240,12 @@ function Details() {
           }}
         />
       )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        hasNext={currentPage < totalPages}
+      />
     </div>
   );
 }
