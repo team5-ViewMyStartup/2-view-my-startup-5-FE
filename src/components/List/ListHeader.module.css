@@ -2,6 +2,8 @@
   background-color: #2e2e2e;
   display: flex;
   justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .header_div {
@@ -15,4 +17,26 @@
   flex-grow: 1;
   text-align: center;
   color: white;
+}
+
+.header_list.company:nth-child(1) {
+  width: 68px;
+}
+
+.header_list.company:nth-child(2) {
+  width: 213px;
+}
+
+.header_list.company:nth-child(3) {
+  width: 304px;
+}
+
+.header_list.company:nth-child(4),
+.header_list.company:nth-child(5),
+.header_list.company:nth-child(6) {
+  width: 153.75px;
+}
+
+.header_list.company:nth-child(7) {
+  width: 153.75px;
 }
