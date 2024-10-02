@@ -70,7 +70,9 @@ function Login() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
+  const isButtonDisabled = () => {
+    return emailError || passwordError || !email || !password;
+  };
   return (
     <div className={styles.login}>
       <Link to="/all-company">
@@ -114,7 +116,9 @@ function Login() {
           />
         </div>
 
-        <button className={styles.login_button}>로그인</button>
+        <button className={styles.login_button} disabled={isButtonDisabled()}>
+          로그인
+        </button>
       </form>
 
       <div className={styles.info}>
