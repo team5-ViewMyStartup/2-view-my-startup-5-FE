@@ -19,7 +19,7 @@ const validatePassword = (password) => {
   const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
   return regex.test(password)
     ? ""
-    : "최소 한 개 이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해주세요.";
+    : "최소 각 한 개 이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해주세요.";
 };
 
 function Login() {
@@ -108,7 +108,7 @@ function Login() {
 
           <img
             className={styles.toggle_img}
-            src={showPassword ? toggleOff : toggleOn}
+            src={showPassword ? toggleOn : toggleOff}
             alt="toggle visibility"
             onClick={togglePasswordVisibility}
           />
