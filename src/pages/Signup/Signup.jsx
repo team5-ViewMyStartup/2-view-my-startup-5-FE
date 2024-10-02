@@ -74,7 +74,15 @@ function Signup() {
       console.log("회원가입에 성공하셨습니다!");
     }
   };
-
+  const isFormValid = () => {
+    return (
+      formData.email &&
+      formData.nickname &&
+      formData.password &&
+      formData.confirmPassword &&
+      Object.keys(errors).length === 0
+    );
+  };
   const validateForm = () => {
     const newErrors = {};
     setErrors(newErrors);
@@ -131,7 +139,7 @@ function Signup() {
           {errors.password && <p className={styles.error_message}>{errors.password}</p>}
           <img
             className={styles.toggle_img}
-            src={showPassword ? toggleOff : toggleOn}
+            src={showPassword ? toggleOn : toggleOff}
             alt="eye Image"
             onClick={togglePasswordVisibility}
           />
@@ -158,7 +166,7 @@ function Signup() {
             onClick={togglePasswordVisibility}
           />
         </div>
-        <button className={styles.signup_button} type="submit">
+        <button className={styles.signup_button} type="submit" disabled={!isFormValid()}>
           회원가입
         </button>
       </form>
