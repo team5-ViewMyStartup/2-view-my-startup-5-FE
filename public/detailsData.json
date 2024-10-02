@@ -133,6 +133,24 @@
         "investorName": "이주희",
         "amount": 1,
         "comment": "미래의 교육을 위해 투자합니다!"
+      },
+      {
+        "investorName": "김도현",
+        "rank": 26,
+        "amount": 1,
+        "comment": "스타트업의 성장 가능성에 투자합니다!"
+      },
+      {
+        "investorName": "이태희",
+        "rank": 27,
+        "amount": 1,
+        "comment": "코드잇의 교육 콘텐츠가 매우 훌륭합니다!"
+      },
+      {
+        "investorName": "이주희",
+        "rank": 28,
+        "amount": 1,
+        "comment": "미래의 교육을 위해 투자합니다!"
       }
     ]
   },

@@ -1,0 +1,18 @@
+.header_container {
+  background-color: #2e2e2e;
+  display: flex;
+  justify-content: center;
+}
+
+.header_div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.header_list {
+  flex-grow: 1;
+  text-align: center;
+  color: white;
+}
