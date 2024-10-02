@@ -71,3 +71,10 @@ input {
   right: 16px;
   bottom: 16px;
 }
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
