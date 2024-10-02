@@ -7,24 +7,10 @@ import btnPlus from "../../imagesjun/btn_plus.png";
 import { useState, useEffect } from "react";
 
 function Compare() {
-  /*TODO
-   *상태관리
-   */
-  const [resetBtnText, setResetBtnText] = useState("전체 초기화");
-  const [isCompareButtonEnabled, setIsCompareButtonEnabled] = useState(true);
-  const [isComparisonVisible, setIsComparisonVisible] = useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [additionalCompanies, setAdditionalCompanies] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const sampleCompanies = [
-    { id: 1, name: "삼성전자" },
-    { id: 2, name: "LG전자" },
-    { id: 3, name: "현대자동차" },
-    { id: 4, name: "카카오" },
-    { id: 5, name: "네이버" },
-  ];
 
   useEffect(() => {
     const getCompanies = async () => {
@@ -41,11 +27,9 @@ function Compare() {
 
   const openModal = () => {
     setIsModalOpen(true);
-    console.log("열려라 참달!");
   };
   const closeModal = () => {
     setIsModalOpen(false);
-    console.log("닫혀라 모께!");
   };
 
   const handleResetButtonClick = () => {
@@ -65,7 +49,6 @@ function Compare() {
      *
      *비교 기능 구현
      */
-    console.log("비교 시작");
   };
 
   const handleSearchChange = (e) => {
