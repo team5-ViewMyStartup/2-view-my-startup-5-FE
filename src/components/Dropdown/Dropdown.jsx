@@ -26,7 +26,9 @@ const Dropdown = ({ options, selectedOption, onSelect, isCompanyOptions }) => {
             <li
               key={index}
               className={styles[option.className]}
-              onClick={() => handleOptionClick(option.label)}
+              onClick={() => {
+                handleOptionClick(option.value);
+              }}
             >
               {option.label}
             </li>

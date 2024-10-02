@@ -9,7 +9,7 @@ function Signup() {
   return (
     <div className={styles.signup}>
       <Link to="/">
-        <img className={styles.signup_logoImg} src={logoImg} alt="logo Image" />
+        <img className={styles.signup_logo_img} src={logoImg} alt="logo Image" />
       </Link>
       <div className={styles.email}>
         <label className={styles.email_label} for="email-connection">
