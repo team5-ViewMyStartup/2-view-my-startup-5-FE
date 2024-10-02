@@ -116,8 +116,7 @@ function Login() {
 
         <button className={styles.login_button}>로그인</button>
       </form>
-      {generalError && <p className={styles.error}>{generalError}</p>}{" "}
-      {"비밀번호를 모두 입력 후 로그인 버튼을 눌러주세요."}
+
       <div className={styles.info}>
         <p className={styles.not_member}>처음이신가요?</p>
         <Link to="/signup">
