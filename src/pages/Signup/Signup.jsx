@@ -153,7 +153,7 @@ function Signup() {
           )}
           <img
             className={styles.toggle_img}
-            src={showPassword ? toggleOff : toggleOn}
+            src={showPassword ? toggleOn : toggleOff}
             alt="eye Image"
             onClick={togglePasswordVisibility}
           />
