@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+}
+
+.investment {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.investment_header {
+  width: 1200px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.investment_status {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  display: flex;
+  flex-grow: 1;
+  white-space: nowrap;
+  gap: 919px;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.investment_body {
+  width: 1200px;
+  text-align: center;
+  background-color: #2e2e2e;
+  border-radius: 10px;
+}
+
+.category_classification {
+  margin-top: 16px;
+  padding: 0;
+  margin: 0;
+  background-color: black;
+  color: #d8d8d8;
+}
+
+.category_body {
+  background-color: #2e2e2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+
+.category_body:nth-child(2) {
+  border-radius: 4px 4px 0 0;
+}
+
+.category_body:last-child {
+  border-radius: 0 0 4px 4px;
+  border-bottom: none;
+}
+
+.category_rank {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 68px;
+  height: 39px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.category_company_name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 213px;
+  height: 39px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.category_company_info {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 304px;
+  height: 39px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 304px;
+  height: 64px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 32px;
+}
+
+.category_category {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 135.75px;
+  height: 39px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.category_startup_investment,
+.category_total_investment {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 230.63px;
+  height: 39px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.category_body {
+  background-color: #212121;
+  border-bottom: 1px solid #4b4b4b;
+}

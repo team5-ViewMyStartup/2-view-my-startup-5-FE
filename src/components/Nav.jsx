@@ -7,7 +7,7 @@ import styles from "./Nav.module.css";
 
 function getLinkStyle({ isActive }) {
   return {
-    textDecoration: isActive ? "underline" : "",
+    color: isActive ? "white" : "#747474",
   };
 }
 

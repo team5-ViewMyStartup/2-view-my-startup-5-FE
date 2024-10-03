@@ -6,7 +6,9 @@ import Signup from "./pages/Signup/Signup";
 import Compare from "./pages/Compare/Compare";
 import StartupList from "./pages/StartupList/StartupList";
 import Details from "./pages/Details/Details";
-import CompareStatus from "./pages/CompareStatus/CompareStatus";
+// import CompareStatus from "./pages/CompareStatus/CompareStatus";
+import Investment from "./pages/Investment/Investment";
+import Compare from "./pages/Compare/Compare";
 
 function Main() {
   return (
@@ -19,7 +21,9 @@ function Main() {
           <Route path="/compare" element={<Compare />} />
           <Route path="/all-company" element={<StartupList />} />
           <Route path="details" element={<Details />} />
-          <Route path="/compare-status" element={<CompareStatus />} />
+          {/* <Route path="/compare-status" element={<CompareStatus />} /> */}
+          <Route path="/invest-status" element={<Investment />} />
+          <Route path="/compare-status" element={<Compare />} />
           {/* <Route> 여기에 페이지들을 추가</Route> */}
         </Route>
       </Routes>
