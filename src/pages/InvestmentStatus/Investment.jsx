@@ -3,7 +3,7 @@ import styles from "./Investment.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import ListHeader from "../../components/List/ListHeader";
 import { investmentOptions } from "../../components/Dropdown/DropdownOption";
-import { companyHeader, investmentHeader } from "../../components/List/HeaderOption";
+import { companyHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 
 function Investment() {

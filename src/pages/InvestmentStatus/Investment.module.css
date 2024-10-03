@@ -43,10 +43,6 @@
   border-radius: 10px;
 }
 
-.list_header {
-  margin-bottom: 16px;
-}
-
 .category_classification {
   margin-top: 16px;
   padding: 0;
@@ -106,6 +102,14 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 304px;
+  height: 64px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 32px;
 }
 
 .category_category {
@@ -131,17 +135,6 @@
   align-items: center;
   justify-content: center;
   display: flex;
-}
-
-.category_body > .category_company_info {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 304px;
-  height: 64px;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-height: 32px;
 }
 
 .category_body {

@@ -5,6 +5,8 @@
     "category": "자동차",
     "startupInvestment": 30,
     "totalInvestment": 50000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 31000000000,
     "employees": 70000
   },
@@ -14,6 +16,8 @@
     "category": "정보기술",
     "startupInvestment": 40,
     "totalInvestment": 100000000000,
+    "selectionNum": 4568,
+    "compareSelectionNum": 1121,
     "revenue": 365000000000,
     "employees": 147000
   },
@@ -23,6 +27,8 @@
     "category": "정보기술",
     "startupInvestment": 50,
     "totalInvestment": 70000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 280000000000,
     "employees": 156500
   },
@@ -32,6 +38,8 @@
     "category": "전자상거래",
     "startupInvestment": 60,
     "totalInvestment": 80000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 514000000000,
     "employees": 1300000
   },
@@ -41,6 +49,8 @@
     "category": "정보기술",
     "startupInvestment": 30,
     "totalInvestment": 60000000000,
+    "selectionNum": 6567,
+    "compareSelectionNum": 2111,
     "revenue": 198000000000,
     "employees": 181000
   },
@@ -50,6 +60,8 @@
     "category": "소셜 미디어",
     "startupInvestment": 30,
     "totalInvestment": 50000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 117000000000,
     "employees": 59000
   },
@@ -59,6 +71,8 @@
     "category": "미디어",
     "startupInvestment": 30,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 29000000000,
     "employees": 12000
   },
@@ -68,6 +82,8 @@
     "category": "정보기술",
     "startupInvestment": 40,
     "totalInvestment": 40000000000,
+    "selectionNum": 5567,
+    "compareSelectionNum": 1111,
     "revenue": 57000000000,
     "employees": 350000
   },
@@ -77,6 +93,8 @@
     "category": "전자기기",
     "startupInvestment": 30,
     "totalInvestment": 80000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1311,
     "revenue": 250000000000,
     "employees": 320000
   },
@@ -86,6 +104,8 @@
     "category": "전자기기",
     "startupInvestment": 30,
     "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 85000000000,
     "employees": 110000
   },
@@ -95,6 +115,8 @@
     "category": "미디어",
     "startupInvestment": 30,
     "totalInvestment": 50000000000,
+    "selectionNum": 6667,
+    "compareSelectionNum": 1111,
     "revenue": 65000000000,
     "employees": 223000
   },
@@ -104,6 +126,8 @@
     "category": "자동차",
     "startupInvestment": 60,
     "totalInvestment": 50000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 130000000000,
     "employees": 186000
   },
@@ -113,6 +137,8 @@
     "category": "자동차",
     "startupInvestment": 30,
     "totalInvestment": 70000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1411,
     "revenue": 127000000000,
     "employees": 164000
   },
@@ -122,6 +148,8 @@
     "category": "자동차",
     "startupInvestment": 30,
     "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 110000000000,
     "employees": 120000
   },
@@ -131,6 +159,8 @@
     "category": "자동차",
     "startupInvestment": 30,
     "totalInvestment": 60000000000,
+    "selectionNum": 7777,
+    "compareSelectionNum": 1111,
     "revenue": 275000000000,
     "employees": 360000
   },
@@ -140,6 +170,8 @@
     "category": "자동차",
     "startupInvestment": 50,
     "totalInvestment": 50000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 2211,
     "revenue": 110000000000,
     "employees": 120000
   },
@@ -149,6 +181,8 @@
     "category": "전자기기",
     "startupInvestment": 30,
     "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 60000000000,
     "employees": 75000
   },
@@ -158,6 +192,8 @@
     "category": "제조업",
     "startupInvestment": 30,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 60000000000,
     "employees": 30000
   },
@@ -167,6 +203,8 @@
     "category": "배터리",
     "startupInvestment": 30,
     "totalInvestment": 25000000000,
+    "selectionNum": 7567,
+    "compareSelectionNum": 1111,
     "revenue": 20000000000,
     "employees": 15000
   },
@@ -176,6 +214,8 @@
     "category": "미디어",
     "startupInvestment": 60,
     "totalInvestment": 10000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 10000000000,
     "employees": 6000
   },
@@ -185,6 +225,8 @@
     "category": "모빌리티",
     "startupInvestment": 50,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1911,
     "revenue": 17000000000,
     "employees": 30000
   },
@@ -194,6 +236,8 @@
     "category": "여행",
     "startupInvestment": 30,
     "totalInvestment": 50000000000,
+    "selectionNum": 6667,
+    "compareSelectionNum": 1111,
     "revenue": 8000000000,
     "employees": 8000
   },
@@ -203,6 +247,8 @@
     "category": "소프트웨어",
     "startupInvestment": 30,
     "totalInvestment": 6000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 1000000000,
     "employees": 2000
   },
@@ -212,6 +258,8 @@
     "category": "미디어",
     "startupInvestment": 30,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 29000000000,
     "employees": 12000
   },
@@ -221,6 +269,8 @@
     "category": "게임",
     "startupInvestment": 30,
     "totalInvestment": 18000000000,
+    "selectionNum": 4577,
+    "compareSelectionNum": 8111,
     "revenue": 5000000000,
     "employees": 4000
   },
@@ -230,6 +280,8 @@
     "category": "소비재",
     "startupInvestment": 70,
     "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 46000000000,
     "employees": 76000
   },
@@ -239,6 +291,8 @@
     "category": "소비재",
     "startupInvestment": 90,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 9911,
     "revenue": 23000000000,
     "employees": 60000
   },
@@ -248,6 +302,8 @@
     "category": "음료",
     "startupInvestment": 30,
     "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 37000000000,
     "employees": 86000
   },
@@ -257,6 +313,8 @@
     "category": "음료",
     "startupInvestment": 30,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 82500000000,
     "employees": 267000
   },
@@ -266,6 +324,8 @@
     "category": "음료",
     "startupInvestment": 30,
     "totalInvestment": 15000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 9811,
     "revenue": 23000000000,
     "employees": 400000
   },
@@ -275,6 +335,8 @@
     "category": "식음료",
     "startupInvestment": 100,
     "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 21000000000,
     "employees": 2000000
   },
@@ -284,6 +346,8 @@
     "category": "소매",
     "startupInvestment": 30,
     "totalInvestment": 50000000000,
+    "selectionNum": 9567,
+    "compareSelectionNum": 1111,
     "revenue": 600000000000,
     "employees": 2300000
   },
@@ -293,6 +357,8 @@
     "category": "소매",
     "startupInvestment": 30,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 110000000000,
     "employees": 400000
   },
@@ -302,6 +368,8 @@
     "category": "미디어",
     "startupInvestment": 90,
     "totalInvestment": 50000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 7711,
     "revenue": 65000000000,
     "employees": 223000
   },
@@ -311,6 +379,8 @@
     "category": "화학",
     "startupInvestment": 30,
     "totalInvestment": 30000000000,
+    "selectionNum": 9967,
+    "compareSelectionNum": 1111,
     "revenue": 87000000000,
     "employees": 117000
   },
@@ -320,6 +390,8 @@
     "category": "화장품",
     "startupInvestment": 95,
     "totalInvestment": 10000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 35000000000,
     "employees": 88000
   },
@@ -329,6 +401,8 @@
     "category": "정보기술",
     "startupInvestment": 30,
     "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 51000000000,
     "employees": 78000
   },
@@ -338,6 +412,8 @@
     "category": "전자기기",
     "startupInvestment": 30,
     "totalInvestment": 15000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 60000000000,
     "employees": 55000
   },
@@ -347,6 +423,8 @@
     "category": "전자기기",
     "startupInvestment": 80,
     "totalInvestment": 8000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 5000000000,
     "employees": 8000
   },
@@ -356,6 +434,8 @@
     "category": "자동차",
     "startupInvestment": 30,
     "totalInvestment": 70000000000,
+    "selectionNum": 4767,
+    "compareSelectionNum": 2221,
     "revenue": 280000000000,
     "employees": 670000
   },
@@ -365,6 +445,8 @@
     "category": "자동차",
     "startupInvestment": 30,
     "totalInvestment": 60000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 275000000000,
     "employees": 360000
   },
@@ -374,6 +456,8 @@
     "category": "제약",
     "startupInvestment": 30,
     "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 95000000000,
     "employees": 132000
   },
@@ -383,6 +467,8 @@
     "category": "제약",
     "startupInvestment": 30,
     "totalInvestment": 50000000000,
+    "selectionNum": 4777,
+    "compareSelectionNum": 1111,
     "revenue": 50000000000,
     "employees": 78000
   },
@@ -392,6 +478,8 @@
     "category": "제약",
     "startupInvestment": 76,
     "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 48000000000,
     "employees": 100000
   },
@@ -401,6 +489,8 @@
     "category": "제약",
     "startupInvestment": 30,
     "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
     "revenue": 45000000000,
     "employees": 100000
   },
@@ -410,6 +500,371 @@
     "category": "제약",
     "startupInvestment": 84,
     "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
+    "revenue": 43000000000,
+    "employees": 99000
+  },
+  {
+    "name": "존슨앤드존슨",
+    "description": "존슨앤드존슨은 헬스케어, 제약, 소비자 건강 제품 분야에서 글로벌 리더로, 다양한 제품을 제공합니다. 지속 가능한 경영과 혁신적인 연구 개발을 통해 고객의 건강과 안전을 책임지고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 95000000000,
+    "employees": 132000
+  },
+  {
+    "name": "화이자",
+    "description": "화이자는 제약 및 생명과학 분야에서 세계적인 리더로, 혁신적인 의약품과 백신을 개발하고 있습니다. 최근 코로나19 백신 개발로 주목받으며, 글로벌 건강 문제 해결에 기여하고 있습니다. 화이자는 지속 가능한 발전과 사회적 책임을 중시하는 기업입니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 50000000000,
+    "selectionNum": 4777,
+    "compareSelectionNum": 1111,
+    "revenue": 50000000000,
+    "employees": 78000
+  },
+  {
+    "name": "노바티스",
+    "description": "노바티스는 글로벌 헬스케어 기업으로, 혁신적인 의약품과 치료 솔루션을 제공합니다. 다양한 질병 치료를 위한 연구 개발에 집중하고 있으며, 환자의 삶의 질을 향상시키기 위해 지속적인 혁신을 추구하고 있습니다. 노바티스는 환자의 요구를 최우선으로 하여 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 76,
+    "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 48000000000,
+    "employees": 100000
+  },
+  {
+    "name": "바이엘",
+    "description": "바이엘은 제약 및 생명과학 분야에서 글로벌 기업으로, 혁신적인 제품과 솔루션을 제공합니다. 건강과 농업 분야에서 지속 가능한 발전을 위한 연구 및 개발에 집중하고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다. 바이엘은 고객의 건강과 안전을 최우선으로 생각합니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 45000000000,
+    "employees": 100000
+  },
+  {
+    "name": "GSK",
+    "description": "GSK(글락소스미스클라인)는 제약 및 생명과학 분야에서 혁신을 주도하는 글로벌 기업으로, 다양한 의약품과 백신을 개발하고 있습니다. 고객의 건강을 최우선으로 하며, 지속 가능한 발전을 위한 친환경적인 접근 방식을 중요하게 생각합니다. GSK는 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 84,
+    "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
+    "revenue": 43000000000,
+    "employees": 99000
+  },
+  {
+    "name": "GSK",
+    "description": "GSK(글락소스미스클라인)는 제약 및 생명과학 분야에서 혁신을 주도하는 글로벌 기업으로, 다양한 의약품과 백신을 개발하고 있습니다. 고객의 건강을 최우선으로 하며, 지속 가능한 발전을 위한 친환경적인 접근 방식을 중요하게 생각합니다. GSK는 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 84,
+    "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
+    "revenue": 43000000000,
+    "employees": 99000
+  },
+  {
+    "name": "존슨앤드존슨",
+    "description": "존슨앤드존슨은 헬스케어, 제약, 소비자 건강 제품 분야에서 글로벌 리더로, 다양한 제품을 제공합니다. 지속 가능한 경영과 혁신적인 연구 개발을 통해 고객의 건강과 안전을 책임지고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 95000000000,
+    "employees": 132000
+  },
+  {
+    "name": "화이자",
+    "description": "화이자는 제약 및 생명과학 분야에서 세계적인 리더로, 혁신적인 의약품과 백신을 개발하고 있습니다. 최근 코로나19 백신 개발로 주목받으며, 글로벌 건강 문제 해결에 기여하고 있습니다. 화이자는 지속 가능한 발전과 사회적 책임을 중시하는 기업입니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 50000000000,
+    "selectionNum": 4777,
+    "compareSelectionNum": 1111,
+    "revenue": 50000000000,
+    "employees": 78000
+  },
+  {
+    "name": "노바티스",
+    "description": "노바티스는 글로벌 헬스케어 기업으로, 혁신적인 의약품과 치료 솔루션을 제공합니다. 다양한 질병 치료를 위한 연구 개발에 집중하고 있으며, 환자의 삶의 질을 향상시키기 위해 지속적인 혁신을 추구하고 있습니다. 노바티스는 환자의 요구를 최우선으로 하여 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 76,
+    "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 48000000000,
+    "employees": 100000
+  },
+  {
+    "name": "바이엘",
+    "description": "바이엘은 제약 및 생명과학 분야에서 글로벌 기업으로, 혁신적인 제품과 솔루션을 제공합니다. 건강과 농업 분야에서 지속 가능한 발전을 위한 연구 및 개발에 집중하고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다. 바이엘은 고객의 건강과 안전을 최우선으로 생각합니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 45000000000,
+    "employees": 100000
+  },
+  {
+    "name": "GSK",
+    "description": "GSK(글락소스미스클라인)는 제약 및 생명과학 분야에서 혁신을 주도하는 글로벌 기업으로, 다양한 의약품과 백신을 개발하고 있습니다. 고객의 건강을 최우선으로 하며, 지속 가능한 발전을 위한 친환경적인 접근 방식을 중요하게 생각합니다. GSK는 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 84,
+    "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
+    "revenue": 43000000000,
+    "employees": 99000
+  },
+  {
+    "name": "로레알",
+    "description": "로레알은 세계적인 화장품 및 뷰티 브랜드로, 혁신적인 제품과 마케팅 전략으로 소비자에게 사랑받고 있습니다. 다양한 스킨케어, 메이크업, 헤어케어 제품을 제공하며, 지속 가능한 발전을 위한 친환경 제품 개발에도 집중하고 있습니다.",
+    "category": "화장품",
+    "startupInvestment": 95,
+    "totalInvestment": 10000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 35000000000,
+    "employees": 88000
+  },
+  {
+    "name": "시스코",
+    "description": "시스코는 네트워킹 하드웨어 및 소프트웨어 분야에서 세계적인 리더로, 기업의 IT 인프라를 지원하는 다양한 솔루션을 제공합니다. 클라우드 컴퓨팅, 보안, 데이터 센터 등의 분야에서 혁신을 주도하며, 고객의 요구에 맞춘 맞춤형 솔루션을 제공합니다.",
+    "category": "정보기술",
+    "startupInvestment": 30,
+    "totalInvestment": 20000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 51000000000,
+    "employees": 78000
+  },
+  {
+    "name": "에이치피",
+    "description": "에이치피는 컴퓨터 하드웨어 및 소프트웨어를 제공하는 글로벌 기업으로, 개인용 컴퓨터, 프린터, 서버 등 다양한 제품을 제조하고 있습니다. 혁신적인 기술과 디자인을 바탕으로 고객에게 최상의 경험을 제공하며, 지속 가능한 발전을 위해 친환경 제품 개발에 힘쓰고 있습니다.",
+    "category": "전자기기",
+    "startupInvestment": 30,
+    "totalInvestment": 15000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 60000000000,
+    "employees": 55000
+  },
+  {
+    "name": "로지텍",
+    "description": "로지텍은 컴퓨터 및 게임 기기 주변기기 분야에서 세계적인 브랜드로, 키보드, 마우스, 웹캠 등 다양한 제품을 제공합니다. 사용자 경험을 최우선으로 하여 지속적으로 혁신적인 제품을 개발하고 있으며, 글로벌 시장에서의 경쟁력을 유지하고 있습니다.",
+    "category": "전자기기",
+    "startupInvestment": 80,
+    "totalInvestment": 8000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 5000000000,
+    "employees": 8000
+  },
+  {
+    "name": "폭스바겐",
+    "description": "폭스바겐은 독일의 자동차 제조업체로, 다양한 모델의 승용차와 SUV를 생산하고 있습니다. 환경 친화적인 차량 개발에 집중하며, 전기차 및 하이브리드 차량의 라인업을 확장하고 있습니다. 폭스바겐은 지속 가능한 이동 수단을 제공하기 위해 노력하고 있습니다.",
+    "category": "자동차",
+    "startupInvestment": 30,
+    "totalInvestment": 70000000000,
+    "selectionNum": 4767,
+    "compareSelectionNum": 2221,
+    "revenue": 280000000000,
+    "employees": 670000
+  },
+  {
+    "name": "도요타",
+    "description": "도요타는 세계 최대의 자동차 제조업체로, 하이브리드 기술의 선두주자입니다. 프리우스와 같은 모델을 통해 환경 친화적인 이동 수단을 제공하며, 고객의 다양한 요구에 맞춘 차량을 지속적으로 출시하고 있습니다. 도요타는 혁신과 지속 가능성을 동시에 추구하는 기업입니다.",
+    "category": "자동차",
+    "startupInvestment": 30,
+    "totalInvestment": 60000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 275000000000,
+    "employees": 360000
+  },
+  {
+    "name": "존슨앤드존슨",
+    "description": "존슨앤드존슨은 헬스케어, 제약, 소비자 건강 제품 분야에서 글로벌 리더로, 다양한 제품을 제공합니다. 지속 가능한 경영과 혁신적인 연구 개발을 통해 고객의 건강과 안전을 책임지고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 95000000000,
+    "employees": 132000
+  },
+  {
+    "name": "화이자",
+    "description": "화이자는 제약 및 생명과학 분야에서 세계적인 리더로, 혁신적인 의약품과 백신을 개발하고 있습니다. 최근 코로나19 백신 개발로 주목받으며, 글로벌 건강 문제 해결에 기여하고 있습니다. 화이자는 지속 가능한 발전과 사회적 책임을 중시하는 기업입니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 50000000000,
+    "selectionNum": 4777,
+    "compareSelectionNum": 1111,
+    "revenue": 50000000000,
+    "employees": 78000
+  },
+  {
+    "name": "노바티스",
+    "description": "노바티스는 글로벌 헬스케어 기업으로, 혁신적인 의약품과 치료 솔루션을 제공합니다. 다양한 질병 치료를 위한 연구 개발에 집중하고 있으며, 환자의 삶의 질을 향상시키기 위해 지속적인 혁신을 추구하고 있습니다. 노바티스는 환자의 요구를 최우선으로 하여 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 76,
+    "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 48000000000,
+    "employees": 100000
+  },
+  {
+    "name": "바이엘",
+    "description": "바이엘은 제약 및 생명과학 분야에서 글로벌 기업으로, 혁신적인 제품과 솔루션을 제공합니다. 건강과 농업 분야에서 지속 가능한 발전을 위한 연구 및 개발에 집중하고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다. 바이엘은 고객의 건강과 안전을 최우선으로 생각합니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 45000000000,
+    "employees": 100000
+  },
+  {
+    "name": "GSK",
+    "description": "GSK(글락소스미스클라인)는 제약 및 생명과학 분야에서 혁신을 주도하는 글로벌 기업으로, 다양한 의약품과 백신을 개발하고 있습니다. 고객의 건강을 최우선으로 하며, 지속 가능한 발전을 위한 친환경적인 접근 방식을 중요하게 생각합니다. GSK는 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 84,
+    "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
+    "revenue": 43000000000,
+    "employees": 99000
+  },
+  {
+    "name": "존슨앤드존슨",
+    "description": "존슨앤드존슨은 헬스케어, 제약, 소비자 건강 제품 분야에서 글로벌 리더로, 다양한 제품을 제공합니다. 지속 가능한 경영과 혁신적인 연구 개발을 통해 고객의 건강과 안전을 책임지고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 95000000000,
+    "employees": 132000
+  },
+  {
+    "name": "화이자",
+    "description": "화이자는 제약 및 생명과학 분야에서 세계적인 리더로, 혁신적인 의약품과 백신을 개발하고 있습니다. 최근 코로나19 백신 개발로 주목받으며, 글로벌 건강 문제 해결에 기여하고 있습니다. 화이자는 지속 가능한 발전과 사회적 책임을 중시하는 기업입니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 50000000000,
+    "selectionNum": 4777,
+    "compareSelectionNum": 1111,
+    "revenue": 50000000000,
+    "employees": 78000
+  },
+  {
+    "name": "노바티스",
+    "description": "노바티스는 글로벌 헬스케어 기업으로, 혁신적인 의약품과 치료 솔루션을 제공합니다. 다양한 질병 치료를 위한 연구 개발에 집중하고 있으며, 환자의 삶의 질을 향상시키기 위해 지속적인 혁신을 추구하고 있습니다. 노바티스는 환자의 요구를 최우선으로 하여 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 76,
+    "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 48000000000,
+    "employees": 100000
+  },
+  {
+    "name": "바이엘",
+    "description": "바이엘은 제약 및 생명과학 분야에서 글로벌 기업으로, 혁신적인 제품과 솔루션을 제공합니다. 건강과 농업 분야에서 지속 가능한 발전을 위한 연구 및 개발에 집중하고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다. 바이엘은 고객의 건강과 안전을 최우선으로 생각합니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 45000000000,
+    "employees": 100000
+  },
+  {
+    "name": "GSK",
+    "description": "GSK(글락소스미스클라인)는 제약 및 생명과학 분야에서 혁신을 주도하는 글로벌 기업으로, 다양한 의약품과 백신을 개발하고 있습니다. 고객의 건강을 최우선으로 하며, 지속 가능한 발전을 위한 친환경적인 접근 방식을 중요하게 생각합니다. GSK는 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 84,
+    "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
+    "revenue": 43000000000,
+    "employees": 99000
+  },
+  {
+    "name": "GSK",
+    "description": "GSK(글락소스미스클라인)는 제약 및 생명과학 분야에서 혁신을 주도하는 글로벌 기업으로, 다양한 의약품과 백신을 개발하고 있습니다. 고객의 건강을 최우선으로 하며, 지속 가능한 발전을 위한 친환경적인 접근 방식을 중요하게 생각합니다. GSK는 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 84,
+    "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
+    "revenue": 43000000000,
+    "employees": 99000
+  },
+  {
+    "name": "존슨앤드존슨",
+    "description": "존슨앤드존슨은 헬스케어, 제약, 소비자 건강 제품 분야에서 글로벌 리더로, 다양한 제품을 제공합니다. 지속 가능한 경영과 혁신적인 연구 개발을 통해 고객의 건강과 안전을 책임지고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 95000000000,
+    "employees": 132000
+  },
+  {
+    "name": "화이자",
+    "description": "화이자는 제약 및 생명과학 분야에서 세계적인 리더로, 혁신적인 의약품과 백신을 개발하고 있습니다. 최근 코로나19 백신 개발로 주목받으며, 글로벌 건강 문제 해결에 기여하고 있습니다. 화이자는 지속 가능한 발전과 사회적 책임을 중시하는 기업입니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 50000000000,
+    "selectionNum": 4777,
+    "compareSelectionNum": 1111,
+    "revenue": 50000000000,
+    "employees": 78000
+  },
+  {
+    "name": "노바티스",
+    "description": "노바티스는 글로벌 헬스케어 기업으로, 혁신적인 의약품과 치료 솔루션을 제공합니다. 다양한 질병 치료를 위한 연구 개발에 집중하고 있으며, 환자의 삶의 질을 향상시키기 위해 지속적인 혁신을 추구하고 있습니다. 노바티스는 환자의 요구를 최우선으로 하여 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 76,
+    "totalInvestment": 40000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 48000000000,
+    "employees": 100000
+  },
+  {
+    "name": "바이엘",
+    "description": "바이엘은 제약 및 생명과학 분야에서 글로벌 기업으로, 혁신적인 제품과 솔루션을 제공합니다. 건강과 농업 분야에서 지속 가능한 발전을 위한 연구 및 개발에 집중하고 있으며, 사회적 책임을 다하기 위해 노력하고 있습니다. 바이엘은 고객의 건강과 안전을 최우선으로 생각합니다.",
+    "category": "제약",
+    "startupInvestment": 30,
+    "totalInvestment": 30000000000,
+    "selectionNum": 4567,
+    "compareSelectionNum": 1111,
+    "revenue": 45000000000,
+    "employees": 100000
+  },
+  {
+    "name": "GSK",
+    "description": "GSK(글락소스미스클라인)는 제약 및 생명과학 분야에서 혁신을 주도하는 글로벌 기업으로, 다양한 의약품과 백신을 개발하고 있습니다. 고객의 건강을 최우선으로 하며, 지속 가능한 발전을 위한 친환경적인 접근 방식을 중요하게 생각합니다. GSK는 글로벌 건강 문제 해결에 기여하고 있습니다.",
+    "category": "제약",
+    "startupInvestment": 84,
+    "totalInvestment": 20000000000,
+    "selectionNum": 8767,
+    "compareSelectionNum": 1111,
     "revenue": 43000000000,
     "employees": 99000
   }
