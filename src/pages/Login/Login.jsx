@@ -61,6 +61,7 @@ function Login() {
     const user = USER_DATA.find((user) => user.email === email && user.password === password);
 
     if (user) {
+      alert("로그인에 성공하셨습니다!");
       navigate("/all-company");
     } else {
       setGeneralError("이메일 또는 비밀번호가 일치하지 않습니다.");
