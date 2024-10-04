@@ -18,14 +18,6 @@ function CompareCompany() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const sampleCompanies = [
-    { id: 1, name: "삼성전자" },
-    { id: 2, name: "LG전자" },
-    { id: 3, name: "현대자동차" },
-    { id: 4, name: "카카오" },
-    { id: 5, name: "네이버" },
-  ];
-
   useEffect(() => {
     const getCompanies = async () => {
       // TODO: API를 통해 기업 데이터를 가져오기
