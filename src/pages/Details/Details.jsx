@@ -3,7 +3,7 @@ import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
-import { fetchInvestmentsData } from "../../api/api";
+import { fetchCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 
 const ITEM_PER_PAGE = 5;
@@ -68,10 +68,11 @@ function Details() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const companyData = await fetchCompanyData(1); // 기업은 임시
+        // const companyData = await fetchCompanyData(companyId); // 기업은 임시
         // setCompany(companyData);
 
         const investmentData = await fetchInvestmentsData(companyId);
+        console.log(investmentData);
         setInvestments(investmentData);
       } catch (error) {
         console.error(error);
@@ -115,15 +116,6 @@ function Details() {
       className: "",
     },
   ];
-
-  /** TODO
-   * 1. map 형식으로 바꾸기 (완료)
-   * 2. pagination
-   * 3. api 연결
-   * 4. 수정/삭제 모달 확인
-   * 5. 연결 안될 시 화면 (완료)
-   * 6. 삭제 실패 팝업...
-   */
 
   return (
     <div className={styles.corporate}>
@@ -170,15 +162,15 @@ function Details() {
             <div className={styles.investment_container}>
               <ul className={styles.investment_list}>
                 <li className={styles.investment_header}>
-                  <span className={styles.invest_inform}>투자자 이름</span>
                   <span className={styles.invest_inform}>순위</span>
+                  <span className={styles.invest_inform}>투자자 이름</span>
                   <span className={styles.invest_inform}>투자 금액</span>
                   <span className={styles.investment_comment}>투자 코멘트</span>
                 </li>
                 {currentInvestments.map((investment, index) => (
                   <li key={index + indexOfFirstItem} className={styles.investment_item}>
-                    <span className={styles.invest_inform}>{investment.investorName}</span>
                     <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
+                    <span className={styles.invest_inform}>{investment.investorName}</span>
                     <span className={styles.invest_inform}>{investment.amount} 억 원</span>
                     <span className={styles.comment_content}>{investment.comment}</span>
                     <span className={styles.select_box}>
@@ -240,12 +232,12 @@ function Details() {
           }}
         />
       )}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        hasNext={currentPage < totalPages}
-      />
+      {/* <Pagination */}
+      {/* // currentPage={currentPage} */}
+      {/* // totalPages={totalPages} */}
+      {/* // onPageChange={handlePageChange} */}
+      {/* // hasNext={currentPage < totalPages} */}
+      {/* // /> */}
     </div>
   );
 }

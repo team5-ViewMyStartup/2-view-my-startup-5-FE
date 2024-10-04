@@ -1,7 +1,7 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://localhost:4000";
 
-export const fetchCompanyData = async (companyId) => {
-  const response = await fetch(`${BASE_URL}/companies/${companyId}`);
+export const fetchCompanyData = async (id) => {
+  const response = await fetch(`${BASE_URL}/companies/${id}`);
   if (!response.ok) throw new Error("기업 데이터를 불러오지 못했습니다");
   return await response.json();
 };
@@ -15,7 +15,7 @@ export const fetchInvestmentsData = async (companyId) => {
 };
 
 export const updateInvestmentComment = async (investmentId, investorName, comment, password) => {
-  const response = await fetch(`${BASE_URL}/investments/update}`, {
+  const response = await fetch(`${BASE_URL}/investments/${investmentId}}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

@@ -4,10 +4,10 @@ import closed from "../../images/closed.svg";
 import { updateInvestmentComment } from "../../api/api";
 
 const EditModal = ({ isOpen, isClose, investment, onSave }) => {
-  if (!isOpen) return null;
-
   const [newComment, setNewComment] = useState(investment.comment);
   const [password, setPassword] = useState("");
+
+  if (!isOpen) return null;
 
   const handleSave = async () => {
     // TODO: API 연결
