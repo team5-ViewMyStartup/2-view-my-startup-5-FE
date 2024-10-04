@@ -5,9 +5,9 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import StartupList from "./pages/StartupList/StartupList";
 import Details from "./pages/Details/Details";
-import CompareStatus from "./pages/CompareStatus/CompareStatus";
+import CompareCompany from "./pages/CompareCompany/CompareCompany";
 import Investment from "./pages/InvestmentStatus/Investment";
-import Compare from "./pages/CompareStatus/CompareStatus";
+import CompareStatus from "./pages/CompareStatus/CompareStatus";
 import CompareResult from "./pages/CompareResult/CompareResult";
 
 function Main() {
@@ -18,7 +18,7 @@ function Main() {
           <Route index element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/compare" element={<Compare />} />
+          <Route path="/compare" element={<CompareCompany />} />
           <Route path="/all-company" element={<StartupList />} />
           <Route path="/details/:companyId" element={<Details />} />
           <Route path="/invest-status" element={<Investment />} />
