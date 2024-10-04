@@ -82,7 +82,7 @@ hr {
   background-color: #2e2e2e;
   padding: 10px;
   margin-bottom: 20px;
-  border-radius: 16px;
+  border-radius: 4px;
 }
 
 .investment_item {
@@ -95,11 +95,11 @@ hr {
 
 .investment_item:last-child {
   border-bottom: none;
-  border-radius: 0 0 16px 16px;
+  border-radius: 0 0 4px 4px;
 }
 
 .investment_item:nth-child(2) {
-  border-radius: 16px 16px 0 0;
+  border-radius: 4px 4px 0 0;
 }
 
 .investment_item span {
