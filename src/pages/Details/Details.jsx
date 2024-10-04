@@ -5,6 +5,7 @@ import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
 import { fetchCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
+import Pagination from "../../components/Pagination/Pagination";
 
 const ITEM_PER_PAGE = 5;
 
@@ -219,12 +220,12 @@ function Details() {
           }}
         />
       )}
-      {/* <Pagination */}
-      {/* // currentPage={currentPage} */}
-      {/* // totalPages={totalPages} */}
-      {/* // onPageChange={handlePageChange} */}
-      {/* // hasNext={currentPage < totalPages} */}
-      {/* // /> */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        hasNext={currentPage < totalPages}
+      />
     </div>
   );
 }
