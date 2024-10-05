@@ -40,6 +40,12 @@ input {
   cursor: pointer;
 }
 
+.signup_button:disabled {
+  background-color: #9ca3af;
+  color: #d8d8d8;
+  cursor: not-allowed;
+}
+
 .signup_button {
   width: 640px;
   border-radius: 40px;
@@ -47,6 +53,8 @@ input {
   border: none;
   gap: 10px;
   background-color: #eb5230;
+  cursor: pointer;
+  transition: background-color 0.8s;
 }
 
 .info {
@@ -61,8 +69,11 @@ input {
 }
 
 .pw,
-.pw_check {
+.pw_check,
+.email,
+.nick {
   position: relative;
+  margin-bottom: 24px;
 }
 
 .toggle_img {
@@ -70,4 +81,13 @@ input {
   top: 45px;
   right: 16px;
   bottom: 16px;
+}
+
+.error_message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  text-align: center;
+  display: block;
 }

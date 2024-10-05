@@ -18,10 +18,7 @@ const validateEmail = (email) => {
 };
 
 const validatePassword = (password) => {
-  const regex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-  return regex.test(password)
-    ? ""
-    : "최소 각 한 개 이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해주세요.";
+  return password.length >= 8 ? "" : "비밀번호를 8자 이상 입력해주세요.";
 };
 
 function Login() {
@@ -90,7 +87,7 @@ function Login() {
       alert("로그인에 성공하셨습니다!");
       navigate("/all-company");
     } else {
-      setGeneralError("이메일 또는 비밀번호가 일치하지 않습니다.");
+      setGeneralError("비밀번호가 일치하지 않습니다.");
     }
   };
 
