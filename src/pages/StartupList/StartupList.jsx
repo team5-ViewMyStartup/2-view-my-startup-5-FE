@@ -7,6 +7,7 @@ import ListHeader from "../../components/List/ListHeader";
 import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
 import { fetchCompanyData } from "../../api/api";
+import { Link } from "react-router-dom";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
@@ -92,15 +93,17 @@ function StartupList() {
       <div className={styles.category_box}>
         <ul className={styles.category_kind}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-            <li key={index + indexOfFirstItem} className={styles.category_body}>
-              <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-              <span className={styles.category_company_name}>{info.name}</span>
-              <span className={styles.category_company_info}>{info.description}</span>
-              <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
-              <span className={styles.category_sales}>{info.revenue}</span>
-              <span className={styles.category_employee_num}>{info.employees}</span>
-            </li>
+            <Link to={`/details/${info.id}`}>
+              <li key={index + indexOfFirstItem} className={styles.category_body}>
+                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                <span className={styles.category_company_name}>{info.name}</span>
+                <span className={styles.category_company_info}>{info.description}</span>
+                <span className={styles.category_category}>{info.category}</span>
+                <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
+                <span className={styles.category_sales}>{info.revenue}</span>
+                <span className={styles.category_employee_num}>{info.employees}</span>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>

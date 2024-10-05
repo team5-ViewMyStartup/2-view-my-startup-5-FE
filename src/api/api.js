@@ -6,6 +6,12 @@ export const fetchCompanyData = async () => {
   return await response.json();
 };
 
+export const fetchDetailCompanyData = async (companyId) => {
+  const response = await fetch(`${BASE_URL}/companies/${companyId}`);
+  if (!response.ok) throw new Error("기업 데이터를 불러오지 못했습니다");
+  return await response.json();
+};
+
 // 상세 페이지
 
 export const fetchInvestmentsData = async (companyId) => {
