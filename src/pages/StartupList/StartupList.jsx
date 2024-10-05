@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
-import dropdownIcon from "../../assets/dropdown.svg";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import ListHeader from "../../components/List/ListHeader";
+import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
   const [orderBy, setOrderBy] = useState("누적 투자금액 높은순");
-  const [dropdown, setDropDown] = useState(false);
   const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
@@ -30,30 +30,28 @@ function StartupList() {
   };
 
   useEffect(() => {
-    const sortedCompanyData = sortedCompany();
-    console.log(sortedCompanyData[0]);
-    setSortedData(sortedCompanyData);
-  }, [company, orderBy]);
-
-  const sortedCompany = () => {
-    const sorted = [...company];
+    let sorted = [...company];
     switch (orderBy) {
       case "investment-high":
-        return sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+        sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+        break;
       case "investment-low":
-        return sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+        sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+        break;
       case "sales-high":
-        return sorted.sort((a, b) => b.revenue - a.revenue);
+        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
+        break;
       case "sales-low":
-        return sorted.sort((a, b) => a.revenue - b.revenue);
+        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
+        break;
       case "employeeNum-high":
-        return sorted.sort((a, b) => b.employees - a.employees);
+        sorted = sorted.sort((a, b) => b.employees - a.employees);
+        break;
       case "employeeNum-low":
-        return sorted.sort((a, b) => a.employees - b.employees);
-      default:
-        return sorted;
+        sorted = sorted.sort((a, b) => a.employees - b.employees);
     }
-  };
+    setSortedData(sorted);
+  }, [company, orderBy]);
 
   const orderMap = companyOptions.reduce((acc, cur) => {
     acc[cur.value] = cur.label;
@@ -83,17 +81,10 @@ function StartupList() {
           </div>
         </div>
       </div>
+
+      <ListHeader headers={companyHeader} type="company" />
       <div className={styles.category_box}>
         <ul className={styles.category_kind}>
-          <li className={styles.category_header}>
-            <span className={styles.category_rank}>순위</span>
-            <span className={styles.category_company_name}>기업 명</span>
-            <span className={styles.category_company_info}>기업 소개</span>
-            <span className={styles.category_category}>카테고리</span>
-            <span className={styles.category_investment_amount}>누적 투자 금액</span>
-            <span className={styles.category_sales}>매출액</span>
-            <span className={styles.category_employee_num}>고용 인원</span>
-          </li>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
             <li key={index + indexOfFirstItem} className={styles.category_body}>
               <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
