@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
 import Pagination from "../../components/Pagination/Pagination";

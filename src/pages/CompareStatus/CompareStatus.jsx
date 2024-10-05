@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Compare.module.css";
+import styles from "./CompareStatus.module.css";
 import { compareOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
 import { companyHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
 
-function Compare() {
+function CompareStatus() {
   const viewCompanyInfoNum = 10;
   const [orderBy, setOrderBy] = useState("나의 기업 선택 횟수 높은순");
   const [compare, setCompare] = useState([]);
@@ -89,4 +89,4 @@ function Compare() {
   );
 }
 
-export default Compare;
+export default CompareStatus;
