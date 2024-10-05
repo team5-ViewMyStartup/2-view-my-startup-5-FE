@@ -2,11 +2,12 @@
 export const companiesMockData = [
   {
     id: 1,
-    name: "Company A",
+    name: "codeit",
     category: "IT",
     revenue: 500000,
     employees: 1200,
     logoUrl: "https://via.placeholder.com/100",
+    image: "../../imagesjun/codeit 1.svg",
   },
   {
     id: 2,
@@ -14,7 +15,7 @@ export const companiesMockData = [
     category: "Finance",
     revenue: 750000,
     employees: 800,
-    logoUrl: "https://via.placeholder.com/100",
+    logoUrl: "../../imagesjun/codeit 1.svg",
   },
   {
     id: 3,
@@ -47,13 +48,14 @@ export const companiesMockData = [
     employees: 70000,
   },
   {
-    name: "애플",
+    name: "codeit1",
     description:
       "애플은 개인용 컴퓨터, 스마트폰, 태블릿 및 다양한 소비자 전자제품을 설계하고 제조하는 다국적 기업입니다. 아이폰, 아이패드, 맥북과 같은 제품들은 전 세계적으로 큰 인기를 끌고 있으며, 애플의 생태계는 사용자에게 뛰어난 경험을 제공합니다. 혁신적인 소프트웨어와 하드웨어의 통합을 통해 애플은 기술 산업에서 큰 영향력을 행사하고 있으며, 지속적인 연구 개발을 통해 미래 기술을 선도하고 있습니다.",
     category: "정보기술",
     totalInvestment: 100000000000,
     revenue: 365000000000,
     employees: 147000,
+    image: "../../imagesjun/codeit.svg",
   },
   {
     name: "구글",
@@ -65,23 +67,3 @@ export const companiesMockData = [
     employees: 156500,
   },
 ];
-// Sorting mock data function
-export const sortCompanies = (companies, sortingOption) => {
-  const sorted = [...companies];
-  if (sortingOption === "매출액 높은순") {
-    return sorted.sort((a, b) => b.revenue - a.revenue);
-  } else if (sortingOption === "매출액 낮은순") {
-    return sorted.sort((a, b) => a.revenue - b.revenue);
-  } else if (sortingOption === "고용 인원 많은순") {
-    return sorted.sort((a, b) => b.employees - a.employees);
-  } else if (sortingOption === "고용 인원 적은순") {
-    return sorted.sort((a, b) => a.employees - b.employees);
-  }
-  return sorted;
-};
-
-// Mock ranking data based on selected company
-export const getCompaniesForRanking = (myCompanyId, sortingOption) => {
-  const filteredCompanies = companiesMockData.filter((company) => company.id !== myCompanyId);
-  return sortCompanies(filteredCompanies, sortingOption);
-};

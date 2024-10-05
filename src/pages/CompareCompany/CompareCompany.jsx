@@ -55,7 +55,9 @@ function CompareCompany() {
      * 핸들러
      *초기화 기능 구현
      */
-    if (selectedCompanies.length > 0 && additionalCompanies.length > 0) {
+    setSelectedCompanies([]); // 선택된 기업 리스트 초기화
+    setAdditionalCompanies(companiesMockData);
+    if (selectedCompanies.length > 2 && additionalCompanies.length > 0) {
       setIsComparisonVisible(true);
       // setResetButtonText("다른 기업 비교하기");
     }
