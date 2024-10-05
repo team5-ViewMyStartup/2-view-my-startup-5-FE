@@ -45,6 +45,28 @@ export const investmentOptions = [
   },
 ];
 
+export const rankingOption = [
+  {
+    label: "매출액 높은순",
+    value: "sales-high",
+    className: "sales_high",
+  },
+  {
+    label: "매출액 낮은순",
+    value: "sales-low",
+    className: "sales_low",
+  },
+  {
+    label: "고용인원 높은순",
+    value: "employeeNum-high",
+    className: "employeeNum_high",
+  },
+  {
+    label: "고용인원 낮은순",
+    value: "employeeNum-low",
+    className: "employeeNum_low",
+  },
+];
 /**
  * 옵션 파일 inport하기
  *  const [orderBy, setOrderBy] = useState("누적 투자 금액 높은순")

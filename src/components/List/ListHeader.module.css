@@ -40,3 +40,24 @@
 .header_list.company:nth-child(7) {
   width: 153.75px;
 }
+
+.header_list.status:nth-child(1) {
+  width: 68px;
+}
+
+.header_list.status:nth-child(2) {
+  width: 213px;
+}
+
+.header_list.status:nth-child(3) {
+  width: 304px;
+}
+
+.header_list.status:nth-child(4) {
+  width: 135.75px;
+}
+
+.header_list.status:nth-child(5),
+.header_list.status:nth-child(6) {
+  width: 230.63px;
+}

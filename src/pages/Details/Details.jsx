@@ -78,33 +78,32 @@ function Details() {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-  };
 
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
-  const handleImgClick = (index) => {
-    toggleDropdown(index);
-  };
+    const handleImgClick = (index) => {
+      toggleDropdown(index);
+    };
 
-  const corporateField = [
-    {
-      title: "누적 투자 금액",
-      value: `${totalInvestmentAmount} 억 원`,
-      className: "",
-    },
-    {
-      title: "매출액",
-      value: `${company.revenue} 억 원`,
-      className: `${styles.account}`,
-    },
-    {
-      title: "고용 인원",
-      value: `${company.employees} 명`,
-      className: "",
-    },
-  ];
+    const corporateField = [
+      {
+        title: "누적 투자 금액",
+        value: `${totalInvestmentAmount} 억 원`,
+        className: "",
+      },
+      {
+        title: "매출액",
+        value: `${company.revenue} 억 원`,
+        className: `${styles.account}`,
+      },
+      {
+        title: "고용 인원",
+        value: `${company.employees} 명`,
+        className: "",
+      },
+    ];
 
   return (
     <div className={styles.corporate}>
@@ -126,9 +125,19 @@ function Details() {
               </div>
             ))}
           </div>
-          <div className={styles.introduction}>
-            <h5>기업 소개</h5>
-            <p>{company.description}</p>
+          <div className={styles.corporate_status}>
+            <div className={styles.overview_wrapper}>
+              {corporateField.map((field, index) => (
+                <div key={index} className={`${styles.overview} ${field.className}`}>
+                  <h5>{field.title}</h5>
+                  <p>{field.value}</p>
+                </div>
+              ))}
+            </div>
+            <div className={styles.introduction}>
+              <h5>기업 소개</h5>
+              <p>{company.description}</p>
+            </div>
           </div>
         </div>
       </div>

@@ -186,3 +186,16 @@ hr {
   background-color: #eb5230;
   color: white;
 }
+
+.dropdown_select {
+  right: 5;
+  flex-direction: column;
+  width: 168px;
+  height: auto;
+  border: 1px solid #747474;
+  border-radius: 10px;
+  padding: 10px;
+  color: #d8d8d8;
+  font-weight: 400;
+  z-index: 1;
+}
