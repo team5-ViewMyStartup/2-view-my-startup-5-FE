@@ -33,6 +33,7 @@ function CompareCompany() {
         setSelectedCompanies(companies.slice(0, 2)); // 처음 2개 기업을 선택한 상태로 설정
         setAdditionalCompanies(companies.slice(2)); // 나머지 기업을 추가 기업으로 설정
       } catch (error) {
+        alert("실패");
         console.error("기업 데이터를 가져오는데 실패했습니다.", error);
       }
     };
@@ -76,6 +77,24 @@ function CompareCompany() {
     setSearchQuery(e.target.value);
   };
 
+  const filteredCompanies = additionalCompanies.filter((company) =>
+    company.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  const [selectedCompanyImage, setSelectedCompanyImage] = useState(null);
+  const addCompany = (companyToAdd) => {
+    if (selectedCompanies.length < 5) {
+      setSelectedCompanies([...selectedCompanies, companyToAdd]);
+      setSelectedCompanyImage(companyToAdd.image); // 선택된 기업의 이미지를 설정
+      setAdditionalCompanies(
+        additionalCompanies.filter((company) => company.name !== companyToAdd.name),
+      );
+      closeModal();
+    } else {
+      alert("최대 5개 기업만 선택할 수 있습니다.");
+    }
+  };
+
   return (
     <div className={styles.compare_main_container}>
       <div className={styles.compare_head} />
@@ -90,7 +109,7 @@ function CompareCompany() {
       </div>
       <div>
         <div className={styles.inner_box}>
-          {selectedCompanies.length > 0 ? (
+          {selectedCompanies.length > 2 ? (
             selectedCompanies.map((company, index) => (
               <div key={index}>
                 <p>{company.name}</p>
@@ -131,15 +150,12 @@ function CompareCompany() {
       {isModalOpen && (
         <div className={styles.modal}>
           <div className={styles.modal_header}>
-            {" "}
             <span>비교할 기업 선택하기</span>
             <button className={styles.close_btn} onClick={closeModal}>
-              {" "}
               &times;
             </button>
           </div>
           <div className={styles.search_input_container}>
-            {" "}
             <span className={styles.search_icon}>&#128269;</span>
             <input
               type="text"
@@ -147,6 +163,18 @@ function CompareCompany() {
               value={searchQuery}
               onChange={handleSearchChange}
             />
+          </div>
+          <div className={styles.company_list}>
+            {filteredCompanies.map((company) => (
+              <div
+                key={company.name}
+                className={styles.company_item}
+                onClick={() => addCompany(company)}
+              >
+                <img src={company.image} alt={company.name} className={styles.company_logo} />
+                <p>{company.name}</p>
+              </div>
+            ))}
           </div>
         </div>
       )}
