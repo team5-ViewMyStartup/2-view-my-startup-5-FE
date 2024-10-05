@@ -1,7 +1,7 @@
 const BASE_URL = "http://localhost:4000";
 
-export const fetchCompanyData = async (id) => {
-  const response = await fetch(`${BASE_URL}/companies/${id}`);
+export const fetchCompanyData = async () => {
+  const response = await fetch(`${BASE_URL}/companies`);
   if (!response.ok) throw new Error("기업 데이터를 불러오지 못했습니다");
   return await response.json();
 };
