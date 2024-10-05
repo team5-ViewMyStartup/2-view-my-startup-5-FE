@@ -26,7 +26,6 @@ compare_sub_text {
   font-family: "Pretendard";
 }
 
-/* reset btn */
 .reset_btn_wrapper {
   display: flex;
   justify-content: flex-end;
@@ -66,12 +65,35 @@ compare_sub_text {
   cursor: not-allowed;
 }
 
-/* 기업 추가 */
 .add_button_wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.cancel_btn {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+
+  text-decoration: underline;
+  position: absolute;
+  z-index: auto;
+  top: 15px;
+  right: 15px;
+}
+
+.cancel_btn:hover {
+  color: #ff6b6b;
+  text-decoration: underline;
+}
+
+.cancel_btn:active {
+  color: #ff3b3b;
 }
 
 .modal_button {
@@ -106,32 +128,29 @@ compare_sub_text {
   margin-bottom: 2rem;
 }
 
-/* Modal Container */
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #333; /* Dark gray background */
-  border-radius: 10px; /* Rounded corners */
+  background-color: #333;
+  border-radius: 10px;
   padding: 20px;
-  width: 300px; /* Adjust width as needed */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Drop shadow */
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  color: white; /* White text color */
+  color: white;
 }
 
-/* Modal Header (Title and Close Button) */
 .modal_header {
   display: flex;
   justify-content: space_between;
   align-items: center;
   color: white;
-  font_size: 16px;
-  font_weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-/* Close Button */
 .close_btn {
   cursor: pointer;
   font-size: 18px;
@@ -140,7 +159,6 @@ compare_sub_text {
   background: none;
 }
 
-/* Search Input Container */
 .search_input_container {
   display: flex;
   align-items: center;
@@ -148,7 +166,7 @@ compare_sub_text {
   border-radius: 20px;
   padding: 5px 10px;
   margin-top: 10px;
-  border: 1px solid #555; /* Optional: subtle border for input */
+  border: 1px solid #555;
 }
 
 .search_input_container input {
@@ -162,12 +180,11 @@ compare_sub_text {
 }
 
 .search_input_container input::placeholder {
-  color: #aaa; /* Placeholder color */
+  color: #aaa;
 }
 
-/* Search Icon */
 .search_icon {
   margin-right: 10px;
-  color: white; /* Same color as text */
+  color: white;
   font-size: 16px;
 }

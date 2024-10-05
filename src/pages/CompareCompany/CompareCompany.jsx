@@ -57,7 +57,7 @@ function CompareCompany() {
      */
     setSelectedCompanies([]); // 선택된 기업 리스트 초기화
     setAdditionalCompanies(companiesMockData);
-    if (selectedCompanies.length > 2 && additionalCompanies.length > 0) {
+    if (selectedCompanies.length > 1 && additionalCompanies.length > 0) {
       setIsComparisonVisible(true);
       // setResetButtonText("다른 기업 비교하기");
     }
@@ -111,11 +111,13 @@ function CompareCompany() {
       </div>
       <div>
         <div className={styles.inner_box}>
-          {selectedCompanies.length > 2 ? (
+          {selectedCompanies.length > 0 ? (
             selectedCompanies.map((company, index) => (
               <div key={index}>
                 <p>{company.name}</p>
-                <p>선택 취소</p>
+                <button className={styles.cancel_btn} onClick={handleResetButtonClick}>
+                  선택 취소
+                </button>
               </div>
             ))
           ) : (
