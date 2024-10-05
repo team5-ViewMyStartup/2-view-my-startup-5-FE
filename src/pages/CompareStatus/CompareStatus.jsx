@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import styles from "./CompareStatus.module.css";
 import { compareOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
-import { companyHeader } from "../../components/List/HeaderOption";
+import { compareHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import { fetchCompanyData } from "../../api/api";
 
 function Compare() {
   const viewCompanyInfoNum = 10;
@@ -13,11 +14,16 @@ function Compare() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
 
-  useEffect(async () => {
-    const response = await fetch("/allCompanyData.json");
-    if (!response.ok) throw new Error("데이터를 불러오지 못 함");
-    const data = await response.json();
-    setCompare(data.sort((a, b) => b.selectionNum - a.selectionNum));
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const data = await fetchCompanyData();
+        setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCompanies();
   }, []);
 
   const totalPages = Math.ceil(compare.length / viewCompanyInfoNum);
@@ -64,7 +70,7 @@ function Compare() {
           />
         </div>
       </div>
-      <ListHeader headers={companyHeader} type="company" />
+      <ListHeader headers={compareHeader} type="status" />
       <div className={styles.compare_body}>
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
@@ -73,8 +79,8 @@ function Compare() {
               <span className={styles.category_company_name}>{info.name}</span>
               <span className={styles.category_company_info}>{info.description}</span>
               <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_selection}>{info.selectionNum}</span>
-              <span className={styles.category_compare_selection}>{info.compareSelectionNum}</span>
+              <span className={styles.category_selection}>{info.selectMyCount}</span>
+              <span className={styles.category_compare_selection}>{info.selectOtherCount}</span>
             </li>
           ))}
         </ul>
