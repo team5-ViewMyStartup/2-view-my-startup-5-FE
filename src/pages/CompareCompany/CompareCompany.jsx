@@ -5,6 +5,7 @@ import icRestartWhite from "../../imagesjun/ic_restart_white.svg";
 import icAdd from "../../imagesjun/ic_add.png";
 import btnPlus from "../../imagesjun/btn_plus.png";
 import { useState, useEffect } from "react";
+import { companiesMockData } from "./mockData";
 
 function CompareCompany() {
   /*TODO
@@ -27,6 +28,13 @@ function CompareCompany() {
       // } catch (error) {
       //   console.error("기업 데이터를 가져오는데 실패했습니다.", error);
       // }
+      try {
+        const companies = companiesMockData; // 목데이터를 가져옴
+        setSelectedCompanies(companies.slice(0, 2)); // 처음 2개 기업을 선택한 상태로 설정
+        setAdditionalCompanies(companies.slice(2)); // 나머지 기업을 추가 기업으로 설정
+      } catch (error) {
+        console.error("기업 데이터를 가져오는데 실패했습니다.", error);
+      }
     };
     getCompanies();
   }, []);
@@ -57,7 +65,11 @@ function CompareCompany() {
      *
      *비교 기능 구현
      */
-    console.log("비교 시작");
+    if (selectedCompanies.length > 0) {
+      console.log("Selected companies:", selectedCompanies);
+      console.log("Added companies:", additionalCompanies);
+      console.log("starting comparison...");
+    }
   };
 
   const handleSearchChange = (e) => {
