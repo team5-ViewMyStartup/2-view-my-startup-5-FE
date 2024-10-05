@@ -6,6 +6,8 @@ import Signup from "./pages/Signup/Signup";
 import StartupList from "./pages/StartupList/StartupList";
 import Details from "./pages/Details/Details";
 import CompareStatus from "./pages/CompareStatus/CompareStatus";
+import Investment from "./pages/InvestmentStatus/Investment";
+import Compare from "./pages/CompareStatus/CompareStatus";
 
 function Main() {
   return (
@@ -15,9 +17,12 @@ function Main() {
           <Route index element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/compare" element={<Compare />} />
           <Route path="/all-company" element={<StartupList />} />
-          <Route path="details" element={<Details />} />
+          <Route path="/details/:companyId" element={<Details />} />
+          <Route path="/invest-status" element={<Investment />} />
           <Route path="/compare-status" element={<CompareStatus />} />
+
           {/* <Route> 여기에 페이지들을 추가</Route> */}
         </Route>
       </Routes>
