@@ -38,10 +38,10 @@ function Investment() {
     let sorted = [...investment];
     switch (orderBy) {
       case "startup-investment-high":
-        sorted = sorted.sort((a, b) => b.startupInvestment - a.startupInvestment);
+        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
         break;
       case "startup-investment-low":
-        sorted = sorted.sort((a, b) => a.startupInvestment - b.startupInvestment);
+        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
         break;
       case "actual-investment-high":
         sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);

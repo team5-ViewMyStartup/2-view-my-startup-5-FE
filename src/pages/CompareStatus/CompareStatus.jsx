@@ -38,16 +38,16 @@ function Compare() {
     let sorted = [...compare];
     switch (orderBy) {
       case "selection-high":
-        sorted = sorted.sort((a, b) => b.selectionNum - a.selectionNum);
+        sorted = sorted.sort((a, b) => b.selectMyCount - a.selectMyCount);
         break;
       case "selection-low":
-        sorted = sorted.sort((a, b) => a.selectionNum - b.selectionNum);
+        sorted = sorted.sort((a, b) => a.selectMyCount - b.selectMyCount);
         break;
-      case "actual-investment-high":
-        sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+      case "compare-selection-high":
+        sorted = sorted.sort((a, b) => b.selectOtherCount - a.selectOtherCount);
         break;
-      case "actual-investment-low":
-        sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+      case "compare-selection-low":
+        sorted = sorted.sort((a, b) => a.selectOtherCount - b.selectOtherCount);
     }
     setSortedData(sorted);
   }, [compare, orderBy]);
