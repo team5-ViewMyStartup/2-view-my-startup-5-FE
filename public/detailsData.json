@@ -6,107 +6,90 @@
     "totalInvestment": 140,
     "revenue": 44.3,
     "employees": 95,
-    "description": "코드잇은 '온라인 코딩 교육 서비스'를 운영하는 EdTech 스타트업입니다.",
+    "description": "코드잇은 온라인 코딩 교육 서비스를 운영하는 EdTech 스타트업입니다. 코딩 교육과 데이터 사이언스 교육에 대한 수요는 급격히 늘어나고 있지만, 아직까지 좋은 교육 서비스를 찾기란 쉽지 않습니다. 이를 해결하고자 코드잇은 모든 강의를 자체 제작하여 퀄리티 높은 콘텐츠를 제공하고, 동시에 코딩 교육에 최적화된 플랫폼을 개발하고 있습니다. 모든 강의를 마음껏 들을 수 있는 코드잇 무제한 멤버십을 제공하고 있으며, 지난 5년 동안 21만 명의 수강생과 평균 만족도 4.9점이라는 국내 교육 업계에서 보기 드문 성과를 달성하였습니다. 또한 콘텐츠와 기술력을 인정받아 2021년 10월 Series B 투자를 받아 누적 140억 원의 투자를 받았고, 현재 40여 명의 팀원이 같은 목표를 향해 나아가고 있습니다.",
     "investments": [
       {
         "investorName": "김연우",
-        "rank": 1,
         "amount": 10,
         "comment": "코드잇은 정말 훌륭한 기업입니다!"
       },
       {
         "investorName": "이유지",
-        "rank": 2,
         "amount": 9,
         "comment": "코드잇은 정말 훌륭한 기업입니다!"
       },
       {
         "investorName": "안다해",
-        "rank": 3,
         "amount": 8,
         "comment": "코드잇은 정말 훌륭한 기업입니다!"
       },
       {
         "investorName": "이유지",
-        "rank": 4,
         "amount": 7,
         "comment": "코드잇은 정말 훌륭한 기업입니다!"
       },
       {
         "investorName": "이유지",
-        "rank": 5,
         "amount": 6,
         "comment": "코드잇은 정말 훌륭한 기업입니다!"
       },
       {
         "investorName": "박지민",
-        "rank": 6,
         "amount": 5,
         "comment": "혁신적인 교육 플랫폼입니다!"
       },
       {
         "investorName": "홍길동",
-        "rank": 7,
         "amount": 5,
         "comment": "코드잇은 앞으로의 성장 가능성이 큽니다!"
       },
       {
         "investorName": "최민수",
-        "rank": 8,
         "amount": 4,
         "comment": "교육의 미래를 열고 있습니다!"
       },
       {
         "investorName": "정하나",
-        "rank": 9,
         "amount": 4,
         "comment": "코드잇의 비전에 공감합니다!"
       },
       {
         "investorName": "김수현",
-        "rank": 10,
         "amount": 3,
         "comment": "정말 좋은 투자처입니다!"
       },
       {
         "investorName": "이정희",
-        "rank": 11,
         "amount": 3,
         "comment": "코드잇의 교육 시스템이 마음에 듭니다!"
       },
       {
         "investorName": "오세훈",
-        "rank": 12,
         "amount": 3,
         "comment": "기대가 많이 되는 스타트업입니다!"
       },
       {
         "investorName": "안정환",
-        "rank": 13,
         "amount": 2,
         "comment": "유망한 기업입니다!"
       },
       {
         "investorName": "윤지혜",
-        "rank": 14,
         "amount": 2,
         "comment": "코드잇의 발전을 응원합니다!"
       },
       {
         "investorName": "이상훈",
-        "rank": 15,
         "amount": 2,
         "comment": "교육의 변화에 기여하는 기업입니다!"
       },
       {
         "investorName": "박하늘",
-        "rank": 16,
         "amount": 2,
         "comment": "코드잇은 글로벌 시장에서도 통할 것입니다!"
       },
       {
         "investorName": "정민수",
-        "rank": 17,
         "amount": 1,
         "comment": "비전이 뚜렷한 기업입니다!"
       },
@@ -118,43 +101,36 @@
       },
       {
         "investorName": "강재희",
-        "rank": 19,
         "amount": 1,
         "comment": "코드잇의 제품이 매우 유용합니다!"
       },
       {
         "investorName": "문지혜",
-        "rank": 20,
         "amount": 50,
         "comment": "학생들에게 큰 도움이 됩니다!"
       },
       {
         "investorName": "한솔",
-        "rank": 21,
         "amount": 1,
         "comment": "아이들의 미래를 위해 투자합니다!"
       },
       {
         "investorName": "이시우",
-        "rank": 22,
         "amount": 1,
         "comment": "코드잇의 팀에 신뢰를 가지고 있습니다!"
       },
       {
         "investorName": "김도현",
-        "rank": 23,
         "amount": 1,
         "comment": "스타트업의 성장 가능성에 투자합니다!"
       },
       {
         "investorName": "이태희",
-        "rank": 24,
         "amount": 1,
         "comment": "코드잇의 교육 콘텐츠가 매우 훌륭합니다!"
       },
       {
         "investorName": "이주희",
-        "rank": 25,
         "amount": 1,
         "comment": "미래의 교육을 위해 투자합니다!"
       },
@@ -189,7 +165,6 @@
     "investments": [
       {
         "investorName": "박철수",
-        "rank": 1,
         "amount": 15,
         "comment": "미래의 인재를 양성하는 좋은 사업입니다."
       },
@@ -207,7 +182,6 @@
     "investments": [
       {
         "investorName": "장미화",
-        "rank": 1,
         "amount": 20,
         "comment": "혁신적이며 유망한 사업입니다."
       },
@@ -238,13 +212,11 @@
     "investments": [
       {
         "investorName": "최희진",
-        "rank": 1,
         "amount": 10,
         "comment": "지속 가능성의 중요성을 알리는 기업입니다."
       },
       {
         "investorName": "이주현",
-        "rank": 2,
         "amount": 9,
         "comment": "환경 보호를 위한 좋은 접근입니다."
       }
@@ -261,13 +233,11 @@
     "investments": [
       {
         "investorName": "서민재",
-        "rank": 1,
         "amount": 15,
         "comment": "여행의 새로운 경험을 제공합니다."
       },
       {
         "investorName": "김예슬",
-        "rank": 2,
         "amount": 12,
         "comment": "사용자 경험이 뛰어난 플랫폼입니다."
       }
@@ -284,11 +254,10 @@
     "investments": [
       {
         "investorName": "장수현",
-        "rank": 1,
         "amount": 50,
         "comment": "로봇 산업의 미래를 보고 투자했습니다."
       },
-      { "investorName": "김영민", "rank": 2, "amount": 30, "comment": "탁월한 팀과 제품입니다." }
+      { "investorName": "김영민", "amount": 30, "comment": "탁월한 팀과 제품입니다." }
     ]
   },
   {
@@ -300,8 +269,8 @@
     "employees": 100,
     "description": "모바일링크는 혁신적인 모바일 앱 솔루션을 제공합니다.",
     "investments": [
-      { "investorName": "이재훈", "rank": 1, "amount": 20, "comment": "시장 잠재력이 큽니다." },
-      { "investorName": "이유미", "rank": 2, "amount": 15, "comment": "사용자 경험이 뛰어납니다." }
+      { "investorName": "이재훈", "amount": 20, "comment": "시장 잠재력이 큽니다." },
+      { "investorName": "이유미", "amount": 15, "comment": "사용자 경험이 뛰어납니다." }
     ]
   },
   {
@@ -313,8 +282,8 @@
     "employees": 45,
     "description": "비즈메이트는 기업을 위한 솔루션을 제공하는 스타트업입니다.",
     "investments": [
-      { "investorName": "홍길동", "rank": 1, "amount": 10, "comment": "정말 필요한 서비스입니다." },
-      { "investorName": "김소연", "rank": 2, "amount": 9, "comment": "성장 가능성이 높습니다." }
+      { "investorName": "홍길동", "amount": 10, "comment": "정말 필요한 서비스입니다." },
+      { "investorName": "김소연", "amount": 9, "comment": "성장 가능성이 높습니다." }
     ]
   },
   {
@@ -328,11 +297,10 @@
     "investments": [
       {
         "investorName": "정하늘",
-        "rank": 1,
         "amount": 15,
         "comment": "건강한 식습관을 장려합니다."
       },
-      { "investorName": "이찬희", "rank": 2, "amount": 10, "comment": "기대됩니다." }
+      { "investorName": "이찬희", "amount": 10, "comment": "기대됩니다." }
     ]
   },
   {
@@ -346,11 +314,10 @@
     "investments": [
       {
         "investorName": "김상혁",
-        "rank": 1,
         "amount": 25,
         "comment": "미래형 기술에 투자했습니다."
       },
-      { "investorName": "박진수", "rank": 2, "amount": 20, "comment": "시장에 꼭 필요합니다." }
+      { "investorName": "박진수", "amount": 20, "comment": "시장에 꼭 필요합니다." }
     ]
   },
   {
@@ -364,11 +331,11 @@
     "investments": [
       {
         "investorName": "정우성",
-        "rank": 1,
+
         "amount": 40,
         "comment": "혁신적이며 미래 지향적입니다."
       },
-      { "investorName": "김한솔", "rank": 2, "amount": 35, "comment": "큰 성장이 기대됩니다." }
+      { "investorName": "김한솔", "amount": 35, "comment": "큰 성장이 기대됩니다." }
     ]
   },
   {
@@ -382,11 +349,10 @@
     "investments": [
       {
         "investorName": "이서준",
-        "rank": 1,
         "amount": 8,
         "comment": "환경을 생각하는 좋은 기업입니다."
       },
-      { "investorName": "정유진", "rank": 2, "amount": 7, "comment": "사회적 가치가 큽니다." }
+      { "investorName": "정유진", "amount": 7, "comment": "사회적 가치가 큽니다." }
     ]
   },
   {
@@ -398,8 +364,8 @@
     "employees": 90,
     "description": "알고리즘은 데이터 분석 솔루션을 제공합니다.",
     "investments": [
-      { "investorName": "하진호", "rank": 1, "amount": 12, "comment": "데이터의 힘을 믿습니다." },
-      { "investorName": "유지현", "rank": 2, "amount": 10, "comment": "성장 가능성이 높습니다." }
+      { "investorName": "하진호", "amount": 12, "comment": "데이터의 힘을 믿습니다." },
+      { "investorName": "유지현", "amount": 10, "comment": "성장 가능성이 높습니다." }
     ]
   },
   {
@@ -411,10 +377,9 @@
     "employees": 25,
     "description": "레저패스는 다양한 레저 활동을 예약할 수 있는 플랫폼입니다.",
     "investments": [
-      { "investorName": "이진우", "rank": 1, "amount": 5, "comment": "즐거운 경험을 제공합니다." },
+      { "investorName": "이진우", "amount": 5, "comment": "즐거운 경험을 제공합니다." },
       {
         "investorName": "김지민",
-        "rank": 2,
         "amount": 4,
         "comment": "레저 활동의 다양성을 높입니다."
       }
@@ -431,11 +396,10 @@
     "investments": [
       {
         "investorName": "김하나",
-        "rank": 1,
         "amount": 10,
         "comment": "젊은 세대를 겨냥한 좋은 사업입니다."
       },
-      { "investorName": "이선영", "rank": 2, "amount": 8, "comment": "디자인이 매력적입니다." }
+      { "investorName": "이선영", "amount": 8, "comment": "디자인이 매력적입니다." }
     ]
   },
   {
@@ -449,13 +413,11 @@
     "investments": [
       {
         "investorName": "정성호",
-        "rank": 1,
         "amount": 20,
         "comment": "게임의 미래를 이끌어갑니다."
       },
       {
         "investorName": "김민수",
-        "rank": 2,
         "amount": 18,
         "comment": "독창적인 아이디어가 많습니다."
       }
@@ -470,8 +432,8 @@
     "employees": 80,
     "description": "모바일카드는 모바일 결제를 혁신하는 서비스입니다.",
     "investments": [
-      { "investorName": "이강호", "rank": 1, "amount": 15, "comment": "편리한 결제 서비스입니다." },
-      { "investorName": "안서연", "rank": 2, "amount": 12, "comment": "성장 가능성이 큽니다." }
+      { "investorName": "이강호", "amount": 15, "comment": "편리한 결제 서비스입니다." },
+      { "investorName": "안서연", "amount": 12, "comment": "성장 가능성이 큽니다." }
     ]
   },
   {
@@ -485,11 +447,10 @@
     "investments": [
       {
         "investorName": "최우진",
-        "rank": 1,
         "amount": 20,
         "comment": "건강 관리의 중요성을 알립니다."
       },
-      { "investorName": "김소정", "rank": 2, "amount": 15, "comment": "유용한 앱입니다." }
+      { "investorName": "김소정", "amount": 15, "comment": "유용한 앱입니다." }
     ]
   },
   {
@@ -503,11 +464,10 @@
     "investments": [
       {
         "investorName": "박세진",
-        "rank": 1,
         "amount": 30,
         "comment": "데이터 보안의 중요성을 알립니다."
       },
-      { "investorName": "이영수", "rank": 2, "amount": 25, "comment": "서비스가 안정적입니다." }
+      { "investorName": "이영수", "amount": 25, "comment": "서비스가 안정적입니다." }
     ]
   },
   {
@@ -521,11 +481,10 @@
     "investments": [
       {
         "investorName": "김재훈",
-        "rank": 1,
         "amount": 40,
         "comment": "드론 산업의 미래를 보고 투자했습니다."
       },
-      { "investorName": "한지민", "rank": 2, "amount": 35, "comment": "시장성이 높습니다." }
+      { "investorName": "한지민", "amount": 35, "comment": "시장성이 높습니다." }
     ]
   },
   {
@@ -539,11 +498,10 @@
     "investments": [
       {
         "investorName": "임정희",
-        "rank": 1,
         "amount": 20,
         "comment": "콘텐츠의 다양성이 중요합니다."
       },
-      { "investorName": "김동희", "rank": 2, "amount": 15, "comment": "경쟁력이 있습니다." }
+      { "investorName": "김동희", "amount": 15, "comment": "경쟁력이 있습니다." }
     ]
   },
   {
@@ -557,11 +515,10 @@
     "investments": [
       {
         "investorName": "하수정",
-        "rank": 1,
         "amount": 10,
         "comment": "사용자가 필요한 정보입니다."
       },
-      { "investorName": "박지민", "rank": 2, "amount": 9, "comment": "헬스케어에 유용합니다." }
+      { "investorName": "박지민", "amount": 9, "comment": "헬스케어에 유용합니다." }
     ]
   },
   {
@@ -573,8 +530,8 @@
     "employees": 80,
     "description": "소셜커넥트는 사람들을 연결하는 소셜 미디어 플랫폼입니다.",
     "investments": [
-      { "investorName": "정지원", "rank": 1, "amount": 15, "comment": "사람들의 소통을 돕습니다." },
-      { "investorName": "이도연", "rank": 2, "amount": 12, "comment": "소통의 중요성을 알립니다." }
+      { "investorName": "정지원", "amount": 15, "comment": "사람들의 소통을 돕습니다." },
+      { "investorName": "이도연", "amount": 12, "comment": "소통의 중요성을 알립니다." }
     ]
   },
   {
@@ -586,8 +543,8 @@
     "employees": 35,
     "description": "뷰티아이템은 뷰티 제품을 판매하는 플랫폼입니다.",
     "investments": [
-      { "investorName": "윤아름", "rank": 1, "amount": 10, "comment": "트렌디한 제품이 많습니다." },
-      { "investorName": "이재미", "rank": 2, "amount": 8, "comment": "고객 만족도가 높습니다." }
+      { "investorName": "윤아름", "amount": 10, "comment": "트렌디한 제품이 많습니다." },
+      { "investorName": "이재미", "amount": 8, "comment": "고객 만족도가 높습니다." }
     ]
   },
   {
@@ -599,8 +556,8 @@
     "employees": 100,
     "description": "교육플랫폼은 다양한 온라인 교육을 제공합니다.",
     "investments": [
-      { "investorName": "서하은", "rank": 1, "amount": 30, "comment": "우수한 교육 콘텐츠입니다." },
-      { "investorName": "정가희", "rank": 2, "amount": 25, "comment": "성장 가능성이 큽니다." }
+      { "investorName": "서하은", "amount": 30, "comment": "우수한 교육 콘텐츠입니다." },
+      { "investorName": "정가희", "amount": 25, "comment": "성장 가능성이 큽니다." }
     ]
   },
   {
@@ -614,11 +571,10 @@
     "investments": [
       {
         "investorName": "이호수",
-        "rank": 1,
         "amount": 20,
         "comment": "환경을 생각하는 기업입니다."
       },
-      { "investorName": "최수민", "rank": 2, "amount": 15, "comment": "사회적 가치가 큽니다." }
+      { "investorName": "최수민", "amount": 15, "comment": "사회적 가치가 큽니다." }
     ]
   },
   {
@@ -632,11 +588,10 @@
     "investments": [
       {
         "investorName": "윤동현",
-        "rank": 1,
         "amount": 15,
         "comment": "건강 관리에 도움이 됩니다."
       },
-      { "investorName": "김민정", "rank": 2, "amount": 12, "comment": "실용적입니다." }
+      { "investorName": "김민정", "amount": 12, "comment": "실용적입니다." }
     ]
   },
   {
@@ -648,8 +603,8 @@
     "employees": 100,
     "description": "농업기술은 농업 혁신 솔루션을 제공합니다.",
     "investments": [
-      { "investorName": "정해인", "rank": 1, "amount": 30, "comment": "농업의 미래를 열어갑니다." },
-      { "investorName": "김하늘", "rank": 2, "amount": 25, "comment": "효율성이 높습니다." }
+      { "investorName": "정해인", "amount": 30, "comment": "농업의 미래를 열어갑니다." },
+      { "investorName": "김하늘", "amount": 25, "comment": "효율성이 높습니다." }
     ]
   },
   {
@@ -663,13 +618,11 @@
     "investments": [
       {
         "investorName": "유재석",
-        "rank": 1,
         "amount": 40,
         "comment": "혁신적인 기술을 지원합니다."
       },
       {
         "investorName": "신지은",
-        "rank": 2,
         "amount": 30,
         "comment": "미래에 대한 비전이 확실합니다."
       }
