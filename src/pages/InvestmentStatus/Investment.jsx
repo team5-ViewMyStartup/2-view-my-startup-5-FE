@@ -3,7 +3,7 @@ import styles from "./Investment.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import ListHeader from "../../components/List/ListHeader";
 import { investmentOptions } from "../../components/Dropdown/DropdownOption";
-import { companyHeader } from "../../components/List/HeaderOption";
+import { investmentHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 
 function Investment() {
@@ -64,7 +64,7 @@ function Investment() {
           />
         </div>
       </div>
-      <ListHeader headers={companyHeader} type="company" />
+      <ListHeader headers={investmentHeader} type="company" />
       <div className={styles.investment_body}>
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (

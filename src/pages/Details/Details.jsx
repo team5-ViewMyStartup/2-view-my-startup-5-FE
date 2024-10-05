@@ -78,32 +78,33 @@ function Details() {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
 
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
-    const handleImgClick = (index) => {
-      toggleDropdown(index);
-    };
+  const handleImgClick = (index) => {
+    toggleDropdown(index);
+  };
 
-    const corporateField = [
-      {
-        title: "누적 투자 금액",
-        value: `${totalInvestmentAmount} 억 원`,
-        className: "",
-      },
-      {
-        title: "매출액",
-        value: `${company.revenue} 억 원`,
-        className: `${styles.account}`,
-      },
-      {
-        title: "고용 인원",
-        value: `${company.employees} 명`,
-        className: "",
-      },
-    ];
+  const corporateField = [
+    {
+      title: "누적 투자 금액",
+      value: `${totalInvestmentAmount} 억 원`,
+      className: "",
+    },
+    {
+      title: "매출액",
+      value: `${company.revenue} 억 원`,
+      className: `${styles.account}`,
+    },
+    {
+      title: "고용 인원",
+      value: `${company.employees} 명`,
+      className: "",
+    },
+  ];
 
   return (
     <div className={styles.corporate}>
@@ -238,5 +239,4 @@ function Details() {
     </div>
   );
 }
-
 export default Details;

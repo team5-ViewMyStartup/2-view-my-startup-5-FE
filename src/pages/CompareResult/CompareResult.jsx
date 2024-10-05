@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Compare.module.css";
+import styles from "./CompareResult.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import { compareOptions } from "../../components/Dropdown/DropdownOption";
+import { companyOptions, rankingOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
 import { companyHeader } from "../../components/List/HeaderOption";
 
-function Compare() {
+function CompareResult() {
   const viewCompanyInfoNum = 5;
-  const [orderBy, setOrderBy] = useState("누적 투자금액 높은순");
+  const [compareOrderBy, setCompareOrderBy] = useState("누적 투자금액 높은순");
+  const [companyOrderBy, setCompanyOrderBy] = useState("매출액 높은순");
   const [compare, setCompare] = useState([]);
+  const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
 
@@ -17,44 +19,63 @@ function Compare() {
     if (!response.ok) throw new Error("데이터를 불러오지 못 함");
     const data = await response.json();
     setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+    setCompany(data.sort((a, b) => b.revenue - a.revenue));
   }, []);
 
-  const totalPages = Math.ceil(compare.length / viewCompanyInfoNum);
   const indexOfLastItem = currentPage * viewCompanyInfoNum;
   const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
   useEffect(() => {
-    let sorted = [...compare];
-    switch (orderBy) {
+    let compareSorted = [...compare];
+    switch (compareOrderBy) {
       case "investment-high":
-        sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+        compareSorted = compareSorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
         break;
       case "investment-low":
-        sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+        compareSorted = compareSorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
         break;
       case "sales-high":
-        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
+        compareSorted = compareSorted.sort((a, b) => b.revenue - a.revenue);
         break;
       case "sales-low":
-        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
+        compareSorted = compareSorted.sort((a, b) => a.revenue - b.revenue);
         break;
       case "employeeNum-high":
-        sorted = sorted.sort((a, b) => b.employees - a.employees);
+        compareSorted = compareSorted.sort((a, b) => b.employees - a.employees);
         break;
       case "employeeNum-low":
-        sorted = sorted.sort((a, b) => a.employees - b.employees);
+        compareSorted = compareSorted.sort((a, b) => a.employees - b.employees);
     }
-    setSortedData(sorted);
-  }, [compare, orderBy]);
+    setSortedData(compareSorted);
+  }, [compare, compareOrderBy]);
 
-  const orderMap = compareOptions.reduce((acc, cur) => {
+  useEffect(() => {
+    let companySorted = [...company];
+    switch (companyOrderBy) {
+      case "sales-high":
+        companySorted = companySorted.sort((a, b) => b.revenue - a.revenue);
+        break;
+      case "sales-low":
+        companySorted = companySorted.sort((a, b) => a.revenue - b.revenue);
+        break;
+      case "employeeNum-high":
+        companySorted = companySorted.sort((a, b) => b.employees - a.employees);
+        break;
+      case "employeeNum-low":
+        companySorted = companySorted.sort((a, b) => a.employees - b.employees);
+    }
+    setSortedData(companySorted);
+  }, [company, companyOrderBy]);
+
+  const compareOrderMap = companyOptions.reduce((acc, cur) => {
     acc[cur.value] = cur.label;
     return acc;
   }, {});
+
+  const companyOrderMap = rankingOptions.reduce((acc, cur) => {
+    acc[cur.value] = cur.label;
+    return acc;
+  });
 
   return (
     <div className={styles.selected_company_result}>
@@ -73,9 +94,9 @@ function Compare() {
           <p className={styles.compare_result_check}>비교 결과 확인하기</p>
           <div className={styles.dropdown}>
             <Dropdown
-              options={compareOptions}
-              selectedOption={orderMap[orderBy] || "누적 투자금액 높은순"}
-              onSelect={setOrderBy}
+              options={companyOptions}
+              selectedOption={compareOrderMap[compareOrderBy] || "누적 투자금액 높은순"}
+              onSelect={setCompareOrderBy}
               isCompanyOptions={true}
             />
           </div>
@@ -102,9 +123,9 @@ function Compare() {
           <p className={styles.company_rank_check}>기업 순위 확인하기</p>
           <div className={styles.dropdown}>
             <Dropdown
-              options={compareOptions}
-              selectedOption={orderMap[orderBy] || "누적 투자금액 높은순"}
-              onSelect={setOrderBy}
+              options={rankingOptions}
+              selectedOption={companyOrderMap[companyOrderBy] || "매출액 높은순"}
+              onSelect={setCompanyOrderBy}
               isCompanyOptions={true}
             />
           </div>
@@ -130,4 +151,4 @@ function Compare() {
   );
 }
 
-export default Compare;
+export default CompareResult;

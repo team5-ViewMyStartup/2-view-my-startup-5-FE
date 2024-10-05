@@ -45,7 +45,7 @@ export const investmentOptions = [
   },
 ];
 
-export const rankingOption = [
+export const rankingOptions = [
   {
     label: "매출액 높은순",
     value: "sales-high",

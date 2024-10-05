@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./CompareStatus.module.css";
 import { compareOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
-import { companyHeader } from "../../components/List/HeaderOption";
+import { compareHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
 
@@ -64,7 +64,7 @@ function CompareStatus() {
           />
         </div>
       </div>
-      <ListHeader headers={companyHeader} type="company" />
+      <ListHeader headers={compareHeader} type="company" />
       <div className={styles.compare_body}>
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
