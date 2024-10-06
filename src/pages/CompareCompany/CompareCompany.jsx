@@ -6,6 +6,8 @@ import icAdd from "../../imagesjun/ic_add.png";
 import btnPlus from "../../imagesjun/btn_plus.png";
 import { useState, useEffect } from "react";
 import { companiesMockData } from "./mockData";
+import IcSearch from "../../imagesjun/ic_search.png";
+import IcDelet from "../../imagesjun/ic_delete.png";
 
 function CompareCompany() {
   /*TODO
@@ -42,11 +44,9 @@ function CompareCompany() {
 
   const openModal = () => {
     setIsModalOpen(true);
-    console.log("열려라 참달!");
   };
   const closeModal = () => {
     setIsModalOpen(false);
-    console.log("닫혀라 모께!");
   };
 
   const handleResetButtonClick = () => {
@@ -96,6 +96,9 @@ function CompareCompany() {
       alert("최대 5개 기업만 선택할 수 있습니다.");
     }
   };
+  const title = "나의 기업 선택하기"; // 임의로 제목 설정
+  const deleteIcon = IcDelet; // delete 아이콘으로 사용할 이미지 경로
+  const handleClose = closeModal; // 모달을 닫는 함수
 
   return (
     <div className={styles.compare_main_container}>
@@ -130,7 +133,6 @@ function CompareCompany() {
           )}
         </div>
       </div>
-
       <div className={styles.compare_head_wrapper}>
         <h1 className={styles.compare_heading_text}>어떤 기업이 궁금하세요?</h1>
         <p> (최대 5개)</p>
@@ -140,45 +142,69 @@ function CompareCompany() {
           </button>
         </div>
       </div>
-
       <div>
         <div className={styles.inner_box}></div>
       </div>
-
       <div className={styles.btn_wrapper}>
         <button className={styles.reset_btn} onClick={handleComparisonClick}>
           기업 비교하기
         </button>
       </div>
-
       {isModalOpen && (
         <div className={styles.modal}>
-          <div className={styles.modal_header}>
-            <span>비교할 기업 선택하기</span>
+          <div className={styles.modal_content_wrapper}>
+            <div className={styles.modal_content}>
+              <div className={styles.modal_header}>
+                {title}
+                <img
+                  src={IcDelet}
+                  className={styles.ic_delete}
+                  alt="deleteLogo"
+                  onClick={handleClose}
+                />
+              </div>
+
+              {/* <h2>나의 기업 선택하기</h2>
             <button className={styles.close_btn} onClick={closeModal}>
               &times;
-            </button>
-          </div>
-          <div className={styles.search_input_container}>
-            <span className={styles.search_icon}>&#128269;</span>
-            <input
-              type="text"
-              placeholder="검색어를 입력해주세요"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-          </div>
-          <div className={styles.company_list}>
-            {filteredCompanies.map((company) => (
-              <div
-                key={company.name}
-                className={styles.company_item}
-                onClick={() => addCompany(company)}
-              >
-                <img src={company.image} alt={company.name} className={styles.company_logo} />
-                <p>{company.name}</p>
+            </button>*/}
+
+              {/* Inline Search Bar */}
+              <div className={styles.search_container}>
+                <input
+                  type="text"
+                  placeholder="기업 검색..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className={styles.search_input}
+                />
+                {searchQuery && (
+                  <button onClick={() => setSearchQuery("")} className={styles.clear_btn}>
+                    &times;
+                  </button>
+                )}
               </div>
-            ))}
+
+              <div className={styles.company_list}>
+                {filteredCompanies.map((company) => (
+                  <div key={company.name} className={styles.company_item}>
+                    <img src={company.image} alt={company.name} className={styles.company_logo} />
+                    <p>{company.name}</p>
+                    <button
+                      className={`${styles.selectBtn} ${
+                        selectedCompanies.includes(company)
+                          ? styles.selectBtnSelected
+                          : styles.selectBtnDeselected
+                      }`}
+                      onClick={() => addCompany(company)}
+                    >
+                      {selectedCompanies.includes(company) ? "선택됨" : "선택"}
+                    </button>
+                  </div>
+                ))}
+                {filteredCompanies.length === 0 && <p>검색 결과가 없습니다.</p>}
+              </div>
+            </div>
           </div>
         </div>
       )}
