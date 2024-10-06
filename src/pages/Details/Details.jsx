@@ -109,7 +109,7 @@ function Details() {
     <div className={styles.corporate}>
       <div className={styles.corporate_information}>
         <div className={styles.corporate_wrapper}>
-          <img src={company.image} alt="임시이미지" width="20px" />
+          <img src={company.image} alt="회사 로고" className={styles.logo_img} />
           <div className={styles.corporate_name}>
             <h3>{company.name}</h3>
             <h4 className={styles.cor_type}>{company.category}</h4>
