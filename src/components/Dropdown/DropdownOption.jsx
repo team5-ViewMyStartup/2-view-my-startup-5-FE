@@ -11,14 +11,14 @@ export const compareOptions = [
   { label: "나의 기업 선택 횟수 높은순", value: "selection-high", className: "selection_high" },
   { label: "나의 기업 선택 횟수 낮은순", value: "selection-low", className: "selection_low" },
   {
-    label: "실제 누적 투자 금액 높은 순",
-    value: "actual-investment-high",
-    className: "actual_investment_high",
+    label: "비교 기업 선택 횟수 높은순",
+    value: "compare-selection-high",
+    className: "compare_selection_high",
   },
   {
-    label: "실제 누적 투자 금액 낮은 순",
-    value: "actual-investment-low",
-    className: "actual_investment_low",
+    label: "비교 기업 선택 횟수 낮은순",
+    value: "compare-selection-low",
+    className: "compare_selection_low",
   },
 ];
 
@@ -45,7 +45,7 @@ export const investmentOptions = [
   },
 ];
 
-export const rankingOption = [
+export const rankingOptions = [
   {
     label: "매출액 높은순",
     value: "sales-high",
