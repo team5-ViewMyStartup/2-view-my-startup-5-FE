@@ -7,6 +7,8 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import ListHeader from "../../components/List/ListHeader";
 import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
+import { fetchCompanyData } from "../../api/api";
+import { Link } from "react-router-dom";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
@@ -15,11 +17,16 @@ function StartupList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
 
-  useEffect(async () => {
-    const response = await fetch("/allCompanyData.json");
-    if (!response.ok) throw new Error("데이터를 불러오지 못 함");
-    const data = await response.json();
-    setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const data = await fetchCompanyData();
+        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCompanies();
   }, []);
 
   const totalPages = Math.ceil(company.length / viewCompanyInfoNum);
@@ -87,15 +94,17 @@ function StartupList() {
       <div className={styles.category_box}>
         <ul className={styles.category_kind}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-            <li key={index + indexOfFirstItem} className={styles.category_body}>
-              <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-              <span className={styles.category_company_name}>{info.name}</span>
-              <span className={styles.category_company_info}>{info.description}</span>
-              <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
-              <span className={styles.category_sales}>{info.revenue}</span>
-              <span className={styles.category_employee_num}>{info.employees}</span>
-            </li>
+            <Link to={`/details/${info.id}`}>
+              <li key={index + indexOfFirstItem} className={styles.category_body}>
+                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                <span className={styles.category_company_name}>{info.name}</span>
+                <span className={styles.category_company_info}>{info.description}</span>
+                <span className={styles.category_category}>{info.category}</span>
+                <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
+                <span className={styles.category_sales}>{info.revenue}</span>
+                <span className={styles.category_employee_num}>{info.employees}</span>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>

@@ -5,6 +5,7 @@ import ListHeader from "../../components/List/ListHeader";
 import { compareHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import { fetchCompanyData } from "../../api/api";
 
 function CompareStatus() {
   const viewCompanyInfoNum = 10;
@@ -13,11 +14,16 @@ function CompareStatus() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
 
-  useEffect(async () => {
-    const response = await fetch("/allCompanyData.json");
-    if (!response.ok) throw new Error("데이터를 불러오지 못 함");
-    const data = await response.json();
-    setCompare(data.sort((a, b) => b.selectionNum - a.selectionNum));
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const data = await fetchCompanyData();
+        setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCompanies();
   }, []);
 
   const totalPages = Math.ceil(compare.length / viewCompanyInfoNum);
@@ -32,16 +38,16 @@ function CompareStatus() {
     let sorted = [...compare];
     switch (orderBy) {
       case "selection-high":
-        sorted = sorted.sort((a, b) => b.selectionNum - a.selectionNum);
+        sorted = sorted.sort((a, b) => b.selectMyCount - a.selectMyCount);
         break;
       case "selection-low":
-        sorted = sorted.sort((a, b) => a.selectionNum - b.selectionNum);
+        sorted = sorted.sort((a, b) => a.selectMyCount - b.selectMyCount);
         break;
-      case "actual-investment-high":
-        sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+      case "compare-selection-high":
+        sorted = sorted.sort((a, b) => b.selectOtherCount - a.selectOtherCount);
         break;
-      case "actual-investment-low":
-        sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+      case "compare-selection-low":
+        sorted = sorted.sort((a, b) => a.selectOtherCount - b.selectOtherCount);
     }
     setSortedData(sorted);
   }, [compare, orderBy]);
@@ -64,7 +70,11 @@ function CompareStatus() {
           />
         </div>
       </div>
+<<<<<<< HEAD
       <ListHeader headers={compareHeader} type="company" />
+=======
+      <ListHeader headers={compareHeader} type="status" />
+>>>>>>> b19d923d10b28ecc25fdd0d493daf0ada38fd522
       <div className={styles.compare_body}>
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
@@ -73,8 +83,8 @@ function CompareStatus() {
               <span className={styles.category_company_name}>{info.name}</span>
               <span className={styles.category_company_info}>{info.description}</span>
               <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_selection}>{info.selectionNum}</span>
-              <span className={styles.category_compare_selection}>{info.compareSelectionNum}</span>
+              <span className={styles.category_selection}>{info.selectMyCount}</span>
+              <span className={styles.category_compare_selection}>{info.selectOtherCount}</span>
             </li>
           ))}
         </ul>

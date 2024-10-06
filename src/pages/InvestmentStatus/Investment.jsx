@@ -5,6 +5,7 @@ import ListHeader from "../../components/List/ListHeader";
 import { investmentOptions } from "../../components/Dropdown/DropdownOption";
 import { investmentHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
+import { fetchCompanyData } from "../../api/api";
 
 function Investment() {
   const viewCompanyInfoNum = 10;
@@ -13,11 +14,16 @@ function Investment() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
 
-  useEffect(async () => {
-    const response = await fetch("/allCompanyData.json");
-    if (!response.ok) throw new Error("데이터를 불러오지 못 함");
-    const data = await response.json();
-    setInvestment(data.sort((a, b) => b.startupInvestment - a.startupInvestment));
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const data = await fetchCompanyData();
+        setInvestment(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCompanies();
   }, []);
 
   const totalPages = Math.ceil(investment.length / viewCompanyInfoNum);
@@ -32,10 +38,10 @@ function Investment() {
     let sorted = [...investment];
     switch (orderBy) {
       case "startup-investment-high":
-        sorted = sorted.sort((a, b) => b.startupInvestment - a.startupInvestment);
+        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
         break;
       case "startup-investment-low":
-        sorted = sorted.sort((a, b) => a.startupInvestment - b.startupInvestment);
+        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
         break;
       case "actual-investment-high":
         sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
@@ -64,7 +70,11 @@ function Investment() {
           />
         </div>
       </div>
+<<<<<<< HEAD
       <ListHeader headers={investmentHeader} type="company" />
+=======
+      <ListHeader headers={investmentHeader} type="status" />
+>>>>>>> b19d923d10b28ecc25fdd0d493daf0ada38fd522
       <div className={styles.investment_body}>
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
@@ -73,7 +83,7 @@ function Investment() {
               <span className={styles.category_company_name}>{info.name}</span>
               <span className={styles.category_company_info}>{info.description}</span>
               <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_startup_investment}>{info.startupInvestment}</span>
+              <span className={styles.category_startup_investment}>{info.revenue}</span>
               <span className={styles.category_total_investment}>{info.totalInvestment}</span>
             </li>
           ))}

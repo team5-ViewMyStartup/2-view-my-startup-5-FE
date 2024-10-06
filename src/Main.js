@@ -16,7 +16,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<Landing />} />
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/all-company" element={<StartupList />} />

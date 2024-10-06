@@ -3,14 +3,14 @@ import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
-import { fetchCompanyData, fetchInvestmentsData } from "../../api/api";
+import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 
 const ITEM_PER_PAGE = 5;
 
 function Details() {
-  const { companyId } = useParams();
+  const { companyId, id } = useParams();
   const [company, setCompany] = useState();
   const [investments, setInvestments] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -57,11 +57,10 @@ function Details() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const companyData = await fetchCompanyData(companyId);
+        const companyData = await fetchDetailCompanyData(companyId);
         setCompany(companyData);
 
         const investmentData = await fetchInvestmentsData(companyId);
-        console.log(investmentData);
         setInvestments(investmentData);
       } catch (error) {
         console.error(error);
@@ -126,19 +125,9 @@ function Details() {
               </div>
             ))}
           </div>
-          <div className={styles.corporate_status}>
-            <div className={styles.overview_wrapper}>
-              {corporateField.map((field, index) => (
-                <div key={index} className={`${styles.overview} ${field.className}`}>
-                  <h5>{field.title}</h5>
-                  <p>{field.value}</p>
-                </div>
-              ))}
-            </div>
-            <div className={styles.introduction}>
-              <h5>기업 소개</h5>
-              <p>{company.description}</p>
-            </div>
+          <div className={styles.introduction}>
+            <h5>기업 소개</h5>
+            <p>{company.description}</p>
           </div>
         </div>
       </div>
