@@ -70,11 +70,7 @@ function Investment() {
           />
         </div>
       </div>
-<<<<<<< HEAD
-      <ListHeader headers={investmentHeader} type="company" />
-=======
       <ListHeader headers={investmentHeader} type="status" />
->>>>>>> b19d923d10b28ecc25fdd0d493daf0ada38fd522
       <div className={styles.investment_body}>
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (

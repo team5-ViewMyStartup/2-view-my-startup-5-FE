@@ -70,11 +70,7 @@ function CompareStatus() {
           />
         </div>
       </div>
-<<<<<<< HEAD
-      <ListHeader headers={compareHeader} type="company" />
-=======
       <ListHeader headers={compareHeader} type="status" />
->>>>>>> b19d923d10b28ecc25fdd0d493daf0ada38fd522
       <div className={styles.compare_body}>
         <ul className={styles.category_classification}>
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
