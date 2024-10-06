@@ -147,6 +147,9 @@ function CompareResult() {
           </ul>
         </div>
       </div>
+      <div className={styles.my_company_investment}>
+        <button className={styles.investment_button}>나의 기업에 투자하기</button>
+      </div>
     </div>
   );
 }

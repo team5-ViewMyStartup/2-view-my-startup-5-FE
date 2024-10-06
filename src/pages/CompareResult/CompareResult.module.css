@@ -235,3 +235,22 @@
   background-color: black;
   color: #d8d8d8;
 }
+
+.investment_button {
+  width: 183px;
+  height: 48px;
+  border-radius: 50px;
+  padding: 13px 48px;
+  gap: 10px;
+  background-color: #eb5230;
+  color: #ffffff;
+  margin-top: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19.09px;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: center;
+  display: flex;
+  border: none;
+}
