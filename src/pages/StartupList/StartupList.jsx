@@ -8,7 +8,6 @@ import ListHeader from "../../components/List/ListHeader";
 import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
 import { fetchCompanyData } from "../../api/api";
-import { Link } from "react-router-dom";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
