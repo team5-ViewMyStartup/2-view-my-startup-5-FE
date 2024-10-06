@@ -7,19 +7,17 @@ import btnPlus from "../../imagesjun/btn_plus.png";
 import { useState, useEffect } from "react";
 import { companiesMockData } from "./mockData";
 import IcSearch from "../../imagesjun/ic_search.png";
-import IcDelet from "../../imagesjun/ic_delete.png";
+import IcCloseX from "../../imagesjun/ic_delete.png";
 
 function CompareCompany() {
-  /*TODO
-   *상태관리
-   */
   const [resetBtnText, setResetBtnText] = useState("전체 초기화");
-  const [isCompareButtonEnabled, setIsCompareButtonEnabled] = useState(true);
-  const [isComparisonVisible, setIsComparisonVisible] = useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState([]);
   const [additionalCompanies, setAdditionalCompanies] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isComparisonVisible, setIsComparisonVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const companiesPerPage = 5;
 
   useEffect(() => {
     const getCompanies = async () => {
@@ -31,9 +29,9 @@ function CompareCompany() {
       //   console.error("기업 데이터를 가져오는데 실패했습니다.", error);
       // }
       try {
-        const companies = companiesMockData; // 목데이터를 가져옴
-        setSelectedCompanies(companies.slice(0, 2)); // 처음 2개 기업을 선택한 상태로 설정
-        setAdditionalCompanies(companies.slice(2)); // 나머지 기업을 추가 기업으로 설정
+        const companies = companiesMockData;
+        setSelectedCompanies(companies.slice(0, 2));
+        setAdditionalCompanies(companies.slice(2));
       } catch (error) {
         alert("실패");
         console.error("기업 데이터를 가져오는데 실패했습니다.", error);
@@ -52,14 +50,12 @@ function CompareCompany() {
   const handleResetButtonClick = () => {
     setResetBtnText("초기화 완료");
     /*TODO
-     * 핸들러
-     *초기화 기능 구현
+     *
      */
-    setSelectedCompanies([]); // 선택된 기업 리스트 초기화
+    setSelectedCompanies([]);
     setAdditionalCompanies(companiesMockData);
     if (selectedCompanies.length > 1 && additionalCompanies.length > 0) {
       setIsComparisonVisible(true);
-      // setResetButtonText("다른 기업 비교하기");
     }
   };
 
@@ -82,6 +78,10 @@ function CompareCompany() {
   const filteredCompanies = additionalCompanies.filter((company) =>
     company.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
+  const currentCompanies = filteredCompanies.slice(
+    (currentPage - 1) * companiesPerPage,
+    currentPage * companiesPerPage,
+  );
 
   const [selectedCompanyImage, setSelectedCompanyImage] = useState(null);
   const addCompany = (companyToAdd) => {
@@ -96,9 +96,20 @@ function CompareCompany() {
       alert("최대 5개 기업만 선택할 수 있습니다.");
     }
   };
-  const title = "나의 기업 선택하기"; // 임의로 제목 설정
-  const deleteIcon = IcDelet; // delete 아이콘으로 사용할 이미지 경로
-  const handleClose = closeModal; // 모달을 닫는 함수
+  const title = "나의 기업 선택하기";
+  const handleClose = closeModal;
+
+  const handleSelect = (companyName) => {
+    const companyToAdd = additionalCompanies.find((company) => company.name === companyName);
+    setSelectedCompanies([...selectedCompanies, companyToAdd]);
+    setAdditionalCompanies(additionalCompanies.filter((company) => company.name !== companyName));
+  };
+
+  const handleDeselect = (companyName) => {
+    const companyToRemove = selectedCompanies.find((company) => company.name === companyName);
+    setSelectedCompanies(selectedCompanies.filter((company) => company.name !== companyName));
+    setAdditionalCompanies([...additionalCompanies, companyToRemove]);
+  };
 
   return (
     <div className={styles.compare_main_container}>
@@ -157,9 +168,9 @@ function CompareCompany() {
               <div className={styles.modal_header}>
                 {title}
                 <img
-                  src={IcDelet}
-                  className={styles.ic_delete}
-                  alt="deleteLogo"
+                  src={IcCloseX}
+                  className={styles.ic_close_x}
+                  alt="deleteIcon"
                   onClick={handleClose}
                 />
               </div>
@@ -173,7 +184,7 @@ function CompareCompany() {
               <div className={styles.search_container}>
                 <input
                   type="text"
-                  placeholder="기업 검색..."
+                  placeholder="검색어를 입력해 주세요"
                   value={searchQuery}
                   onChange={handleSearchChange}
                   className={styles.search_input}
@@ -185,25 +196,56 @@ function CompareCompany() {
                 )}
               </div>
 
-              <div className={styles.company_list}>
-                {filteredCompanies.map((company) => (
-                  <div key={company.name} className={styles.company_item}>
-                    <img src={company.image} alt={company.name} className={styles.company_logo} />
-                    <p>{company.name}</p>
-                    <button
-                      className={`${styles.selectBtn} ${
-                        selectedCompanies.includes(company)
-                          ? styles.selectBtnSelected
-                          : styles.selectBtnDeselected
-                      }`}
-                      onClick={() => addCompany(company)}
-                    >
-                      {selectedCompanies.includes(company) ? "선택됨" : "선택"}
-                    </button>
-                  </div>
-                ))}
-                {filteredCompanies.length === 0 && <p>검색 결과가 없습니다.</p>}
-              </div>
+              {searchQuery && (
+                <div className={styles.PartitionHug}>
+                  <h2 className={styles.CompaniesColumnText}>
+                    검색 결과 ({filteredCompanies.length})
+                  </h2>
+                  {filteredCompanies.length === 0 ? (
+                    <div className={styles.noResultsMessage}>검색 결과가 없습니다.</div>
+                  ) : (
+                    <>
+                      <ul className={styles.companyColumnsHug}>
+                        {currentCompanies.map((company) => (
+                          <li key={company.name} className={styles.companyColumns}>
+                            <div className={styles.companyColumnsLogoTextHug}>
+                              <img
+                                src={company.logoUrl}
+                                alt={`${company.name} logo`}
+                                className={styles.companyLogo}
+                              />
+                              <div className={styles.companyColumnsNameCategoryHug}>
+                                <div className={styles.companyColumnsName}>{company.name}</div>
+                                <div className={styles.companyColumnsCategory}>
+                                  {company.category}
+                                </div>
+                              </div>
+                            </div>
+
+                            {selectedCompanies.some(
+                              (selected) => selected.name === company.name,
+                            ) ? (
+                              <button
+                                onClick={() => handleDeselect(company.name)}
+                                className={styles.selectBtnSelected}
+                              >
+                                선택완료
+                              </button>
+                            ) : (
+                              <button
+                                onClick={() => handleSelect(company.name)}
+                                className={styles.selectBtn}
+                              >
+                                선택하기
+                              </button>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -211,4 +253,5 @@ function CompareCompany() {
     </div>
   );
 }
+
 export default CompareCompany;

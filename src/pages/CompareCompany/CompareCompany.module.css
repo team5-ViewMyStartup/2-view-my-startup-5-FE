@@ -166,7 +166,7 @@ compare_sub_text {
   justify-content: space-between;
 }
 
-.ic_delete {
+.ic_close_x {
   width: 32px;
   height: 32px;
   cursor: pointer;
