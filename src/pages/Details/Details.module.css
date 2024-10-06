@@ -199,3 +199,13 @@ hr {
   font-weight: 400;
   z-index: 1;
 }
+
+.no_investment {
+  padding-top: 70px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.no_investment p {
+  color: #747474;
+}
