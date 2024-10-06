@@ -10,7 +10,7 @@ import Pagination from "../../components/Pagination/Pagination";
 const ITEM_PER_PAGE = 5;
 
 function Details() {
-  const { companyId, id } = useParams();
+  const { companyId } = useParams();
   const [company, setCompany] = useState();
   const [investments, setInvestments] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(null);

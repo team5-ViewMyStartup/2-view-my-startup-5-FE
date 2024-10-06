@@ -38,26 +38,28 @@ export const fetchCompanyData = async () => {
 };
 
 export const fetchDetailCompanyData = async (companyId) => {
-  return await fetchData({
+  const res = await fetchData({
     url: `${BASE_URL}/companies/${companyId}`,
     headers: {
       "Content-Type": "application/json",
     },
   });
+  return res.body;
 };
 
 // 상세 페이지
 export const fetchInvestmentsData = async (companyId) => {
-  return await fetchData({
+  const res = await fetchData({
     url: `${BASE_URL}/investments/${companyId}`,
     headers: {
       "Content-Type": "application/json",
     },
   });
+  return res.body;
 };
 
 export const updateInvestmentComment = async (investmentId, investorName, comment, password) => {
-  return await fetchData({
+  const res = await fetchData({
     url: `${BASE_URL}/investments/${investmentId}`,
     method: HTTP_METHODS.PATCH,
     headers: {
@@ -65,10 +67,11 @@ export const updateInvestmentComment = async (investmentId, investorName, commen
     },
     data: { investmentId, investorName, comment, password },
   });
+  return res.body;
 };
 
 export const deleteInvestment = async (investmentId, investorName, password) => {
-  return await fetchData({
+  const res = await fetchData({
     url: `${BASE_URL}/investments/${investmentId}`,
     method: HTTP_METHODS.DELETE,
     headers: {
@@ -76,6 +79,7 @@ export const deleteInvestment = async (investmentId, investorName, password) => 
     },
     data: { investorName, password },
   });
+  return res.body;
 };
 
 /** TODO
