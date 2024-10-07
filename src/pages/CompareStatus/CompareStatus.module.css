@@ -65,7 +65,7 @@
 
 .category_body:last-child {
   border-radius: 0 0 4px 4px;
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 .category_rank {
@@ -86,9 +86,17 @@
   line-height: 16.71px;
   width: 213px;
   height: 39px;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 40px;
   display: flex;
+}
+
+.logo_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .category_company_info {
@@ -109,6 +117,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-height: 32px;
+  text-align: left;
 }
 
 .category_category {
@@ -138,5 +147,5 @@
 
 .category_body {
   background-color: #212121;
-  border-bottom: 1px solid #4b4b4b;
+  border-bottom: 1px solid #4b4b4b !important;
 }

@@ -75,6 +75,12 @@
   position: relative;
 }
 
+.logo_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
 /* .dropdown_select {
   width: 168px;
   height: auto;
@@ -217,7 +223,8 @@
   height: 39px;
   gap: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-left: 40px;
   display: flex;
 }
 
@@ -227,10 +234,9 @@
   line-height: 16.71px;
   width: 304px;
   height: 39px;
-  gap: 10px;
   align-items: center;
-  justify-content: center;
   display: flex;
+  text-align: left;
 }
 
 .category_category,
@@ -257,6 +263,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
+  border-bottom: none;
 }
 
 .category_body > .category_company_info {
@@ -274,5 +281,9 @@
 
 .category_body {
   background-color: #212121;
-  border-bottom: 1px solid #4b4b4b;
+  border-bottom: 1px solid #4b4b4b !important;
+}
+
+.no_results {
+  list-style: none;
 }

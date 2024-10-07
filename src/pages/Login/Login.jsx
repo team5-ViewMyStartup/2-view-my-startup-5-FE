@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import logoImg from "../../imagesjun/logo1.svg";
@@ -9,6 +9,8 @@ const USER_DATA = [
   { email: "test@test.com", password: "testtest1!" },
   { email: "test1@test.com", password: "testtest!" },
 ];
+
+const URL = "http://localhost:4000/users/login";
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -30,6 +32,30 @@ function Login() {
   const [generalError, setGeneralError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  const loginButtonClicked = async () => {
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      console.log(response.headers);
+      const [_, token] = response.headers.get("Authorization")?.split(" ");
+      console.log(token);
+      localStorage.setItem("token", JSON.stringify({ value: token, expire: Date.now() }));
+      /**
+       * 1. 모든 페이지에 접속할때 로컬스토리지의 토큰 조회
+       *   - 토큰의 만료기간 비교해서 지났으면 로컬스토리지에있는거 지우고 로그인 페이지로 리다이렉트
+       * 2. 로그인한 회원의 정보가 필요할때 로컬스토리지의 토큰을 디코드 해서 유저 정보 가져오기
+       */
+    } catch (error) {
+      console.log(error);
+      alert("회원 가입이 되지 않은 회원 정보입니다.");
+    }
+  };
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
@@ -117,7 +143,11 @@ function Login() {
           />
         </div>
 
-        <button className={styles.login_button} disabled={isButtonDisabled()}>
+        <button
+          className={styles.login_button}
+          disabled={isButtonDisabled()}
+          onClick={loginButtonClicked}
+        >
           로그인
         </button>
       </form>

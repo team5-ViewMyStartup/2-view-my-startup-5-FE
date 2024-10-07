@@ -14,7 +14,6 @@
 }
 
 .header_list {
-  flex-grow: 1;
   text-align: center;
   color: white;
 }
@@ -54,7 +53,7 @@
 }
 
 .header_list.status:nth-child(4) {
-  width: 135.75px;
+  width: 153.75px;
 }
 
 .header_list.status:nth-child(5),

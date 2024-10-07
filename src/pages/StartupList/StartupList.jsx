@@ -15,6 +15,8 @@ function StartupList() {
   const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     const fetchCompanies = async () => {
@@ -28,37 +30,57 @@ function StartupList() {
     fetchCompanies();
   }, []);
 
-  const totalPages = Math.ceil(company.length / viewCompanyInfoNum);
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
-    let sorted = [...company];
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    const filtered = company.filter((info) => {
+      return (
+        info.name.toLowerCase().includes(lowerCaseQuery) ||
+        info.category.toLowerCase().includes(lowerCaseQuery)
+      );
+    });
+
+    let sorted = filtered;
     switch (orderBy) {
       case "investment-high":
-        sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+        sorted = filtered.sort((a, b) => b.totalInvestment - a.totalInvestment);
         break;
       case "investment-low":
-        sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+        sorted = filtered.sort((a, b) => a.totalInvestment - b.totalInvestment);
         break;
       case "sales-high":
-        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
+        sorted = filtered.sort((a, b) => b.revenue - a.revenue);
         break;
       case "sales-low":
-        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
+        sorted = filtered.sort((a, b) => a.revenue - b.revenue);
         break;
       case "employeeNum-high":
-        sorted = sorted.sort((a, b) => b.employees - a.employees);
+        sorted = filtered.sort((a, b) => b.employees - a.employees);
         break;
       case "employeeNum-low":
-        sorted = sorted.sort((a, b) => a.employees - b.employees);
+        sorted = filtered.sort((a, b) => a.employees - b.employees);
+        break;
+      default:
+        sorted = filtered;
+        break;
     }
-    setSortedData(sorted);
-  }, [company, orderBy]);
+
+    setFilteredData(sorted);
+    setCurrentPage(1); // 검색 시 첫 페이지로 리셋
+  }, [company, searchQuery, orderBy]);
+
+  const totalPages = Math.ceil(filteredData.length / viewCompanyInfoNum);
+  const indexOfLastItem = currentPage * viewCompanyInfoNum;
+  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setSearchQuery(e.target.value);
+    }
+  };
 
   const orderMap = companyOptions.reduce((acc, cur) => {
     acc[cur.value] = cur.label;
@@ -76,6 +98,8 @@ function StartupList() {
               className={styles.search_input}
               placeholder="검색어를 입력해주세요"
               type="text"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <div className={styles.dropdown}>
@@ -92,19 +116,26 @@ function StartupList() {
       <ListHeader headers={companyHeader} type="company" />
       <div className={styles.category_box}>
         <ul className={styles.category_kind}>
-          {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-            <Link to={`/details/${info.id}`}>
-              <li key={index + indexOfFirstItem} className={styles.category_body}>
-                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-                <span className={styles.category_company_name}>{info.name}</span>
-                <span className={styles.category_company_info}>{info.description}</span>
-                <span className={styles.category_category}>{info.category}</span>
-                <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
-                <span className={styles.category_sales}>{info.revenue}</span>
-                <span className={styles.category_employee_num}>{info.employees}</span>
-              </li>
-            </Link>
-          ))}
+          {filteredData.length === 0 ? (
+            <li className={styles.no_results}>검색 결과가 없습니다.</li>
+          ) : (
+            filteredData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+              <Link to={`/details/${info.id}`}>
+                <li key={index + indexOfFirstItem} className={styles.category_body}>
+                  <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                  <span className={styles.category_company_name}>
+                    <img src={info.image} className={styles.logo_img} />
+                    {info.name}
+                  </span>
+                  <span className={styles.category_company_info}>{info.description}</span>
+                  <span className={styles.category_category}>{info.category}</span>
+                  <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
+                  <span className={styles.category_sales}>{info.revenue}</span>
+                  <span className={styles.category_employee_num}>{info.employees}</span>
+                </li>
+              </Link>
+            ))
+          )}
         </ul>
       </div>
       <Pagination
