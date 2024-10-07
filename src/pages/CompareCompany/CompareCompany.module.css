@@ -15,15 +15,13 @@
   align-items: center;
 }
 
-comapare_heading_text {
+.compare_heading_text {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
-  font-family: "Pretendard";
 }
-compare_sub_text {
+.compare_sub_text {
   font-size: 16px;
-  font-family: "Pretendard";
 }
 
 .reset_btn_wrapper {
@@ -34,7 +32,6 @@ compare_sub_text {
 }
 
 .reset_btn {
-  font-family: "Pretendard";
   border-radius: 50px;
   border: none;
   width: 149px;
@@ -42,7 +39,7 @@ compare_sub_text {
   font-weight: 700;
   font-size: 16px;
   line-height: 19.09px;
-  padding: 8px, 24px, 8px, 24px;
+  padding: 8px 24px 8px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,9 +57,19 @@ compare_sub_text {
   background-color: #eb5230;
 }
 .reset_btn:disabled {
-  background-color: var(black);
-  color: var(gray);
+  background-color: gray;
+  color: black;
   cursor: not-allowed;
+  border-radius: 50px;
+  border: none;
+  width: 149px;
+  height: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.09px;
+  padding: 8px 24px 8px 24px;
+  border: none;
+  white-space: nowrap;
 }
 
 .add_button_wrapper {
@@ -236,3 +243,60 @@ compare_sub_text {
   color: red;
   margin-top: 10px;
 }
+
+.compare_btn_wrapper {
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  align-items: center; /* Center the button vertically */
+  margin: 0 auto; /* Center the wrapper within its parent */
+  width: 100%; /* Allow the wrapper to take full width */
+}
+
+.compare_btn {
+  border-radius: 50px;
+  border: none;
+  width: 149px;
+  height: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19.09px;
+  padding: 8px 24px 8px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #eb5230;
+  color: #ffffff;
+  border: none;
+  white-space: nowrap;
+}
+
+.compare_btn:hover {
+  background-color: #e84a37;
+}
+
+.compare_btn:active {
+  background-color: #eb5230;
+}
+
+.compare_btn:disabled {
+  background-color: #2e2e2e !important;
+  color: #747474 !important;
+  cursor: not-allowed !important;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 194px;
+  height: 48px;
+  margin: 30px auto;
+}
+
+/* .disabledBtn {
+  background-color: #2e2e2e !important;
+  color: #747474 !important;
+  cursor: not-allowed !important;
+} */
