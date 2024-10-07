@@ -104,13 +104,13 @@
   box-sizing: content-box;
 }
 
-.category_body:nth-child(2) {
+.category_body:nth-child(1) {
   border-radius: 4px 4px 0 0;
 }
 
 .category_body:last-child {
   border-radius: 0 0 4px 4px;
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 .category_rank {
@@ -136,6 +136,7 @@
   justify-content: flex-start;
   margin-left: 40px;
   display: flex;
+  color: #d8d8d8;
 }
 
 .category_company_info {
@@ -147,6 +148,15 @@
   align-items: center;
   display: flex;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 304px;
+  height: 64px;
+  display: -webkit-box;
+  display: box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 32px;
 }
 
 .category_category,
@@ -173,19 +183,6 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  border-bottom: none;
-}
-
-.category_body > .category_company_info {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 304px;
-  height: 64px;
-  display: -webkit-box;
-  display: box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-height: 32px;
 }
 
 .category_body {
