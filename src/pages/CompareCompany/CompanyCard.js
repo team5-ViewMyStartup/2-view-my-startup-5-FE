@@ -13,7 +13,7 @@ const CompanyCard = ({ name, category, logoUrl, onDelete, showDeleteButton, show
           onClick={onDelete}
         />
       )}
-      {/* 로고를 직접 props로 전달받아 표시 */}
+
       <img src={logoUrl} alt={`${name} logo`} className={styles.logo} />
       <p className={styles.companyName}>{name}</p>
       <p className={styles.companyCategory}>{category}</p>

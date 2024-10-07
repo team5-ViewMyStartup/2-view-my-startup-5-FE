@@ -11,6 +11,7 @@ import IcSearch from "../../imagesjun/ic_search.png";
 import IcCloseX from "../../imagesjun/ic_delete.png";
 import ModalSelectComparision from "./ModalSelectComparision";
 import CompanyCard from "./CompanyCard";
+import CompareCompanyBtn from "./CompareCompanyBtn";
 function CompareCompany() {
   const [resetBtnText, setResetBtnText] = useState("전체 초기화");
   const [selectedCompanies, setSelectedCompanies] = useState([]);
@@ -36,15 +37,8 @@ function CompareCompany() {
     };
     getCompanies();
   }, []);
-  // useEffect(() => {
-  //   if (selectedCompanies.length > 0 || additionalCompanies.length > 0) {
-  //     setIsLoadingComparison(true); // 로딩 시작
-  //     const combinedCompanies = selectedCompanies.concat(additionalCompanies);
-  //     setSortedCompaniesForComparison(sortCompanies(combinedCompanies, sortingOptionForComparison));
-  //     setIsLoadingComparison(false); // 로딩 종료
-  //   }
-  // }, [selectedCompanies, additionalCompanies, sortingOptionForComparison]);
 
+  const isCompareButtonEnabled = selectedCompanies.length > 0 && additionalCompanies.length > 0;
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -100,7 +94,7 @@ function CompareCompany() {
       setAdditionalCompanies(
         additionalCompanies.filter((company) => company.name !== companyToAdd.name),
       );
-      closeModal(); // Close modal after selection
+      closeModal();
     } else {
       alert("한 개의 기업만 선택할 수 있습니다.");
     }
@@ -109,12 +103,11 @@ function CompareCompany() {
   const title = "나의 기업 선택하기";
   const handleClose = closeModal;
 
-  // 기업 선택 함수 수정
   const handleSelect = (companyName) => {
     const companyToAdd = additionalCompanies.find((company) => company.name === companyName);
     setSelectedCompanies([...selectedCompanies, companyToAdd]);
     setAdditionalCompanies(additionalCompanies.filter((company) => company.name !== companyName));
-    closeModal(); // 모달 닫기 추가
+    closeModal();
   };
 
   const handleDeselect = (companyName) => {
@@ -128,7 +121,7 @@ function CompareCompany() {
       <div className={styles.compare_head} />
       <div className={styles.compare_head_wrapper}>
         <h1 className={styles.compare_heading_text}>나의 기업을 선택해 주세요!</h1>
-        {/* 전체 초기화 버튼이 보이도록 조건부 렌더링 */}
+
         {selectedCompanies.length > 0 && (
           <div className={styles.reset_btn_wrapper}>
             <button
@@ -143,7 +136,6 @@ function CompareCompany() {
         )}
       </div>
       <div>
-        {/* 이너박스 */}
         <div className={styles.inner_box}>
           {selectedCompanies.length > 0 ? (
             selectedCompanies.map((company, index) => (
@@ -173,8 +165,8 @@ function CompareCompany() {
           )}
         </div>
       </div>
-      {/*  additional modal*/}
-      {selectedCompanies.length > 0 && ( // Check if any companies are selected
+
+      {selectedCompanies.length > 0 && (
         <div className={styles.compare_head_wrapper}>
           <h1 className={styles.compare_heading_text}>어떤 기업이 궁금하세요?</h1>
           <p>(최대 5개)</p>
@@ -186,8 +178,7 @@ function CompareCompany() {
         </div>
       )}
 
-      {/* 기업 추가 후 보이도록 inner_box */}
-      {selectedCompanies.length > 0 && ( // Check if any companies are selected
+      {selectedCompanies.length > 0 && (
         <div className={styles.addOtherCompany}>
           <div className={styles.inner_box}>
             {additionalCompanies.length > 0 ? (
@@ -209,6 +200,16 @@ function CompareCompany() {
                 <br />
                 버튼을 눌러 기업을 추가해보세요!
               </div>
+            )}
+          </div>
+          <div className={styles.btnWrapper}>
+            {isCompareButtonEnabled ? (
+              <Link to="/compare-result" className={styles.activeBtn}>
+                {" "}
+                <CompareCompanyBtn text="기업 비교하기" className={styles.activeBtn} />
+              </Link>
+            ) : (
+              <CompareCompanyBtn text="기업 비교하기" className={styles.disabledBtn} disabled />
             )}
           </div>
         </div>

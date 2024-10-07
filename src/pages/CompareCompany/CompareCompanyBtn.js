@@ -7,7 +7,7 @@ const CompareCompanyBtn = ({ text, onClick, disabled = false }) => {
       <button
         className={`${styles.compareCompanyBtn} ${disabled ? styles.disabledBtn : styles.active}`}
         onClick={onClick}
-        disabled={disabled} // 이 속성을 통해 버튼을 비활성화
+        disabled={disabled}
       >
         {text}
       </button>

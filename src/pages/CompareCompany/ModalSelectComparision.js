@@ -7,7 +7,6 @@ import SelectBtn from "./SelectBtn";
 import IcCloseX from "../../imagesjun/ic_delete.png";
 import { companiesMockData } from "./mockData";
 
-// 추가 모달 컴포넌트
 const AdditionalModal = ({ isOpen, onClose, onSelect }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const filteredCompanies = companiesMockData.filter((company) =>
@@ -47,7 +46,6 @@ const AdditionalModal = ({ isOpen, onClose, onSelect }) => {
   );
 };
 
-// 메인 모달 컴포넌트
 const ModalSelectComparision = ({
   isOpen,
   onClose,
@@ -258,7 +256,7 @@ const ModalSelectComparision = ({
           </div>
         </div>
       </div>
-      {/* 추가 모달 */}
+
       <AdditionalModal
         isOpen={isAdditionalModalOpen}
         onClose={closeAdditionalModal}
