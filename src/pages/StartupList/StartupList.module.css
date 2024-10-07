@@ -283,3 +283,7 @@
   background-color: #212121;
   border-bottom: 1px solid #4b4b4b !important;
 }
+
+.no_results {
+  list-style: none;
+}
