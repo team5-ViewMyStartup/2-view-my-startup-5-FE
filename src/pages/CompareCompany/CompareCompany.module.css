@@ -39,7 +39,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 19.09px;
-  padding: 8px 24px 8px 24px;
+  padding: 8px 24px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,8 +57,8 @@
   background-color: #eb5230;
 }
 .reset_btn:disabled {
-  background-color: gray;
-  color: black;
+  background-color: #808080;
+  color: #000000;
   cursor: not-allowed;
   border-radius: 50px;
   border: none;
@@ -67,8 +67,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 19.09px;
-  padding: 8px 24px 8px 24px;
-  border: none;
+  padding: 8px 24px;
   white-space: nowrap;
 }
 
@@ -86,7 +85,6 @@
   font-size: 16px;
   cursor: pointer;
   float: right;
-
   text-decoration: underline;
   position: absolute;
   z-index: auto;
@@ -147,6 +145,7 @@
   align-items: center;
   z-index: 1000;
 }
+
 .modal_content_wrapper {
   display: flex;
   flex-direction: column;
@@ -154,6 +153,7 @@
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
+
 .modal_content {
   display: flex;
   flex-direction: column;
@@ -166,7 +166,7 @@
 .modal_header {
   font-size: 20px;
   font-weight: 700;
-  color: white;
+  color: #ffffff;
   text-align: left;
   display: flex;
   align-items: center;
@@ -188,7 +188,7 @@
 .search_input {
   flex: 1;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 4px;
   margin-right: 8px;
 }
@@ -198,11 +198,11 @@
   border: none;
   cursor: pointer;
   font-size: 18px;
-  color: #666;
+  color: #666666;
 }
 
 .errorMessage {
-  color: red;
+  color: #ff0000;
   margin-top: 10px;
 }
 
@@ -222,7 +222,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 19.09px;
-  padding: 8px 24px 8px 24px;
+  padding: 8px 24px;
   display: flex;
   justify-content: center;
   align-items: center;

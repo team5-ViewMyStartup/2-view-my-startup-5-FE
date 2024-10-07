@@ -14,7 +14,7 @@
 .modalContainer {
   display: flex;
   flex-direction: column;
-  background-color: var(--black-300);
+  background-color: #212121;
   border-radius: 16px;
 }
 
@@ -43,13 +43,13 @@
 .companyColumnsName {
   font-size: 16px;
   font-weight: 500;
-  color: var(--white);
+  color: #ffffff;
 }
 
 .companyColumnsCategory {
   font-size: 14px;
   font-weight: 400;
-  color: var(--gray-200);
+  color: #747474;
 }
 
 .companyColumnsLogoTextHug {
@@ -82,7 +82,7 @@
 .modalHeadText {
   font-size: 20px;
   font-weight: 700;
-  color: var(--white);
+  color: #ffffff;
   text-align: left;
   display: flex;
   align-items: center;
@@ -92,20 +92,20 @@
 .CompaniesColumnText {
   font-weight: 700;
   font-size: 18px;
-  color: var(--white);
+  color: #ffffff;
   text-align: left;
 }
 
 .errorMessage {
   font-weight: 400;
   font-size: 14px;
-  color: var(--error-red);
+  color: #c41013;
   text-align: start;
 }
 
 .noResultsMessage {
   font-size: 14px;
-  color: var(--gray-200);
+  color: #747474;
   font-weight: 400;
   width: 150px;
 }
@@ -125,13 +125,13 @@
   .companyColumnsName {
     font-size: 14px;
     font-weight: 500;
-    color: var(--white);
+    color: #ffffff;
   }
 
   .companyColumnsCategory {
     font-size: 12px;
     font-weight: 400;
-    color: var(--gray-200);
+    color: #747474;
   }
 
   .companyLogo {
@@ -143,14 +143,14 @@
   .CompaniesColumnText {
     font-weight: 700;
     font-size: 14px;
-    color: var(--white);
+    color: #ffffff;
     text-align: left;
   }
 
   .modalHeadText {
     font-size: 16px;
     font-weight: 700;
-    color: var(--white);
+    color: #ffffff;
     text-align: left;
     display: flex;
     align-items: center;
@@ -159,9 +159,7 @@
 
   .noResultsMessage {
     font-size: 12px;
-    color: var(--gray-200);
+    color: #747474;
     font-weight: 400;
   }
 }
-
-@import "./reset.css";

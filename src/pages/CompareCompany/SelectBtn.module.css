@@ -1,10 +1,31 @@
+* {
+  box-sizing: border-box;
+  font-family: "Pretendard", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+li {
+  list-style: none;
+}
+
 .selectBtnDefault {
   width: 104px;
   height: 48px;
   background: none;
-  color: var(--brand-orange);
+  color: #eb5230;
   border-radius: 10px;
-  border: 1px solid var(--brand-orange);
+  border: 1px solid #eb5230;
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
@@ -15,15 +36,14 @@
   width: 104px;
   height: 48px;
   background: none;
-  color: var(--gray-100);
+  color: #d8d8d8;
   border-radius: 10px;
-  border: 1px solid var(--gray-100);
+  border: 1px solid #d8d8d8;
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
   padding-left: 28.5px;
-
   background-repeat: no-repeat;
   background-position: 11px center;
 }
@@ -32,9 +52,9 @@
   width: 104px;
   height: 48px;
   background: none;
-  color: var(--gray-200);
+  color: #747474;
   border-radius: 10px;
-  border: 1px solid var(--gray-200);
+  border: 1px solid #747474;
   font-weight: 500;
   font-size: 16px;
   cursor: pointer;
