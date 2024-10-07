@@ -147,12 +147,16 @@ function CompareCompany() {
         <div className={styles.inner_box}>
           {selectedCompanies.length > 0 ? (
             selectedCompanies.map((company, index) => (
-              <div key={index}>
-                <img
-                  src={company.image}
-                  alt={company.name}
-                  className={styles.selected_company_image}
+              <div key={index} className={styles.comparisonCompanyCardWrapper}>
+                <CompanyCard
+                  name={company.name}
+                  category={company.category}
+                  logoUrl={company.logoUrl}
+                  showDeleteButton={true}
+                  showBackground={true}
+                  onDelete={() => removeCompany(index, true)}
                 />
+
                 <p>{company.name}</p>
                 <button className={styles.cancel_btn} onClick={() => handleDeselect(company.name)}>
                   선택 취소
@@ -185,7 +189,7 @@ function CompareCompany() {
       {/* 기업 추가 후 보이도록 inner_box */}
       {selectedCompanies.length > 0 && ( // Check if any companies are selected
         <div className={styles.addOtherCompany}>
-          <div className={styles.innerBox}>
+          <div className={styles.inner_box}>
             {additionalCompanies.length > 0 ? (
               additionalCompanies.map((company, index) => (
                 <div key={index} className={styles.comparisonCompanyCardWrapper}>
