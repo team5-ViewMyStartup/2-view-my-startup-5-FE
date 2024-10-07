@@ -59,7 +59,7 @@
   box-sizing: content-box;
 }
 
-.category_body:nth-child(2) {
+.category_body:nth-child(1) {
   border-radius: 4px 4px 0 0;
 }
 
