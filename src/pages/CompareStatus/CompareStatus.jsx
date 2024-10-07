@@ -76,7 +76,10 @@ function CompareStatus() {
           {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
             <li key={index + indexOfFirstItem} className={styles.category_body}>
               <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-              <span className={styles.category_company_name}>{info.name}</span>
+              <span className={styles.category_company_name}>
+                <img src={info.image} className={styles.logo_img} />
+                {info.name}
+              </span>
               <span className={styles.category_company_info}>{info.description}</span>
               <span className={styles.category_category}>{info.category}</span>
               <span className={styles.category_selection}>{info.selectMyCount}</span>
