@@ -90,7 +90,7 @@ function Details() {
   const corporateField = [
     {
       title: "누적 투자 금액",
-      value: `${totalInvestmentAmount} 억 원`,
+      value: `${company.totalInvestment} 억 원`,
       className: "",
     },
     {
