@@ -65,7 +65,7 @@
 
 .category_body:last-child {
   border-radius: 0 0 4px 4px;
-  border-bottom: none;
+  border-bottom: none !important;
 }
 
 .category_rank {
