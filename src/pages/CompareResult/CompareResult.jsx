@@ -106,7 +106,7 @@ function CompareResult() {
           <ul className={styles.category_kind_compare}>
             {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
               <li key={index + indexOfFirstItem} className={styles.category_body}>
-                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
                 <span className={styles.category_company_name}>{info.name}</span>
                 <span className={styles.category_company_info}>{info.description}</span>
                 <span className={styles.category_category}>{info.category}</span>
