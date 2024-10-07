@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
 import Pagination from "../../components/Pagination/Pagination";
@@ -7,7 +8,6 @@ import ListHeader from "../../components/List/ListHeader";
 import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
 import { fetchCompanyData } from "../../api/api";
-import { Link } from "react-router-dom";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
@@ -120,20 +120,20 @@ function StartupList() {
             <li className={styles.no_results}>검색 결과가 없습니다.</li>
           ) : (
             filteredData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-              <Link to={`/details/${info.id}`}>
-                <li key={index + indexOfFirstItem} className={styles.category_body}>
-                  <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+              <li key={index + indexOfFirstItem} className={styles.category_body}>
+                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                <Link to={`/details/${info.id}`}>
                   <span className={styles.category_company_name}>
                     <img src={info.image} className={styles.logo_img} />
                     {info.name}
                   </span>
-                  <span className={styles.category_company_info}>{info.description}</span>
-                  <span className={styles.category_category}>{info.category}</span>
-                  <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
-                  <span className={styles.category_sales}>{info.revenue}</span>
-                  <span className={styles.category_employee_num}>{info.employees}</span>
-                </li>
-              </Link>
+                </Link>
+                <span className={styles.category_company_info}>{info.description}</span>
+                <span className={styles.category_category}>{info.category}</span>
+                <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
+                <span className={styles.category_sales}>{info.revenue}</span>
+                <span className={styles.category_employee_num}>{info.employees}</span>
+              </li>
             ))
           )}
         </ul>

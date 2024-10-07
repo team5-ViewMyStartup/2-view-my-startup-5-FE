@@ -7,7 +7,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { fetchCompanyData } from "../../api/api";
 
-function Compare() {
+function CompareStatus() {
   const viewCompanyInfoNum = 10;
   const [orderBy, setOrderBy] = useState("나의 기업 선택 횟수 높은순");
   const [compare, setCompare] = useState([]);
@@ -98,4 +98,4 @@ function Compare() {
   );
 }
 
-export default Compare;
+export default CompareStatus;

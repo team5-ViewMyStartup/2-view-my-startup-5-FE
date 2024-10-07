@@ -33,11 +33,13 @@ function Compare() {
   };
 
   const handleResetButtonClick = () => {
+    setResetBtnText("초기화 완료");
     /*TODO
      * 핸들러
      *초기화 기능 구현
      */
     if (selectedCompanies.length > 0 && additionalCompanies.length > 0) {
+      setIsComparisonVisible(true);
       // setResetButtonText("다른 기업 비교하기");
     }
   };
