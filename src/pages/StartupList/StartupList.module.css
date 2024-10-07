@@ -200,7 +200,7 @@
 
 .category_body:last-child {
   border-radius: 0 0 4px 4px;
-  border-bottom: none !important;
+  border-bottom: none;
 }
 
 .category_rank {
