@@ -24,6 +24,7 @@ function Details() {
         return total + investment.amount;
       }, 0)
     : 0;
+  console.log(investments);
 
   const indexOfLastItem = currentPage * ITEM_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEM_PER_PAGE;
