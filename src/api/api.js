@@ -65,7 +65,7 @@ export const updateInvestmentComment = async (investmentId, investorName, commen
     headers: {
       "Content-Type": "application/json",
     },
-    data: { investmentId, investorName, comment, password },
+    data: { comment, password },
   });
   return res.body;
 };
@@ -77,7 +77,25 @@ export const deleteInvestment = async (investmentId, investorName, password) => 
     headers: {
       "Content-Type": "application/json",
     },
-    data: { investorName, password },
+    data: { password },
+  });
+  return res.body;
+};
+
+export const addNewInvestment = async (companyId, investorName, amount, comment, password) => {
+  const res = await fetchData({
+    url: `${BASE_URL}/investments`,
+    method: HTTP_METHODS.POST,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: {
+      companyId,
+      investorName,
+      amount,
+      comment,
+      password,
+    },
   });
   return res.body;
 };

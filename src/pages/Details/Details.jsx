@@ -91,12 +91,9 @@ function Details() {
   return (
     <div className={styles.corporate}>
       <div className={styles.corporate_information}>
-        <div className={styles.corporate_wrapper}>
-          <img src={company.image} alt="회사 로고" className={styles.logo_img} />
-          <div className={styles.corporate_name}>
-            <h3>{company.name}</h3>
-            <h4 className={styles.cor_type}>{company.category}</h4>
-          </div>
+        <div className={styles.corporate_name}>
+          <h3>{company.name}</h3>
+          <h4 className={styles.cor_type}>{company.category}</h4> <hr />
         </div>
         <hr />
         <div className={styles.corporate_status}>
@@ -120,7 +117,7 @@ function Details() {
           <button className={styles.invest_button}>기업투자하기</button>
         </div>
         <hr />
-        {investments.length === 0 ? (
+        {company.investments.length === 0 ? (
           <div className={styles.no_investment}>
             <p>아직 투자한 기업이 없어요.</p>
             <p>버튼을 눌러 기업에 투자해보세요!</p>
@@ -133,15 +130,15 @@ function Details() {
             <div className={styles.investment_container}>
               <ul className={styles.investment_list}>
                 <li className={styles.investment_header}>
-                  <span className={styles.invest_inform}>순위</span>
                   <span className={styles.invest_inform}>투자자 이름</span>
+                  <span className={styles.invest_inform}>순위</span>
                   <span className={styles.invest_inform}>투자 금액</span>
                   <span className={styles.investment_comment}>투자 코멘트</span>
                 </li>
                 {currentInvestments.map((investment, index) => (
                   <li key={index + indexOfFirstItem} className={styles.investment_item}>
-                    <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
                     <span className={styles.invest_inform}>{investment.investorName}</span>
+                    <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
                     <span className={styles.invest_inform}>{investment.amount} 억 원</span>
                     <span className={styles.comment_content}>{investment.comment}</span>
                     <span className={styles.select_box}>
@@ -173,6 +170,34 @@ function Details() {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            <div className={styles.pagination}>
+              <button
+                className={styles.page_button}
+                onClick={handlePrevious}
+                disabled={currentPage === 1}
+              >
+                &lt;
+              </button>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index + 1}
+                  className={`${styles.page_button} ${
+                    currentPage === index + 1 ? styles.active : ""
+                  }`}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              ))}
+              <button
+                className={styles.page_button}
+                onClick={handleNext}
+                disabled={currentPage === totalPages}
+              >
+                &gt;
+              </button>
             </div>
           </>
         )}
@@ -213,6 +238,12 @@ function Details() {
           }}
         />
       )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+        hasNext={currentPage < totalPages}
+      />
     </div>
   );
 }
