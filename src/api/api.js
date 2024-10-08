@@ -66,7 +66,6 @@ export const updateInvestmentComment = async (investmentId, investorName, commen
       "Content-Type": "application/json",
     },
     data: { comment, password },
-    d6553c79085130231f6454fc28ef53f2891edb4,
   });
   return res.body;
 };
@@ -79,6 +78,24 @@ export const deleteInvestment = async (investmentId, investorName, password) => 
       "Content-Type": "application/json",
     },
     data: { password },
+  });
+  return res.body;
+};
+
+export const addNewInvestment = async (companyId, investorName, amount, comment, password) => {
+  const res = await fetchData({
+    url: `${BASE_URL}/investments`,
+    method: HTTP_METHODS.POST,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: {
+      companyId,
+      investorName,
+      amount,
+      comment,
+      password,
+    },
   });
   return res.body;
 };

@@ -8,9 +8,9 @@ function InvestModal({ isOpen, isClose, company, user, onSave }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!isOpen) return null;
-
+    // todo: password-checker로 확인
     if (password !== confirmPassword) {
       alert("비밀번호가 일치하지 않습니다");
       return;
@@ -23,6 +23,7 @@ function InvestModal({ isOpen, isClose, company, user, onSave }) {
       comment: comment,
     };
 
+    await addNewInvestment(company.id, user.name, amount, comment, password);
     onSave(newInvestment);
     isClose();
   };
