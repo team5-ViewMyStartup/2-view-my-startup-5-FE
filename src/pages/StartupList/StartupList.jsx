@@ -1,57 +1,84 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./StartupList.module.css";
 import searchIcon from "../../assets/ic_search.svg";
-import dropdownIcon from "../../assets/dropdown.svg";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
+import ListHeader from "../../components/List/ListHeader";
+import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
+import { fetchCompanyData } from "../../api/api";
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
   const [orderBy, setOrderBy] = useState("누적 투자금액 높은순");
-  const [dropdown, setDropDown] = useState(false);
   const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
-  useEffect(async () => {
-    const response = await fetch("/allCompanyData.json");
-    if (!response.ok) throw new Error("데이터를 불러오지 못 함");
-    const data = await response.json();
-    setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+  useEffect(() => {
+    const fetchCompanies = async () => {
+      try {
+        const data = await fetchCompanyData();
+        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCompanies();
   }, []);
-
-  const totalPages = Math.ceil(company.length / viewCompanyInfoNum);
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
-    const sortedCompanyData = sortedCompany();
-    console.log(sortedCompanyData[0]);
-    setSortedData(sortedCompanyData);
-  }, [company, orderBy]);
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    const filtered = company.filter((info) => {
+      return (
+        info.name.toLowerCase().includes(lowerCaseQuery) ||
+        info.category.toLowerCase().includes(lowerCaseQuery)
+      );
+    });
 
-  const sortedCompany = () => {
-    const sorted = [...company];
+    let sorted = filtered;
     switch (orderBy) {
       case "investment-high":
-        return sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+        sorted = filtered.sort((a, b) => b.totalInvestment - a.totalInvestment);
+        break;
       case "investment-low":
-        return sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+        sorted = filtered.sort((a, b) => a.totalInvestment - b.totalInvestment);
+        break;
       case "sales-high":
-        return sorted.sort((a, b) => b.revenue - a.revenue);
+        sorted = filtered.sort((a, b) => b.revenue - a.revenue);
+        break;
       case "sales-low":
-        return sorted.sort((a, b) => a.revenue - b.revenue);
+        sorted = filtered.sort((a, b) => a.revenue - b.revenue);
+        break;
       case "employeeNum-high":
-        return sorted.sort((a, b) => b.employees - a.employees);
+        sorted = filtered.sort((a, b) => b.employees - a.employees);
+        break;
       case "employeeNum-low":
-        return sorted.sort((a, b) => a.employees - b.employees);
+        sorted = filtered.sort((a, b) => a.employees - b.employees);
+        break;
       default:
-        return sorted;
+        sorted = filtered;
+        break;
+    }
+
+    setFilteredData(sorted);
+    setCurrentPage(1); // 검색 시 첫 페이지로 리셋
+  }, [company, searchQuery, orderBy]);
+
+  const totalPages = Math.ceil(filteredData.length / viewCompanyInfoNum);
+  const indexOfLastItem = currentPage * viewCompanyInfoNum;
+  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      setSearchQuery(e.target.value);
     }
   };
 
@@ -71,6 +98,8 @@ function StartupList() {
               className={styles.search_input}
               placeholder="검색어를 입력해주세요"
               type="text"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </div>
           <div className={styles.dropdown}>
@@ -83,28 +112,32 @@ function StartupList() {
           </div>
         </div>
       </div>
+
+      <ListHeader headers={companyHeader} type="company" />
       <div className={styles.category_box}>
         <ul className={styles.category_kind}>
-          <li className={styles.category_header}>
-            <span className={styles.category_rank}>순위</span>
-            <span className={styles.category_company_name}>기업 명</span>
-            <span className={styles.category_company_info}>기업 소개</span>
-            <span className={styles.category_category}>카테고리</span>
-            <span className={styles.category_investment_amount}>누적 투자 금액</span>
-            <span className={styles.category_sales}>매출액</span>
-            <span className={styles.category_employee_num}>고용 인원</span>
-          </li>
-          {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-            <li key={index + indexOfFirstItem} className={styles.category_body}>
-              <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-              <span className={styles.category_company_name}>{info.name}</span>
-              <span className={styles.category_company_info}>{info.description}</span>
-              <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_investment_amount}>{info.totalInvestment}</span>
-              <span className={styles.category_sales}>{info.revenue}</span>
-              <span className={styles.category_employee_num}>{info.employees}</span>
-            </li>
-          ))}
+          {filteredData.length === 0 ? (
+            <li className={styles.no_results}>검색 결과가 없습니다.</li>
+          ) : (
+            filteredData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+              <li key={index + indexOfFirstItem} className={styles.category_body}>
+                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                <Link to={`/details/${info.id}`}>
+                  <span className={styles.category_company_name}>
+                    <img src={info.image} className={styles.logo_img} />
+                    {info.name}
+                  </span>
+                </Link>
+                <span className={styles.category_company_info}>{info.description}</span>
+                <span className={styles.category_category}>{info.category}</span>
+                <span className={styles.category_investment_amount}>
+                  {info.totalInvestment}억 원
+                </span>
+                <span className={styles.category_sales}>{info.revenue}억 원</span>
+                <span className={styles.category_employee_num}>{info.employees}명</span>
+              </li>
+            ))
+          )}
         </ul>
       </div>
       <Pagination

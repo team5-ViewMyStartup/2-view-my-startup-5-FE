@@ -3,9 +3,6 @@ import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
-import { fetchCompanyData, fetchInvestmentsData } from "../../api/api";
-import { useParams } from "react-router-dom";
-import Pagination from "../../components/Pagination/Pagination";
 
 const ITEM_PER_PAGE = 5;
 
@@ -57,15 +54,11 @@ function Details() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const companyData = await fetchCompanyData(companyId);
-        setCompany(companyData);
-
-        const investmentData = await fetchInvestmentsData(companyId);
-        console.log(investmentData);
-        setInvestments(investmentData);
-      } catch (error) {
-        console.error(error);
-      }
+        const response = await fetch("/detailsData.json");
+        if (!response.ok) throw new Error("데이터 못불러옴");
+        const data = await response.json();
+        setCompany(data[0]);
+      } catch (err) {}
     };
     fetchData();
   }, [companyId]);
@@ -91,7 +84,7 @@ function Details() {
   const corporateField = [
     {
       title: "누적 투자 금액",
-      value: `${totalInvestmentAmount} 억 원`,
+      value: `${company.totalInvestment} 억 원`,
       className: "",
     },
     {
@@ -109,12 +102,9 @@ function Details() {
   return (
     <div className={styles.corporate}>
       <div className={styles.corporate_information}>
-        <div className={styles.corporate_wrapper}>
-          <img src={company.image} alt="임시이미지" width="20px" />
-          <div className={styles.corporate_name}>
-            <h3>{company.name}</h3>
-            <h4 className={styles.cor_type}>{company.category}</h4>
-          </div>
+        <div className={styles.corporate_name}>
+          <h3>{company.name}</h3>
+          <h4 className={styles.cor_type}>{company.category}</h4> <hr />
         </div>
         <hr />
         <div className={styles.corporate_status}>
@@ -138,62 +128,101 @@ function Details() {
           <button className={styles.invest_button}>기업투자하기</button>
         </div>
         <hr />
-        {/* {company.investments.length === 0 ? ( */}
-        {/* // <div className={styles.no_investment}> */}
-        {/* <p>아직 투자한 기업이 없어요.</p> */}
-        {/* <p>버튼을 눌러 기업에 투자해보세요!</p> */}
-        {/* </div> */}
-        {/* // ) : ( */}
-        <>
-          <div>
-            <h3>총 {totalInvestmentAmount} 억원</h3>
+        {company.investments.length === 0 ? (
+          <div className={styles.no_investment}>
+            <p>아직 투자한 기업이 없어요.</p>
+            <p>버튼을 눌러 기업에 투자해보세요!</p>
           </div>
-          <div className={styles.investment_container}>
-            <ul className={styles.investment_list}>
-              <li className={styles.investment_header}>
-                <span className={styles.invest_inform}>순위</span>
-                <span className={styles.invest_inform}>투자자 이름</span>
-                <span className={styles.invest_inform}>투자 금액</span>
-                <span className={styles.investment_comment}>투자 코멘트</span>
-              </li>
-              {currentInvestments.map((investment, index) => (
-                <li key={index + indexOfFirstItem} className={styles.investment_item}>
-                  <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
-                  <span className={styles.invest_inform}>{investment.investorName}</span>
-                  <span className={styles.invest_inform}>{investment.amount} 억 원</span>
-                  <span className={styles.comment_content}>{investment.comment}</span>
-                  <span className={styles.select_box}>
-                    <div onClick={() => handleImgClick(index + indexOfFirstItem)}>
-                      <img src={select_icon} alt="select icon" className={styles.select_img} />
-                    </div>
-                    {activeDropdown === index + indexOfFirstItem && (
-                      <div className={styles.dropdown_select}>
-                        <div className={styles.dropbox_item}>
-                          <ul>
-                            <li
-                              className={styles.dropbox_item}
-                              onClick={() => openEditModal(investment)}
-                            >
-                              수정하기
-                            </li>
-                            <div className={styles.line}></div>
-                            <li
-                              className={`${styles.dropbox_item} ${styles.dropbox_item_last}`}
-                              onClick={() => openDeleteModal(investment)}
-                            >
-                              삭제하기
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-                  </span>
+        ) : (
+          <>
+            <div>
+              <h3>총 {totalInvestmentAmount} 억원</h3>
+            </div>
+            <div className={styles.investment_container}>
+              <ul className={styles.investment_list}>
+                <li className={styles.investment_header}>
+                  <span className={styles.invest_inform}>투자자 이름</span>
+                  <span className={styles.invest_inform}>순위</span>
+                  <span className={styles.invest_inform}>투자 금액</span>
+                  <span className={styles.investment_comment}>투자 코멘트</span>
                 </li>
+                {currentInvestments.map((investment, index) => (
+                  <li key={index + indexOfFirstItem} className={styles.investment_item}>
+                    <span className={styles.invest_inform}>{investment.investorName}</span>
+                    <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
+                    <span className={styles.invest_inform}>{investment.amount} 억 원</span>
+                    <span className={styles.comment_content}>{investment.comment}</span>
+                    <span className={styles.select_box}>
+                      <div onClick={() => handleImgClick(index + indexOfFirstItem)}>
+                        <img src={select_icon} alt="select icon" className={styles.select_img} />
+                      </div>
+                      {activeDropdown === index + indexOfFirstItem && (
+                        <div className={styles.dropdown_select}>
+                          <div className={styles.dropbox_item}>
+                            <ul>
+                              <li
+                                className={styles.dropbox_item}
+                                onClick={() => openEditModal(investment)}
+                              >
+                                수정하기
+                              </li>
+                              <div className={styles.line}></div>
+                              <li
+                                className={`${styles.dropbox_item} ${styles.dropbox_item_last}`}
+                                onClick={() => openDeleteModal(investment)}
+                              >
+                                삭제하기
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className={styles.pagination}>
+              <button
+                className={styles.page_button}
+                onClick={handlePrevious}
+                disabled={currentPage === 1}
+              >
+                &lt;
+              </button>
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index + 1}
+                  className={`${styles.page_button} ${
+                    currentPage === index + 1 ? styles.active : ""
+                  }`}
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </button>
               ))}
-            </ul>
-          </div>
-        </>
+              <button
+                className={styles.page_button}
+                onClick={handleNext}
+                disabled={currentPage === totalPages}
+              >
+                &gt;
+              </button>
+            </div>
+          </>
+        )}
       </div>
+      {investments.length === 0 ? (
+        <></>
+      ) : (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          hasNext={currentPage < totalPages}
+        />
+      )}
       {deleteModalOpen && (
         <DeleteModal
           isOpen={deleteModalOpen}

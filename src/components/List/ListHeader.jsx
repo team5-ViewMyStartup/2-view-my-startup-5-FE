@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "./ListHeader.module.css";
 
-const ListHeader = ({ headers = [] }) => {
+const ListHeader = ({ headers = [], type }) => {
   return (
     <div className={styles.header_container}>
       <div className={styles.header_div}>
         {headers.map((header, index) => (
-          <div key={index} className={styles.header_list}>
+          <div
+            key={index}
+            className={`${styles.header_list} ${type === "company" ? styles.company : ""} ${
+              type === "status" ? styles.status : ""
+            }`}
+          >
             <strong>{header}</strong>
           </div>
         ))}

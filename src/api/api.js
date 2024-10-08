@@ -66,6 +66,7 @@ export const updateInvestmentComment = async (investmentId, investorName, commen
       "Content-Type": "application/json",
     },
     data: { comment, password },
+    d6553c79085130231f6454fc28ef53f2891edb4,
   });
   return res.body;
 };
