@@ -14,7 +14,7 @@
 .modal_content {
   background-color: #212121;
   padding: 30px;
-  border-radius: 8px;
+  border-radius: 20px;
   width: 500px;
   max-width: 90%;
   z-index: 1001;
@@ -43,7 +43,7 @@
 
 .button_container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .button {
@@ -56,4 +56,37 @@
   border-radius: 20px;
   border: none;
   cursor: pointer;
+}
+
+.cancel_button {
+  background-color: #212121;
+  border-color: #eb5230;
+  color: #eb5230;
+  font-size: 16px;
+  font-weight: 700;
+  width: 200px;
+}
+
+.textarea {
+  border-radius: 10px;
+  height: 108px;
+  resize: none;
+  padding: 15px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input,
+.textarea {
+  margin-top: 20px;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
 }
