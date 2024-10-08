@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
-import DeleteModal from "./DeleteModal";
-import EditModal from "./EditModal";
+import DeleteModal from "../../components/Modal/DeleteModal";
+import EditModal from "../../components/Modal/DeleteModal";
 import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
