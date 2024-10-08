@@ -23,7 +23,10 @@ function CompareCompany() {
   const [isAdditionalModalOpen, setIsAdditionalModalOpen] = useState(false);
   const [allCompanies, setAllCompanies] = useState([]);
   const companiesPerPage = 5;
-
+  /**TODO
+   * fixing git problem
+   *
+   * */
   useEffect(() => {
     const getCompanies = async () => {
       try {
