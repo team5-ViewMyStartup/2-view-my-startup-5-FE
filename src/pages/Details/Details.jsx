@@ -6,9 +6,7 @@ import EditModal from "./EditModal";
 import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
-
 const ITEM_PER_PAGE = 5;
-
 function Details() {
   const { companyId } = useParams();
   const [company, setCompany] = useState();
@@ -18,14 +16,11 @@ function Details() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(null);
-
   const totalInvestmentAmount = investments
     ? investments.reduce((total, investment) => {
         return total + investment.amount;
       }, 0)
     : 0;
-  console.log(investments);
-
   const indexOfLastItem = currentPage * ITEM_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEM_PER_PAGE;
   const currentInvestments =
@@ -34,33 +29,27 @@ function Details() {
           .sort((a, b) => b.amount - a.amount)
           .slice(indexOfFirstItem, indexOfLastItem)
       : [];
-
   const openDeleteModal = (investment) => {
     setSelectedInvestment(investment);
     setDeleteModalOpen(true);
   };
-
   const closeDeleteModal = () => {
     setDeleteModalOpen(false);
     setSelectedInvestment(null);
   };
-
   const openEditModal = (investment) => {
     setSelectedInvestment(investment);
     setEditModalOpen(true);
   };
-
   const closeEditModal = () => {
     setEditModalOpen(false);
     setSelectedInvestment(null);
   };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
         const companyData = await fetchDetailCompanyData(companyId);
         setCompany(companyData);
-
         const investmentData = await fetchInvestmentsData(companyId);
         setInvestments(investmentData);
       } catch (error) {
@@ -69,25 +58,19 @@ function Details() {
     };
     fetchData();
   }, [companyId]);
-
   if (!company) {
     return <div>데이터 불러오지 못했습니다</div>;
   }
-
   const totalPages = Math.ceil(investments.length / ITEM_PER_PAGE);
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
-
   const handleImgClick = (index) => {
     toggleDropdown(index);
   };
-
   const corporateField = [
     {
       title: "누적 투자 금액",
@@ -105,7 +88,6 @@ function Details() {
       className: "",
     },
   ];
-
   return (
     <div className={styles.corporate}>
       <div className={styles.corporate_information}>
@@ -234,5 +216,4 @@ function Details() {
     </div>
   );
 }
-
 export default Details;

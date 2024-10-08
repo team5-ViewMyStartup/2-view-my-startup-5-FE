@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 
-.investment {
+.investment,
+.compare {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12,7 +13,8 @@
   margin-top: 40px;
 }
 
-.investment_header {
+.investment_header,
+.compare_header {
   width: 1200px;
   align-items: center;
   display: flex;
@@ -20,7 +22,8 @@
   margin-bottom: 16px;
 }
 
-.investment_status {
+.investment_status,
+.compare_status {
   font-weight: 700;
   font-size: 20px;
   line-height: 20px;
@@ -37,7 +40,8 @@
   position: relative;
 }
 
-.investment_body {
+.investment_body,
+.compare_body {
   width: 1200px;
   text-align: center;
   background-color: #2e2e2e;
@@ -134,7 +138,9 @@
 }
 
 .category_startup_investment,
-.category_total_investment {
+.category_total_investment,
+.category_selection,
+.category_compare_selection {
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./CompareStatus.module.css";
+import styles from "../../components/Style/style.module.css";
 import { compareOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
 import { compareHeader } from "../../components/List/HeaderOption";

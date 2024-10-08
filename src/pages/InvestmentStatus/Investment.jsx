@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Investment.module.css";
+import styles from "../../components/Style/style.module.css";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import ListHeader from "../../components/List/ListHeader";
 import { investmentOptions } from "../../components/Dropdown/DropdownOption";
