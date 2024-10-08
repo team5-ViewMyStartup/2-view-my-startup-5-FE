@@ -64,7 +64,7 @@ const ModalSelectComparision = ({
 
   useEffect(() => {
     const companies = companiesMockData;
-    setSelectedCompanies(companies.slice(0, 2)); // 초기 선택 기업
+    setSelectedCompanies(companies.slice(0, 0)); // 초기 선택 기업
     setCompanyList(companies); // 전체 기업 목록
   }, []);
 

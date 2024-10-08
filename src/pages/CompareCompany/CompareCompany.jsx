@@ -28,8 +28,8 @@ function CompareCompany() {
     const getCompanies = async () => {
       try {
         const companies = companiesMockData;
-        setSelectedCompanies(companies.slice(0, 0));
-        setAdditionalCompanies(companies.slice(0));
+        setSelectedCompanies([]);
+        setAdditionalCompanies(companies);
       } catch (error) {
         alert("실패");
         console.error("기업 데이터를 가져오는데 실패했습니다.", error);
