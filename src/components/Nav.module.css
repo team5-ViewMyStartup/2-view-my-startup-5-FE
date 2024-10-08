@@ -1,5 +1,4 @@
 .nav {
-
   position: sticky;
   z-index: 1;
   padding: 15px 0;
@@ -19,6 +18,9 @@ ul.menu {
   padding-left: 50px;
   margin: 0;
   list-style: none;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 17.9px;
 }
 
 ul.menu > li:not(:last-child) {
@@ -28,4 +30,20 @@ ul.menu > li:not(:last-child) {
 ul.menu a:hover,
 ul.menu a:active {
   text-decoration: underline;
+}
+
+@media (max-device-width: 1200px) and (min-device-width: 743px) {
+  .nav {
+    margin-left: 24px;
+    gap: 24px;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .menu {
+    padding: 21px 17px;
+    gap: 10px;
+  }
 }

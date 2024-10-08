@@ -157,5 +157,5 @@
   border-bottom: 1px solid #4b4b4b !important;
 }
 
-@media (max-width: 744px) {
+@media (max-device-width: 1200px) and (min-device-width: 743px) {
 }

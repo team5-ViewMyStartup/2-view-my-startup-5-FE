@@ -1,11 +1,14 @@
-import React, { useEffect, useState, useParams } from "react";
+import React, { useEffect, useState } from "react";
 import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "../../components/Modal/DeleteModal";
 import EditModal from "../../components/Modal/DeleteModal";
+import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
+import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 
 const ITEM_PER_PAGE = 5;
+
 function Details() {
   const { companyId } = useParams();
   const [company, setCompany] = useState();
@@ -15,11 +18,13 @@ function Details() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(null);
+
   const totalInvestmentAmount = investments
-    ? investments.reduce((total, investment) => {
+    ? Object.values(investments).reduce((total, investment) => {
         return total + investment.amount;
       }, 0)
     : 0;
+
   const indexOfLastItem = currentPage * ITEM_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - ITEM_PER_PAGE;
   const currentInvestments =
@@ -28,27 +33,33 @@ function Details() {
           .sort((a, b) => b.amount - a.amount)
           .slice(indexOfFirstItem, indexOfLastItem)
       : [];
+
   const openDeleteModal = (investment) => {
     setSelectedInvestment(investment);
     setDeleteModalOpen(true);
   };
+
   const closeDeleteModal = () => {
     setDeleteModalOpen(false);
     setSelectedInvestment(null);
   };
+
   const openEditModal = (investment) => {
     setSelectedInvestment(investment);
     setEditModalOpen(true);
   };
+
   const closeEditModal = () => {
     setEditModalOpen(false);
     setSelectedInvestment(null);
   };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const companyData = await fetchDetailCompanyData(companyId);
         setCompany(companyData);
+
         const investmentData = await fetchInvestmentsData(companyId);
         setInvestments(investmentData);
       } catch (error) {
@@ -57,23 +68,29 @@ function Details() {
     };
     fetchData();
   }, [companyId]);
+
   if (!company) {
     return <div>데이터 불러오지 못했습니다</div>;
   }
+
   const totalPages = Math.ceil(investments.length / ITEM_PER_PAGE);
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
   const toggleDropdown = (index) => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
+
   const handleImgClick = (index) => {
     toggleDropdown(index);
   };
+
   const corporateField = [
     {
       title: "누적 투자 금액",
-      value: `${company.totalInvestment} 억 원`,
+      value: `${company.totalInvestmentAmount} 억 원`,
       className: "",
     },
     {
@@ -87,12 +104,16 @@ function Details() {
       className: "",
     },
   ];
+
   return (
     <div className={styles.corporate}>
       <div className={styles.corporate_information}>
-        <div className={styles.corporate_name}>
-          <h3>{company.name}</h3>
-          <h4 className={styles.cor_type}>{company.category}</h4> <hr />
+        <div className={styles.corporate_wrapper}>
+          <img src={company.image} alt="회사 로고" className={styles.logo_img} />
+          <div className={styles.corporate_name}>
+            <h3>{company.name}</h3>
+            <h4 className={styles.cor_type}>{company.category}</h4>
+          </div>
         </div>
         <hr />
         <div className={styles.corporate_status}>
@@ -116,7 +137,7 @@ function Details() {
           <button className={styles.invest_button}>기업투자하기</button>
         </div>
         <hr />
-        {company.investments.length === 0 ? (
+        {investments.length === 0 ? (
           <div className={styles.no_investment}>
             <p>아직 투자한 기업이 없어요.</p>
             <p>버튼을 눌러 기업에 투자해보세요!</p>
@@ -129,15 +150,15 @@ function Details() {
             <div className={styles.investment_container}>
               <ul className={styles.investment_list}>
                 <li className={styles.investment_header}>
-                  <span className={styles.invest_inform}>투자자 이름</span>
                   <span className={styles.invest_inform}>순위</span>
+                  <span className={styles.invest_inform}>투자자 이름</span>
                   <span className={styles.invest_inform}>투자 금액</span>
                   <span className={styles.investment_comment}>투자 코멘트</span>
                 </li>
                 {currentInvestments.map((investment, index) => (
                   <li key={index + indexOfFirstItem} className={styles.investment_item}>
-                    <span className={styles.invest_inform}>{investment.investorName}</span>
                     <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
+                    <span className={styles.invest_inform}>{investment.investorName}</span>
                     <span className={styles.invest_inform}>{investment.amount} 억 원</span>
                     <span className={styles.comment_content}>{investment.comment}</span>
                     <span className={styles.select_box}>
@@ -212,4 +233,5 @@ function Details() {
     </div>
   );
 }
+
 export default Details;
