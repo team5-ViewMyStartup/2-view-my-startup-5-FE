@@ -20,7 +20,7 @@ function Details() {
   const [selectedInvestment, setSelectedInvestment] = useState(null);
 
   const totalInvestmentAmount = investments
-    ? investments.reduce((total, investment) => {
+    ? Object.values(investments).reduce((total, investment) => {
         return total + investment.amount;
       }, 0)
     : 0;
