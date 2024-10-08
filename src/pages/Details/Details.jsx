@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useParams } from "react";
 import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
-import DeleteModal from "./DeleteModal";
-import EditModal from "./EditModal";
+import DeleteModal from "../../components/Modal/DeleteModal";
+import EditModal from "../../components/Modal/DeleteModal";
+import Pagination from "../../components/Pagination/Pagination";
 
 const ITEM_PER_PAGE = 5;
 
@@ -182,34 +183,6 @@ function Details() {
                 ))}
               </ul>
             </div>
-
-            <div className={styles.pagination}>
-              <button
-                className={styles.page_button}
-                onClick={handlePrevious}
-                disabled={currentPage === 1}
-              >
-                &lt;
-              </button>
-              {Array.from({ length: totalPages }, (_, index) => (
-                <button
-                  key={index + 1}
-                  className={`${styles.page_button} ${
-                    currentPage === index + 1 ? styles.active : ""
-                  }`}
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              ))}
-              <button
-                className={styles.page_button}
-                onClick={handleNext}
-                disabled={currentPage === totalPages}
-              >
-                &gt;
-              </button>
-            </div>
           </>
         )}
       </div>
@@ -249,12 +222,6 @@ function Details() {
           }}
         />
       )}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        hasNext={currentPage < totalPages}
-      />
     </div>
   );
 }
