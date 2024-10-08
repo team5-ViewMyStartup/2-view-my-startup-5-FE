@@ -19,7 +19,7 @@ function CompareCompany() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isComparisonVisible, setIsComparisonVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1);
   const [isAdditionalModalOpen, setIsAdditionalModalOpen] = useState(false);
   const [allCompanies, setAllCompanies] = useState([]);
   const companiesPerPage = 5;
