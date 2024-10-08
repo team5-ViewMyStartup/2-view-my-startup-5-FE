@@ -24,8 +24,9 @@ function CompareCompany() {
   const [allCompanies, setAllCompanies] = useState([]);
   const companiesPerPage = 5;
   /**TODO
-   * fixing git problem
-   * test git push, if you can see this, you can push your code.
+   * first test push:  fixing git problem
+   * 2nd test push: test git push, if you can see this, you can push your code.
+   * 3rd test push: this push is after 'pull origin dev'
    * */
   useEffect(() => {
     const getCompanies = async () => {
