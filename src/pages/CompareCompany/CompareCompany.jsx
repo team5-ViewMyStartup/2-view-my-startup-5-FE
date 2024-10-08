@@ -27,6 +27,7 @@ function CompareCompany() {
    * first test push:  fixing git problem
    * 2nd test push: test git push, if you can see this, you can push your code.
    * 3rd test push: this push is after 'pull origin dev'
+   * 4th last test
    * */
   useEffect(() => {
     const getCompanies = async () => {
