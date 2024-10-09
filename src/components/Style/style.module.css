@@ -205,3 +205,83 @@
     font-weight: 400;
   }
 }
+
+@media (max-device-width: 744px) and (min-device-width: 374px) {
+  body {
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  .investment,
+  .compare {
+    width: 100%;
+    margin-top: 22px;
+    display: flex;
+  }
+
+  .investment_header,
+  .compare_header {
+    width: 100%;
+    margin-left: 30px;
+    margin-right: 16px;
+  }
+
+  .mobile_scroll {
+    width: 90vw;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-x: auto;
+    padding-bottom: 15px;
+  }
+
+  .investment_body,
+  .compare_body {
+    width: 696px;
+  }
+
+  .category_rank {
+    font-weight: 400;
+    width: 60px;
+    height: 64px;
+  }
+
+  .category_company_name {
+    width: 140px;
+    height: 64px;
+  }
+
+  .category_company_info {
+    width: 180px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_category {
+    width: 84px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_startup_investment,
+  .category_total_investment,
+  .category_selection,
+  .category_compare_selection {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  ::-webkit-scrollbar {
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #212121;
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #131313;
+    border-radius: 8px;
+  }
+}

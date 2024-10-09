@@ -65,9 +65,13 @@
   width: 230.63px;
 }
 
-@media (max-device-width: 1200px) and (min-device-width: 743px) {
+@media (max-device-width: 1200px) and (min-device-width: 374px) {
+  .header_container {
+    width: 696px;
+  }
+
   .header_list.status:nth-child(1) {
-    width: 64x;
+    width: 60x;
     display: flex;
     justify-content: center;
     align-items: center;

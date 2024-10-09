@@ -70,23 +70,25 @@ function Investment() {
           />
         </div>
       </div>
-      <ListHeader headers={investmentHeader} type="status" />
-      <div className={styles.investment_body}>
-        <ul className={styles.category_classification}>
-          {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-            <li key={index + indexOfFirstItem} className={styles.category_body}>
-              <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
-              <span className={styles.category_company_name}>
-                <img src={info.image} className={styles.logo_img} />
-                {info.name}
-              </span>
-              <span className={styles.category_company_info}>{info.description}</span>
-              <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_startup_investment}>{info.revenue}억 원</span>
-              <span className={styles.category_total_investment}>{info.totalInvestment}명</span>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.mobile_scroll}>
+        <ListHeader headers={investmentHeader} type="status" />
+        <div className={styles.investment_body}>
+          <ul className={styles.category_classification}>
+            {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+              <li key={index + indexOfFirstItem} className={styles.category_body}>
+                <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
+                <span className={styles.category_company_name}>
+                  <img src={info.image} className={styles.logo_img} />
+                  {info.name}
+                </span>
+                <span className={styles.category_company_info}>{info.description}</span>
+                <span className={styles.category_category}>{info.category}</span>
+                <span className={styles.category_startup_investment}>{info.revenue}억 원</span>
+                <span className={styles.category_total_investment}>{info.totalInvestment}명</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <Pagination
         currentPage={currentPage}
