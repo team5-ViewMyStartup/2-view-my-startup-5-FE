@@ -47,8 +47,6 @@ function Details() {
   };
 
   const openEditModal = (investment) => {
-    console.log("선택된 투자:", investment);
-    console.log(investment.id);
     setSelectedInvestment(investment);
     setEditModalOpen(true);
   };
@@ -116,6 +114,24 @@ function Details() {
       className: "",
     },
   ];
+
+  const handleDeleteInvestment = (investmentId) => {
+    setInvestments((prevInvestments) =>
+      prevInvestments.filter((investment) => investment.id !== investmentId),
+    );
+  };
+
+  const handleEditInvestment = (updatedInvestment) => {
+    setInvestments((prevInvestments) =>
+      prevInvestments.map((investment) =>
+        investment.id === updatedInvestment.id ? updatedInvestment : investment,
+      ),
+    );
+  };
+
+  const handleAddInvestment = (newInvestment) => {
+    setInvestments((prevInvestments) => [...prevInvestments, newInvestment]);
+  };
 
   return (
     <div className={styles.corporate}>
@@ -223,6 +239,7 @@ function Details() {
           isOpen={deleteModalOpen}
           isClose={closeDeleteModal}
           investment={selectedInvestment}
+          onDelete={handleDeleteInvestment}
         />
       )}
       {editModalOpen && (
@@ -236,6 +253,7 @@ function Details() {
             });
             setInvestments(updatedInvestments);
           }}
+          onEdit={handleEditInvestment}
         />
       )}
       {investModalOpen && (
@@ -248,11 +266,6 @@ function Details() {
               // early return pattern
               if (invest.id !== updatedInvestment.id) return invest;
 
-              // return {
-              //   ...invest,
-              //   ...updatedInvestment,
-              // };
-
               return Object.assign({}, invest, updatedInvestment);
             });
 
@@ -261,6 +274,7 @@ function Details() {
               investments: updatedInvestments,
             }));
           }}
+          onAdd={handleAddInvestment}
         />
       )}
     </div>

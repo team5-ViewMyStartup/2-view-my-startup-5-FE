@@ -4,7 +4,7 @@ import closed from "../../images/closed.svg";
 import { addNewInvestment } from "../../api/api";
 import { getNicknameFromToken } from "../../utils/jwtUtils";
 
-function InvestModal({ isOpen, isClose, company, onSave }) {
+function InvestModal({ isOpen, isClose, company, onSave, onAdd }) {
   const [amount, setAmount] = useState("");
   const [comment, setComment] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +35,7 @@ function InvestModal({ isOpen, isClose, company, onSave }) {
 
     const response = await addNewInvestment(newInvestment);
     onSave(response);
+    onAdd(newInvestment);
     isClose();
   };
 
