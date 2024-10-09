@@ -72,12 +72,11 @@ function Signup() {
     e.preventDefault();
     if (validateForm()) {
       try {
-        await postSignUp(
-          formData.email,
-          formData.nickname,
-          formData.password,
-          formData.confirmPassword,
-        );
+        await postSignUp({
+          email: formData.email,
+          nickname: formData.nickname,
+          password: formData.password,
+        });
 
         navigate("/login");
       } catch (e) {

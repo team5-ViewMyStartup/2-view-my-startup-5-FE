@@ -106,7 +106,7 @@ export const addNewInvestment = async (companyId, investorName, amount, comment,
 };
 
 //회원가입
-export const postSignUp = async (email, nickname, password, passwordCheck) => {
+export const postSignUp = async (email, nickname, password) => {
   const res = await fetchData({
     url: `${BASE_URL}/signUp`,
     method: HTTP_METHODS.POST,
@@ -118,7 +118,6 @@ export const postSignUp = async (email, nickname, password, passwordCheck) => {
         email,
         nickname,
         password,
-        passwordCheck,
       },
     },
   });
