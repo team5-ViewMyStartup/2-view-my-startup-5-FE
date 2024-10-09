@@ -7,12 +7,10 @@ import toggleOn from "../../imagesjun/btn_visibility_on_24px.png";
 import { postSignUp } from "../../api/api";
 
 function Signup() {
-  const [formData, setFormData] = useState({
-    email: "",
-    nickname: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [email, setEmail] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   // const [passwordStrength, setPasswordStrength] = useState("");
@@ -21,7 +19,16 @@ function Signup() {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+
+    if (id === "email") {
+      setEmail(value);
+    } else if (id === "nickname") {
+      setNickname(value);
+    } else if (id === "password") {
+      setPassword(value);
+    } else if (id === "confirmPassword") {
+      setConfirmPassword(value);
+    }
 
     const newErrors = { ...errors };
     switch (id) {
@@ -54,7 +61,7 @@ function Signup() {
         break;
 
       case "confirmPassword":
-        if (value !== formData.password) {
+        if (value !== password) {
           newErrors.confirmPassword = "비밀번호가 일치하지 않습니다.";
         } else {
           delete newErrors.confirmPassword;
@@ -70,12 +77,12 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
+    if (validateForm) {
       try {
         await postSignUp({
-          email: formData.email,
-          nickname: formData.nickname,
-          password: formData.password,
+          email,
+          nickname,
+          password,
         });
 
         navigate("/login");
@@ -85,13 +92,7 @@ function Signup() {
     }
   };
   const isFormValid = () => {
-    return (
-      formData.email &&
-      formData.nickname &&
-      formData.password &&
-      formData.confirmPassword &&
-      Object.keys(errors).length === 0
-    );
+    return email && nickname && password && confirmPassword && Object.keys(errors).length === 0;
   };
   const validateForm = () => {
     const newErrors = {};
@@ -117,7 +118,7 @@ function Signup() {
             className={styles.email_input}
             id="email"
             placeholder="이메일을 입력해주세요"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
           />
           {errors.email && <p className={styles.error_message}>{errors.email}</p>}
@@ -130,7 +131,7 @@ function Signup() {
             className={styles.nick_input}
             id="nickname"
             placeholder="닉네임을 입력해주세요"
-            value={formData.nickname}
+            value={nickname}
             onChange={handleChange}
           />
         </div>
@@ -143,7 +144,7 @@ function Signup() {
             id="password"
             placeholder="비밀번호를 입력해주세요"
             type={showPassword ? "text" : "password"}
-            value={formData.password}
+            value={password}
             onChange={handleChange}
           />
           {errors.password && <p className={styles.error_message}>{errors.password}</p>}
@@ -163,7 +164,7 @@ function Signup() {
             id="confirmPassword"
             placeholder="비밀번호를 다시 한 번 입력해주세요"
             type={showPassword ? "text" : "password"}
-            value={formData.confirmPassword}
+            value={confirmPassword}
             onChange={handleChange}
           />
           {errors.confirmPassword && (
