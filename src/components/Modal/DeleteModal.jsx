@@ -3,6 +3,7 @@ import styles from "./Modal.module.css";
 import closed from "../../images/closed.svg";
 import { deleteInvestment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
+import { getNicknameFromToken } from "../../utils/jwtUtils";
 
 function DeleteModal({ isOpen, isClose, investment, onDelete }) {
   const [password, setPassword] = useState("");
@@ -12,9 +13,24 @@ function DeleteModal({ isOpen, isClose, investment, onDelete }) {
 
   const handleDelete = async () => {
     try {
-      await deleteInvestment(investment._id, password);
-      onDelete(investment._id);
+      const nickname = getNicknameFromToken();
+      const token = localStorage.getItem("token");
 
+      if (nickname !== investment.investorName) {
+        setErrorModalOpen(true);
+        return;
+      }
+      const investmentId = investment.id;
+
+      await deleteInvestment(
+        { investmentId, password },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      onDelete(investmentId);
       isClose();
     } catch (e) {
       setErrorModalOpen(true);
