@@ -29,11 +29,22 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
   const response = await fetch(url, options);
 
   if (!response.ok) {
-    throw new Error("에러 발생");
+    const errorDetails = await response.text();
+    console.error(`Error Details: ${errorDetails}`);
+    throw new Error(`API 호출 실패: ${response.statusText}`);
   }
+
+  const responseBody = await response.json();
+  const responseHeaders = response.headers || {};
+
+  if (!token) {
+    throw new Error("토큰을 추출할 수 없습니다.");
+  }
+  localStorage.setItem("token", token);
+
   return {
-    body: await response.json(),
-    headers: response.headers,
+    body: responseBody,
+    headers: responseHeaders,
   };
 }
 
@@ -92,7 +103,7 @@ export const deleteInvestment = async (investmentId, investorName, password) => 
   return res.body;
 };
 
-export const addNewInvestment = async (companyId, investorName, amount, comment, password) => {
+export const addNewInvestment = async ({ companyId, amount, comment, password }) => {
   const res = await fetchData({
     url: `${BASE_URL}/investments`,
     method: HTTP_METHODS.POST,
@@ -101,7 +112,6 @@ export const addNewInvestment = async (companyId, investorName, amount, comment,
     },
     data: {
       companyId,
-      investorName,
       amount,
       comment,
       password,
@@ -111,7 +121,7 @@ export const addNewInvestment = async (companyId, investorName, amount, comment,
 };
 
 //회원가입
-export const postSignUp = async (email, nickname, password) => {
+export const postSignUp = async ({ email, nickname, password }) => {
   console.log(email, nickname, password);
   const res = await fetchData({
     url: `${BASE_URL}/users`,
@@ -142,10 +152,21 @@ export const postSignIn = async (email, password) => {
     },
   });
 
-  const token = res.body.token;
-  if (token) {
-    localStorage.setItem("token", token);
+  const authorizationHeader = res.headers.get("Authorization");
+  console.log(authorizationHeader);
+
+  if (!authorizationHeader) {
+    throw new Error("Authorization 헤더가 없습니다.");
   }
+
+  const [_, token] = authorizationHeader.split(" ");
+
+  if (!token) {
+    throw new Error("토큰을 추출할 수 없습니다.");
+  }
+
+  localStorage.setItem("token", token);
+
   return res.body;
 };
 

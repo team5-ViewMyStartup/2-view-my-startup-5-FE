@@ -1,30 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Modal.module.css";
-import closed from "../images/closed.svg";
+import closed from "../../images/closed.svg";
+import { addNewInvestment } from "../../api/api";
+import { getNicknameFromToken } from "../../utils/jwtUtils";
 
-function InvestModal({ isOpen, isClose, company, user, onSave }) {
+function InvestModal({ isOpen, isClose, company, onSave }) {
   const [amount, setAmount] = useState("");
   const [comment, setComment] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [nickname, setNickname] = useState("");
 
+  useEffect(() => {
+    const userNickname = getNicknameFromToken();
+    setNickname(userNickname);
+  }, [isOpen]);
+
+  if (!company) {
+    return null;
+  }
   const handleSubmit = async () => {
     if (!isOpen) return null;
-    // todo: password-checker로 확인
-    if (password !== confirmPassword) {
-      alert("비밀번호가 일치하지 않습니다");
+
+    if (!password) {
+      alert("비밀번호를 입력해주세요");
       return;
     }
 
     const newInvestment = {
       companyId: company.id,
-      investorName: user.name,
-      amount: amount,
+      amount: Number(amount),
       comment: comment,
+      password,
     };
 
-    await addNewInvestment(company.id, user.name, amount, comment, password);
-    onSave(newInvestment);
+    const response = await addNewInvestment(newInvestment);
+    onSave(response);
     isClose();
   };
 
@@ -36,15 +46,14 @@ function InvestModal({ isOpen, isClose, company, user, onSave }) {
           <img className={styles.close} src={closed} alt="closed icon" onClick={isClose} />
         </div>
         <div className={styles.company_information}>
-          <img src={company.img} alt={company.name} className={styles.company_img} />
+          <img src={company.image} alt="company" className={styles.company_img} />
           <h3>{company.name}</h3>
           <p>{company.category}</p>
         </div>
         <form className={styles.investment_form_container}>
           <label>
             투자자 이름
-            {/* <h2>{user.name}</h2> */}
-            <hr />
+            <h5>{nickname}</h5>
           </label>
           <label>
             투자 금액
@@ -73,16 +82,6 @@ function InvestModal({ isOpen, isClose, company, user, onSave }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="비밀번호를 입력해주세요"
-            />
-          </label>
-          <label>
-            비밀번호 확인
-            <input
-              className={styles.input}
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="비밀번호를 다시 한 번 입력해주세요"
             />
           </label>
           <div className={styles.button_container}>

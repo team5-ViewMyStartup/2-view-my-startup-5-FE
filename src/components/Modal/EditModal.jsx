@@ -3,32 +3,47 @@ import styles from "./Modal.module.css";
 import closed from "../../images/closed.svg";
 import { updateInvestmentComment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 const EditModal = ({ isOpen, isClose, investment, onSave }) => {
   const [newComment, setNewComment] = useState(investment.comment);
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   if (!isOpen) return null;
 
   const handleSave = async () => {
     try {
-      const token = JSON.parse(localStorage.getItem("token"))?.value;
-      const { nickname } = jwtDecode(token);
+      const token = localStorage.getItem("token");
+      const decodedToken = jwtDecode(token);
 
-      const updatedComment = await updateInvestmentComment(
-        { id: investment._id, investorName: investment.investorName, newComment, password },
-        {
-          headers: {
-            Authorization: `${token}`,
-          },
+      const nickname = decodedToken.nickname;
+
+      if (nickname !== investment.investorName) {
+        setErrorMessage("투자자 이름이 일치하지 않습니다.");
+        setErrorModalOpen(true);
+        return;
+      }
+
+      const requestData = {
+        id: investment._id,
+        investorName: investment.investorName,
+        newComment,
+        password,
+      };
+
+      const updatedComment = await updateInvestmentComment(requestData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      });
+      console.log("서버 응답:", updatedComment);
 
       onSave(updatedComment);
       isClose();
     } catch (e) {
+      console.error("Error while saving the comment:", e);
       setErrorModalOpen(true);
     }
   };
@@ -44,7 +59,6 @@ const EditModal = ({ isOpen, isClose, investment, onSave }) => {
           <input
             className={styles.input}
             type="text"
-            defaultValue={investment.comment}
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
           />
@@ -52,10 +66,10 @@ const EditModal = ({ isOpen, isClose, investment, onSave }) => {
             <h4>비밀번호</h4>
             <input
               className={styles.input}
+              type="password"
               placeholder="패스워드를 입력해주세요"
               onChange={(e) => setPassword(e.target.value)}
             />
-            {/* 데이터에 비밀번호 필요 */}
           </div>
           <div className={styles.button_container}>
             <button className={styles.button} onClick={handleSave}>

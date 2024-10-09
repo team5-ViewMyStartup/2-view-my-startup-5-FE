@@ -36,22 +36,27 @@ function Login() {
   const loginButtonClicked = async () => {
     try {
       const response = await postSignIn(email, password);
-      // console.log(response.headers);
-      const [_, token] = response.headers.get("Authorization")?.split(" ");
-      // console.log(token);
 
-      localStorage.setItem(
-        "token",
-        JSON.stringify({ value: token, expire: Date.now() + 1800 * 1000 }),
-      );
+      // const authorizationHeader = response.headers.get("Authorization");
 
-      const storedToken = JSON.parse(localStorage.getItem("token"));
+      // if (!authorizationHeader) {
+      // throw new Error("Authorization 헤더가 없습니다.");
+      // }
 
-      if (storedToken.expire < Date.now()) {
-        localStorage.removeItem("token");
-        window.location.href = "/login";
-        return;
-      }
+      // const [_, token] = authorizationHeader.split(" ");
+
+      // localStorage.setItem(
+      // "token",
+      // JSON.stringify({ value: token, expire: Date.now() + 1800 * 1000 }),
+      // );
+
+      // const storedToken = JSON.parse(localStorage.getItem("token"));
+      //
+      // if (storedToken.expire < Date.now()) {
+      // localStorage.removeItem("token");
+      // window.location.href = "/login";
+      // return;
+      // }
 
       navigate("/all-company");
 

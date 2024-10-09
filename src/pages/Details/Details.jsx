@@ -2,21 +2,24 @@ import React, { useEffect, useState } from "react";
 import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "../../components/Modal/DeleteModal";
-import EditModal from "../../components/Modal/DeleteModal";
+import EditModal from "../../components/Modal/EditModal";
+import InvestModal from "../../components/Modal/InvestModal";
 import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import { dblClick } from "@testing-library/user-event/dist/click";
 
 const ITEM_PER_PAGE = 5;
 
 function Details() {
   const { companyId } = useParams();
-  const [company, setCompany] = useState();
+  const [company, setCompany] = useState(null);
   const [investments, setInvestments] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+  const [investModalOpen, setInvestModalOpen] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(null);
 
   const totalInvestmentAmount = investments
@@ -52,6 +55,14 @@ function Details() {
   const closeEditModal = () => {
     setEditModalOpen(false);
     setSelectedInvestment(null);
+  };
+
+  const openInvestModal = () => {
+    setInvestModalOpen(true);
+  };
+
+  const closeInvestModal = () => {
+    setInvestModalOpen(false);
   };
 
   useEffect(() => {
@@ -90,7 +101,7 @@ function Details() {
   const corporateField = [
     {
       title: "누적 투자 금액",
-      value: `${company.totalInvestmentAmount} 억 원`,
+      value: `${company.totalInvestment} 억 원`,
       className: "",
     },
     {
@@ -134,7 +145,9 @@ function Details() {
       <div className={styles.investment_received}>
         <div className={styles.invest_wrapper}>
           <h3>View My Startup에서 받은 투자</h3>
-          <button className={styles.invest_button}>기업투자하기</button>
+          <button className={styles.invest_button} onClick={openInvestModal}>
+            기업투자하기
+          </button>
         </div>
         <hr />
         {investments.length === 0 ? (
@@ -227,6 +240,31 @@ function Details() {
               investments: updatedInvestments,
             }));
             closeEditModal();
+          }}
+        />
+      )}
+      {investModalOpen && (
+        <InvestModal
+          isOpen={investModalOpen}
+          isClose={closeInvestModal}
+          company={company}
+          onSave={(updatedInvestment) => {
+            const updatedInvestments = investments.map((invest) => {
+              // early return pattern
+              if (invest.id !== updatedInvestment.id) return invest;
+
+              // return {
+              //   ...invest,
+              //   ...updatedInvestment,
+              // };
+
+              return Object.assign({}, invest, updatedInvestment);
+            });
+
+            setCompany((prevCompany) => ({
+              ...prevCompany,
+              investments: updatedInvestments,
+            }));
           }}
         />
       )}
