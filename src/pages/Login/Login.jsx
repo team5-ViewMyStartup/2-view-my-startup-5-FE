@@ -5,13 +5,12 @@ import logoImg from "../../imagesjun/logo1.svg";
 import { useNavigate } from "react-router-dom";
 import toggleOn from "../../imagesjun/btn_visibility_on_24px.png";
 import toggleOff from "../../imagesjun/btn_visibility_off_24px.png";
+import { postSignIn } from "../../api/api";
 
 const USER_DATA = [
   { email: "test@test.com", password: "testtest1!" },
   { email: "test1@test.com", password: "testtest!" },
 ];
-
-const URL = "http://localhost:4000/users/login";
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -36,24 +35,25 @@ function Login() {
 
   const loginButtonClicked = async () => {
     try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      console.log(response.headers);
+      const response = await postSignIn(email, password);
+      // console.log(response.headers);
       const [_, token] = response.headers.get("Authorization")?.split(" ");
       // console.log(token);
 
-      localStorage.setItem("token", JSON.stringify({ value: token, expire: Date.now() }));
-      const { value, expire } = localStorage.getItem("token");
+      localStorage.setItem(
+        "token",
+        JSON.stringify({ value: token, expire: Date.now() + 1800 * 1000 }),
+      );
 
-      if (expire < Date.now()) {
+      const storedToken = JSON.parse(localStorage.getItem("token"));
+
+      if (storedToken.expire < Date.now()) {
         localStorage.removeItem("token");
         window.location.href = "/login";
+        return;
       }
+
+      navigate("/all-company");
 
       // const { email, nickname } = jwt_decode(value);
       /**

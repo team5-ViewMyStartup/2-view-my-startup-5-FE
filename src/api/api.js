@@ -13,10 +13,15 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
   const options = {
     method,
     headers: {
-      Authorization: token ? `${token}` : "",
       ...headers,
     },
   };
+
+  if (token) {
+    options.headers["Authorization"] = `Bearer ${token}`;
+  } else {
+    throw new Error("로그인 상태가 아닙니다.");
+  }
 
   if (data) {
     options.body = JSON.stringify(data);
@@ -108,17 +113,15 @@ export const addNewInvestment = async (companyId, investorName, amount, comment,
 //회원가입
 export const postSignUp = async (email, nickname, password) => {
   const res = await fetchData({
-    url: `${BASE_URL}/signUp`,
+    url: `${BASE_URL}/users`,
     method: HTTP_METHODS.POST,
     headers: {
       "Content-Type": "application/json",
     },
     data: {
-      user: {
-        email,
-        nickname,
-        password,
-      },
+      email,
+      nickname,
+      password,
     },
   });
   return res.body;
@@ -127,7 +130,7 @@ export const postSignUp = async (email, nickname, password) => {
 //로그인
 export const postSignIn = async (email, password) => {
   const res = await fetchData({
-    url: `${BASE_URL}/signIn`,
+    url: `${BASE_URL}/users/signIn`,
     method: HTTP_METHODS.POST,
     headers: {
       "Content-Type": "application/json",
@@ -137,6 +140,11 @@ export const postSignIn = async (email, password) => {
       password,
     },
   });
+
+  const token = res.body.token;
+  if (token) {
+    localStorage.setItem("token", token);
+  }
   return res.body;
 };
 
