@@ -7,7 +7,6 @@ import InvestModal from "../../components/Modal/InvestModal";
 import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
-import { dblClick } from "@testing-library/user-event/dist/click";
 
 const ITEM_PER_PAGE = 5;
 
@@ -48,6 +47,8 @@ function Details() {
   };
 
   const openEditModal = (investment) => {
+    console.log("선택된 투자:", investment);
+    console.log(investment.id);
     setSelectedInvestment(investment);
     setEditModalOpen(true);
   };
@@ -169,7 +170,7 @@ function Details() {
                   <span className={styles.investment_comment}>투자 코멘트</span>
                 </li>
                 {currentInvestments.map((investment, index) => (
-                  <li key={index + indexOfFirstItem} className={styles.investment_item}>
+                  <li key={investment.id} className={styles.investment_item}>
                     <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
                     <span className={styles.invest_inform}>{investment.investorName}</span>
                     <span className={styles.invest_inform}>{investment.amount} 억 원</span>
@@ -230,16 +231,10 @@ function Details() {
           isClose={closeEditModal}
           investment={selectedInvestment}
           onSave={(updatedInvestment) => {
-            const updatedInvestments = company.investments.map((invest) =>
-              invest.id === updatedInvestment.id
-                ? { ...invest, comment: updatedInvestment.comment }
-                : invest,
-            );
-            setCompany((prevCompany) => ({
-              ...prevCompany,
-              investments: updatedInvestments,
-            }));
-            closeEditModal();
+            const updatedInvestments = company.investments.map((invest) => {
+              if (invest._id !== updatedInvestment._id) return invest;
+            });
+            setInvestments(updatedInvestments);
           }}
         />
       )}

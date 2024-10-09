@@ -79,7 +79,7 @@ export const fetchInvestmentsData = async (companyId) => {
   return res.body;
 };
 
-export const updateInvestmentComment = async (investmentId, investorName, comment, password) => {
+export const updateInvestmentComment = async ({ investmentId, comment, password }) => {
   const res = await fetchData({
     url: `${BASE_URL}/investments/${investmentId}`,
     method: HTTP_METHODS.PATCH,
@@ -91,7 +91,7 @@ export const updateInvestmentComment = async (investmentId, investorName, commen
   return res.body;
 };
 
-export const deleteInvestment = async (investmentId, investorName, password) => {
+export const deleteInvestment = async ({ investmentId, password }) => {
   const res = await fetchData({
     url: `${BASE_URL}/investments/${investmentId}`,
     method: HTTP_METHODS.DELETE,

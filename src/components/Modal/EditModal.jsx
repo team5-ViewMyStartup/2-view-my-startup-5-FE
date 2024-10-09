@@ -3,47 +3,53 @@ import styles from "./Modal.module.css";
 import closed from "../../images/closed.svg";
 import { updateInvestmentComment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
-import { jwtDecode } from "jwt-decode";
+import { getNicknameFromToken } from "../../utils/jwtUtils";
 
 const EditModal = ({ isOpen, isClose, investment, onSave }) => {
   const [newComment, setNewComment] = useState(investment.comment);
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   if (!isOpen) return null;
 
   const handleSave = async () => {
     try {
+      const nickname = getNicknameFromToken();
       const token = localStorage.getItem("token");
-      const decodedToken = jwtDecode(token);
-
-      const nickname = decodedToken.nickname;
 
       if (nickname !== investment.investorName) {
-        setErrorMessage("투자자 이름이 일치하지 않습니다.");
         setErrorModalOpen(true);
         return;
       }
+      const investmentId = investment.id;
 
       const requestData = {
-        id: investment._id,
+        investmentId: investmentId,
         investorName: investment.investorName,
-        newComment,
+        comment: newComment,
         password,
       };
+
+      /**
+       * 뭐가 잘 안될때
+       * 그 데이터가 이동하는 루트를 따라서 콘솔을 다 찍어보기
+       * 데이터 구조가 전부 동일한지 확인
+       * 에러메세지가 웬만하면 정형화되어있음 -> 에러메세지를 머릿속으로 정리
+       *
+       *
+       */
+      //    console.log("데이터 확인", requestData);
 
       const updatedComment = await updateInvestmentComment(requestData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("서버 응답:", updatedComment);
 
       onSave(updatedComment);
       isClose();
     } catch (e) {
-      console.error("Error while saving the comment:", e);
+      console.error("코멘트 수정 실패", e);
       setErrorModalOpen(true);
     }
   };
