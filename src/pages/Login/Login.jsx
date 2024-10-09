@@ -5,6 +5,7 @@ import logoImg from "../../imagesjun/logo1.svg";
 import { useNavigate } from "react-router-dom";
 import toggleOn from "../../imagesjun/btn_visibility_on_24px.png";
 import toggleOff from "../../imagesjun/btn_visibility_off_24px.png";
+
 const USER_DATA = [
   { email: "test@test.com", password: "testtest1!" },
   { email: "test1@test.com", password: "testtest!" },
@@ -44,8 +45,17 @@ function Login() {
       });
       console.log(response.headers);
       const [_, token] = response.headers.get("Authorization")?.split(" ");
-      console.log(token);
+      // console.log(token);
+
       localStorage.setItem("token", JSON.stringify({ value: token, expire: Date.now() }));
+      const { value, expire } = localStorage.getItem("token");
+
+      if (expire < Date.now()) {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      }
+
+      // const { email, nickname } = jwt_decode(value);
       /**
        * 1. 모든 페이지에 접속할때 로컬스토리지의 토큰 조회
        *   - 토큰의 만료기간 비교해서 지났으면 로컬스토리지에있는거 지우고 로그인 페이지로 리다이렉트

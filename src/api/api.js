@@ -8,9 +8,14 @@ const HTTP_METHODS = Object.freeze({
 });
 
 export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers = {} }) {
+  const token = localStorage.getItem("token");
+
   const options = {
     method,
-    headers,
+    headers: {
+      Authorization: token ? `${token}` : "",
+      ...headers,
+    },
   };
 
   if (data) {
@@ -94,6 +99,42 @@ export const addNewInvestment = async (companyId, investorName, amount, comment,
       investorName,
       amount,
       comment,
+      password,
+    },
+  });
+  return res.body;
+};
+
+//회원가입
+export const postSignUp = async (email, nickname, password, passwordCheck) => {
+  const res = await fetchData({
+    url: `${BASE_URL}/signUp`,
+    method: HTTP_METHODS.POST,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: {
+      user: {
+        email,
+        nickname,
+        password,
+        passwordCheck,
+      },
+    },
+  });
+  return res.body;
+};
+
+//로그인
+export const postSignIn = async (email, password) => {
+  const res = await fetchData({
+    url: `${BASE_URL}/signIn`,
+    method: HTTP_METHODS.POST,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: {
+      email,
       password,
     },
   });

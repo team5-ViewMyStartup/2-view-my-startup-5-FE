@@ -3,6 +3,7 @@ import styles from "./Modal.module.css";
 import closed from "../../images/closed.svg";
 import { updateInvestmentComment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
+import jwtDecode from "jwt-decode";
 
 const EditModal = ({ isOpen, isClose, investment, onSave }) => {
   const [newComment, setNewComment] = useState(investment.comment);
@@ -13,11 +14,16 @@ const EditModal = ({ isOpen, isClose, investment, onSave }) => {
 
   const handleSave = async () => {
     try {
+      const token = JSON.parse(localStorage.getItem("token"))?.value;
+      const { nickname } = jwtDecode(token);
+
       const updatedComment = await updateInvestmentComment(
-        investment._id,
-        investment.investorName,
-        newComment,
-        password,
+        { id: investment._id, investorName: investment.investorName, newComment, password },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        },
       );
 
       onSave(updatedComment);
