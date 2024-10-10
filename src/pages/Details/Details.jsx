@@ -7,6 +7,7 @@ import InvestModal from "../../components/Modal/InvestModal";
 import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import Loading from "../../components/Loading";
 
 const ITEM_PER_PAGE = 5;
 
@@ -80,7 +81,7 @@ function Details() {
   }, [companyId]);
 
   if (!company) {
-    return <div>데이터 불러오지 못했습니다</div>;
+    return <Loading />;
   }
 
   const totalPages = Math.ceil(investments.length / ITEM_PER_PAGE);
