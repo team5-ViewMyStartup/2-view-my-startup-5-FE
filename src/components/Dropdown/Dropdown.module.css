@@ -71,3 +71,9 @@
   background-color: #333;
   font-weight: bold;
 }
+
+@media (max-device-width: 744px) and (min-device-width: 374px) {
+  .dropdown {
+    width: 277px;
+  }
+}

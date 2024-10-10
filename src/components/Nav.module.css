@@ -1,5 +1,8 @@
-.nav {
+/* * {
+  box-sizing: border-box;
+} */
 
+.nav {
   position: sticky;
   z-index: 1;
   padding: 15px 0;
@@ -19,6 +22,9 @@ ul.menu {
   padding-left: 50px;
   margin: 0;
   list-style: none;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 17.9px;
 }
 
 ul.menu > li:not(:last-child) {
@@ -28,4 +34,70 @@ ul.menu > li:not(:last-child) {
 ul.menu a:hover,
 ul.menu a:active {
   text-decoration: underline;
+}
+
+.m_logo {
+  display: none;
+}
+
+.logo {
+  display: block;
+}
+
+@media (max-device-width: 1200px) and (min-device-width: 743px) {
+  .nav {
+    margin-left: 24px;
+    gap: 24px;
+    display: flex;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .menu {
+    padding: 21px 17px;
+    gap: 10px;
+  }
+
+  .m_logo {
+    display: none;
+  }
+
+  .logo {
+    display: block;
+  }
+}
+
+@media (max-device-width: 744px) and (min-device-width: 374px) {
+  .nav {
+    margin-left: 16px;
+    gap: 16px;
+    width: 100%;
+    display: flex;
+    padding: 0;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .menu {
+    padding: 21px 8px;
+    gap: 10px;
+  }
+
+  ul {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14.32px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .m_logo {
+    display: block;
+  }
 }
