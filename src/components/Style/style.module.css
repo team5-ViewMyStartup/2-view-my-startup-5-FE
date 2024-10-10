@@ -157,7 +157,7 @@
   border-bottom: 1px solid #4b4b4b !important;
 }
 
-@media (max-device-width: 1200px) and (min-device-width: 743px) {
+@media (max-width: 1200px) and (min-width: 743px) {
   .investment,
   .compare {
     width: 696px;
@@ -206,7 +206,7 @@
   }
 }
 
-@media (max-device-width: 744px) and (min-device-width: 374px) {
+@media (max-width: 744px) and (min-width: 374px) {
   body {
     max-width: 100vw;
     width: 100%;
