@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./CompareStatus.module.css";
+import styles from "../../components/Style/style.module.css";
 import { compareOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
 import { compareHeader } from "../../components/List/HeaderOption";
@@ -70,23 +70,25 @@ function CompareStatus() {
           />
         </div>
       </div>
-      <ListHeader headers={compareHeader} type="status" />
-      <div className={styles.compare_body}>
-        <ul className={styles.category_classification}>
-          {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-            <li key={index + indexOfFirstItem} className={styles.category_body}>
-              <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-              <span className={styles.category_company_name}>
-                <img src={info.image} className={styles.logo_img} />
-                {info.name}
-              </span>
-              <span className={styles.category_company_info}>{info.description}</span>
-              <span className={styles.category_category}>{info.category}</span>
-              <span className={styles.category_selection}>{info.selectMyCount}</span>
-              <span className={styles.category_compare_selection}>{info.selectOtherCount}</span>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.mobile_scroll}>
+        <ListHeader headers={compareHeader} type="status" />
+        <div className={styles.compare_body}>
+          <ul className={styles.category_classification}>
+            {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+              <li key={index + indexOfFirstItem} className={styles.category_body}>
+                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                <span className={styles.category_company_name}>
+                  <img src={info.image} className={styles.logo_img} />
+                  {info.name}
+                </span>
+                <span className={styles.category_company_info}>{info.description}</span>
+                <span className={styles.category_category}>{info.category}</span>
+                <span className={styles.category_selection}>{info.selectMyCount}</span>
+                <span className={styles.category_compare_selection}>{info.selectOtherCount}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       <Pagination
         currentPage={currentPage}

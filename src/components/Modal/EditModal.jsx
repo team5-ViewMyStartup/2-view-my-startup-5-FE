@@ -4,13 +4,20 @@ import closed from "../../images/closed.svg";
 import { updateInvestmentComment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
 import { getNicknameFromToken } from "../../utils/jwtUtils";
+import toggleOn from "../../assets/btn_visibility_on_24px.png";
+import toggleOff from "../../assets/btn_visibility_off_24px.png";
 
 const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
   const [newComment, setNewComment] = useState(investment.comment);
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   if (!isOpen) return null;
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSave = async () => {
     try {
@@ -62,9 +69,15 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
             <h4>비밀번호</h4>
             <input
               className={styles.input}
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="패스워드를 입력해주세요"
               onChange={(e) => setPassword(e.target.value)}
+            />
+            <img
+              className={styles.toggle_img}
+              src={showPassword ? toggleOn : toggleOff}
+              alt="눈모양 토글"
+              onClick={togglePasswordVisibility}
             />
           </div>
           <div className={styles.button_container}>

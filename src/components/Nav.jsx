@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import Container from "./Container";
 import logoImg from "../images/logo_img.svg";
+import m_logo_img from "../assets/logo_mobile.svg";
 import styles from "./Nav.module.css";
 
 // import UserMenu from "./UserMenu";
@@ -16,7 +17,8 @@ function Nav() {
     <div className={styles.nav}>
       <Container className={styles.container}>
         <Link to="/">
-          <img src={logoImg} alt="View my startup Logo" />
+          <img src={logoImg} alt="View my startup Logo" className={styles.logo} />
+          <img src={m_logo_img} alt="View my startup Logo" className={styles.m_logo} />
         </Link>
         <ul className={styles.menu}>
           <li>
