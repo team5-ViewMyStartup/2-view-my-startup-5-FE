@@ -55,6 +55,11 @@ function Signup() {
           newErrors.password = "비밀번호를 입력해주세요";
         } else if (value.length < 8) {
           newErrors.password = "비밀번호를 8자 이상 입력해주세요";
+        } else if (
+          !/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/.test(value)
+        ) {
+          newErrors.password =
+            "최소 각 한 개 이상의 영문, 숫자, 특수문자를 포함한 8자리 이상의 비밀번호를 입력해주세요.";
         } else {
           delete newErrors.password;
         }
