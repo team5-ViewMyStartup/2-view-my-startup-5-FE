@@ -44,7 +44,7 @@ ul.menu a:active {
   display: block;
 }
 
-@media (max-width: 1199px) and (min-device-width: 744px) {
+@media (max-width: 1199px) and (min-width: 744px) {
   .nav {
     margin-left: 24px;
     gap: 24px;
@@ -69,7 +69,7 @@ ul.menu a:active {
   }
 }
 
-@media (max-width: 743px) and (min-device-width: 375px) {
+@media (max-width: 743px) and (min-width: 375px) {
   .nav {
     margin-left: 16px;
     gap: 16px;

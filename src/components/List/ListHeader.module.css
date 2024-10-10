@@ -65,7 +65,7 @@
   width: 230.63px;
 }
 
-@media (max-device-width: 1199px) and (min-device-width: 375px) {
+@media (max-width: 1199px) and (min-width: 375px) {
   .header_container {
     width: 696px;
   }
