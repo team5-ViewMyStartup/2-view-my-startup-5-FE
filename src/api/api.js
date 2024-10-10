@@ -19,9 +19,10 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
 
   if (token) {
     options.headers["Authorization"] = `Bearer ${token}`;
-  } else {
-    throw new Error("로그인 상태가 아닙니다.");
   }
+  // else {
+  //   throw new Error("로그인 상태가 아닙니다.");
+  // }
 
   if (data) {
     options.body = JSON.stringify(data);
@@ -37,10 +38,10 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
   const responseBody = await response.json();
   const responseHeaders = response.headers || {};
 
-  if (!token) {
-    throw new Error("토큰을 추출할 수 없습니다.");
-  }
-  localStorage.setItem("token", token);
+  // if (!token) {
+  //   throw new Error("토큰을 추출할 수 없습니다.");
+  // }
+  // localStorage.setItem("token", token);
 
   return {
     body: responseBody,
