@@ -13,14 +13,14 @@ function InvestModal({ isOpen, onClose, company, onSave, onAdd }) {
   const [nickname, setNickname] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
   useEffect(() => {
     const userNickname = getNicknameFromToken();
     setNickname(userNickname);
   }, [isOpen]);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   if (!company) {
     return null;

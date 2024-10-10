@@ -3,7 +3,7 @@ import styles from "./Modal.module.css";
 import closed from "../../images/closed.svg";
 import { updateInvestmentComment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
-import { getNicknameFromToken } from "../../utils/jwtUtils";
+import { getNicknameFromToken, getToken } from "../../utils/jwtUtils";
 import toggleOn from "../../assets/btn_visibility_on_24px.png";
 import toggleOff from "../../assets/btn_visibility_off_24px.png";
 
@@ -22,7 +22,7 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
   const handleSave = async () => {
     try {
       const nickname = getNicknameFromToken();
-      const token = localStorage.getItem("token");
+      const token = getToken();
 
       if (nickname !== investment.investorName) {
         setErrorModalOpen(true);
@@ -37,11 +37,15 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
         password,
       };
 
-      const updatedComment = await updateInvestmentComment(requestData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const updatedComment = await updateInvestmentComment(
+        {
+          investmentId: investmentId,
+          investorName: investment.investorName,
+          comment: newComment,
+          password,
         },
-      });
+        token,
+      );
 
       onEdit(updatedComment);
       onClose();

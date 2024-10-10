@@ -1,3 +1,5 @@
+import { getToken } from "../utils/jwtUtils";
+
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const HTTP_METHODS = Object.freeze({
@@ -8,8 +10,7 @@ const HTTP_METHODS = Object.freeze({
 });
 
 export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers = {} }) {
-  const token = localStorage.getItem("token");
-
+  const token = getToken();
   const options = {
     method,
     headers: {
@@ -20,9 +21,6 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
   if (token) {
     options.headers["Authorization"] = `Bearer ${token}`;
   }
-  // else {
-  //   throw new Error("로그인 상태가 아닙니다.");
-  // }
 
   if (data) {
     options.body = JSON.stringify(data);
@@ -37,11 +35,6 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
 
   const responseBody = await response.json();
   const responseHeaders = response.headers || {};
-
-  // if (!token) {
-  //   throw new Error("토큰을 추출할 수 없습니다.");
-  // }
-  // localStorage.setItem("token", token);
 
   return {
     body: responseBody,
@@ -81,11 +74,14 @@ export const fetchInvestmentsData = async (companyId) => {
 };
 
 export const updateInvestmentComment = async ({ investmentId, comment, password }) => {
+  const token = getToken();
+
   const res = await fetchData({
     url: `${BASE_URL}/investments/${investmentId}`,
     method: HTTP_METHODS.PATCH,
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     data: { comment, password },
   });
@@ -93,11 +89,14 @@ export const updateInvestmentComment = async ({ investmentId, comment, password 
 };
 
 export const deleteInvestment = async ({ investmentId, password }) => {
+  const token = getToken();
+
   const res = await fetchData({
     url: `${BASE_URL}/investments/${investmentId}`,
     method: HTTP_METHODS.DELETE,
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     data: { password },
   });
