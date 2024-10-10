@@ -8,11 +8,6 @@ const HTTP_METHODS = Object.freeze({
 });
 
 export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers = {} }) {
-  if (!storedToken || storedToken.expire < Date.now()) {
-    localStorage.removeItem("token");
-    window.location.href = "/login";
-    return;
-  }
   const token = localStorage.getItem("token");
 
   const options = {
@@ -168,13 +163,7 @@ export const postSignIn = async (email, password) => {
     throw new Error("토큰을 추출할 수 없습니다.");
   }
 
-  localStorage.setItem(
-    "token",
-    JSON.stringify({
-      value: token,
-      expire: Date.now() + 1800 * 1000,
-    }),
-  );
+  localStorage.setItem("token", token);
 
   return res.body;
 };

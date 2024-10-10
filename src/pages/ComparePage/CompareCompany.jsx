@@ -68,14 +68,6 @@ function CompareCompany() {
     setIsComparisonVisible(false);
   };
 
-  const handleComparisonClick = () => {
-    if (selectedCompanies.length > 0) {
-      console.log("Selected companies:", selectedCompanies);
-      console.log("Added companies:", additionalCompanies);
-      console.log("starting comparison...");
-    }
-  };
-
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };

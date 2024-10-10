@@ -37,30 +37,8 @@ function Login() {
     try {
       const response = await postSignIn(email, password);
 
-      // const authorizationHeader = response.headers.get("Authorization");
-
-      // if (!authorizationHeader) {
-      // throw new Error("Authorization 헤더가 없습니다.");
-      // }
-
-      // const [_, token] = authorizationHeader.split(" ");
-
-      // localStorage.setItem(
-      // "token",
-      // JSON.stringify({ value: token, expire: Date.now() + 1800 * 1000 }),
-      // );
-
-      // const storedToken = JSON.parse(localStorage.getItem("token"));
-      //
-      // if (storedToken.expire < Date.now()) {
-      // localStorage.removeItem("token");
-      // window.location.href = "/login";
-      // return;
-      // }
-
       navigate("/all-company");
 
-      // const { email, nickname } = jwt_decode(value);
       /**
        * 1. 모든 페이지에 접속할때 로컬스토리지의 토큰 조회
        *   - 토큰의 만료기간 비교해서 지났으면 로컬스토리지에있는거 지우고 로그인 페이지로 리다이렉트
