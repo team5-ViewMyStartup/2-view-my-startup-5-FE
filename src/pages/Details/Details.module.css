@@ -12,10 +12,19 @@ hr {
 .corporate_wrapper {
   display: flex;
   padding: 20px;
+  align-items: center;
 }
 
 .corporate_name {
   margin-left: 25px;
+}
+
+.corporate_name h3 {
+  font-size: 24px;
+}
+
+.corporate_name h4 {
+  font-size: 20px;
 }
 
 .cor_type {
@@ -45,12 +54,11 @@ hr {
 
 .account {
   flex-grow: 1;
-  min-width: 250px;
   margin: 15px;
 }
 
 .introduction {
-  padding: 5px 20px;
+  padding: 5px 24px;
 }
 
 .invest_wrapper {
@@ -59,11 +67,16 @@ hr {
   align-items: center;
 }
 
+.invest_wrapper,
+.total_amount_wrapper {
+  font-size: 20px;
+}
+
 .invest_button {
   background-color: #eb5230;
   color: white;
   border-radius: 50px;
-  width: 140px;
+  width: 131px;
   height: 40px;
   cursor: pointer;
 }
@@ -188,7 +201,95 @@ hr {
 }
 
 .logo_img {
-  width: 100px;
-  height: 100px;
+  width: 81.23px;
+  height: 81.23px;
   border-radius: 50%;
+}
+
+@media (max-width: 1199px) and (min-width: 744px) {
+  .corporate {
+    padding: 0 30px;
+  }
+  .overview_wrapper {
+    min-width: 696px;
+  }
+  .introduction {
+    min-width: 696px;
+  }
+}
+
+@media (max-width: 743px) and (min-width: 375px) {
+  .corporate {
+    padding: 0 20px;
+  }
+
+  .corporate_name h3 {
+    font-size: 20px;
+  }
+
+  .corporate_name h4 {
+    font-size: 16px;
+  }
+  .logo_img {
+    width: 60px;
+    height: 60px;
+  }
+  .overview {
+    display: flex;
+    flex-direction: column;
+    width: 103.67px;
+    height: 125px;
+  }
+  .overview h5 {
+    margin: 0px;
+    padding-top: 20px;
+  }
+  .overview p {
+    padding-bottom: 20px;
+    margin: 0;
+  }
+  .account {
+    width: 103.67px;
+  }
+  .invest_wrapper,
+  .total_amount_wrapper {
+    font-size: 16px;
+  }
+
+  .invest_button {
+    width: 97px;
+    height: 32px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .investment_container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .investment_list {
+    margin-bottom: 10px;
+  }
+
+  .investment_container::-webkit-scrollbar {
+    width: 500px;
+    height: 15px;
+  }
+
+  .investment_container::-webkit-scrollbar-track {
+    background-color: #212121;
+    border-radius: 20px;
+  }
+
+  .investment_container::-webkit-scrollbar-thumb {
+    background-color: #121212;
+    border: 3px solid #212121;
+    border-radius: 20px;
+  }
+  .investment_container::-webkit-scrollbar-thumb:hover {
+    background-color: #111111;
+  }
+  .investment_list {
+    min-width: 1000px;
+  }
 }

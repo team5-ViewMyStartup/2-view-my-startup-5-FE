@@ -174,7 +174,7 @@ function Details() {
           </div>
         ) : (
           <>
-            <div>
+            <div className={styles.total_amount_wrapper}>
               <h3>총 {totalInvestmentAmount} 억원</h3>
             </div>
             <div className={styles.investment_container}>
