@@ -112,7 +112,7 @@ function Signup() {
   return (
     <div className={styles.signup}>
       <Link to="/">
-        <img className={styles.signup_logoImg} src={logoImg} alt="logo Image" />
+        <img className={styles.signup_logo_img} src={logoImg} alt="logo Image" />
       </Link>
       <form onSubmit={handleSubmit}>
         <div className={styles.email}>
