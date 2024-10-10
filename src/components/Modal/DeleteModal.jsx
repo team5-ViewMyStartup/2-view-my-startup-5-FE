@@ -5,7 +5,7 @@ import { deleteInvestment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
 import { getNicknameFromToken } from "../../utils/jwtUtils";
 
-function DeleteModal({ isOpen, isClose, investment, onDelete }) {
+function DeleteModal({ isOpen, onClose, investment, onDelete }) {
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
 
@@ -31,7 +31,7 @@ function DeleteModal({ isOpen, isClose, investment, onDelete }) {
         },
       );
       onDelete(investmentId);
-      isClose();
+      onClose();
     } catch (e) {
       setErrorModalOpen(true);
     }
@@ -43,7 +43,7 @@ function DeleteModal({ isOpen, isClose, investment, onDelete }) {
         <div className={styles.modal_content}>
           <div className={styles.title_wrapper}>
             <span>삭제 권한 인증 </span>
-            <img className={styles.close} src={closed} alt="closed icon" onClick={isClose} />
+            <img className={styles.close} src={closed} alt="closed icon" onClick={onClose} />
           </div>
           <div className={styles.authentification}>
             <h4>비밀번호</h4>
@@ -62,7 +62,7 @@ function DeleteModal({ isOpen, isClose, investment, onDelete }) {
           </div>
         </div>
       </div>
-      <ErrorModal isOpen={errorModalOpen} isClose={() => setErrorModalOpen(false)} />
+      <ErrorModal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
     </>
   );
 }

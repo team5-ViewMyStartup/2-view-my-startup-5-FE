@@ -4,7 +4,7 @@ import closed from "../../images/closed.svg";
 import { addNewInvestment } from "../../api/api";
 import { getNicknameFromToken } from "../../utils/jwtUtils";
 
-function InvestModal({ isOpen, isClose, company, onSave, onAdd }) {
+function InvestModal({ isOpen, onClose, company, onSave, onAdd }) {
   const [amount, setAmount] = useState("");
   const [comment, setComment] = useState("");
   const [password, setPassword] = useState("");
@@ -36,7 +36,7 @@ function InvestModal({ isOpen, isClose, company, onSave, onAdd }) {
     const response = await addNewInvestment(newInvestment);
     onSave(response);
     onAdd(newInvestment);
-    isClose();
+    onClose();
   };
 
   return (
@@ -44,7 +44,7 @@ function InvestModal({ isOpen, isClose, company, onSave, onAdd }) {
       <div className={styles.modal_content}>
         <div className={styles.title_wrapper}>
           <span>기업에 투자하기</span>
-          <img className={styles.close} src={closed} alt="closed icon" onClick={isClose} />
+          <img className={styles.close} src={closed} alt="closed icon" onClick={onClose} />
         </div>
         <div className={styles.company_information}>
           <img src={company.image} alt="company" className={styles.company_img} />
@@ -86,7 +86,7 @@ function InvestModal({ isOpen, isClose, company, onSave, onAdd }) {
             />
           </label>
           <div className={styles.button_container}>
-            <button className={styles.cancel_button} type="button" onClick={isClose}>
+            <button className={styles.cancel_button} type="button" onClick={onClose}>
               취소
             </button>
             <button className={styles.button} type="button" onClick={handleSubmit}>

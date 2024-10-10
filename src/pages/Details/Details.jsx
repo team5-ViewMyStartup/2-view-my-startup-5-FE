@@ -237,7 +237,7 @@ function Details() {
       {deleteModalOpen && (
         <DeleteModal
           isOpen={deleteModalOpen}
-          isClose={closeDeleteModal}
+          onClose={closeDeleteModal}
           investment={selectedInvestment}
           onDelete={handleDeleteInvestment}
         />
@@ -245,7 +245,7 @@ function Details() {
       {editModalOpen && (
         <EditModal
           isOpen={editModalOpen}
-          isClose={closeEditModal}
+          onClose={closeEditModal}
           investment={selectedInvestment}
           onSave={(updatedInvestment) => {
             const updatedInvestments = company.investments.map((invest) => {
@@ -259,11 +259,10 @@ function Details() {
       {investModalOpen && (
         <InvestModal
           isOpen={investModalOpen}
-          isClose={closeInvestModal}
+          onClose={closeInvestModal}
           company={company}
           onSave={(updatedInvestment) => {
             const updatedInvestments = investments.map((invest) => {
-              // early return pattern
               if (invest.id !== updatedInvestment.id) return invest;
 
               return Object.assign({}, invest, updatedInvestment);

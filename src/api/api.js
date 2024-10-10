@@ -8,6 +8,11 @@ const HTTP_METHODS = Object.freeze({
 });
 
 export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers = {} }) {
+  if (!storedToken || storedToken.expire < Date.now()) {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+    return;
+  }
   const token = localStorage.getItem("token");
 
   const options = {
@@ -122,7 +127,6 @@ export const addNewInvestment = async ({ companyId, amount, comment, password })
 
 //회원가입
 export const postSignUp = async ({ email, nickname, password }) => {
-  console.log(email, nickname, password);
   const res = await fetchData({
     url: `${BASE_URL}/users`,
     method: HTTP_METHODS.POST,
@@ -153,7 +157,6 @@ export const postSignIn = async (email, password) => {
   });
 
   const authorizationHeader = res.headers.get("Authorization");
-  console.log(authorizationHeader);
 
   if (!authorizationHeader) {
     throw new Error("Authorization 헤더가 없습니다.");
@@ -165,7 +168,13 @@ export const postSignIn = async (email, password) => {
     throw new Error("토큰을 추출할 수 없습니다.");
   }
 
-  localStorage.setItem("token", token);
+  localStorage.setItem(
+    "token",
+    JSON.stringify({
+      value: token,
+      expire: Date.now() + 1800 * 1000,
+    }),
+  );
 
   return res.body;
 };

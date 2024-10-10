@@ -5,7 +5,7 @@ import { updateInvestmentComment } from "../../api/api";
 import ErrorModal from "./PasswordFailModal";
 import { getNicknameFromToken } from "../../utils/jwtUtils";
 
-const EditModal = ({ isOpen, isClose, investment, onSave, onEdit }) => {
+const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
   const [newComment, setNewComment] = useState(investment.comment);
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
@@ -37,7 +37,7 @@ const EditModal = ({ isOpen, isClose, investment, onSave, onEdit }) => {
       });
 
       onEdit(updatedComment);
-      isClose();
+      onClose();
     } catch (e) {
       console.error("코멘트 수정 실패", e);
       setErrorModalOpen(true);
@@ -50,7 +50,7 @@ const EditModal = ({ isOpen, isClose, investment, onSave, onEdit }) => {
         <div className={styles.modal_content}>
           <div className={styles.title_wrapper}>
             <span>코멘트 수정하기</span>
-            <img className={styles.close} src={closed} alt="closed icon" onClick={isClose} />
+            <img className={styles.close} src={closed} alt="closed icon" onClick={onClose} />
           </div>
           <input
             className={styles.input}
@@ -74,7 +74,7 @@ const EditModal = ({ isOpen, isClose, investment, onSave, onEdit }) => {
           </div>
         </div>
       </div>
-      <ErrorModal isOpen={errorModalOpen} isClose={() => setErrorModalOpen(false)} />
+      <ErrorModal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
     </>
   );
 };
