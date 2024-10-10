@@ -1,10 +1,10 @@
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Container from "./Container";
 import logoImg from "../images/logo_img.svg";
 import m_logo_img from "../assets/logo_mobile.svg";
 import styles from "./Nav.module.css";
-
-// import UserMenu from "./UserMenu";
+import { getNicknameFromToken } from "../utils/jwtUtils";
 
 function getLinkStyle({ isActive }) {
   return {
@@ -13,6 +13,19 @@ function getLinkStyle({ isActive }) {
 }
 
 function Nav() {
+  const [nickname, setNickname] = useState(null);
+
+  useEffect(() => {
+    const userNickname = getNicknameFromToken();
+    setNickname(userNickname);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setNickname(null);
+    window.location.reload();
+  };
+
   return (
     <div className={styles.nav}>
       <Container className={styles.container}>
@@ -36,10 +49,20 @@ function Nav() {
               투자 현황
             </NavLink>
           </li>
-          {/**  TODO: 로그인 회원가입 후 살리기 
-          <li>
-            <UserMenu />
-          </li> */}
+          {nickname ? (
+            <li className={styles.userMenu}>
+              <span>{nickname}님</span>
+              <button onClick={handleLogout} className={styles.logoutButton}>
+                로그아웃
+              </button>
+            </li>
+          ) : (
+            <li>
+              <NavLink style={getLinkStyle} to="/sign-in">
+                로그인
+              </NavLink>
+            </li>
+          )}
         </ul>
       </Container>
     </div>
