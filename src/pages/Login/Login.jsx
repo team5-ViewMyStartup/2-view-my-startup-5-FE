@@ -56,7 +56,10 @@ function Login() {
       const response = await postSignIn(email, password);
       const token = getToken();
       localStorage.setItem("token", token);
+      localStorage.setItem("nickname", response.nickname);
+
       navigate("/all-company");
+      window.location.reload();
     } catch (error) {
       console.log(error);
       alert("회원 가입이 되지 않은 회원 정보입니다.");

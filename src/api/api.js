@@ -1,5 +1,4 @@
 import { getToken } from "../utils/jwtUtils";
-import { v4 as uuidv4 } from "uuid";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -130,7 +129,6 @@ export const postSignUp = async ({ email, nickname, password }) => {
       "Content-Type": "application/json",
     },
     data: {
-      id: uuidv4(),
       email,
       nickname,
       password,

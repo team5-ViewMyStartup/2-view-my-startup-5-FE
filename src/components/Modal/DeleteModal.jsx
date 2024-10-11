@@ -11,6 +11,7 @@ function DeleteModal({ isOpen, onClose, investment, onDelete }) {
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [errorType, setErrorType] = useState("");
 
   if (!isOpen) return null;
 
@@ -24,6 +25,7 @@ function DeleteModal({ isOpen, onClose, investment, onDelete }) {
       const token = getToken();
 
       if (nickname !== investment.investorName) {
+        setErrorType("incorrectUser");
         setErrorModalOpen(true);
         return;
       }
@@ -33,6 +35,7 @@ function DeleteModal({ isOpen, onClose, investment, onDelete }) {
       onDelete(investmentId);
       onClose();
     } catch (e) {
+      setErrorType("incorrectPw");
       setErrorModalOpen(true);
     }
   };
@@ -68,7 +71,11 @@ function DeleteModal({ isOpen, onClose, investment, onDelete }) {
           </div>
         </div>
       </div>
-      <ErrorModal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
+      <ErrorModal
+        isOpen={errorModalOpen}
+        onClose={() => setErrorModalOpen(false)}
+        type={errorType}
+      />
     </>
   );
 }
