@@ -100,6 +100,11 @@ function ComparePage() {
     setSelectedCompareCompany((prev) => prev.filter((company) => company !== info));
   };
 
+  const handleAllReset = () => {
+    setSelectedMyCompany(null);
+    setSelectedCompareCompany([]);
+  };
+
   useEffect(async () => {
     const response = await fetch("/allCompanyData.json");
     if (!response.ok) throw new Error("데이터를 불러오지 못 함");
@@ -119,7 +124,8 @@ function ComparePage() {
           <div className={styles.all_reset}>
             <button
               className={styles.all_reset_btn}
-              disabled={selectedMyCompany === null || selectedCompareCompany === null}
+              disabled={selectedMyCompany === null || selectedCompareCompany.length < 1}
+              onClick={handleAllReset}
             >
               <img src={restart} className={styles.restart_img} alt="restart image" />
               전체 초기화
