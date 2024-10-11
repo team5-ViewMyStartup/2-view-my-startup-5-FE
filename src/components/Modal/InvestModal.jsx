@@ -1,31 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Modal.module.css";
-import closed from "../images/closed.svg";
+import closed from "../../images/closed.svg";
+import { addNewInvestment } from "../../api/api";
+import { getNicknameFromToken } from "../../utils/jwtUtils";
+import toggleOn from "../../assets/btn_visibility_on_24px.png";
+import toggleOff from "../../assets/btn_visibility_off_24px.png";
 
-function InvestModal({ isOpen, isClose, company, user, onSave }) {
+function InvestModal({ isOpen, onClose, company, onSave, onAdd }) {
   const [amount, setAmount] = useState("");
   const [comment, setComment] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
+  useEffect(() => {
+    const userNickname = getNicknameFromToken();
+    setNickname(userNickname);
+  }, [isOpen]);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  if (!company) {
+    return null;
+  }
   const handleSubmit = async () => {
     if (!isOpen) return null;
-    // todo: password-checker로 확인
-    if (password !== confirmPassword) {
-      alert("비밀번호가 일치하지 않습니다");
+
+    if (!password) {
+      alert("비밀번호를 입력해주세요");
       return;
     }
 
     const newInvestment = {
       companyId: company.id,
-      investorName: user.name,
-      amount: amount,
+      amount: Number(amount),
       comment: comment,
+      password,
+      investorName: nickname,
     };
 
-    await addNewInvestment(company.id, user.name, amount, comment, password);
-    onSave(newInvestment);
-    isClose();
+    const response = await addNewInvestment(newInvestment);
+    onSave(response);
+    onAdd(newInvestment);
+    onClose();
   };
 
   return (
@@ -33,18 +52,18 @@ function InvestModal({ isOpen, isClose, company, user, onSave }) {
       <div className={styles.modal_content}>
         <div className={styles.title_wrapper}>
           <span>기업에 투자하기</span>
-          <img className={styles.close} src={closed} alt="closed icon" onClick={isClose} />
+          <img className={styles.close} src={closed} alt="closed icon" onClick={onClose} />
         </div>
+        <h3>투자 기업 정보</h3>
         <div className={styles.company_information}>
-          <img src={company.img} alt={company.name} className={styles.company_img} />
+          <img src={company.image} alt="company" className={styles.company_img} />
           <h3>{company.name}</h3>
           <p>{company.category}</p>
         </div>
         <form className={styles.investment_form_container}>
           <label>
             투자자 이름
-            {/* <h2>{user.name}</h2> */}
-            <hr />
+            <h4>{nickname}</h4>
           </label>
           <label>
             투자 금액
@@ -66,27 +85,25 @@ function InvestModal({ isOpen, isClose, company, user, onSave }) {
             />
           </label>
           <label>
-            비밀번호
-            <input
-              className={styles.input}
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="비밀번호를 입력해주세요"
-            />
-          </label>
-          <label>
-            비밀번호 확인
-            <input
-              className={styles.input}
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="비밀번호를 다시 한 번 입력해주세요"
-            />
+            <div className={styles.authentification}>
+              비밀번호
+              <input
+                className={styles.input}
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="비밀번호를 입력해주세요"
+              />
+              <img
+                className={styles.toggle_img_invest}
+                src={showPassword ? toggleOn : toggleOff}
+                alt="눈모양 토글"
+                onClick={togglePasswordVisibility}
+              />
+            </div>
           </label>
           <div className={styles.button_container}>
-            <button className={styles.cancel_button} type="button" onClick={isClose}>
+            <button className={styles.cancel_button} type="button" onClick={onClose}>
               취소
             </button>
             <button className={styles.button} type="button" onClick={handleSubmit}>

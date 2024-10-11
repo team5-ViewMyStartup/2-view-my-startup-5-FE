@@ -1,10 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import Container from "./Container";
 import logoImg from "../images/logo_img.svg";
 import m_logo_img from "../assets/logo_mobile.svg";
 import styles from "./Nav.module.css";
-
-// import UserMenu from "./UserMenu";
+import { getNicknameFromToken } from "../utils/jwtUtils";
+import { getToken } from "../utils/jwtUtils";
 
 function getLinkStyle({ isActive }) {
   return {
@@ -13,13 +14,48 @@ function getLinkStyle({ isActive }) {
 }
 
 function Nav() {
+  const [nickname, setNickname] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userNickname = getNicknameFromToken();
+    setNickname(userNickname);
+
+    const handleStorageChange = () => {
+      const updatedNickname = getNicknameFromToken();
+      setNickname(updatedNickname);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.setItem("logout", "true");
+    setNickname(null);
+    window.localStorage.setItem("nickname", null);
+
+    window.location.reload();
+  };
+  const handleLogoClick = () => {
+    const token = getToken();
+    if (token) {
+      navigate("/all-company");
+    } else {
+      navigate("/");
+    }
+  };
   return (
     <div className={styles.nav}>
       <Container className={styles.container}>
-        <Link to="/">
+        <div onClick={handleLogoClick} className={styles.logo_click}>
           <img src={logoImg} alt="View my startup Logo" className={styles.logo} />
           <img src={m_logo_img} alt="View my startup Logo" className={styles.m_logo} />
-        </Link>
+        </div>
         <ul className={styles.menu}>
           <li>
             <NavLink style={getLinkStyle} to="/compare">
@@ -36,11 +72,21 @@ function Nav() {
               투자 현황
             </NavLink>
           </li>
-          {/**  TODO: 로그인 회원가입 후 살리기 
-          <li>
-            <UserMenu />
-          </li> */}
         </ul>
+        {nickname ? (
+          <div className={styles.user_menu}>
+            <span>{nickname}님</span>
+            <button onClick={handleLogout} className={styles.log_button}>
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <div className={styles.user_menu}>
+            <Link styles={getLinkStyle} to="/login">
+              <div className={styles.log_button}>로그인</div>
+            </Link>
+          </div>
+        )}
       </Container>
     </div>
   );

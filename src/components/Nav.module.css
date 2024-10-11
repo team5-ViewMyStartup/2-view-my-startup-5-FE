@@ -44,7 +44,30 @@ ul.menu a:active {
   display: block;
 }
 
-@media (max-width: 1199px) and (min-width: 744px) {
+.logo_click {
+  cursor: pointer;
+}
+
+.user_menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.log_button {
+  display: flex;
+  background-color: #eb5230;
+  color: white;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+@media (max-width: 1200px) and (min-width: 743px) {
   .nav {
     margin-left: 24px;
     gap: 24px;
@@ -70,6 +93,7 @@ ul.menu a:active {
 }
 
 @media (max-width: 743px) and (min-width: 375px) {
+
   .nav {
     margin-left: 16px;
     gap: 16px;

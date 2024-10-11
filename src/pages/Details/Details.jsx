@@ -2,21 +2,24 @@ import React, { useEffect, useState } from "react";
 import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "../../components/Modal/DeleteModal";
-import EditModal from "../../components/Modal/DeleteModal";
+import EditModal from "../../components/Modal/EditModal";
+import InvestModal from "../../components/Modal/InvestModal";
 import { fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
 import { useParams } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import Loading from "../../components/Loading";
 
 const ITEM_PER_PAGE = 5;
 
 function Details() {
   const { companyId } = useParams();
-  const [company, setCompany] = useState();
+  const [company, setCompany] = useState(null);
   const [investments, setInvestments] = useState([]);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [editModalOpen, setEditModalOpen] = useState(false);
+  const [investModalOpen, setInvestModalOpen] = useState(false);
   const [selectedInvestment, setSelectedInvestment] = useState(null);
 
   const totalInvestmentAmount = investments
@@ -54,6 +57,14 @@ function Details() {
     setSelectedInvestment(null);
   };
 
+  const openInvestModal = () => {
+    setInvestModalOpen(true);
+  };
+
+  const closeInvestModal = () => {
+    setInvestModalOpen(false);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -70,7 +81,7 @@ function Details() {
   }, [companyId]);
 
   if (!company) {
-    return <div>데이터 불러오지 못했습니다</div>;
+    return <Loading />;
   }
 
   const totalPages = Math.ceil(investments.length / ITEM_PER_PAGE);
@@ -90,7 +101,7 @@ function Details() {
   const corporateField = [
     {
       title: "누적 투자 금액",
-      value: `${company.totalInvestmentAmount} 억 원`,
+      value: `${company.totalInvestment} 억 원`,
       className: "",
     },
     {
@@ -104,6 +115,24 @@ function Details() {
       className: "",
     },
   ];
+
+  const handleDeleteInvestment = (investmentId) => {
+    setInvestments((prevInvestments) =>
+      prevInvestments.filter((investment) => investment.id !== investmentId),
+    );
+  };
+
+  const handleEditInvestment = (updatedInvestment) => {
+    setInvestments((prevInvestments) =>
+      prevInvestments.map((investment) =>
+        investment.id === updatedInvestment.id ? updatedInvestment : investment,
+      ),
+    );
+  };
+
+  const handleAddInvestment = (newInvestment) => {
+    setInvestments((prevInvestments) => [...prevInvestments, newInvestment]);
+  };
 
   return (
     <div className={styles.corporate}>
@@ -134,7 +163,9 @@ function Details() {
       <div className={styles.investment_received}>
         <div className={styles.invest_wrapper}>
           <h3>View My Startup에서 받은 투자</h3>
-          <button className={styles.invest_button}>기업투자하기</button>
+          <button className={styles.invest_button} onClick={openInvestModal}>
+            기업투자하기
+          </button>
         </div>
         <hr />
         {investments.length === 0 ? (
@@ -144,7 +175,7 @@ function Details() {
           </div>
         ) : (
           <>
-            <div>
+            <div className={styles.total_amount_wrapper}>
               <h3>총 {totalInvestmentAmount} 억원</h3>
             </div>
             <div className={styles.investment_container}>
@@ -156,7 +187,7 @@ function Details() {
                   <span className={styles.investment_comment}>투자 코멘트</span>
                 </li>
                 {currentInvestments.map((investment, index) => (
-                  <li key={index + indexOfFirstItem} className={styles.investment_item}>
+                  <li key={investment.id} className={styles.investment_item}>
                     <span className={styles.invest_inform}>{index + indexOfFirstItem + 1} 위</span>
                     <span className={styles.invest_inform}>{investment.investorName}</span>
                     <span className={styles.invest_inform}>{investment.amount} 억 원</span>
@@ -207,27 +238,43 @@ function Details() {
       {deleteModalOpen && (
         <DeleteModal
           isOpen={deleteModalOpen}
-          isClose={closeDeleteModal}
+          onClose={closeDeleteModal}
           investment={selectedInvestment}
+          onDelete={handleDeleteInvestment}
         />
       )}
       {editModalOpen && (
         <EditModal
           isOpen={editModalOpen}
-          isClose={closeEditModal}
+          onClose={closeEditModal}
           investment={selectedInvestment}
           onSave={(updatedInvestment) => {
-            const updatedInvestments = company.investments.map((invest) =>
-              invest.id === updatedInvestment.id
-                ? { ...invest, comment: updatedInvestment.comment }
-                : invest,
-            );
+            const updatedInvestments = company.investments.map((invest) => {
+              if (invest._id !== updatedInvestment._id) return invest;
+            });
+            setInvestments(updatedInvestments);
+          }}
+          onEdit={handleEditInvestment}
+        />
+      )}
+      {investModalOpen && (
+        <InvestModal
+          isOpen={investModalOpen}
+          onClose={closeInvestModal}
+          company={company}
+          onSave={(updatedInvestment) => {
+            const updatedInvestments = investments.map((invest) => {
+              if (invest.id !== updatedInvestment.id) return invest;
+
+              return Object.assign({}, invest, updatedInvestment);
+            });
+
             setCompany((prevCompany) => ({
               ...prevCompany,
               investments: updatedInvestments,
             }));
-            closeEditModal();
           }}
+          onAdd={handleAddInvestment}
         />
       )}
     </div>
