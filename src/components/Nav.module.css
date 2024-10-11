@@ -44,7 +44,30 @@ ul.menu a:active {
   display: block;
 }
 
-@media (max-device-width: 1200px) and (min-device-width: 743px) {
+.logo_click {
+  cursor: pointer;
+}
+
+.user_menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.log_button {
+  display: flex;
+  background-color: #eb5230;
+  color: white;
+  width: 100px;
+  height: 30px;
+  border-radius: 10px;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+@media (max-width: 1200px) and (min-width: 743px) {
   .nav {
     margin-left: 24px;
     gap: 24px;
@@ -69,7 +92,7 @@ ul.menu a:active {
   }
 }
 
-@media (max-device-width: 744px) and (min-device-width: 374px) {
+@media (max-width: 744px) and (min-width: 374px) {
   .nav {
     margin-left: 16px;
     gap: 16px;

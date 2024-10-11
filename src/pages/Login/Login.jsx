@@ -5,12 +5,9 @@ import logoImg from "../../imagesjun/logo1.svg";
 import { useNavigate } from "react-router-dom";
 import toggleOn from "../../imagesjun/btn_visibility_on_24px.png";
 import toggleOff from "../../imagesjun/btn_visibility_off_24px.png";
-const USER_DATA = [
-  { email: "test@test.com", password: "testtest1!" },
-  { email: "test1@test.com", password: "testtest!" },
-];
-
-const URL = "http://localhost:4000/users/login";
+import { postSignIn } from "../../api/api";
+import { getToken } from "../../utils/jwtUtils";
+import { jwtDecode } from "jwt-decode";
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -33,24 +30,33 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = getToken();
+
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+
+        if (decodedToken.exp < currentTime) {
+          localStorage.removeItem("token");
+          alert("30분이 지났습니다. 다시 로그인해주세요.");
+          navigate("/login");
+        }
+      } catch (error) {
+        console.error("토큰 에러 발생:", error);
+        localStorage.removeItem("token");
+        navigate("/login");
+      }
+    }
+  }, [navigate]);
+
   const loginButtonClicked = async () => {
     try {
-      const response = await fetch(URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      console.log(response.headers);
-      const [_, token] = response.headers.get("Authorization")?.split(" ");
-      console.log(token);
-      localStorage.setItem("token", JSON.stringify({ value: token, expire: Date.now() }));
-      /**
-       * 1. 모든 페이지에 접속할때 로컬스토리지의 토큰 조회
-       *   - 토큰의 만료기간 비교해서 지났으면 로컬스토리지에있는거 지우고 로그인 페이지로 리다이렉트
-       * 2. 로그인한 회원의 정보가 필요할때 로컬스토리지의 토큰을 디코드 해서 유저 정보 가져오기
-       */
+      const response = await postSignIn(email, password);
+      const token = getToken();
+      localStorage.setItem("token", token);
+      navigate("/all-company");
     } catch (error) {
       console.log(error);
       alert("회원 가입이 되지 않은 회원 정보입니다.");
@@ -82,15 +88,6 @@ function Login() {
 
     if (emailErrMsg || passwordErrMsg) {
       return;
-    }
-
-    const user = USER_DATA.find((user) => user.email === email && user.password === password);
-
-    if (user) {
-      alert("로그인에 성공하셨습니다!");
-      navigate("/all-company");
-    } else {
-      setGeneralError("이메일 또는 비밀번호가 일치하지 않습니다.");
     }
   };
 
