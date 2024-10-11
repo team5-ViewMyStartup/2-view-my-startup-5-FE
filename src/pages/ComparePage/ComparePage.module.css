@@ -325,7 +325,6 @@
   width: 183px;
   height: 48px;
   border-radius: 50px;
-  padding: 13px 48px;
   gap: 10px;
   font-weight: 600;
   font-size: 16px;
@@ -334,6 +333,7 @@
   display: flex;
   margin-top: 24px;
   white-space: nowrap;
+  justify-content: center;
 }
 
 .compare_company_btn:disabled {
@@ -376,7 +376,7 @@
   color: #ffffff;
 }
 
-.add_company_btn {
+.add_company_btn:disabled {
   background-color: #2e2e2e;
   color: #747474;
 }
