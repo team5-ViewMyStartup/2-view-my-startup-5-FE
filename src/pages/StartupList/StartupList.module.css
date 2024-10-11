@@ -205,6 +205,10 @@
   .search_sorting {
     width: 449px;
   }
+
+  .category_box {
+    width: 696px;
+  }
 }
 
 @media (min-width: 375px) and (max-width: 743px) {
@@ -220,6 +224,10 @@
     width: 343px;
     justify-content: space-between;
   }
+  .category_box {
+    width: 696px;
+  }
+
   .dropdown {
     width: 246px;
   }
