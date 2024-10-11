@@ -114,7 +114,7 @@ function Signup() {
       <Link to="/">
         <img className={styles.signup_logo_img} src={logoImg} alt="logo Image" />
       </Link>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form_wrapper}>
         <div className={styles.email}>
           <label className={styles.email_label} htmlFor="email">
             이메일
