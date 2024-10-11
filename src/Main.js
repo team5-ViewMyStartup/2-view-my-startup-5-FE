@@ -10,8 +10,36 @@ import Investment from "./pages/InvestmentStatus/Investment";
 import Compare from "./pages/CompareStatus/CompareStatus";
 import CompareResult from "./pages/CompareResult/CompareResult";
 import NotFoundPage from "./components/NotFoundPage";
+import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
+import { getToken } from "../src/utils/jwtUtils";
 
 function Main() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = getToken();
+
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+
+        if (decodedToken.exp < currentTime) {
+          localStorage.removeItem("token");
+          alert("30분이 지났습니다. 다시 로그인해주세요.");
+          setIsLoggedIn(false);
+        } else {
+          setIsLoggedIn(true);
+        }
+      } catch (error) {
+        setIsLoggedIn(false);
+        console.error("토큰 에러 발생:", error);
+        localStorage.removeItem("token");
+      }
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -21,7 +49,10 @@ function Main() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/all-company" element={<StartupList />} />
-          <Route path="/details/:companyId" element={<Details />} />
+          <Route
+            path="/details/:companyId"
+            element={isLoggedIn ? <StartupList /> : <Login />}
+          ></Route>
           <Route path="/invest-status" element={<Investment />} />
           <Route path="/compare-status" element={<CompareStatus />} />
           <Route path="/compare-result" element={<CompareResult />} />

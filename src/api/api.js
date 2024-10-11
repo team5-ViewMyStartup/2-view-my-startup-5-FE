@@ -30,6 +30,7 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
   if (!response.ok) {
     const errorDetails = await response.text();
     console.error(`Error Details: ${errorDetails}`);
+    window.location.replace("/login");
     throw new Error(`API 호출 실패: ${response.statusText}`);
   }
 

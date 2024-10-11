@@ -53,7 +53,7 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
       onClose();
     } catch (e) {
       console.error("코멘트 수정 실패", e);
-      setErrorType("incorrectPw");
+      setErrorType("incorrectEd");
       setErrorModalOpen(true);
     }
   };
