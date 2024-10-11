@@ -376,6 +376,11 @@
   color: #ffffff;
 }
 
+.add_company_btn {
+  background-color: #2e2e2e;
+  color: #747474;
+}
+
 .select_compare_company_container {
   width: 1200px;
   height: 300px;

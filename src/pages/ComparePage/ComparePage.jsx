@@ -1,9 +1,3 @@
-/**
- * TODO
- * 1. pagination type 지정해서 비교페이지에서만 32px로 지정
- * 2. 전체초기화버튼에 이미지 색상 변경
- */
-
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
@@ -82,7 +76,6 @@ function ComparePage() {
     }
     setErrorMessage("");
   };
-  console.log(selectedCompareCompany);
 
   const handleRemoveCompareCompany = (info) => {
     setSelectedCompareCompany((prev) => prev.filter((company) => company !== info));
@@ -213,7 +206,11 @@ function ComparePage() {
         <div className={styles.compare_company_select_page}>
           <div className={styles.compare_company_select_page_header}>
             <p className={styles.select_compare_company_text}>어떤 기업이 궁금하세요?</p>
-            <button className={styles.add_company_btn} onClick={openCompareModal}>
+            <button
+              className={styles.add_company_btn}
+              onClick={openCompareModal}
+              disabled={selectedCompareCompany.length >= 5}
+            >
               기업 추가하기
             </button>
           </div>
@@ -321,7 +318,6 @@ function ComparePage() {
                                 selectedCompareCompany.includes(info) ? styles.selected : ""
                               }`}
                               onClick={() => {
-                                console.log(selectedCompareCompany.length);
                                 if (selectedCompareCompany.length >= 5) {
                                   handleDisabledButtonClick();
                                 } else {
