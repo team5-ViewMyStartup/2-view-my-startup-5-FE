@@ -38,6 +38,7 @@ function InvestModal({ isOpen, onClose, company, onSave, onAdd }) {
       amount: Number(amount),
       comment: comment,
       password,
+      investorName: nickname,
     };
 
     const response = await addNewInvestment(newInvestment);

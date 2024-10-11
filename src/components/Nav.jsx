@@ -18,11 +18,25 @@ function Nav() {
   useEffect(() => {
     const userNickname = getNicknameFromToken();
     setNickname(userNickname);
+
+    const handleStorageChange = () => {
+      const updatedNickname = getNicknameFromToken();
+      setNickname(updatedNickname);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.setItem("logout", "true");
     setNickname(null);
+    window.localStorage.setItem("nickname", null);
+
     window.location.reload();
   };
 
@@ -58,7 +72,7 @@ function Nav() {
             </li>
           ) : (
             <li>
-              <NavLink style={getLinkStyle} to="/sign-in">
+              <NavLink style={getLinkStyle} to="/login">
                 로그인
               </NavLink>
             </li>
