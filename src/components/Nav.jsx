@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import Container from "./Container";
 import logoImg from "../images/logo_img.svg";
 import m_logo_img from "../assets/logo_mobile.svg";
 import styles from "./Nav.module.css";
 import { getNicknameFromToken } from "../utils/jwtUtils";
 import { getToken } from "../utils/jwtUtils";
-import {} from "react-router-dom";
 
 function getLinkStyle({ isActive }) {
   return {
@@ -73,21 +72,21 @@ function Nav() {
               투자 현황
             </NavLink>
           </li>
-          {nickname ? (
-            <li className={styles.userMenu}>
-              <span>{nickname}님</span>
-              <button onClick={handleLogout} className={styles.logoutButton}>
-                로그아웃
-              </button>
-            </li>
-          ) : (
-            <li>
-              <NavLink style={getLinkStyle} to="/login">
-                로그인
-              </NavLink>
-            </li>
-          )}
         </ul>
+        {nickname ? (
+          <div className={styles.user_menu}>
+            <span>{nickname}님</span>
+            <button onClick={handleLogout} className={styles.log_button}>
+              로그아웃
+            </button>
+          </div>
+        ) : (
+          <div className={styles.user_menu}>
+            <Link styles={getLinkStyle} to="/login">
+              <div className={styles.log_button}>로그인</div>
+            </Link>
+          </div>
+        )}
       </Container>
     </div>
   );
