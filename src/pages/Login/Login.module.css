@@ -104,10 +104,8 @@ input {
     width: 343px;
   }
 
-  .signup_button {
-    width: 343px;
-  }
   .login_button {
+    width: 343px;
     font-size: 20px;
   }
 }
