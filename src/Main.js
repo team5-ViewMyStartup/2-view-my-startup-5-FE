@@ -7,7 +7,7 @@ import StartupList from "./pages/StartupList/StartupList";
 import Details from "./pages/Details/Details";
 import CompareStatus from "./pages/CompareStatus/CompareStatus";
 import Investment from "./pages/InvestmentStatus/Investment";
-import Compare from "./pages/CompareStatus/CompareStatus";
+import ComparePage from "./pages/ComparePage/ComparePage";
 import CompareResult from "./pages/CompareResult/CompareResult";
 import NotFoundPage from "./components/NotFoundPage";
 
@@ -19,7 +19,7 @@ function Main() {
           <Route index element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/compare" element={<Compare />} />
+          <Route path="/compare" element={<ComparePage />} />
           <Route path="/all-company" element={<StartupList />} />
           <Route path="/details/:companyId" element={<Details />} />
           <Route path="/invest-status" element={<Investment />} />
