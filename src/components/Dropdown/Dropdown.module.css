@@ -72,7 +72,7 @@
   font-weight: bold;
 }
 
-@media (max-device-width: 744px) and (min-device-width: 374px) {
+@media (min-width: 375px) and (max-width: 743px) {
   .dropdown {
     width: 277px;
   }

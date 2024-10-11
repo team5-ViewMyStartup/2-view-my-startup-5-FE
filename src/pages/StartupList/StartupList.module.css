@@ -193,3 +193,46 @@
 .no_results {
   list-style: none;
 }
+
+@media (min-width: 744px) and (max-width: 1199px) {
+  .startupList {
+    width: 696px;
+  }
+  .startup_list {
+    width: 696px;
+    align-items: flex-start;
+  }
+  .search_sorting {
+    width: 449px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .startupList {
+    width: 696px;
+  }
+  .startup_list {
+    width: 696px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .search_sorting {
+    width: 343px;
+    justify-content: space-between;
+  }
+  .dropdown {
+    width: 246px;
+  }
+
+  .category_kind,
+  .category_body,
+  .category_rank,
+  .category_company_name,
+  .category_company_info,
+  .category_category,
+  .category_investment_amount,
+  .category_sales,
+  .category_employee_num {
+    font-size: 13px;
+  }
+}

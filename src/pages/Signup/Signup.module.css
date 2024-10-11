@@ -76,3 +76,29 @@ input {
 .form_wrapper input {
   margin-bottom: 30px;
 }
+
+@media (max-width: 1199px) and (min-width: 744px) {
+  .signup_logo_img {
+    width: 475px;
+    height: auto;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .signup_logo_img {
+    width: 340.7px;
+    height: auto;
+  }
+
+  input {
+    width: 343px;
+  }
+
+  .signup_button {
+    width: 343px;
+  }
+  .signup_button {
+    font-size: 16px;
+  }
+}
+

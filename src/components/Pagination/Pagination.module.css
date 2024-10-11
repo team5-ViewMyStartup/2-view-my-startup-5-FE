@@ -49,7 +49,7 @@
   color: white;
 }
 
-@media (max-device-width: 744px) and (min-device-width: 374px) {
+@media (max-width: 743px) and (min-width: 375px) {
   .page_button {
     width: 32px;
     height: 32px;
