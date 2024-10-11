@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Container from "./Container";
 import logoImg from "../images/logo_img.svg";
 import m_logo_img from "../assets/logo_mobile.svg";
 import styles from "./Nav.module.css";
 import { getNicknameFromToken } from "../utils/jwtUtils";
+import { getToken } from "../utils/jwtUtils";
+import {} from "react-router-dom";
 
 function getLinkStyle({ isActive }) {
   return {
@@ -14,6 +16,7 @@ function getLinkStyle({ isActive }) {
 
 function Nav() {
   const [nickname, setNickname] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userNickname = getNicknameFromToken();
@@ -39,14 +42,21 @@ function Nav() {
 
     window.location.reload();
   };
-
+  const handleLogoClick = () => {
+    const token = getToken();
+    if (token) {
+      navigate("/all-company");
+    } else {
+      navigate("/");
+    }
+  };
   return (
     <div className={styles.nav}>
       <Container className={styles.container}>
-        <Link to="/">
+        <div onClick={handleLogoClick} className={styles.logo_click}>
           <img src={logoImg} alt="View my startup Logo" className={styles.logo} />
           <img src={m_logo_img} alt="View my startup Logo" className={styles.m_logo} />
-        </Link>
+        </div>
         <ul className={styles.menu}>
           <li>
             <NavLink style={getLinkStyle} to="/compare">

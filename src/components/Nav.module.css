@@ -44,6 +44,10 @@ ul.menu a:active {
   display: block;
 }
 
+.logo_click {
+  cursor: pointer;
+}
+
 @media (max-width: 1200px) and (min-width: 743px) {
   .nav {
     margin-left: 24px;
