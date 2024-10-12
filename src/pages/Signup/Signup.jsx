@@ -82,7 +82,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm) {
+    if (validateForm()) {
       try {
         await postSignUp({
           email,
@@ -92,7 +92,7 @@ function Signup() {
 
         navigate("/login");
       } catch (e) {
-        setErrors(e.message);
+        setErrors({ apiError: e.message });
       }
     }
   };

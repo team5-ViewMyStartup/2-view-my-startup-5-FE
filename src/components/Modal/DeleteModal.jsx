@@ -35,7 +35,7 @@ function DeleteModal({ isOpen, onClose, investment, onDelete }) {
       onDelete(investmentId);
       onClose();
     } catch (e) {
-      setErrorType("incorrectPw");
+      setErrorType("incorrectDeletePw");
       setErrorModalOpen(true);
     }
   };
