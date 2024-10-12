@@ -213,10 +213,13 @@
 
 @media (min-width: 375px) and (max-width: 743px) {
   .startupList {
-    width: 696px;
+    width: 375px;
+    /* overflow-x: auto; */
+    /* width: 90vw;
+    padding-bottom: 15px; */
   }
   .startup_list {
-    width: 696px;
+    width: 100%;
     align-items: flex-start;
     flex-direction: column;
   }
@@ -224,9 +227,21 @@
     width: 343px;
     justify-content: space-between;
   }
-  .category_box {
-    width: 696px;
+  .search {
+    width: 400px;
   }
+  .main_box {
+    width: 696px;
+    overflow-x: auto;
+    width: 90vw;
+    padding-bottom: 15px;
+  }
+  /* .category_box {
+    width: 696px;
+    overflow-x: auto;
+    width: 90vw;
+    padding-bottom: 15px;
+  } */
 
   .dropdown {
     width: 246px;
