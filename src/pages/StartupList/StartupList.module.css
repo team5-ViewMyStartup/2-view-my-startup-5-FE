@@ -213,7 +213,7 @@
 
 @media (min-width: 375px) and (max-width: 743px) {
   .startupList {
-    width: 375px;
+    width: 343px;
     /* overflow-x: auto; */
     /* width: 90vw;
     padding-bottom: 15px; */
