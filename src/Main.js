@@ -16,7 +16,6 @@ import { getToken } from "../src/utils/jwtUtils";
 
 function Main() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   useEffect(() => {
     const token = getToken();
 
@@ -28,6 +27,7 @@ function Main() {
         if (decodedToken.exp < currentTime) {
           localStorage.removeItem("token");
           alert("30분이 지났습니다. 다시 로그인해주세요.");
+          window.location.replace("/login");
           setIsLoggedIn(false);
         } else {
           setIsLoggedIn(true);
