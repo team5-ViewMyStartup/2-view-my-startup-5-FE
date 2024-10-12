@@ -70,40 +70,32 @@ ul.menu a:active {
 
 @media (max-width: 1200px) and (min-width: 743px) {
   .nav {
-    margin-left: 24px;
     gap: 24px;
     display: flex;
   }
 
   .container {
+    margin-left: 24px;
     padding: 0;
   }
 
   .menu {
-    padding: 21px 17px;
     gap: 10px;
   }
-
-  .m_logo {
-    display: none;
-  }
-
-  .logo {
-    display: block;
+  .user_menu {
+    margin-right: 50px;
   }
 }
 
 @media (max-width: 743px) and (min-width: 375px) {
-
   .nav {
-    margin-left: 16px;
-    gap: 16px;
     width: 100%;
     display: flex;
     padding: 0;
   }
 
   .container {
+    margin-left: 16px;
     padding: 0;
   }
 
@@ -124,5 +116,8 @@ ul.menu a:active {
 
   .m_logo {
     display: block;
+  }
+  .user_menu {
+    margin-right: 20px;
   }
 }
