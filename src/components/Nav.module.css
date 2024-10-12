@@ -93,7 +93,8 @@ ul.menu a:active {
   }
 }
 
-@media (max-width: 744px) and (min-width: 374px) {
+@media (max-width: 743px) and (min-width: 375px) {
+
   .nav {
     margin-left: 16px;
     gap: 16px;

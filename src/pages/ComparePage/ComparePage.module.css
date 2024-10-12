@@ -1,0 +1,508 @@
+* {
+  box-sizing: border-box;
+}
+
+.compare_page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+.compare_page_header {
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  justify-content: space-between;
+}
+
+.select_company_text {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.87px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 919px;
+}
+
+.all_reset_btn {
+  height: 40px;
+  width: auto;
+  border-radius: 50px;
+  padding: 8px 24px;
+  background-color: #eb5230;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19.09px;
+  gap: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.all_reset_btn:disabled {
+  background-color: #2e2e2e;
+  color: #747474;
+}
+
+.select_my_company_box {
+  width: 1200px;
+  height: 300px;
+  margin-top: 16px;
+  border: 1px solid #212121;
+  background-color: #212121;
+  border-radius: 4px;
+}
+
+.select_my_company_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cancel_select {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: #d8d8d8;
+  padding: 0 0 8px 15px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19.09px;
+  margin-right: 13px;
+  text-decoration: underline;
+}
+
+.selected_company_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.selected_company_img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+}
+
+.selected_company_name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.09px;
+  align-items: center;
+  display: flex;
+  margin: 0;
+  margin-top: 5px;
+}
+
+.selected_company_category {
+  display: flex;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  color: #747474;
+  margin: 0;
+  margin-top: 4px;
+}
+
+.add_company {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.plus_icon {
+  cursor: pointer;
+}
+
+.add_company_text {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21.48px;
+  align-items: center;
+  color: #ffffff;
+}
+
+.yes_modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #212121;
+  border-radius: 16px;
+  padding: 24px;
+  gap: 24px;
+}
+
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.select_my_company {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.87px;
+}
+
+.close_icon {
+  cursor: pointer;
+}
+
+.search_bar {
+  width: 448px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #747474;
+  gap: 10px;
+  background-color: #212121;
+  margin-bottom: 24px;
+}
+
+.search_input {
+  height: 15px;
+  justify-content: space-between;
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+  color: #d8d8d8;
+  background-color: #212121;
+}
+
+.search_input:focus {
+  outline: none;
+}
+
+.search_icon {
+  margin-right: 15px;
+}
+
+.selected_company_list_header {
+  display: flex;
+  justify-content: flex-start;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.48px;
+  color: #ffffff;
+}
+
+.selected_company_text,
+.selected_company_num {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.selected_company_list_box {
+  padding: 0;
+}
+
+.selected_company_list_body {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cancel_selected {
+  border-radius: 10px;
+  border: 1px solid #747474;
+  gap: 10px;
+  color: #747474;
+  background-color: #212121;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.09px;
+  align-items: center;
+  width: 104px;
+  height: 48px;
+}
+
+.all_company_header {
+  display: flex;
+  justify-content: flex-start;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21.48px;
+  color: #ffffff;
+}
+
+.all_company_list_text,
+.all_company_num,
+.search_result {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.all_company_list {
+  padding: 0;
+}
+
+.all_company_list_body {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.gap {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.codeit_icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  margin-right: 12px;
+}
+
+.category_company_name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 19.09px;
+  color: #ffffff;
+}
+
+.category_category {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+  color: #747474;
+}
+
+.selected_button {
+  border-radius: 10px;
+  border: 1px solid #eb5230;
+  gap: 10px;
+  background-color: #212121;
+  color: #eb5230;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.09px;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  width: 104px;
+  height: 48px;
+  justify-content: center;
+}
+
+.selected_button:focus {
+  outline: none;
+}
+
+.compare_company_btn {
+  background-color: #eb5230;
+  color: #ffffff;
+  width: 183px;
+  height: 48px;
+  border-radius: 50px;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19.09px;
+  align-items: center;
+  display: flex;
+  margin-top: 24px;
+  white-space: nowrap;
+  justify-content: center;
+}
+
+.compare_company_btn:disabled {
+  background-color: #2e2e2e;
+  color: #747474;
+}
+
+.compare_company_select_page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.compare_company_select_page_header {
+  display: flex;
+  align-items: center;
+  width: 1200px;
+  justify-content: space-between;
+}
+
+.select_compare_company_text {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.87px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.add_company_btn {
+  height: 40px;
+  width: auto;
+  border-radius: 50px;
+  padding: 8px 24px;
+  background-color: #eb5230;
+  color: #ffffff;
+}
+
+.add_company_btn:disabled {
+  background-color: #2e2e2e;
+  color: #747474;
+}
+
+.select_compare_company_container {
+  width: 1200px;
+  height: 300px;
+  border: 1px solid #212121;
+  background-color: #212121;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.select_compare_company_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.not_select_compare_company_text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+  align-items: center;
+  color: #747474;
+  display: flex;
+  text-align: center;
+}
+
+.selected_company {
+  display: flex;
+  background-color: #333333;
+  width: 126px;
+  height: 187px;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.delete_company_btn {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  margin-top: 8px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.selected_company_body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.company_name {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.09px;
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+}
+
+.company_category {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  color: #747474;
+}
+
+.yes_compare_modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compare_modal {
+  background-color: #212121;
+  border-radius: 16px;
+  padding: 24px;
+  gap: 24px;
+}
+
+.compare_modal_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.select_compare_company {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23.87px;
+}
+
+.selected {
+  width: 104px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid #d8d8d8;
+  padding: 0;
+  gap: 2px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19.09px;
+  align-items: center;
+  justify-content: center;
+  color: #d8d8d8;
+  display: flex;
+}
+
+.error_message {
+  color: #c41013;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+}

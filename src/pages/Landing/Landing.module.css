@@ -57,3 +57,39 @@ body {
   font-size: 20px;
   margin-top: 40px;
 }
+
+@media (max-width: 1199px) and (min-width: 744px) {
+  .landing_main_img {
+    width: 499px;
+    height: auto;
+  }
+
+  .landing_main_already,
+  .landing_main_login {
+    font-size: 33.7px;
+  }
+
+  .landing_main_around_button {
+    width: 220px;
+    height: 60px;
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .landing_main_img {
+    width: 330px;
+    height: auto;
+  }
+
+  .landing_main_already,
+  .landing_main_login {
+    font-size: 25.64px;
+  }
+
+  .landing_main_around_button {
+    width: 180px;
+    height: 50px;
+    font-size: 25.64px;
+  }
+}
