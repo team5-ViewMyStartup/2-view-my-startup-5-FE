@@ -49,10 +49,7 @@ function Main() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/compare" element={<ComparePage />} />
           <Route path="/all-company" element={<StartupList />} />
-          <Route
-            path="/details/:companyId"
-            element={isLoggedIn ? <StartupList /> : <Login />}
-          ></Route>
+          <Route path="/details/:companyId" element={isLoggedIn ? <Details /> : <Login />}></Route>
           <Route path="/invest-status" element={<Investment />} />
           <Route path="/compare-status" element={<CompareStatus />} />
           <Route path="/compare-result" element={<CompareResult />} />
