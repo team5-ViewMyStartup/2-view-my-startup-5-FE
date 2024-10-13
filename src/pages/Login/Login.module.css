@@ -86,3 +86,28 @@ input {
   font-size: 14px;
   margin-top: 10px;
 }
+
+@media (max-width: 1199px) and (min-width: 744px) {
+  .login_logo_img {
+    width: 548.8px;
+    height: auto;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .login_logo_img {
+    width: 338.8px;
+    height: auto;
+  }
+
+  input {
+    width: 343px;
+  }
+
+  .signup_button {
+    width: 343px;
+  }
+  .login_button {
+    font-size: 20px;
+  }
+}

@@ -27,11 +27,12 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
   }
   const response = await fetch(url, options);
 
-  if (!response.ok) {
-    const errorDetails = await response.text();
-    console.error(`Error Details: ${errorDetails}`);
-    throw new Error(`API 호출 실패: ${response.statusText}`);
-  }
+  // if (!response.ok) {
+  //   const errorDetails = await response.text();
+  //   console.error(`Error Details: ${errorDetails}`);
+  //   // window.location.replace("/login");
+  //   throw new Error(`API 호출 실패: ${response.statusText}`);
+  // }
 
   const responseBody = await response.json();
   const responseHeaders = response.headers || {};
@@ -151,7 +152,6 @@ export const postSignUp = async ({ email, nickname, password }) => {
       "Content-Type": "application/json",
     },
     data: {
-      // id: uuidv4(),
       email,
       nickname,
       password,

@@ -4,8 +4,9 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import { companyOptions, rankingOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
 import { companyHeader, compareResultHeader } from "../../components/List/HeaderOption";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useParams } from "react-router-dom";
 import { fetchCompareData, fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
+import InvestModal from "../../components/Modal/InvestModal";
 
 function CompareResult() {
   const viewCompanyInfoNum = 5;
@@ -15,12 +16,15 @@ function CompareResult() {
   // const [myCompany, setMyCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
+  const [sortedMyCompanyData, setSortedMyCompanyData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedMyCompany, setSelectedMyCompany] = useState(null);
   const [selectedCompareCompany, setSelectedCompareCompany] = useState([]);
 
   const [investModalOpen, setInvestModalOpen] = useState(false);
   const [investments, setInvestments] = useState([]);
+  const { companyId } = useParams();
+  const [company, setCompany] = useState(null);
 
   const openInvestModal = () => {
     setInvestModalOpen(true);
@@ -43,7 +47,7 @@ function CompareResult() {
       }
     };
     fetchData();
-  }, [investments]);
+  }, [companyId, investments]);
 
   const handleAddInvestment = (newInvestment) => {
     setInvestments((prevInvestments) => [...prevInvestments, newInvestment]);
@@ -124,7 +128,7 @@ function CompareResult() {
   //     case "employeeNum-low":
   //       companySorted = companySorted.sort((a, b) => a.employees - b.employees);
   //   }
-  //   setSortedData(companySorted);
+  //   setSortedMyCompanyData(companySorted);
   // }, [selectedMyCompany, companyOrderBy]);
 
   const compareOrderMap = companyOptions.reduce((acc, cur) => {
@@ -219,7 +223,7 @@ function CompareResult() {
         <ListHeader headers={companyHeader} type="company" />
         <div className={styles.category_box_rank}>
           <ul className={styles.category_kind_rank}>
-            {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+            {sortedMyCompanyData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
               <li key={index + indexOfFirstItem} className={styles.category_body}>
                 <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
                 <span className={styles.category_company_name}>
@@ -247,7 +251,7 @@ function CompareResult() {
         <InvestModal
           isOpen={investModalOpen}
           onClose={closeInvestModal}
-          company={company}
+          company={selectedMyCompany}
           onAdd={handleAddInvestment}
         />
       )}

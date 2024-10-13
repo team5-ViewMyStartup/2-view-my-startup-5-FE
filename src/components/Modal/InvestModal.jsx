@@ -6,6 +6,7 @@ import { getNicknameFromToken } from "../../utils/jwtUtils";
 import PasswordFailModal from "./PasswordFailModal";
 import toggleOn from "../../assets/btn_visibility_on_24px.png";
 import toggleOff from "../../assets/btn_visibility_off_24px.png";
+
 function InvestModal({ isOpen, onClose, company, onAdd }) {
   const [amount, setAmount] = useState("");
   const [comment, setComment] = useState("");
@@ -14,6 +15,7 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
   const [showPassword, setShowPassword] = useState(false);
   const [errorModalOpen, setErrorModalOpen] = useState(false);
   const [errorType, setErrorType] = useState("");
+
   useEffect(() => {
     const userNickname = getNicknameFromToken();
     setNickname(userNickname);

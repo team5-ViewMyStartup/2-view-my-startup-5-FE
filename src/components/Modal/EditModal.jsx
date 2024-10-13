@@ -12,6 +12,7 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
   const [password, setPassword] = useState("");
   const [errorModalOpen, setErrorModalOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [errorType, setErrorType] = useState("");
 
   if (!isOpen) return null;
 
@@ -25,6 +26,7 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
       const token = getToken();
 
       if (nickname !== investment.investorName) {
+        setErrorType("incorrectUser");
         setErrorModalOpen(true);
         return;
       }
@@ -51,6 +53,7 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
       onClose();
     } catch (e) {
       console.error("코멘트 수정 실패", e);
+      setErrorType("incorrectEd");
       setErrorModalOpen(true);
     }
   };
@@ -91,7 +94,11 @@ const EditModal = ({ isOpen, onClose, investment, onSave, onEdit }) => {
           </div>
         </div>
       </div>
-      <ErrorModal isOpen={errorModalOpen} onClose={() => setErrorModalOpen(false)} />
+      <ErrorModal
+        isOpen={errorModalOpen}
+        onClose={() => setErrorModalOpen(false)}
+        type={errorType}
+      />
     </>
   );
 };

@@ -107,6 +107,7 @@ input[type="number"]::-webkit-inner-spin-button {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+  color: white;
 }
 
 .company_img {
