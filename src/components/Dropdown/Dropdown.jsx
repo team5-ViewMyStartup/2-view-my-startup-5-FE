@@ -14,8 +14,18 @@ const Dropdown = ({ options, selectedOption, onSelect, isCompanyOptions }) => {
     setDropdown(false);
   };
 
+  const Dropdown = ({ pageType }) => {
+    const className = pageType === "all" ? styles.dropdown_page_allcompany : styles.dropdown;
+  };
+
   return (
-    <div className={`${styles.dropdown} ${isCompanyOptions ? styles.company_dropdown : ""}`}>
+    <div
+      className={`${styles.dropdown} ${
+        isCompanyOptions
+          ? `${styles.company_dropdown} ${styles.company_dropdown_page_allcompany}`
+          : ""
+      }`}
+    >
       <div className={styles.dropdown_select} onClick={toggleDropdown}>
         {selectedOption}
         <img className={styles.dropdown_icon} src={dropdownIcon} alt="dropdown" />

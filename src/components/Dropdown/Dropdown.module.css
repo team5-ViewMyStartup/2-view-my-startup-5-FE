@@ -76,4 +76,9 @@
   .dropdown {
     width: 277px;
   }
+
+  .company_dropdown_page_allcompany {
+    position: relative;
+    width: 146px;
+  }
 }

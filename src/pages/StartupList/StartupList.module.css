@@ -234,7 +234,9 @@
     width: 90vw;
     padding-bottom: 15px;
   }
-
+  .dropdowntwo {
+    width: 146px !important;
+  }
   .dropdown {
     width: 146px;
   }
