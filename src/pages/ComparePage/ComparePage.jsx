@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import styles from "./ComparePage.module.css";
 import plus from "../../assets/btn_plus.svg";
@@ -10,8 +10,10 @@ import search from "../../assets/ic_search.svg";
 import codeitIcon from "../../assets/icon_codeit.jpg";
 import checkIcon from "../../assets/ic_check.svg";
 import companyDelete from "../../assets/company_card_close_icon.svg";
+import { fetchCompanyData, fetchCompareData } from "../../api/api";
 
 function ComparePage() {
+  const navigate = useNavigate();
   const [isMyModalOpen, setIsMyModalOpen] = useState(false);
   const [isMyCompanyModalInput, setIsMyCompanyModalInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,7 +28,6 @@ function ComparePage() {
 
   const viewCompanyInfoNum = 5;
 
-  const totalPages = Math.ceil(company.length / viewCompanyInfoNum);
   const indexOfLastItem = currentPage * viewCompanyInfoNum;
   const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
 
@@ -98,10 +99,23 @@ function ComparePage() {
     setSelectedCompareCompany([]);
   };
 
+  const handleCompare = async () => {
+    const selectedCompanies = selectedCompareCompany.map((company) => {
+      return company.id;
+    });
+
+    const queryStrings = new URLSearchParams();
+    queryStrings.append("baseCompanyId", selectedMyCompany.id);
+
+    selectedCompanies.forEach((id) => {
+      queryStrings.append("compareCompanyId", id);
+    });
+    console.log(`/compare-result?${queryStrings.toString()}`);
+    navigate(`/compare-result?${queryStrings.toString()}`);
+  };
+
   useEffect(async () => {
-    const response = await fetch("/allCompanyData.json");
-    if (!response.ok) throw new Error("데이터를 불러오지 못 함");
-    const data = await response.json();
+    const data = await fetchCompanyData();
     setCompany(data.sort((a, b) => a.name.localeCompare(b.name)));
   }, []);
 
@@ -355,16 +369,23 @@ function ComparePage() {
           )}
         </div>
       )}
-      <Link to="/compare-result">
-        <button
-          className={styles.compare_company_btn}
-          disabled={selectedMyCompany === null || selectedCompareCompany.length < 1}
-        >
-          기업 비교하기
-        </button>
-      </Link>
+
+      {/* <Link to="/compare-result"> */}
+      <button
+        className={styles.compare_company_btn}
+        disabled={selectedMyCompany === null || selectedCompareCompany.length < 1}
+        onClick={handleCompare}
+      >
+        기업 비교하기
+      </button>
+      {/* </Link> */}
     </div>
   );
 }
+/**
+ * 링크 컴포넌트 빼버리고
+ * 핸들컴페어에서 URLSearchParams 가지고 쿼리스트링을 만들어서 네비게이트같은거 사용해서
+ * `/compare-result${search}`
+ */
 
 export default ComparePage;

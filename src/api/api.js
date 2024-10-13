@@ -1,5 +1,4 @@
 import { getToken } from "../utils/jwtUtils";
-import { v4 as uuidv4 } from "uuid";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -46,6 +45,28 @@ export async function fetchData({ url, method = HTTP_METHODS.GET, data, headers 
 export const fetchCompanyData = async () => {
   const res = await fetchData({
     url: `${BASE_URL}/companies`,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return res.body;
+};
+
+export const fetchCompareData = async (baseCompanyId, compareCompanyId) => {
+  const search = new URLSearchParams();
+  search.append("baseCompanyId", baseCompanyId);
+
+  compareCompanyId.forEach((id) => {
+    search.append("compareCompanyId", id);
+  });
+
+  const url = new URL(`${BASE_URL}/compare/select`);
+  url.search = search.toString();
+
+  console.log(url.href);
+
+  const res = await fetchData({
+    url: url.href,
     headers: {
       "Content-Type": "application/json",
     },
@@ -130,7 +151,7 @@ export const postSignUp = async ({ email, nickname, password }) => {
       "Content-Type": "application/json",
     },
     data: {
-      id: uuidv4(),
+      // id: uuidv4(),
       email,
       nickname,
       password,

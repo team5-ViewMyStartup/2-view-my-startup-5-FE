@@ -78,7 +78,7 @@ function Details() {
       }
     };
     fetchData();
-  }, [companyId]);
+  }, [companyId, investments]);
 
   if (!company) {
     return <Loading />;
