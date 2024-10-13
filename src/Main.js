@@ -20,7 +20,7 @@ function Main() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/compare" element={<ComparePage />} />
-          <Route path="/all-company" element={<StartupList pageType="all" />} />
+          <Route path="/all-company" element={<StartupList />} />
           <Route path="/details/:companyId" element={<Details />} />
           <Route path="/invest-status" element={<Investment />} />
           <Route path="/compare-status" element={<CompareStatus />} />

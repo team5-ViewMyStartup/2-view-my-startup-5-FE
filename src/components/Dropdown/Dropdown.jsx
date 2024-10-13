@@ -14,10 +14,6 @@ const Dropdown = ({ options, selectedOption, onSelect, isCompanyOptions }) => {
     setDropdown(false);
   };
 
-  const Dropdown = ({ pageType }) => {
-    const className = pageType === "all" ? styles.dropdown_page_allcompany : styles.dropdown;
-  };
-
   return (
     <div
       className={`${styles.dropdown} ${
