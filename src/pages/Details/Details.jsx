@@ -78,7 +78,7 @@ function Details() {
       }
     };
     fetchData();
-  }, [companyId]);
+  }, [companyId, investments]);
 
   if (!company) {
     return <Loading />;
@@ -131,7 +131,10 @@ function Details() {
   };
 
   const handleAddInvestment = (newInvestment) => {
-    setInvestments((prevInvestments) => [...prevInvestments, newInvestment]);
+    setInvestments((prevInvestments) => {
+      const updatedInvestments = [...prevInvestments, newInvestment];
+      return updatedInvestments.sort((a, b) => b.amount - a.amount);
+    });
   };
 
   return (
@@ -176,7 +179,7 @@ function Details() {
         ) : (
           <>
             <div className={styles.total_amount_wrapper}>
-              <h3>총 {totalInvestmentAmount} 억원</h3>
+              <h3>총 {totalInvestmentAmount > 0 ? totalInvestmentAmount : 0} 억원</h3>
             </div>
             <div className={styles.investment_container}>
               <ul className={styles.investment_list}>
@@ -262,18 +265,6 @@ function Details() {
           isOpen={investModalOpen}
           onClose={closeInvestModal}
           company={company}
-          onSave={(updatedInvestment) => {
-            const updatedInvestments = investments.map((invest) => {
-              if (invest.id !== updatedInvestment.id) return invest;
-
-              return Object.assign({}, invest, updatedInvestment);
-            });
-
-            setCompany((prevCompany) => ({
-              ...prevCompany,
-              investments: updatedInvestments,
-            }));
-          }}
           onAdd={handleAddInvestment}
         />
       )}

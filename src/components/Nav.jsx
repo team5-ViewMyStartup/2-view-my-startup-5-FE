@@ -20,26 +20,13 @@ function Nav() {
   useEffect(() => {
     const userNickname = getNicknameFromToken();
     setNickname(userNickname);
-
-    const handleStorageChange = () => {
-      const updatedNickname = getNicknameFromToken();
-      setNickname(updatedNickname);
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.setItem("logout", "true");
     setNickname(null);
     window.localStorage.setItem("nickname", null);
-
-    window.location.reload();
+    window.location.replace("/login");
   };
   const handleLogoClick = () => {
     const token = getToken();

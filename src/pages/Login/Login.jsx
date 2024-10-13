@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import logoImg from "../../imagesjun/logo1.svg";
@@ -30,33 +30,15 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = getToken();
-
-    if (token) {
-      try {
-        const decodedToken = jwtDecode(token);
-        const currentTime = Date.now() / 1000;
-
-        if (decodedToken.exp < currentTime) {
-          localStorage.removeItem("token");
-          alert("30분이 지났습니다. 다시 로그인해주세요.");
-          navigate("/login");
-        }
-      } catch (error) {
-        console.error("토큰 에러 발생:", error);
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
-    }
-  }, [navigate]);
-
   const loginButtonClicked = async () => {
     try {
       const response = await postSignIn(email, password);
       const token = getToken();
       localStorage.setItem("token", token);
+      localStorage.setItem("nickname", response.nickname);
+
       navigate("/all-company");
+      window.location.reload();
     } catch (error) {
       console.log(error);
       alert("회원 가입이 되지 않은 회원 정보입니다.");
