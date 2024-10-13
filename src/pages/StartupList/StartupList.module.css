@@ -266,6 +266,51 @@
     width: 90vw;
     padding-bottom: 15px;
   }
+  .category_box {
+    width: 696px;
+  }
+
+  .category_rank {
+    font-weight: 400;
+    width: 60px;
+    height: 64px;
+  }
+
+  .category_company_name {
+    width: 140px;
+    height: 64px;
+    margin-left: 10 px;
+  }
+
+  .category_company_info {
+    width: 180px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_category {
+    width: 84px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_investment_amount {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_sales {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_employee_num {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
 
   .category_kind,
   .category_body,
