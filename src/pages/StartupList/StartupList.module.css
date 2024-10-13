@@ -209,6 +209,38 @@
   .category_box {
     width: 696px;
   }
+
+  .category_rank {
+    font-weight: 400;
+    width: 60px;
+    height: 64px;
+  }
+
+  .category_company_name {
+    width: 140px;
+    height: 64px;
+  }
+
+  .category_company_info {
+    width: 180px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_category {
+    width: 84px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_startup_investment,
+  .category_total_investment,
+  .category_selection,
+  .category_compare_selection {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
 }
 
 @media (min-width: 375px) and (max-width: 743px) {
@@ -233,12 +265,6 @@
     overflow-x: auto;
     width: 90vw;
     padding-bottom: 15px;
-  }
-  .dropdowntwo {
-    width: 146px !important;
-  }
-  .dropdown {
-    width: 146px;
   }
 
   .category_kind,
