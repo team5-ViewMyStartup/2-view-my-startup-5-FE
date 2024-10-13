@@ -78,7 +78,7 @@ function Details() {
       }
     };
     fetchData();
-  }, [companyId]);
+  }, [companyId, investments]);
 
   if (!company) {
     return <Loading />;
@@ -133,7 +133,7 @@ function Details() {
   const handleAddInvestment = (newInvestment) => {
     setInvestments((prevInvestments) => {
       const updatedInvestments = [...prevInvestments, newInvestment];
-      return updatedInvestments;
+      return updatedInvestments.sort((a, b) => b.amount - a.amount);
     });
   };
 
