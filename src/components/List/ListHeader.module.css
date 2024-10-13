@@ -106,3 +106,9 @@
     align-items: center;
   }
 }
+
+@media (max-width: 1199px) {
+  .hideRank {
+    display: none;
+  }
+}

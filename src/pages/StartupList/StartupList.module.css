@@ -214,6 +214,8 @@
     font-weight: 400;
     width: 60px;
     height: 64px;
+
+    display: none;
   }
 
   .category_company_name {
@@ -274,6 +276,7 @@
     font-weight: 400;
     width: 60px;
     height: 64px;
+    display: none;
   }
 
   .category_company_name {
