@@ -284,47 +284,25 @@
   .selected_company_middle_header,
   .selected_company_bottom_header {
     width: 343px;
-    margin-left: 40px;
-  }
-  .dropdown {
-    width: 10px;
   }
 
   .selected_company_box {
     width: 343px;
   }
+
   .section_one,
   .section_two {
-    /* width: 90vw; */
-    /* justify-content: flex-start; */
-    overflow-x: scroll;
-    /* overflow-x: auto; */
-    /* padding-bottom: 15px; */
-    .category_box_compare,
-    .category_box_rank {
-      width: 695px;
-      overflow-x: scroll;
-    }
+    width: 343px;
+
+    overflow-x: auto;
   }
-}
+  .category_body {
+    width: 695px;
+  }
 
-.compare_button,
-.investment_button {
-  width: 100%;
-  padding: 10px;
-}
-
-.selected_company_text,
-.compare_result_check,
-.company_rank_check {
-  gap: 20px;
-}
-
-.category_body,
-.category_rank,
-.category_company_name,
-.category_company_info,
-.category_category,
-.category_employee_num {
-  font-size: 12px;
+  .category_rank {
+    font-weight: 400;
+    width: 60px;
+    height: 64px;
+  }
 }

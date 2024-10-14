@@ -15,7 +15,13 @@ const Dropdown = ({ options, selectedOption, onSelect, isCompanyOptions }) => {
   };
 
   return (
-    <div className={`${styles.dropdown} ${isCompanyOptions ? styles.company_dropdown : ""}`}>
+    <div
+      className={`${styles.dropdown} ${
+        isCompanyOptions
+          ? `${styles.company_dropdown} ${styles.company_dropdown_page_allcompany}`
+          : ""
+      }`}
+    >
       <div className={styles.dropdown_select} onClick={toggleDropdown}>
         {selectedOption}
         <img className={styles.dropdown_icon} src={dropdownIcon} alt="dropdown" />
