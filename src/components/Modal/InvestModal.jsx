@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Modal.module.css";
-import closed from "../../images/closed.svg";
 import { addNewInvestment } from "../../api/api";
 import { getNicknameFromToken } from "../../utils/jwtUtils";
 import PasswordFailModal from "./PasswordFailModal";
-import toggleOn from "../../assets/btn_visibility_on_24px.png";
-import toggleOff from "../../assets/btn_visibility_off_24px.png";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function InvestModal({ isOpen, onClose, company, onAdd }) {
   const [amount, setAmount] = useState("");
@@ -62,7 +61,12 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
         <div className={styles.modal_content}>
           <div className={styles.title_wrapper}>
             <span>기업에 투자하기</span>
-            <img className={styles.close} src={closed} alt="closed icon" onClick={onClose} />
+            <img
+              className={styles.close}
+              src={`${S3_BASE_URL}/closed.svg`}
+              alt="closed icon"
+              onClick={onClose}
+            />
           </div>
           <h3>투자 기업 정보</h3>
           <div className={styles.company_information}>
@@ -106,7 +110,11 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
                 />
                 <img
                   className={styles.toggle_img_invest}
-                  src={showPassword ? toggleOn : toggleOff}
+                  src={
+                    showPassword
+                      ? `${S3_BASE_URL}/btn_visibility_on.png`
+                      : `${S3_BASE_URL}/btn_visibility_off.png`
+                  }
                   alt="눈모양 토글"
                   onClick={togglePasswordVisibility}
                 />
