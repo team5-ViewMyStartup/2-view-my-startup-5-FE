@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "../../components/Modal/DeleteModal";
 import EditModal from "../../components/Modal/EditModal";

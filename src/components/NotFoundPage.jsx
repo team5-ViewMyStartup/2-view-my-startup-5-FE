@@ -5,12 +5,12 @@ import styles from "./NotFoundPage.module.css";
 function NotFoundPage() {
   const navigate = useNavigate();
 
-  //   useEffect(() => {
-  // const timer = setTimeout(() => {
-  //   navigate("/all-company");
-  // }, 5000);
-  // return () => clearTimeout(timer);
-  //   }, [navigate]);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/all-company");
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <div className={styles.container}>

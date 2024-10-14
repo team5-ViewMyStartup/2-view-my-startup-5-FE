@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate, Link } from "react-router-dom";
 import Container from "./Container";
-import logoImg from "../images/logo_img.svg";
-import m_logo_img from "../assets/logo_mobile.svg";
 import styles from "./Nav.module.css";
 import { getNicknameFromToken } from "../utils/jwtUtils";
 import { getToken } from "../utils/jwtUtils";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function getLinkStyle({ isActive }) {
   return {
@@ -40,8 +40,16 @@ function Nav() {
     <div className={styles.nav}>
       <Container className={styles.container}>
         <div onClick={handleLogoClick} className={styles.logo_click}>
-          <img src={logoImg} alt="View my startup Logo" className={styles.logo} />
-          <img src={m_logo_img} alt="View my startup Logo" className={styles.m_logo} />
+          <img
+            src={`${S3_BASE_URL}/logo_img.svg`}
+            alt="View my startup Logo"
+            className={styles.logo}
+          />
+          <img
+            src={`${S3_BASE_URL}/logo_mobile.svg`}
+            alt="View my startup Logo"
+            className={styles.m_logo}
+          />
         </div>
         <ul className={styles.menu}>
           <li>
