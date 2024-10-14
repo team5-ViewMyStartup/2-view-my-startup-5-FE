@@ -254,3 +254,77 @@
   display: flex;
   border: none;
 }
+
+@media (max-width: 1199px) and (min-width: 744px) {
+  .selected_company_result {
+    width: 696px;
+  }
+  .selected_company_result_header,
+  .selected_company_middle_header,
+  .selected_company_bottom_header {
+    width: 695px;
+  }
+
+  .selected_company_box {
+    width: 695px;
+  }
+  .category_box_compare,
+  .category_box_rank {
+    width: 695px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .selected_company_result {
+    width: 343px;
+  }
+  .selected_company_result_header {
+    width: 343px;
+  }
+  .selected_company_middle_header,
+  .selected_company_bottom_header {
+    width: 343px;
+    margin-left: 40px;
+  }
+  .dropdown {
+    width: 10px;
+  }
+
+  .selected_company_box {
+    width: 343px;
+  }
+  .section_one,
+  .section_two {
+    /* width: 90vw; */
+    /* justify-content: flex-start; */
+    overflow-x: scroll;
+    /* overflow-x: auto; */
+    /* padding-bottom: 15px; */
+    .category_box_compare,
+    .category_box_rank {
+      width: 695px;
+      overflow-x: scroll;
+    }
+  }
+}
+
+.compare_button,
+.investment_button {
+  width: 100%;
+  padding: 10px;
+}
+
+.selected_company_text,
+.compare_result_check,
+.company_rank_check {
+  gap: 20px;
+}
+
+.category_body,
+.category_rank,
+.category_company_name,
+.category_company_info,
+.category_category,
+.category_employee_num {
+  font-size: 12px;
+}

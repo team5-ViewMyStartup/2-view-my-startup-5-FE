@@ -101,23 +101,25 @@ function CompareResult() {
             />
           </div>
         </div>
-        <ListHeader headers={companyHeader} type="company" />
-        <div className={styles.category_box_compare}>
-          <ul className={styles.category_kind_compare}>
-            {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-              <li key={index + indexOfFirstItem} className={styles.category_body}>
-                <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
-                <span className={styles.category_company_name}>{info.name}</span>
-                <span className={styles.category_company_info}>{info.description}</span>
-                <span className={styles.category_category}>{info.category}</span>
-                <span className={styles.category_investment_amount}>
-                  {info.totalInvestment}억 원
-                </span>
-                <span className={styles.category_sales}>{info.revenue}억 원</span>
-                <span className={styles.category_employee_num}>{info.employees}명</span>
-              </li>
-            ))}
-          </ul>
+        <div className={styles.section_one}>
+          <ListHeader headers={companyHeader} type="company" />
+          <div className={styles.category_box_compare}>
+            <ul className={styles.category_kind_compare}>
+              {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+                <li key={index + indexOfFirstItem} className={styles.category_body}>
+                  <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
+                  <span className={styles.category_company_name}>{info.name}</span>
+                  <span className={styles.category_company_info}>{info.description}</span>
+                  <span className={styles.category_category}>{info.category}</span>
+                  <span className={styles.category_investment_amount}>
+                    {info.totalInvestment}억 원
+                  </span>
+                  <span className={styles.category_sales}>{info.revenue}억 원</span>
+                  <span className={styles.category_employee_num}>{info.employees}명</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <div className={styles.selected_company_bottom}>
@@ -132,23 +134,25 @@ function CompareResult() {
             />
           </div>
         </div>
-        <ListHeader headers={companyHeader} type="company" />
-        <div className={styles.category_box_rank}>
-          <ul className={styles.category_kind_rank}>
-            {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-              <li key={index + indexOfFirstItem} className={styles.category_body}>
-                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-                <span className={styles.category_company_name}>{info.name}</span>
-                <span className={styles.category_company_info}>{info.description}</span>
-                <span className={styles.category_category}>{info.category}</span>
-                <span className={styles.category_investment_amount}>
-                  {info.totalInvestment}억 원
-                </span>
-                <span className={styles.category_sales}>{info.revenue}억 원</span>
-                <span className={styles.category_employee_num}>{info.employees}명</span>
-              </li>
-            ))}
-          </ul>
+        <div className={styles.section_two}>
+          <ListHeader headers={companyHeader} type="company" />
+          <div className={styles.category_box_rank}>
+            <ul className={styles.category_kind_rank}>
+              {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+                <li key={index + indexOfFirstItem} className={styles.category_body}>
+                  <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                  <span className={styles.category_company_name}>{info.name}</span>
+                  <span className={styles.category_company_info}>{info.description}</span>
+                  <span className={styles.category_category}>{info.category}</span>
+                  <span className={styles.category_investment_amount}>
+                    {info.totalInvestment}억 원
+                  </span>
+                  <span className={styles.category_sales}>{info.revenue}억 원</span>
+                  <span className={styles.category_employee_num}>{info.employees}명</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
       <div className={styles.my_company_investment}>
