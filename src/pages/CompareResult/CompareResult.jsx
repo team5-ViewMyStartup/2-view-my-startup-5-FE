@@ -101,7 +101,7 @@ function CompareResult() {
             />
           </div>
         </div>
-        <div className={styles.section_one}>
+        <div className={styles.compare_section}>
           <ListHeader headers={companyHeader} type="company" />
           <div className={styles.category_box_compare}>
             <ul className={styles.category_kind_compare}>
@@ -134,7 +134,7 @@ function CompareResult() {
             />
           </div>
         </div>
-        <div className={styles.section_two}>
+        <div className={styles.compare_section}>
           <ListHeader headers={companyHeader} type="company" />
           <div className={styles.category_box_rank}>
             <ul className={styles.category_kind_rank}>

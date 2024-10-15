@@ -290,10 +290,9 @@
     width: 343px;
   }
 
-  .section_one,
-  .section_two {
+  .compare_section,
+  .company_section {
     width: 343px;
-
     overflow-x: auto;
   }
   .category_body {
