@@ -16,6 +16,8 @@ function PasswordFailModal({ isOpen, onClose, type }) {
         return "본인이 아니면 불가합니다.";
       case "incorrectInvestPw":
         return "잘못된 비밀번호로 투자에 실패하셨습니다.";
+      case "findNoUser":
+        return "로그인을 해주세요.";
       default:
         return "오류가 발생하였습니다.";
     }
