@@ -26,11 +26,14 @@ function StartupList() {
       try {
         setLoading(true);
         const data = await fetchCompanyData();
-        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchCompanies();
