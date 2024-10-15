@@ -214,14 +214,49 @@
   .category_kind {
     width: 696px;
   }
+  .category_rank {
+    display: none;
+  }
+}
+@media (max-width: 1199px) {
+  .category_company_name {
+    width: 140px;
+    height: 64px;
+  }
+
+  .category_company_info {
+    width: 180px;
+    height: 64px;
+    font-weight: 400;
+  }
+
+  .category_category {
+    width: 84px;
+    height: 64px;
+    font-weight: 400;
+    margin-left: 40px;
+  }
+
+  .category_startup_investment,
+  .category_total_investment,
+  .category_selection,
+  .category_compare_selection {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
 }
 
 @media (min-width: 375px) and (max-width: 743px) {
   .startupList {
-    width: 696px;
+    width: 374px;
   }
+  .all_startup_list {
+    font-size: 16px;
+  }
+
   .startup_list {
-    width: 696px;
+    width: 344px;
     align-items: flex-start;
     flex-direction: column;
   }
@@ -229,16 +264,33 @@
     width: 343px;
     justify-content: space-between;
   }
+
+  .search {
+    width: 189px;
+    height: 40px;
+  }
+  .search_input {
+    font-size: 13px;
+  }
   .dropdown {
-    width: 246px;
+    width: 146px;
   }
   .startup_list_box {
-    width: 696px;
+    width: 374px;
     overflow-x: auto;
-    width: 90vw;
+    margin-left: 16px;
     padding-bottom: 15px;
   }
+  .category_box {
+    width: 696px;
+  }
 
+  .category_kind {
+    width: 696px;
+  }
+  .category_rank {
+    display: none;
+  }
   .category_kind,
   .category_body,
   .category_rank,

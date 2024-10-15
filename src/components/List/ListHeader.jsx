@@ -8,9 +8,13 @@ const ListHeader = ({ headers = [], type }) => {
         {headers.map((header, index) => (
           <div
             key={index}
-            className={`${styles.header_list} ${type === "company" ? styles.company : ""} ${
-              type === "status" ? styles.status : ""
-            } ${type === "result" ? styles.result : ""}`}
+            className={`
+            ${styles.header_list} 
+            ${type === "company" ? styles.company : ""} 
+            ${type === "status" ? styles.status : ""} 
+            ${type === "result" ? styles.result : ""}
+            ${type === "company" && header === "순위" ? styles.hideRank : ""}
+            `}
           >
             <strong>{header}</strong>
           </div>
