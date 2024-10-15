@@ -22,6 +22,7 @@ input {
   align-items: center;
   flex-direction: column;
   gap: 24px;
+  width: 100vw;
   height: 100vh;
 }
 
@@ -50,10 +51,14 @@ input {
   background-color: #eb5230;
   cursor: pointer;
   transition: background-color 0.8s;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
 }
+
 .login_button:disabled {
   background-color: #9ca3af;
-  color: #d8d8d8;
+  color: #ffffff;
   cursor: not-allowed;
 }
 
@@ -83,7 +88,9 @@ input {
 .error {
   color: red;
   text-align: center;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 17.9px;
   margin-top: 10px;
 }
 
@@ -95,6 +102,12 @@ input {
 }
 
 @media (min-width: 375px) and (max-width: 743px) {
+  .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .login_logo_img {
     width: 338.8px;
     height: auto;
@@ -107,7 +120,16 @@ input {
   .signup_button {
     width: 343px;
   }
+
   .login_button {
-    font-size: 20px;
+    font-size: 16px;
+    width: 343px;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 }

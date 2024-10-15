@@ -27,8 +27,7 @@ ul.menu > li:not(:last-child) {
   margin-right: 30px;
 }
 
-ul.menu a:hover,
-ul.menu a:active {
+ul.menu a:hover {
   text-decoration: underline;
 }
 
@@ -64,6 +63,14 @@ ul.menu a:active {
   cursor: pointer;
 }
 
+.activeLink {
+  color: #ffffff;
+}
+
+.inactiveLink {
+  color: #747474;
+}
+
 @media (max-width: 1200px) and (min-width: 743px) {
   .nav {
     gap: 24px;
@@ -95,9 +102,21 @@ ul.menu a:active {
     padding: 0;
   }
 
-  .menu {
+  ul.menu {
     padding: 21px 8px;
+    padding-left: 16px;
     gap: 10px;
+  }
+
+  ul.menu > li:not(:last-child) {
+    margin-right: 0;
+  }
+
+  ul > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
   }
 
   ul {
@@ -113,7 +132,8 @@ ul.menu a:active {
   .m_logo {
     display: block;
   }
+
   .user_menu {
-    margin-right: 20px;
+    margin-right: 16px;
   }
 }

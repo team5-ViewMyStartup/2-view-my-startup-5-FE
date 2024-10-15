@@ -56,12 +56,14 @@ body {
   border-radius: 50px;
   font-size: 20px;
   margin-top: 40px;
+  border: none;
 }
 
 @media (max-width: 1199px) and (min-width: 744px) {
   .landing_main_img {
     width: 499px;
-    height: auto;
+    height: 178.21px;
+    margin-bottom: 10px;
   }
 
   .landing_main_already,
@@ -79,7 +81,8 @@ body {
 @media (min-width: 375px) and (max-width: 743px) {
   .landing_main_img {
     width: 330px;
-    height: auto;
+    height: 118px;
+    margin-bottom: 10px;
   }
 
   .landing_main_already,

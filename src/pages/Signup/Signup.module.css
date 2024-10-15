@@ -32,6 +32,7 @@ input {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-bottom: 20px;
 }
 
 .toggle_img {
@@ -48,6 +49,9 @@ input {
   gap: 10px;
   background-color: #eb5230;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .info {
@@ -73,8 +77,18 @@ input {
   bottom: 16px;
 }
 
-.form_wrapper input {
-  margin-bottom: 30px;
+.error_message {
+  color: red;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 17.9px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.signup_button:disabled {
+  background-color: #9ca3af;
+  color: #ffffff;
 }
 
 @media (max-width: 1199px) and (min-width: 744px) {
@@ -101,4 +115,3 @@ input {
     font-size: 16px;
   }
 }
-

@@ -33,7 +33,6 @@
   height: 40px;
   width: auto;
   border-radius: 50px;
-  padding: 8px 24px;
   background-color: #eb5230;
   color: #ffffff;
   align-items: center;
@@ -159,12 +158,14 @@
 .modal_header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 24px;
 }
 
 .select_my_company {
   font-weight: 700;
   font-size: 20px;
   line-height: 23.87px;
+  margin: 0;
 }
 
 .close_icon {
@@ -243,18 +244,35 @@
   height: 48px;
 }
 
-.all_company_header {
+.all_company_header,
+.recent_company_header {
   display: flex;
   justify-content: flex-start;
   font-weight: 700;
   font-size: 18px;
   line-height: 21.48px;
   color: #ffffff;
+  margin-top: 12px;
+}
+
+.recent_company_list {
+  padding: 0;
+}
+
+.recent_company_item {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
 .all_company_list_text,
 .all_company_num,
-.search_result {
+.search_result,
+.select_compare_company,
+.recent_company_title,
+.recent_company_num {
   margin: 0;
   margin-bottom: 12px;
 }
@@ -479,12 +497,14 @@
 .compare_modal_header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .select_compare_company {
   font-weight: 700;
   font-size: 20px;
   line-height: 23.87px;
+  margin: 0;
 }
 
 .selected {
@@ -521,6 +541,118 @@
 }
 
 @media (max-width: 743px) and (min-width: 375px) {
+  .select_my_company {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19.09px;
+  }
+
+  .all_company_header {
+    margin-top: 12px;
+  }
+
+  .all_company_num,
+  .all_company_list_text,
+  .search_result,
+  .recent_company_title,
+  .recent_company_num,
+  .selected_company_text,
+  .selected_company_num {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16.71px;
+  }
+
+  .category_company_name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.71px;
+  }
+
+  .category_category {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14.32px;
+  }
+
+  .modal {
+    width: 343px;
+    padding: 16px;
+  }
+
+  .modal_header,
+  .compare_modal_header {
+    margin-bottom: 16px;
+  }
+
+  .search_bar {
+    width: 311px;
+    height: 40px;
+  }
+
+  .selected_button {
+    width: 73px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 0;
+  }
+
+  .cancel_selected {
+    width: 73px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+
+  .codeit_icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .select_compare_company_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .selected_company {
+    width: 104px;
+    height: 163px;
+  }
+
+  .selected_company_img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .company_name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.71px;
+  }
+
+  .company_category {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14.32px;
+  }
+
+  .select_compare_company_text {
+    white-space: nowrap;
+  }
+
+  .compare_modal {
+    width: 343px;
+    padding: 16px;
+  }
+
+  .select_compare_company {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19.09px;
+  }
+
   .compare_page_header,
   .select_my_company_box,
   .compare_company_select_page,
@@ -532,8 +664,12 @@
   .select_compare_company_text {
     font-size: 16px;
   }
-  .select_compare_company_text .all_reset_btn {
+  .select_compare_company_text,
+  .all_reset_btn {
     width: 116px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 16.71px;
   }
 
   .add_company_btn {
@@ -551,7 +687,8 @@
     height: 64px;
     margin-bottom: 10px;
   }
-  .selected_company_name .selected_company_category {
+  .selected_company_name,
+  .selected_company_category {
     font-size: 14px;
   }
 }
