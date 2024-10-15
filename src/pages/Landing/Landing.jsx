@@ -17,7 +17,7 @@ function Landing() {
       <div className={styles.landing_main_text}>
         <p className={styles.landing_main_already}>이미 계정이 있다면?</p>
         <Link to="/login">
-          <p className={styles.landing_main_login}>로그인하러 가기</p>
+          <p className={styles.landing_main_login}>로그인</p>
         </Link>
       </div>
 
