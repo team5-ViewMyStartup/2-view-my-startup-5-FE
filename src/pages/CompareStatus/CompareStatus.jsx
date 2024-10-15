@@ -80,11 +80,11 @@ function CompareStatus() {
           />
         </div>
       </div>
-      <div className={styles.mobile_scroll}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className={styles.mobile_scroll}>
             <ListHeader headers={compareHeader} type="status" />
 
             <div className={styles.compare_body}>
@@ -106,9 +106,9 @@ function CompareStatus() {
                 ))}
               </ul>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
