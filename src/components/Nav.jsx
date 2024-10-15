@@ -7,12 +7,6 @@ import { getToken } from "../utils/jwtUtils";
 
 const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
-// function getLinkStyle({ isActive }) {
-//   return {
-//     color: isActive ? "white" : "#747474",
-//   };
-// }
-
 function Nav() {
   const [nickname, setNickname] = useState(null);
   const navigate = useNavigate();
@@ -54,7 +48,9 @@ function Nav() {
         <ul className={styles.menu}>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? styles.activeLink : styles.inactiveLink)}
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.inactiveLink || ""
+              }
               to="/compare"
             >
               나의 기업 비교
@@ -62,7 +58,9 @@ function Nav() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? styles.activeLink : styles.inactiveLink)}
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.inactiveLink || ""
+              }
               to="/compare-status"
             >
               비교 현황
@@ -70,7 +68,9 @@ function Nav() {
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? styles.activeLink : styles.inactiveLink)}
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.inactiveLink || ""
+              }
               to="/invest-status"
             >
               투자 현황
