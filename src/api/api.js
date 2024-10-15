@@ -53,6 +53,42 @@ export const fetchCompanyData = async () => {
   return res.body;
 };
 
+export const fetchCompareData = async (baseCompanyId, compareCompanyId) => {
+  const search = new URLSearchParams();
+  search.append("baseCompanyId", baseCompanyId);
+
+  compareCompanyId.forEach((id) => {
+    search.append("compareCompanyId", id);
+  });
+
+  const url = new URL(`${BASE_URL}/compare/select`);
+  url.search = search.toString();
+
+  const res = await fetchData({
+    url: url.href,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return res.body;
+};
+
+export const fetchMyCompanyData = async (id) => {
+  const search = new URLSearchParams();
+  search.append("id", id);
+
+  const url = new URL(`${BASE_URL}/compare/rank`);
+  url.search = search.toString();
+
+  const res = await fetchData({
+    url: url.href,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  return res.body;
+};
+
 export const fetchDetailCompanyData = async (companyId) => {
   const res = await fetchData({
     url: `${BASE_URL}/companies/${companyId}`,

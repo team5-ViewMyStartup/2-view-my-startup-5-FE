@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Modal.module.css";
-import closed from "../../images/closed.svg";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function PasswordFailModal({ isOpen, onClose, type }) {
   if (!isOpen) return null;
@@ -15,6 +16,8 @@ function PasswordFailModal({ isOpen, onClose, type }) {
         return "본인이 아니면 불가합니다.";
       case "incorrectInvestPw":
         return "잘못된 비밀번호로 투자에 실패하셨습니다.";
+      case "findNoUser":
+        return "로그인을 해주세요.";
       default:
         return "오류가 발생하였습니다.";
     }
@@ -25,7 +28,12 @@ function PasswordFailModal({ isOpen, onClose, type }) {
       <div className={styles.modal_content}>
         <div className={styles.title_wrapper}>
           <span></span>
-          <img className={styles.close} src={closed} alt="closed icon" onClick={onClose} />
+          <img
+            className={styles.close}
+            src={`${S3_BASE_URL}/closed.svg`}
+            alt="closed icon"
+            onClick={onClose}
+          />
         </div>
         <div className={styles.message}>
           <p>{message()}</p>

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import select_icon from "../../images/select_img.svg";
 import styles from "./Details.module.css";
 import DeleteModal from "../../components/Modal/DeleteModal";
 import EditModal from "../../components/Modal/EditModal";
@@ -10,6 +9,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import Loading from "../../components/Loading";
 
 const ITEM_PER_PAGE = 5;
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function Details() {
   const { companyId } = useParams();
@@ -72,13 +72,13 @@ function Details() {
         setCompany(companyData);
 
         const investmentData = await fetchInvestmentsData(companyId);
-        setInvestments(investmentData);
+        setInvestments(Array.isArray(investmentData) ? investmentData : []);
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-  }, [companyId, investments]);
+  }, [companyId]);
 
   if (!company) {
     return <Loading />;
@@ -171,6 +171,7 @@ function Details() {
           </button>
         </div>
         <hr />
+
         {investments.length === 0 ? (
           <div className={styles.no_investment}>
             <p>아직 투자한 기업이 없어요.</p>
@@ -197,7 +198,11 @@ function Details() {
                     <span className={styles.comment_content}>{investment.comment}</span>
                     <span className={styles.select_box}>
                       <div onClick={() => handleImgClick(index + indexOfFirstItem)}>
-                        <img src={select_icon} alt="select icon" className={styles.select_img} />
+                        <img
+                          src={`${S3_BASE_URL}/select_img.svg`}
+                          alt="select icon"
+                          className={styles.select_img}
+                        />
                       </div>
                       {activeDropdown === index + indexOfFirstItem && (
                         <div className={styles.dropdown_select}>

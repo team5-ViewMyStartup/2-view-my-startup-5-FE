@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
-import logoImg from "../../imagesjun/logo1.svg";
 import { useNavigate } from "react-router-dom";
-import toggleOn from "../../imagesjun/btn_visibility_on_24px.png";
-import toggleOff from "../../imagesjun/btn_visibility_off_24px.png";
 import { postSignIn } from "../../api/api";
 import { getToken } from "../../utils/jwtUtils";
-import { jwtDecode } from "jwt-decode";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 const validateEmail = (email) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -82,7 +80,7 @@ function Login() {
   return (
     <div className={styles.login}>
       <Link to="/all-company">
-        <img className={styles.login_logo_img} src={logoImg} alt="logo Image" />
+        <img className={styles.login_logo_img} src={`${S3_BASE_URL}/logo.svg`} alt="logo Image" />
       </Link>
       <form onSubmit={handleSubmit}>
         <div className={styles.email}>
@@ -116,7 +114,11 @@ function Login() {
 
           <img
             className={styles.toggle_img}
-            src={showPassword ? toggleOn : toggleOff}
+            src={
+              showPassword
+                ? `${S3_BASE_URL}/btn_visibility_on.png`
+                : `${S3_BASE_URL}/btn_visibility_off.png`
+            }
             alt="toggle visibility"
             onClick={togglePasswordVisibility}
           />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Dropdown.module.css";
-import dropdownIcon from "../../assets/dropdown.svg";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 const Dropdown = ({ options, selectedOption, onSelect, isCompanyOptions }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -24,7 +25,7 @@ const Dropdown = ({ options, selectedOption, onSelect, isCompanyOptions }) => {
     >
       <div className={styles.dropdown_select} onClick={toggleDropdown}>
         {selectedOption}
-        <img className={styles.dropdown_icon} src={dropdownIcon} alt="dropdown" />
+        <img className={styles.dropdown_icon} src={`${S3_BASE_URL}/dropdown.svg`} alt="dropdown" />
       </div>
       {dropdown && (
         <ul className={styles.dropdown_list}>
