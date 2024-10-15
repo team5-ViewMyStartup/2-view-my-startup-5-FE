@@ -5,7 +5,12 @@ import { companyOptions, rankingOptions } from "../../components/Dropdown/Dropdo
 import ListHeader from "../../components/List/ListHeader";
 import { companyHeader, compareResultHeader } from "../../components/List/HeaderOption";
 import { Link, useSearchParams, useParams } from "react-router-dom";
-import { fetchCompareData, fetchDetailCompanyData, fetchInvestmentsData } from "../../api/api";
+import {
+  fetchCompareData,
+  fetchDetailCompanyData,
+  fetchInvestmentsData,
+  fetchMyCompanyData,
+} from "../../api/api";
 import InvestModal from "../../components/Modal/InvestModal";
 
 function CompareResult() {
@@ -16,10 +21,14 @@ function CompareResult() {
   // const [myCompany, setMyCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
-  const [sortedMyCompanyData, setSortedMyCompanyData] = useState([]);
+  const [sortedTopCompanyData, setSortedTopCompanyData] = useState([]);
+  const [sortedBottomCompanyData, setSortedBottomCompanyData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedMyCompany, setSelectedMyCompany] = useState(null);
   const [selectedCompareCompany, setSelectedCompareCompany] = useState([]);
+  const [topCompany, setTopCompany] = useState([]);
+  const [bottomCompany, setBottomCompany] = useState([]);
+  const [myCompanyRank, setMyCompanyRank] = useState(1);
 
   const [investModalOpen, setInvestModalOpen] = useState(false);
   const [investments, setInvestments] = useState([]);
@@ -47,44 +56,52 @@ function CompareResult() {
       }
     };
     fetchData();
-  }, [companyId, investments]);
+  }, [companyId]);
 
   const handleAddInvestment = (newInvestment) => {
     setInvestments((prevInvestments) => [...prevInvestments, newInvestment]);
   };
 
-  // useEffect(async () => {
-  //   const response = await fetch("/allCompanyData.json");
-  //   if (!response.ok) throw new Error("데이터를 불러오지 못 함");
-  //   const data = await response.json();
-  //   setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
-  //   setCompany(data.sort((a, b) => b.revenue - a.revenue));
-  // }, []);
-
-  // console.log("baseCompanyId :::::", searchParams.get("baseCompanyId"));
-  // console.log("compareCompanyId :::::", searchParams.getAll("compareCompanyId"));
-
-  // console.log(searchParams.toString());
   useEffect(async () => {
     const baseCompanyId = searchParams.get("baseCompanyId");
     const compareCompanyId = searchParams.getAll("compareCompanyId");
 
     const baseData = await fetchCompareData(baseCompanyId, compareCompanyId);
-    console.log("baseData ::::::::", baseData);
     const myCompanyData = await fetchDetailCompanyData(baseCompanyId);
-    console.log("my company data :::::::::", myCompanyData);
     const compareCompanyData = baseData.filter((element) => element.id !== myCompanyData.id);
-    console.log(1, compareCompanyData);
+
     setSelectedMyCompany(myCompanyData);
     setSelectedCompareCompany(
       compareCompanyData.sort((a, b) => b.totalInvestment - a.totalInvestment),
     );
-    // setCompareCompany(baseData.sort((a, b) => b.totalInvestment - a.totalInvestment));
-    // setMyCompany(baseData.sort((a, b) => b.revenue - a.revenue));
   }, [searchParams]);
 
-  console.log("selectedMyCompany ::::", selectedMyCompany);
-  console.log("selectedCompareCompany ::::", selectedCompareCompany);
+  useEffect(() => {
+    const fetchData = async () => {
+      const id = searchParams.get("baseCompanyId");
+
+      const baseData = await fetchMyCompanyData(id);
+
+      if (companyOrderBy === "매출액 높은순" || companyOrderBy === "sales-high") {
+        setTopCompany(baseData.revenue.gte.sort((a, b) => b.revenue - a.revenue));
+        setBottomCompany(baseData.revenue.lt.sort((a, b) => b.revenue - a.revenue));
+        setMyCompanyRank(baseData.companyRevenueRank);
+      } else if (companyOrderBy === "sales-low") {
+        setTopCompany(baseData.revenue.lt.sort((a, b) => a.revenue - b.revenue));
+        setBottomCompany(baseData.revenue.gte.sort((a, b) => a.revenue - b.revenue));
+        setMyCompanyRank(baseData.companyRevenueRank);
+      } else if (companyOrderBy === "employeeNum-high") {
+        setTopCompany(baseData.employee.gte.sort((a, b) => b.employees - a.employees));
+        setBottomCompany(baseData.employee.lt.sort((a, b) => b.employees - a.employees));
+        setMyCompanyRank(baseData.companyEmployeesRank);
+      } else if (companyOrderBy === "employeeNum-low") {
+        setTopCompany(baseData.employee.lt.sort((a, b) => a.revenue - b.revenue));
+        setBottomCompany(baseData.employee.gte.sort((a, b) => a.revenue - b.revenue));
+        setMyCompanyRank(baseData.companyEmployeesRank);
+      }
+    };
+    fetchData();
+  }, [searchParams, companyOrderBy]);
 
   const indexOfLastItem = currentPage * viewCompanyInfoNum;
   const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
@@ -113,23 +130,29 @@ function CompareResult() {
     setSortedData(compareSorted);
   }, [selectedCompareCompany, compareOrderBy]);
 
-  // useEffect(() => {
-  //   let companySorted = [...selectedMyCompany];
-  //   switch (companyOrderBy) {
-  //     case "sales-high":
-  //       companySorted = companySorted.sort((a, b) => b.revenue - a.revenue);
-  //       break;
-  //     case "sales-low":
-  //       companySorted = companySorted.sort((a, b) => a.revenue - b.revenue);
-  //       break;
-  //     case "employeeNum-high":
-  //       companySorted = companySorted.sort((a, b) => b.employees - a.employees);
-  //       break;
-  //     case "employeeNum-low":
-  //       companySorted = companySorted.sort((a, b) => a.employees - b.employees);
-  //   }
-  //   setSortedMyCompanyData(companySorted);
-  // }, [selectedMyCompany, companyOrderBy]);
+  useEffect(() => {
+    let topCompanySorted = [...topCompany];
+    let bottomCompanySorted = [...bottomCompany];
+    switch (companyOrderBy) {
+      case "sales-high":
+        topCompanySorted = topCompanySorted.sort((a, b) => b.revenue - a.revenue);
+        bottomCompanySorted = bottomCompanySorted.sort((a, b) => b.revenue - a.revenue);
+        break;
+      case "sales-low":
+        topCompanySorted = topCompanySorted.sort((a, b) => a.revenue - b.revenue);
+        bottomCompanySorted = bottomCompanySorted.sort((a, b) => a.revenue - b.revenue);
+        break;
+      case "employeeNum-high":
+        topCompanySorted = topCompanySorted.sort((a, b) => b.employees - a.employees);
+        bottomCompanySorted = bottomCompanySorted.sort((a, b) => b.employees - a.employees);
+        break;
+      case "employeeNum-low":
+        topCompanySorted = topCompanySorted.sort((a, b) => a.employees - b.employees);
+        bottomCompanySorted = bottomCompanySorted.sort((a, b) => a.employees - b.employees);
+    }
+    setSortedTopCompanyData(topCompanySorted);
+    setSortedBottomCompanyData(bottomCompanySorted);
+  }, [topCompany, bottomCompany, companyOrderBy]);
 
   const compareOrderMap = companyOptions.reduce((acc, cur) => {
     acc[cur.value] = cur.label;
@@ -223,9 +246,43 @@ function CompareResult() {
         <ListHeader headers={companyHeader} type="company" />
         <div className={styles.category_box_rank}>
           <ul className={styles.category_kind_rank}>
-            {sortedMyCompanyData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+            {sortedTopCompanyData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
               <li key={index + indexOfFirstItem} className={styles.category_body}>
-                <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
+                <span className={styles.category_rank}>
+                  {myCompanyRank - topCompany.length + index}위
+                </span>
+                <span className={styles.category_company_name}>
+                  <img src={info.image} className={styles.logo_img} />
+                  {info.name}
+                </span>
+                <span className={styles.category_company_info}>{info.description}</span>
+                <span className={styles.category_category}>{info.category}</span>
+                <span className={styles.category_investment_amount}>
+                  {info.totalInvestment}억 원
+                </span>
+                <span className={styles.category_sales}>{info.revenue}억 원</span>
+                <span className={styles.category_employee_num}>{info.employees}명</span>
+              </li>
+            ))}
+            <li className={styles.category_my_company_body}>
+              <span className={styles.category_rank}>{myCompanyRank}위</span>
+              <span className={styles.my_company_name}>
+                <img src={selectedMyCompany.image} className={styles.logo_img} />
+                {selectedMyCompany.name}
+              </span>
+              <span className={styles.my_company_info}>{selectedMyCompany.description}</span>
+              <span className={styles.my_company_category}>{selectedMyCompany.category}</span>
+              <span className={styles.my_company_investment_amount}>
+                {selectedMyCompany.totalInvestment}억 원
+              </span>
+              <span className={styles.my_company_sales}>{selectedMyCompany.revenue}억 원</span>
+              <span className={styles.my_company_employee_num}>
+                {selectedMyCompany.employees}명
+              </span>
+            </li>
+            {sortedBottomCompanyData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+              <li key={index + indexOfFirstItem} className={styles.category_body}>
+                <span className={styles.category_rank}>{myCompanyRank + index + 1}위</span>
                 <span className={styles.category_company_name}>
                   <img src={info.image} className={styles.logo_img} />
                   {info.name}

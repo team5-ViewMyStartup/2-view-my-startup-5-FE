@@ -110,7 +110,6 @@ function ComparePage() {
     selectedCompanies.forEach((id) => {
       queryStrings.append("compareCompanyId", id);
     });
-    console.log(`/compare-result?${queryStrings.toString()}`);
     navigate(`/compare-result?${queryStrings.toString()}`);
   };
 
