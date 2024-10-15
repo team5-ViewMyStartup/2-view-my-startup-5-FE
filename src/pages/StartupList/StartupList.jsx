@@ -12,7 +12,7 @@ import Loading from "../../components/Loading";
 const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function StartupList() {
-  const viewCompanyInfoNum = 10;
+  const VIEW_COMPANY_INFO_NUM = 10;
   const [orderBy, setOrderBy] = useState("누적 투자금액 높은순");
   const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,10 +27,13 @@ function StartupList() {
         setLoading(true);
         const data = await fetchCompanyData();
         setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
+
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchCompanies();
@@ -41,46 +44,49 @@ function StartupList() {
   };
 
   useEffect(() => {
-    const lowerCaseQuery = searchQuery.toLowerCase();
-    const filtered = company.filter((info) => {
-      return (
-        info.name.toLowerCase().includes(lowerCaseQuery) ||
-        info.category.toLowerCase().includes(lowerCaseQuery)
-      );
-    });
+    const fetchData = () => {
+      const lowerCaseQuery = searchQuery.toLowerCase();
+      const filtered = company.filter((info) => {
+        return (
+          info.name.toLowerCase().includes(lowerCaseQuery) ||
+          info.category.toLowerCase().includes(lowerCaseQuery)
+        );
+      });
 
-    let sorted = filtered;
-    switch (orderBy) {
-      case "investment-high":
-        sorted = filtered.sort((a, b) => b.totalInvestment - a.totalInvestment);
-        break;
-      case "investment-low":
-        sorted = filtered.sort((a, b) => a.totalInvestment - b.totalInvestment);
-        break;
-      case "sales-high":
-        sorted = filtered.sort((a, b) => b.revenue - a.revenue);
-        break;
-      case "sales-low":
-        sorted = filtered.sort((a, b) => a.revenue - b.revenue);
-        break;
-      case "employeeNum-high":
-        sorted = filtered.sort((a, b) => b.employees - a.employees);
-        break;
-      case "employeeNum-low":
-        sorted = filtered.sort((a, b) => a.employees - b.employees);
-        break;
-      default:
-        sorted = filtered;
-        break;
-    }
+      let sorted = filtered;
+      switch (orderBy) {
+        case "investment-high":
+          sorted = filtered.sort((a, b) => b.totalInvestment - a.totalInvestment);
+          break;
+        case "investment-low":
+          sorted = filtered.sort((a, b) => a.totalInvestment - b.totalInvestment);
+          break;
+        case "sales-high":
+          sorted = filtered.sort((a, b) => b.revenue - a.revenue);
+          break;
+        case "sales-low":
+          sorted = filtered.sort((a, b) => a.revenue - b.revenue);
+          break;
+        case "employeeNum-high":
+          sorted = filtered.sort((a, b) => b.employees - a.employees);
+          break;
+        case "employeeNum-low":
+          sorted = filtered.sort((a, b) => a.employees - b.employees);
+          break;
+        default:
+          sorted = filtered;
+          break;
+      }
 
-    setFilteredData(sorted);
-    setCurrentPage(1); // 검색 시 첫 페이지로 리셋
+      setFilteredData(sorted);
+      setCurrentPage(1);
+    };
+    fetchData();
   }, [company, searchQuery, orderBy]);
 
-  const totalPages = Math.ceil(filteredData.length / viewCompanyInfoNum);
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const totalPages = Math.ceil(filteredData.length / VIEW_COMPANY_INFO_NUM);
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {

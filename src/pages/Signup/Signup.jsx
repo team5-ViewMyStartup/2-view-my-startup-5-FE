@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
 import { postSignUp } from "../../api/api";
+import { getToken } from "../../utils/jwtUtils";
 
 const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
@@ -12,9 +13,15 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-  // const [passwordStrength, setPasswordStrength] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      navigate("/all-company");
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     const { id, value } = e.target;

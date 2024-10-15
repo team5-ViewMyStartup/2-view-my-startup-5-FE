@@ -1,9 +1,3 @@
-/**
- * TODO
- * 1. 추후에 Link 사용하여 둘러보기 버튼 눌렀을 시 전체기업페이지로 이동기능 추가 (완료)
- * 2. 로그인하러 가기 글자 눌렀을 시 path login으로 바꾸기(회원가입 페이지 정상작동하는지 확인차 바꿔둠)
- */
-
 import React from "react";
 import styles from "./Landing.module.css";
 import { Link } from "react-router-dom";

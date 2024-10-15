@@ -21,10 +21,10 @@ function ComparePage() {
   const [selectedCompareCompany, setSelectedCompareCompany] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const viewCompanyInfoNum = 5;
+  const VIEW_COMPANY_INFO_NUM = 5;
 
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   const openMyModal = () => {
     setIsMyModalOpen(true);
@@ -127,9 +127,12 @@ function ComparePage() {
     navigate(`/compare-result?${queryStrings.toString()}`);
   };
 
-  useEffect(async () => {
-    const data = await fetchCompanyData();
-    setCompany(data.sort((a, b) => a.name.localeCompare(b.name)));
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchCompanyData();
+      setCompany(data.sort((a, b) => a.name.localeCompare(b.name)));
+    };
+    fetchData();
   }, []);
 
   const filteredCompanies = company.filter((info) =>
@@ -244,9 +247,9 @@ function ComparePage() {
             </div>
             <Pagination
               currentPage={currentPage}
-              totalPages={Math.ceil(filteredCompanies.length / viewCompanyInfoNum)}
+              totalPages={Math.ceil(filteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
               onPageChange={handlePageChange}
-              hasNext={currentPage < Math.ceil(filteredCompanies.length / viewCompanyInfoNum)}
+              hasNext={currentPage < Math.ceil(filteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
             />
           </div>
         </div>
@@ -411,10 +414,10 @@ function ComparePage() {
                 </div>
                 <Pagination
                   currentPage={currentPage}
-                  totalPages={Math.ceil(compareFilteredCompanies.length / viewCompanyInfoNum)}
+                  totalPages={Math.ceil(compareFilteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
                   onPageChange={handlePageChange}
                   hasNext={
-                    currentPage < Math.ceil(compareFilteredCompanies.length / viewCompanyInfoNum)
+                    currentPage < Math.ceil(compareFilteredCompanies.length / VIEW_COMPANY_INFO_NUM)
                   }
                 />
               </div>
@@ -433,10 +436,5 @@ function ComparePage() {
     </div>
   );
 }
-/**
- * 링크 컴포넌트 빼버리고
- * 핸들컴페어에서 URLSearchParams 가지고 쿼리스트링을 만들어서 네비게이트같은거 사용해서
- * `/compare-result${search}`
- */
 
 export default ComparePage;
