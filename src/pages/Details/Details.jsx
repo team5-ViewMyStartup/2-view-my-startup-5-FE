@@ -72,7 +72,7 @@ function Details() {
         setCompany(companyData);
 
         const investmentData = await fetchInvestmentsData(companyId);
-        setInvestments(investmentData);
+        setInvestments(Array.isArray(investmentData) ? investmentData : []);
       } catch (error) {
         console.error(error);
       }
@@ -171,6 +171,7 @@ function Details() {
           </button>
         </div>
         <hr />
+
         {investments.length === 0 ? (
           <div className={styles.no_investment}>
             <p>아직 투자한 기업이 없어요.</p>
