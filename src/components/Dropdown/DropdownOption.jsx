@@ -67,10 +67,3 @@ export const rankingOptions = [
     className: "employeeNum_low",
   },
 ];
-/**
- * 옵션 파일 inport하기
- *  const [orderBy, setOrderBy] = useState("누적 투자 금액 높은순")
- * <Dropdown options={companyOptions}
- * selectedOption={orderBy}
- * onSelect={setOrderBy} />
- */

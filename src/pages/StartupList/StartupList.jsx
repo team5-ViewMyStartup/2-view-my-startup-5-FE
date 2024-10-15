@@ -12,7 +12,7 @@ import Loading from "../../components/Loading";
 const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function StartupList() {
-  const viewCompanyInfoNum = 10;
+  const VIEW_COMPANY_INFO_NUM = 10;
   const [orderBy, setOrderBy] = useState("누적 투자금액 높은순");
   const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +26,7 @@ function StartupList() {
       try {
         setLoading(true);
         const data = await fetchCompanyData();
-        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
       } catch (error) {
         console.error(error);
       } finally {
@@ -75,12 +75,12 @@ function StartupList() {
     }
 
     setFilteredData(sorted);
-    setCurrentPage(1); // 검색 시 첫 페이지로 리셋
+    setCurrentPage(1);
   }, [company, searchQuery, orderBy]);
 
-  const totalPages = Math.ceil(filteredData.length / viewCompanyInfoNum);
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const totalPages = Math.ceil(filteredData.length / VIEW_COMPANY_INFO_NUM);
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
