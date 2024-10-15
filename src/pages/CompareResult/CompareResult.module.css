@@ -396,6 +396,55 @@ body {
   display: flex;
   border: none;
 }
+@media (max-width: 1199px) {
+  .my_company_name {
+    width: 200px;
+    margin-right: 25px;
+  }
+  .my_company_info {
+    width: 250px;
+  }
+  .compare_company_name {
+    width: 245px;
+  }
+  .compare_company_info {
+    width: 250px;
+  }
+
+  .compare_my_company_name {
+    width: 240px;
+  }
+  .company_info {
+    width: 210px;
+  }
+
+  .category_company_name {
+    width: 210px;
+  }
+
+  .category_company_info {
+    width: 180px;
+    height: 64px;
+    font-weight: 400;
+    margin-left: 10px;
+  }
+
+  .category_category {
+    width: 84px;
+    height: 64px;
+    font-weight: 400;
+    margin-left: 40px;
+  }
+
+  .category_startup_investment,
+  .category_total_investment,
+  .category_selection,
+  .category_compare_selection {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
+}
 @media (max-width: 1199px) and (min-width: 744px) {
   .selected_company_result {
     width: 696px;

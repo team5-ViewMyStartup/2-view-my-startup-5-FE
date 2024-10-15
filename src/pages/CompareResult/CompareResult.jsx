@@ -269,7 +269,7 @@ function CompareResult() {
               </div>
             </div>
             <div className={styles.compare_section}>
-              <ListHeader headers={companyHeader} type="company" />
+              <ListHeader headers={companyHeader} type="company" hideRankOnMobile={false} />
               <div className={styles.category_box_rank}>
                 <ul className={styles.category_kind_rank}>
                   {sortedTopCompanyData
