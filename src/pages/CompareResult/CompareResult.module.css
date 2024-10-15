@@ -391,3 +391,30 @@ body {
   display: flex;
   border: none;
 }
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .selected_company_result {
+    width: calc(100% - 20px);
+  }
+  .selected_company_result_header {
+    width: calc(100% - 20px);
+  }
+  .selected_company_middle_header,
+  .selected_company_bottom_header {
+    width: calc(100% - 20px);
+  }
+
+  .selected_company_box {
+    width: calc(100% - 20px);
+  }
+  .selected_company_result_middle,
+  .selected_company_bottom {
+    margin: 0 20px;
+    width: calc(100% - 40px);
+  }
+
+  .section_one,
+  .section_two {
+    overflow-x: auto;
+  }
+}
