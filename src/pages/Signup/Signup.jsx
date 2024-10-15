@@ -13,7 +13,6 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-  // const [passwordStrength, setPasswordStrength] = useState("");
 
   const navigate = useNavigate();
 

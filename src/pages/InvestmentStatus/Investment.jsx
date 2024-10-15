@@ -8,7 +8,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { fetchCompanyData } from "../../api/api";
 
 function Investment() {
-  const viewCompanyInfoNum = 10;
+  const VIEW_COMPANY_INFO_NUM = 10;
   const [orderBy, setOrderBy] = useState("View My Startup 투자 금액 높은순");
   const [investment, setInvestment] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +18,7 @@ function Investment() {
     const fetchCompanies = async () => {
       try {
         const data = await fetchCompanyData();
-        setInvestment(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+        setInvestment(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
       } catch (error) {
         console.error(error);
       }
@@ -26,9 +26,9 @@ function Investment() {
     fetchCompanies();
   }, []);
 
-  const totalPages = Math.ceil(investment.length / viewCompanyInfoNum);
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const totalPages = Math.ceil(investment.length / VIEW_COMPANY_INFO_NUM);
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -83,8 +83,10 @@ function Investment() {
                 </span>
                 <span className={styles.category_company_info}>{info.description}</span>
                 <span className={styles.category_category}>{info.category}</span>
-                <span className={styles.category_startup_investment}>{info.revenue}억 원</span>
-                <span className={styles.category_total_investment}>{info.totalInvestment}명</span>
+                <span className={styles.category_startup_investment}>{info.startupTotal}억 원</span>
+                <span className={styles.category_total_investment}>
+                  {info.totalInvestment}억 원
+                </span>
               </li>
             ))}
           </ul>

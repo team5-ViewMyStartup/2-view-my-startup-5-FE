@@ -60,7 +60,6 @@
   background-color: #2e2e2e;
   display: flex;
   align-items: center;
-  justify-content: center;
   box-sizing: content-box;
 }
 
@@ -94,7 +93,7 @@
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 40px;
+  padding-left: 24px;
   display: flex;
 }
 
@@ -129,7 +128,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
-  width: 135.75px;
+  width: 153.75px;
   height: 39px;
   gap: 10px;
   align-items: center;

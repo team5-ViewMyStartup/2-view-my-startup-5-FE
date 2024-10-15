@@ -101,7 +101,7 @@ function Login() {
             value={email}
             onChange={handleEmailChange}
           />
-          {emailError && <p className={styles.error}>{emailError}</p>} {/* 이메일 에러 메시지 */}
+          {emailError && <p className={styles.error}>{emailError}</p>}
         </div>
 
         <div className={styles.pw}>

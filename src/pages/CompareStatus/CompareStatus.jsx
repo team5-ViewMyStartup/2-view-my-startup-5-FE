@@ -8,7 +8,7 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import { fetchCompanyData } from "../../api/api";
 
 function CompareStatus() {
-  const viewCompanyInfoNum = 10;
+  const VIEW_COMPANY_INFO_NUM = 10;
   const [orderBy, setOrderBy] = useState("나의 기업 선택 횟수 높은순");
   const [compare, setCompare] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +18,7 @@ function CompareStatus() {
     const fetchCompanies = async () => {
       try {
         const data = await fetchCompanyData();
-        setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+        setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
       } catch (error) {
         console.error(error);
       }
@@ -26,9 +26,9 @@ function CompareStatus() {
     fetchCompanies();
   }, []);
 
-  const totalPages = Math.ceil(compare.length / viewCompanyInfoNum);
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const totalPages = Math.ceil(compare.length / VIEW_COMPANY_INFO_NUM);
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
