@@ -82,7 +82,7 @@
 
 @media (max-device-width: 1199px) and (min-device-width: 375px) {
   .header_container {
-    width: 696px;
+    width: 695px;
   }
 
   .header_list.status:nth-child(1) {

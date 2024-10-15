@@ -193,6 +193,7 @@ function CompareResult() {
             />
           </div>
         </div>
+        <div className={styles.compare_section}>
         <ListHeader headers={compareResultHeader} type="result" />
         <div className={styles.category_box_compare}>
           <ul className={styles.category_kind_compare}>
@@ -227,6 +228,7 @@ function CompareResult() {
               </li>
             ))}
           </ul>
+</div>
         </div>
       </div>
       <div className={styles.selected_company_bottom}>
@@ -241,6 +243,7 @@ function CompareResult() {
             />
           </div>
         </div>
+              <div className={styles.compare_section}>
         <ListHeader headers={companyHeader} type="company" />
         <div className={styles.category_box_rank}>
           <ul className={styles.category_kind_rank}>
@@ -293,6 +296,7 @@ function CompareResult() {
               </li>
             ))}
           </ul>
+</div>
         </div>
       </div>
       <div className={styles.my_company_investment}>
