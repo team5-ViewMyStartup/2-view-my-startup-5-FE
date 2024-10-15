@@ -133,9 +133,12 @@ function ComparePage() {
     navigate(`/compare-result?${queryStrings.toString()}`);
   };
 
-  useEffect(async () => {
-    const data = await fetchCompanyData();
-    setCompany(data.sort((a, b) => a.name.localeCompare(b.name)));
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchCompanyData();
+      setCompany(data.sort((a, b) => a.name.localeCompare(b.name)));
+    };
+    fetchData();
   }, []);
 
   const filteredCompanies = company.filter((info) =>

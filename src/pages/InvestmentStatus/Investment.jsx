@@ -35,21 +35,24 @@ function Investment() {
   };
 
   useEffect(() => {
-    let sorted = [...investment];
-    switch (orderBy) {
-      case "startup-investment-high":
-        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
-        break;
-      case "startup-investment-low":
-        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
-        break;
-      case "actual-investment-high":
-        sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
-        break;
-      case "actual-investment-low":
-        sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
-    }
-    setSortedData(sorted);
+    const fetchData = () => {
+      let sorted = [...investment];
+      switch (orderBy) {
+        case "startup-investment-high":
+          sorted = sorted.sort((a, b) => b.revenue - a.revenue);
+          break;
+        case "startup-investment-low":
+          sorted = sorted.sort((a, b) => a.revenue - b.revenue);
+          break;
+        case "actual-investment-high":
+          sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+          break;
+        case "actual-investment-low":
+          sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+      }
+      setSortedData(sorted);
+    };
+    fetchData();
   }, [investment, orderBy]);
 
   const orderMap = investmentOptions.reduce((acc, cur) => {

@@ -60,18 +60,21 @@ function CompareResult() {
     setInvestments((prevInvestments) => [...prevInvestments, newInvestment]);
   };
 
-  useEffect(async () => {
-    const baseCompanyId = searchParams.get("baseCompanyId");
-    const compareCompanyId = searchParams.getAll("compareCompanyId");
+  useEffect(() => {
+    const fetchData = async () => {
+      const baseCompanyId = searchParams.get("baseCompanyId");
+      const compareCompanyId = searchParams.getAll("compareCompanyId");
 
-    const baseData = await fetchCompareData(baseCompanyId, compareCompanyId);
-    const myCompanyData = await fetchDetailCompanyData(baseCompanyId);
-    const compareCompanyData = baseData.filter((element) => element.id !== myCompanyData.id);
+      const baseData = await fetchCompareData(baseCompanyId, compareCompanyId);
+      const myCompanyData = await fetchDetailCompanyData(baseCompanyId);
+      const compareCompanyData = baseData.filter((element) => element.id !== myCompanyData.id);
 
-    setSelectedMyCompany(myCompanyData);
-    setSelectedCompareCompany(
-      compareCompanyData.sort((a, b) => b.totalInvestment - a.totalInvestment),
-    );
+      setSelectedMyCompany(myCompanyData);
+      setSelectedCompareCompany(
+        compareCompanyData.sort((a, b) => b.totalInvestment - a.totalInvestment),
+      );
+    };
+    fetchData();
   }, [searchParams]);
 
   useEffect(() => {
@@ -105,51 +108,57 @@ function CompareResult() {
   const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   useEffect(() => {
-    let compareSorted = [...selectedCompareCompany];
-    switch (compareOrderBy) {
-      case "investment-high":
-        compareSorted = compareSorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
-        break;
-      case "investment-low":
-        compareSorted = compareSorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
-        break;
-      case "sales-high":
-        compareSorted = compareSorted.sort((a, b) => b.revenue - a.revenue);
-        break;
-      case "sales-low":
-        compareSorted = compareSorted.sort((a, b) => a.revenue - b.revenue);
-        break;
-      case "employeeNum-high":
-        compareSorted = compareSorted.sort((a, b) => b.employees - a.employees);
-        break;
-      case "employeeNum-low":
-        compareSorted = compareSorted.sort((a, b) => a.employees - b.employees);
-    }
-    setSortedData(compareSorted);
+    const fetchData = () => {
+      let compareSorted = [...selectedCompareCompany];
+      switch (compareOrderBy) {
+        case "investment-high":
+          compareSorted = compareSorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+          break;
+        case "investment-low":
+          compareSorted = compareSorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+          break;
+        case "sales-high":
+          compareSorted = compareSorted.sort((a, b) => b.revenue - a.revenue);
+          break;
+        case "sales-low":
+          compareSorted = compareSorted.sort((a, b) => a.revenue - b.revenue);
+          break;
+        case "employeeNum-high":
+          compareSorted = compareSorted.sort((a, b) => b.employees - a.employees);
+          break;
+        case "employeeNum-low":
+          compareSorted = compareSorted.sort((a, b) => a.employees - b.employees);
+      }
+      setSortedData(compareSorted);
+    };
+    fetchData();
   }, [selectedCompareCompany, compareOrderBy]);
 
   useEffect(() => {
-    let topCompanySorted = [...topCompany];
-    let bottomCompanySorted = [...bottomCompany];
-    switch (companyOrderBy) {
-      case "sales-high":
-        topCompanySorted = topCompanySorted.sort((a, b) => b.revenue - a.revenue);
-        bottomCompanySorted = bottomCompanySorted.sort((a, b) => b.revenue - a.revenue);
-        break;
-      case "sales-low":
-        topCompanySorted = topCompanySorted.sort((a, b) => a.revenue - b.revenue);
-        bottomCompanySorted = bottomCompanySorted.sort((a, b) => a.revenue - b.revenue);
-        break;
-      case "employeeNum-high":
-        topCompanySorted = topCompanySorted.sort((a, b) => b.employees - a.employees);
-        bottomCompanySorted = bottomCompanySorted.sort((a, b) => b.employees - a.employees);
-        break;
-      case "employeeNum-low":
-        topCompanySorted = topCompanySorted.sort((a, b) => a.employees - b.employees);
-        bottomCompanySorted = bottomCompanySorted.sort((a, b) => a.employees - b.employees);
-    }
-    setSortedTopCompanyData(topCompanySorted);
-    setSortedBottomCompanyData(bottomCompanySorted);
+    const fetchData = () => {
+      let topCompanySorted = [...topCompany];
+      let bottomCompanySorted = [...bottomCompany];
+      switch (companyOrderBy) {
+        case "sales-high":
+          topCompanySorted = topCompanySorted.sort((a, b) => b.revenue - a.revenue);
+          bottomCompanySorted = bottomCompanySorted.sort((a, b) => b.revenue - a.revenue);
+          break;
+        case "sales-low":
+          topCompanySorted = topCompanySorted.sort((a, b) => a.revenue - b.revenue);
+          bottomCompanySorted = bottomCompanySorted.sort((a, b) => a.revenue - b.revenue);
+          break;
+        case "employeeNum-high":
+          topCompanySorted = topCompanySorted.sort((a, b) => b.employees - a.employees);
+          bottomCompanySorted = bottomCompanySorted.sort((a, b) => b.employees - a.employees);
+          break;
+        case "employeeNum-low":
+          topCompanySorted = topCompanySorted.sort((a, b) => a.employees - b.employees);
+          bottomCompanySorted = bottomCompanySorted.sort((a, b) => a.employees - b.employees);
+      }
+      setSortedTopCompanyData(topCompanySorted);
+      setSortedBottomCompanyData(bottomCompanySorted);
+    };
+    fetchData();
   }, [topCompany, bottomCompany, companyOrderBy]);
 
   const compareOrderMap = companyOptions.reduce((acc, cur) => {
