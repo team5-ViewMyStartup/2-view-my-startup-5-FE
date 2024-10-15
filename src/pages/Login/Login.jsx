@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +27,13 @@ function Login() {
   const [generalError, setGeneralError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = getToken();
+    if (token) {
+      navigate("/all-company");
+    }
+  }, [navigate]);
 
   const loginButtonClicked = async () => {
     try {
