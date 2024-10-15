@@ -17,8 +17,6 @@ function CompareResult() {
   const viewCompanyInfoNum = 5;
   const [compareOrderBy, setCompareOrderBy] = useState("누적 투자금액 높은순");
   const [companyOrderBy, setCompanyOrderBy] = useState("매출액 높은순");
-  // const [compareCompany, setCompareCompany] = useState([]);
-  // const [myCompany, setMyCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
   const [sortedTopCompanyData, setSortedTopCompanyData] = useState([]);
@@ -204,17 +202,17 @@ function CompareResult() {
                 {selectedMyCompany.name}
               </span>
               <span className={styles.my_company_info}>{selectedMyCompany.description}</span>
-              <span className={styles.my_company_category}>{selectedMyCompany.category}</span>
-              <span className={styles.my_company_investment_amount}>
+              <span className={styles.compare_company_category}>{selectedMyCompany.category}</span>
+              <span className={styles.compare_company_investment_amount}>
                 {selectedMyCompany.totalInvestment}억 원
               </span>
-              <span className={styles.my_company_sales}>{selectedMyCompany.revenue}억 원</span>
-              <span className={styles.my_company_employee_num}>
+              <span className={styles.compare_company_sales}>{selectedMyCompany.revenue}억 원</span>
+              <span className={styles.compare_company_employee_num}>
                 {selectedMyCompany.employees}명
               </span>
             </li>
             {sortedData.slice(indexOfFirstItem, indexOfLastItem - 1).map((info, index) => (
-              <li key={index + indexOfFirstItem} className={styles.category_body}>
+              <li key={index + indexOfFirstItem} className={styles.category_compare_body}>
                 <span className={styles.compare_company_name}>
                   <img className={styles.logo_img} src={info.image} />
                   {info.name}
@@ -265,23 +263,21 @@ function CompareResult() {
               </li>
             ))}
             <li className={styles.category_my_company_body}>
-              <span className={styles.category_rank}>{myCompanyRank}위</span>
-              <span className={styles.my_company_name}>
+              <span className={styles.company_rank}>{myCompanyRank}위</span>
+              <span className={styles.compare_my_company_name}>
                 <img src={selectedMyCompany.image} className={styles.logo_img} />
                 {selectedMyCompany.name}
               </span>
-              <span className={styles.my_company_info}>{selectedMyCompany.description}</span>
+              <span className={styles.company_info}>{selectedMyCompany.description}</span>
               <span className={styles.my_company_category}>{selectedMyCompany.category}</span>
-              <span className={styles.my_company_investment_amount}>
+              <span className={styles.company_investment_amount}>
                 {selectedMyCompany.totalInvestment}억 원
               </span>
-              <span className={styles.my_company_sales}>{selectedMyCompany.revenue}억 원</span>
-              <span className={styles.my_company_employee_num}>
-                {selectedMyCompany.employees}명
-              </span>
+              <span className={styles.company_sales}>{selectedMyCompany.revenue}억 원</span>
+              <span className={styles.company_employee_num}>{selectedMyCompany.employees}명</span>
             </li>
             {sortedBottomCompanyData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-              <li key={index + indexOfFirstItem} className={styles.category_body}>
+              <li key={index + indexOfFirstItem} className={styles.category_bottom_body}>
                 <span className={styles.category_rank}>{myCompanyRank + index + 1}위</span>
                 <span className={styles.category_company_name}>
                   <img src={info.image} className={styles.logo_img} />

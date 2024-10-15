@@ -170,7 +170,7 @@ function ComparePage() {
                 선택 취소
               </p>
               <div className={styles.selected_company_info}>
-                <img className={styles.selected_company_img} src={codeitIcon} />
+                <img className={styles.selected_company_img} src={selectedMyCompany.image} />
                 <p className={styles.selected_company_name}>{selectedMyCompany.name}</p>
                 <p className={styles.selected_company_category}>{selectedMyCompany.category}</p>
               </div>
@@ -217,7 +217,7 @@ function ComparePage() {
                   {filteredCompanies.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
                     <li key={index + indexOfFirstItem} className={styles.all_company_list_body}>
                       <div className={styles.gap}>
-                        <img src={codeitIcon} className={styles.codeit_icon} />
+                        <img src={info.image} className={styles.codeit_icon} />
                         <span className={styles.category_company_name}>{info.name}</span>
                         <span className={styles.category_category}>{info.category}</span>
                       </div>

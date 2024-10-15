@@ -83,8 +83,10 @@ function Investment() {
                 </span>
                 <span className={styles.category_company_info}>{info.description}</span>
                 <span className={styles.category_category}>{info.category}</span>
-                <span className={styles.category_startup_investment}>{info.revenue}억 원</span>
-                <span className={styles.category_total_investment}>{info.totalInvestment}명</span>
+                <span className={styles.category_startup_investment}>{info.startupTotal}억 원</span>
+                <span className={styles.category_total_investment}>
+                  {info.totalInvestment}억 원
+                </span>
               </li>
             ))}
           </ul>
