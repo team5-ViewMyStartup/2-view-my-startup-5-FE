@@ -77,11 +77,12 @@ function Investment() {
         </div>
       </div>
       <div className={styles.mobile_scroll}>
-        <ListHeader headers={investmentHeader} type="status" />
         {loading ? (
           <Loading />
         ) : (
           <>
+            <ListHeader headers={investmentHeader} type="status" />
+
             <div className={styles.investment_body}>
               <ul className={styles.category_classification}>
                 {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (

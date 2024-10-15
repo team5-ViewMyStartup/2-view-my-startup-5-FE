@@ -78,11 +78,12 @@ function CompareStatus() {
         </div>
       </div>
       <div className={styles.mobile_scroll}>
-        <ListHeader headers={compareHeader} type="status" />
         {loading ? (
           <Loading />
         ) : (
           <>
+            <ListHeader headers={compareHeader} type="status" />
+
             <div className={styles.compare_body}>
               <ul className={styles.category_classification}>
                 {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
