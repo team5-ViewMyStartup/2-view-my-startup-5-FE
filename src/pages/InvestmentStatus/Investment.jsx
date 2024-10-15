@@ -41,24 +41,21 @@ function Investment() {
   };
 
   useEffect(() => {
-    const fetchData = () => {
-      let sorted = [...investment];
-      switch (orderBy) {
-        case "startup-investment-high":
-          sorted = sorted.sort((a, b) => b.revenue - a.revenue);
-          break;
-        case "startup-investment-low":
-          sorted = sorted.sort((a, b) => a.revenue - b.revenue);
-          break;
-        case "actual-investment-high":
-          sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
-          break;
-        case "actual-investment-low":
-          sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
-      }
-      setSortedData(sorted);
-    };
-    fetchData();
+    let sorted = [...investment];
+    switch (orderBy) {
+      case "startup-investment-high":
+        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
+        break;
+      case "startup-investment-low":
+        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
+        break;
+      case "actual-investment-high":
+        sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
+        break;
+      case "actual-investment-low":
+        sorted = sorted.sort((a, b) => a.totalInvestment - b.totalInvestment);
+    }
+    setSortedData(sorted);
   }, [investment, orderBy]);
 
   const orderMap = investmentOptions.reduce((acc, cur) => {
@@ -79,11 +76,11 @@ function Investment() {
           />
         </div>
       </div>
-      <div className={styles.mobile_scroll}>
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className={styles.mobile_scroll}>
             <ListHeader headers={investmentHeader} type="status" />
 
             <div className={styles.investment_body}>
@@ -107,10 +104,9 @@ function Investment() {
                 ))}
               </ul>
             </div>
-          </>
-        )}
-      </div>
-
+          </div>
+        </>
+      )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
