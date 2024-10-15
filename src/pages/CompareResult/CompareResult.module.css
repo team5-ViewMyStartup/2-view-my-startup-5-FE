@@ -264,6 +264,10 @@
   .selected_company_bottom_header {
     width: 695px;
   }
+  .compare_section,
+  .company_section {
+    width: 695px;
+  }
 
   .selected_company_box {
     width: 695px;
@@ -294,6 +298,11 @@
   .company_section {
     width: 343px;
     overflow-x: auto;
+  }
+
+  .category_box_compare,
+  .category_box_rank {
+    width: 695px;
   }
   .category_body {
     width: 695px;
