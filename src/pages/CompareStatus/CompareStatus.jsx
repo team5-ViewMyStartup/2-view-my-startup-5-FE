@@ -35,21 +35,24 @@ function CompareStatus() {
   };
 
   useEffect(() => {
-    let sorted = [...compare];
-    switch (orderBy) {
-      case "selection-high":
-        sorted = sorted.sort((a, b) => b.selectMyCount - a.selectMyCount);
-        break;
-      case "selection-low":
-        sorted = sorted.sort((a, b) => a.selectMyCount - b.selectMyCount);
-        break;
-      case "compare-selection-high":
-        sorted = sorted.sort((a, b) => b.selectOtherCount - a.selectOtherCount);
-        break;
-      case "compare-selection-low":
-        sorted = sorted.sort((a, b) => a.selectOtherCount - b.selectOtherCount);
-    }
-    setSortedData(sorted);
+    const fetchData = () => {
+      let sorted = [...compare];
+      switch (orderBy) {
+        case "selection-high":
+          sorted = sorted.sort((a, b) => b.selectMyCount - a.selectMyCount);
+          break;
+        case "selection-low":
+          sorted = sorted.sort((a, b) => a.selectMyCount - b.selectMyCount);
+          break;
+        case "compare-selection-high":
+          sorted = sorted.sort((a, b) => b.selectOtherCount - a.selectOtherCount);
+          break;
+        case "compare-selection-low":
+          sorted = sorted.sort((a, b) => a.selectOtherCount - b.selectOtherCount);
+      }
+      setSortedData(sorted);
+    };
+    fetchData();
   }, [compare, orderBy]);
 
   const orderMap = compareOptions.reduce((acc, cur) => {

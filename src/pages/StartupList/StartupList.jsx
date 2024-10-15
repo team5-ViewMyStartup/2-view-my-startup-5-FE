@@ -41,41 +41,44 @@ function StartupList() {
   };
 
   useEffect(() => {
-    const lowerCaseQuery = searchQuery.toLowerCase();
-    const filtered = company.filter((info) => {
-      return (
-        info.name.toLowerCase().includes(lowerCaseQuery) ||
-        info.category.toLowerCase().includes(lowerCaseQuery)
-      );
-    });
+    const fetchData = () => {
+      const lowerCaseQuery = searchQuery.toLowerCase();
+      const filtered = company.filter((info) => {
+        return (
+          info.name.toLowerCase().includes(lowerCaseQuery) ||
+          info.category.toLowerCase().includes(lowerCaseQuery)
+        );
+      });
 
-    let sorted = filtered;
-    switch (orderBy) {
-      case "investment-high":
-        sorted = filtered.sort((a, b) => b.totalInvestment - a.totalInvestment);
-        break;
-      case "investment-low":
-        sorted = filtered.sort((a, b) => a.totalInvestment - b.totalInvestment);
-        break;
-      case "sales-high":
-        sorted = filtered.sort((a, b) => b.revenue - a.revenue);
-        break;
-      case "sales-low":
-        sorted = filtered.sort((a, b) => a.revenue - b.revenue);
-        break;
-      case "employeeNum-high":
-        sorted = filtered.sort((a, b) => b.employees - a.employees);
-        break;
-      case "employeeNum-low":
-        sorted = filtered.sort((a, b) => a.employees - b.employees);
-        break;
-      default:
-        sorted = filtered;
-        break;
-    }
+      let sorted = filtered;
+      switch (orderBy) {
+        case "investment-high":
+          sorted = filtered.sort((a, b) => b.totalInvestment - a.totalInvestment);
+          break;
+        case "investment-low":
+          sorted = filtered.sort((a, b) => a.totalInvestment - b.totalInvestment);
+          break;
+        case "sales-high":
+          sorted = filtered.sort((a, b) => b.revenue - a.revenue);
+          break;
+        case "sales-low":
+          sorted = filtered.sort((a, b) => a.revenue - b.revenue);
+          break;
+        case "employeeNum-high":
+          sorted = filtered.sort((a, b) => b.employees - a.employees);
+          break;
+        case "employeeNum-low":
+          sorted = filtered.sort((a, b) => a.employees - b.employees);
+          break;
+        default:
+          sorted = filtered;
+          break;
+      }
 
-    setFilteredData(sorted);
-    setCurrentPage(1);
+      setFilteredData(sorted);
+      setCurrentPage(1);
+    };
+    fetchData();
   }, [company, searchQuery, orderBy]);
 
   const totalPages = Math.ceil(filteredData.length / VIEW_COMPANY_INFO_NUM);
