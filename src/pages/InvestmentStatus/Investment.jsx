@@ -6,6 +6,7 @@ import { investmentOptions } from "../../components/Dropdown/DropdownOption";
 import { investmentHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 import { fetchCompanyData } from "../../api/api";
+import Loading from "../../components/Loading";
 
 function Investment() {
   const VIEW_COMPANY_INFO_NUM = 10;
@@ -13,12 +14,17 @@ function Investment() {
   const [investment, setInvestment] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
+        setLoading(true);
         const data = await fetchCompanyData();
         setInvestment(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
       } catch (error) {
         console.error(error);
       }
@@ -72,26 +78,35 @@ function Investment() {
       </div>
       <div className={styles.mobile_scroll}>
         <ListHeader headers={investmentHeader} type="status" />
-        <div className={styles.investment_body}>
-          <ul className={styles.category_classification}>
-            {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-              <li key={index + indexOfFirstItem} className={styles.category_body}>
-                <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
-                <span className={styles.category_company_name}>
-                  <img src={info.image} className={styles.logo_img} />
-                  {info.name}
-                </span>
-                <span className={styles.category_company_info}>{info.description}</span>
-                <span className={styles.category_category}>{info.category}</span>
-                <span className={styles.category_startup_investment}>{info.startupTotal}억 원</span>
-                <span className={styles.category_total_investment}>
-                  {info.totalInvestment}억 원
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className={styles.investment_body}>
+              <ul className={styles.category_classification}>
+                {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+                  <li key={index + indexOfFirstItem} className={styles.category_body}>
+                    <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
+                    <span className={styles.category_company_name}>
+                      <img src={info.image} className={styles.logo_img} />
+                      {info.name}
+                    </span>
+                    <span className={styles.category_company_info}>{info.description}</span>
+                    <span className={styles.category_category}>{info.category}</span>
+                    <span className={styles.category_startup_investment}>
+                      {info.startupTotal}억 원
+                    </span>
+                    <span className={styles.category_total_investment}>
+                      {info.totalInvestment}억 원
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
       </div>
+
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
