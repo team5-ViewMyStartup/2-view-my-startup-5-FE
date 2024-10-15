@@ -8,7 +8,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import { fetchCompanyData } from "../../api/api";
 
 function Investment() {
-  const viewCompanyInfoNum = 10;
+  const VIEW_COMPANY_INFO_NUM = 10;
   const [orderBy, setOrderBy] = useState("View My Startup 투자 금액 높은순");
   const [investment, setInvestment] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,9 +26,9 @@ function Investment() {
     fetchCompanies();
   }, []);
 
-  const totalPages = Math.ceil(investment.length / viewCompanyInfoNum);
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const totalPages = Math.ceil(investment.length / VIEW_COMPANY_INFO_NUM);
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);

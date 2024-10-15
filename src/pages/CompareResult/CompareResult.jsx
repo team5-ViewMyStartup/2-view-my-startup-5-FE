@@ -14,7 +14,7 @@ import {
 import InvestModal from "../../components/Modal/InvestModal";
 
 function CompareResult() {
-  const viewCompanyInfoNum = 5;
+  const VIEW_COMPANY_INFO_NUM = 5;
   const [compareOrderBy, setCompareOrderBy] = useState("누적 투자금액 높은순");
   const [companyOrderBy, setCompanyOrderBy] = useState("매출액 높은순");
   const [currentPage, setCurrentPage] = useState(1);
@@ -101,8 +101,8 @@ function CompareResult() {
     fetchData();
   }, [searchParams, companyOrderBy]);
 
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   useEffect(() => {
     let compareSorted = [...selectedCompareCompany];

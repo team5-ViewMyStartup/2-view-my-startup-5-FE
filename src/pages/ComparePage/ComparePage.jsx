@@ -27,10 +27,10 @@ function ComparePage() {
   const [selectedCompareCompany, setSelectedCompareCompany] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const viewCompanyInfoNum = 5;
+  const VIEW_COMPANY_INFO_NUM = 5;
 
-  const indexOfLastItem = currentPage * viewCompanyInfoNum;
-  const indexOfFirstItem = indexOfLastItem - viewCompanyInfoNum;
+  const indexOfLastItem = currentPage * VIEW_COMPANY_INFO_NUM;
+  const indexOfFirstItem = indexOfLastItem - VIEW_COMPANY_INFO_NUM;
 
   const openMyModal = () => {
     setIsMyModalOpen(true);
@@ -234,9 +234,9 @@ function ComparePage() {
             </div>
             <Pagination
               currentPage={currentPage}
-              totalPages={Math.ceil(filteredCompanies.length / viewCompanyInfoNum)}
+              totalPages={Math.ceil(filteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
               onPageChange={handlePageChange}
-              hasNext={currentPage < Math.ceil(filteredCompanies.length / viewCompanyInfoNum)}
+              hasNext={currentPage < Math.ceil(filteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
             />
           </div>
         </div>
@@ -393,10 +393,10 @@ function ComparePage() {
                 </div>
                 <Pagination
                   currentPage={currentPage}
-                  totalPages={Math.ceil(compareFilteredCompanies.length / viewCompanyInfoNum)}
+                  totalPages={Math.ceil(compareFilteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
                   onPageChange={handlePageChange}
                   hasNext={
-                    currentPage < Math.ceil(compareFilteredCompanies.length / viewCompanyInfoNum)
+                    currentPage < Math.ceil(compareFilteredCompanies.length / VIEW_COMPANY_INFO_NUM)
                   }
                 />
               </div>
