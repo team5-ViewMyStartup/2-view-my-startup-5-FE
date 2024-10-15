@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
-import logoImg from "../../assets/logo1.svg";
-import toggleOff from "../../imagesjun/btn_visibility_off_24px.png";
-import toggleOn from "../../imagesjun/btn_visibility_on_24px.png";
 import { postSignUp } from "../../api/api";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -112,7 +111,7 @@ function Signup() {
   return (
     <div className={styles.signup}>
       <Link to="/">
-        <img className={styles.signup_logo_img} src={logoImg} alt="logo Image" />
+        <img className={styles.signup_logo_img} src={`${S3_BASE_URL}/logo.svg`} alt="logo Image" />
       </Link>
       <form onSubmit={handleSubmit} className={styles.form_wrapper}>
         <div className={styles.email}>
@@ -155,7 +154,11 @@ function Signup() {
           {errors.password && <p className={styles.error_message}>{errors.password}</p>}
           <img
             className={styles.toggle_img}
-            src={showPassword ? toggleOn : toggleOff}
+            src={
+              showPassword
+                ? `${S3_BASE_URL}/btn_visibility_on.png`
+                : `${S3_BASE_URL}/btn_visibility_off.png`
+            }
             alt="eye Image"
             onClick={togglePasswordVisibility}
           />
@@ -177,7 +180,11 @@ function Signup() {
           )}
           <img
             className={styles.toggle_img}
-            src={showPassword ? toggleOn : toggleOff}
+            src={
+              showPassword
+                ? `${S3_BASE_URL}/btn_visibility_on.png`
+                : `${S3_BASE_URL}/btn_visibility_off.png`
+            }
             alt="eye Image"
             onClick={togglePasswordVisibility}
           />

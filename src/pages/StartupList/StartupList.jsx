@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./StartupList.module.css";
-import searchIcon from "../../assets/ic_search.svg";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import ListHeader from "../../components/List/ListHeader";
@@ -9,6 +8,8 @@ import { companyHeader } from "../../components/List/HeaderOption";
 import { companyOptions } from "../../components/Dropdown/DropdownOption";
 import { fetchCompanyData } from "../../api/api";
 import Loading from "../../components/Loading";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function StartupList() {
   const viewCompanyInfoNum = 10;
@@ -98,7 +99,11 @@ function StartupList() {
         <p className={styles.all_startup_list}>전체 스타트업 목록</p>
         <div className={styles.search_sorting}>
           <div className={styles.search}>
-            <img className={styles.search_img} src={searchIcon} alt="search icon" />
+            <img
+              className={styles.search_img}
+              src={`${S3_BASE_URL}/search_icon.svg`}
+              alt="search icon"
+            />
             <input
               className={styles.search_input}
               placeholder="검색어를 입력해주세요"
