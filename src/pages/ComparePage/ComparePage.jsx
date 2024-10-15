@@ -17,6 +17,7 @@ function ComparePage() {
   const [isMyModalOpen, setIsMyModalOpen] = useState(false);
   const [isMyCompanyModalInput, setIsMyCompanyModalInput] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [bottomSearchQuery, setBottomSearchQuery] = useState("");
   const [company, setCompany] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedMyCompany, setSelectedMyCompany] = useState(null);
@@ -52,14 +53,22 @@ function ComparePage() {
     if (e.key === "Enter") {
       setSearchQuery(e.target.value);
       setIsMyCompanyModalInput(e.target.value);
-      setIsCompareCompanyModalInput(e.target.value);
     }
   };
 
   const handleInputChange = (e) => {
     setIsMyCompanyModalInput(e.target.value);
-    setIsCompareCompanyModalInput(e.target.value);
     setSearchQuery(e.target.value);
+  };
+
+  const handleBottomKeyDown = (e) => {
+    setBottomSearchQuery(e.target.value);
+    setIsCompareCompanyModalInput(e.target.value);
+  };
+
+  const handleBottomInputChange = (e) => {
+    setIsCompareCompanyModalInput(e.target.value);
+    setBottomSearchQuery(e.target.value);
   };
 
   const handlePageChange = (pageNumber) => {
@@ -99,6 +108,17 @@ function ComparePage() {
     setSelectedCompareCompany([]);
   };
 
+  const handleTextReset = () => {
+    setSearchQuery("");
+    setBottomSearchQuery("");
+    setIsCompareCompanyModalInput("");
+    setIsMyCompanyModalInput("");
+
+    document.querySelectorAll("input").forEach((input) => {
+      input.value = "";
+    });
+  };
+
   const handleCompare = async () => {
     const selectedCompanies = selectedCompareCompany.map((company) => {
       return company.id;
@@ -120,6 +140,10 @@ function ComparePage() {
 
   const filteredCompanies = company.filter((info) =>
     info.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
+  const compareFilteredCompanies = company.filter((info) =>
+    info.name.toLowerCase().includes(bottomSearchQuery.toLowerCase()),
   );
 
   return (
@@ -174,7 +198,9 @@ function ComparePage() {
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
               />
-              {isMyCompanyModalInput && <img src={reset} className={styles.reset_icon} />}
+              {isMyCompanyModalInput && (
+                <img src={reset} className={styles.reset_icon} onClick={handleTextReset} />
+              )}
               <img src={search} className={styles.search_icon} />
             </div>
             <div className={styles.all_company}>
@@ -246,7 +272,7 @@ function ComparePage() {
                     onClick={() => handleRemoveCompareCompany(info)}
                   />
                   <div className={styles.selected_company_body}>
-                    <img src={codeitIcon} className={styles.selected_company_img} />
+                    <img src={info.image} className={styles.selected_company_img} />
                     <span className={styles.company_name}>{info.name}</span>
                     <span className={styles.company_category}>{info.category}</span>
                   </div>
@@ -265,10 +291,12 @@ function ComparePage() {
                 <div className={styles.search_bar}>
                   <input
                     className={styles.search_input}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
+                    onChange={handleBottomInputChange}
+                    onKeyDown={handleBottomKeyDown}
                   />
-                  {isCompareCompanyModalInput && <img src={reset} className={styles.reset_icon} />}
+                  {isCompareCompanyModalInput && (
+                    <img src={reset} className={styles.reset_icon} onClick={handleTextReset} />
+                  )}
                   <img src={search} className={styles.search_icon} />
                 </div>
                 {selectedCompareCompany && (
@@ -287,7 +315,7 @@ function ComparePage() {
                             className={styles.selected_company_list_body}
                           >
                             <div className={styles.gap}>
-                              <img src={codeitIcon} className={styles.codeit_icon} />
+                              <img src={info.image} className={styles.codeit_icon} />
                               <span className={styles.category_company_name}>{info.name}</span>
                               <span className={styles.category_category}>{info.category}</span>
                             </div>
@@ -306,15 +334,15 @@ function ComparePage() {
                 <div className={styles.all_company}>
                   <div className={styles.all_company_header}>
                     {isCompareCompanyModalInput ? (
-                      <p className={styles.search_result}></p>
+                      <p className={styles.search_result}>검색 결과</p>
                     ) : (
                       <p className={styles.all_company_list_text}>전체 비교 기업 리스트</p>
                     )}
-                    <p className={styles.all_company_num}>({filteredCompanies.length})</p>
+                    <p className={styles.all_company_num}>({compareFilteredCompanies.length})</p>
                   </div>
                   <div className={styles.all_company_list_container}>
                     <ul className={styles.all_company_list}>
-                      {filteredCompanies
+                      {compareFilteredCompanies
                         .slice(indexOfFirstItem, indexOfLastItem)
                         .map((info, index) => (
                           <li
@@ -322,23 +350,29 @@ function ComparePage() {
                             className={styles.all_company_list_body}
                           >
                             <div className={styles.gap}>
-                              <img src={codeitIcon} className={styles.codeit_icon} />
+                              <img src={info.image} className={styles.codeit_icon} />
                               <span className={styles.category_company_name}>{info.name}</span>
                               <span className={styles.category_category}>{info.category}</span>
                             </div>
                             <button
                               className={`${styles.selected_button} ${
-                                selectedCompareCompany.includes(info) ? styles.selected : ""
+                                selectedCompareCompany.includes(info) || selectedMyCompany === info
+                                  ? styles.selected
+                                  : ""
                               }`}
                               onClick={() => {
-                                if (selectedCompareCompany.length >= 5) {
+                                if (
+                                  selectedCompareCompany.length >= 5 ||
+                                  selectedMyCompany === info
+                                ) {
                                   handleDisabledButtonClick();
                                 } else {
                                   handleSelectedCompareCompany(info);
                                 }
                               }}
                             >
-                              {selectedCompareCompany.includes(info) ? (
+                              {selectedCompareCompany.includes(info) ||
+                              selectedMyCompany === info ? (
                                 <>
                                   <img
                                     src={checkIcon}
@@ -359,9 +393,11 @@ function ComparePage() {
                 </div>
                 <Pagination
                   currentPage={currentPage}
-                  totalPages={Math.ceil(filteredCompanies.length / viewCompanyInfoNum)}
+                  totalPages={Math.ceil(compareFilteredCompanies.length / viewCompanyInfoNum)}
                   onPageChange={handlePageChange}
-                  hasNext={currentPage < Math.ceil(filteredCompanies.length / viewCompanyInfoNum)}
+                  hasNext={
+                    currentPage < Math.ceil(compareFilteredCompanies.length / viewCompanyInfoNum)
+                  }
                 />
               </div>
             </div>
@@ -369,7 +405,6 @@ function ComparePage() {
         </div>
       )}
 
-      {/* <Link to="/compare-result"> */}
       <button
         className={styles.compare_company_btn}
         disabled={selectedMyCompany === null || selectedCompareCompany.length < 1}
@@ -377,7 +412,6 @@ function ComparePage() {
       >
         기업 비교하기
       </button>
-      {/* </Link> */}
     </div>
   );
 }
