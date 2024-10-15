@@ -19,17 +19,14 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
     const userNickname = getNicknameFromToken();
     setNickname(userNickname);
   }, [isOpen]);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
-
   if (!company) {
     return null;
   }
   const handleSubmit = async () => {
     if (!isOpen) return null;
-
     if (!password) {
       alert("비밀번호를 입력해주세요");
       return;
@@ -42,7 +39,6 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
         password,
         investorName: nickname,
       };
-
       const response = await addNewInvestment(newInvestment);
       if (response && response.status === 201) {
         const investmentData = response.data;
@@ -54,7 +50,6 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
       setErrorModalOpen(true);
     }
   };
-
   return (
     <>
       <div className={styles.modal_container}>
@@ -139,5 +134,4 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
     </>
   );
 }
-
 export default InvestModal;

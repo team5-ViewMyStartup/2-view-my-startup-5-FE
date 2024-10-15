@@ -10,7 +10,7 @@ const ListHeader = ({ headers = [], type }) => {
             key={index}
             className={`${styles.header_list} ${type === "company" ? styles.company : ""} ${
               type === "status" ? styles.status : ""
-            }`}
+            } ${type === "result" ? styles.result : ""}`}
           >
             <strong>{header}</strong>
           </div>

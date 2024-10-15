@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #131313;
+}
+
 .selected_company_result {
   display: flex;
   align-items: center;
@@ -55,6 +61,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.my_company_logo_img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  margin-bottom: 10px;
 }
 
 .company_name {
@@ -119,14 +132,6 @@
   color: #d8d8d8;
 }
 
-.category_body {
-  background-color: #2e2e2e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: content-box;
-}
-
 .category_body:nth-child(1) {
   border-radius: 4px 4px 0 0;
 }
@@ -141,41 +146,152 @@
   font-size: 14px;
   line-height: 16.71px;
   width: 68px;
-  height: 39px;
+  height: 64px;
   gap: 10px;
   align-items: center;
   justify-content: center;
   display: flex;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #212121;
 }
 
-.category_company_name {
+.category_company_name,
+.compare_company_name {
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
   width: 213px;
-  height: 39px;
+  height: 64px;
   gap: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #212121;
+  padding-left: 24px;
 }
 
-.category_company_info {
+.my_company_name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 213px;
+  height: 64px;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #2e2e2e;
+  padding-left: 24px;
+}
+
+.category_company_info,
+.compare_company_info {
   font-weight: 500;
   font-size: 14px;
   line-height: 16.71px;
   width: 304px;
-  height: 39px;
+  height: 64px;
   gap: 10px;
   align-items: center;
   justify-content: center;
   display: flex;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: left;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-height: 32px;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #212121;
+}
+
+.my_company_info {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 304px;
+  height: 64px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 32px;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #2e2e2e;
+}
+
+.my_company_category,
+.my_company_investment_amount,
+.my_company_sales,
+.my_company_employee_num {
+  width: 170.75px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2e2e2e;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+  align-items: center;
+  color: #d8d8d8;
+  border-bottom: 1px solid #4b4b4b;
+}
+
+.category_body {
+  background-color: #212121;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compare_company_name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  width: 213px;
+  height: 64px;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  border-bottom: 1px solid #4b4b4b;
+  padding-left: 24px;
+}
+
+.compare_company_category,
+.compare_company_investment_amount,
+.compare_company_sales,
+.compare_company_employee_num {
+  width: 170.75px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.71px;
+  align-items: center;
+  color: #d8d8d8;
+  border-bottom: 1px solid #4b4b4b;
+}
+
+.category_my_company_body {
+  border-radius: 4px 4px 0 0;
+}
+
+.category_body:last-child {
+  border-radius: 0 0 4px 4px;
+  border-bottom: none;
 }
 
 .category_category,
@@ -185,11 +301,13 @@
   font-size: 14px;
   line-height: 16.71px;
   width: 153.75px;
-  height: 39px;
+  height: 64px;
   gap: 10px;
   align-items: center;
   justify-content: center;
   display: flex;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #212121;
 }
 
 .category_employee_num {
@@ -197,11 +315,30 @@
   font-size: 14px;
   line-height: 16.71px;
   width: 153.75px;
-  height: 39px;
+  height: 64px;
   gap: 10px;
   align-items: center;
   justify-content: center;
   display: flex;
+  border-bottom: 1px solid #4b4b4b;
+  background-color: #212121;
+}
+
+.category_body:last-child {
+  border: none !important;
+}
+
+.category_my_company_body {
+  background-color: #2e2e2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo_img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
 }
 
 .selected_company_bottom_header {

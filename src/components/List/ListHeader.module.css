@@ -65,7 +65,22 @@
   width: 230.63px;
 }
 
-@media (max-width: 1199px) and (min-width: 375px) {
+.header_list.result:nth-child(1) {
+  width: 213px;
+}
+
+.header_list.result:nth-child(2) {
+  width: 304px;
+}
+
+.header_list.result:nth-child(3),
+.header_list.result:nth-child(4),
+.header_list.result:nth-child(5),
+.header_list.result:nth-child(6) {
+  width: 170.75px;
+}
+
+@media (max-device-width: 1199px) and (min-device-width: 375px) {
   .header_container {
     width: 696px;
   }
