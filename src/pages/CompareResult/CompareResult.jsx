@@ -334,7 +334,7 @@ function CompareResult() {
             <button className={styles.investment_button} onClick={openInvestModal}>
               나의 기업에 투자하기
             </button>
-          </div>{" "}
+          </div>
         </>
       )}
 
