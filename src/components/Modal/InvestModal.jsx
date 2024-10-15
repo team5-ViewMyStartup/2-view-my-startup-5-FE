@@ -28,6 +28,12 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
   const handleSubmit = async () => {
     if (!isOpen) return null;
 
+    if (!nickname) {
+      setErrorType("findNoUser");
+      setErrorModalOpen(true);
+      return;
+    }
+
     if (!password) {
       alert("비밀번호를 입력해주세요");
       return;
