@@ -205,6 +205,15 @@
   .search_sorting {
     width: 449px;
   }
+  .startup_list_box {
+    width: 696px;
+  }
+  .category_box {
+    width: 696px;
+  }
+  .category_kind {
+    width: 696px;
+  }
 }
 
 @media (min-width: 375px) and (max-width: 743px) {
@@ -222,6 +231,12 @@
   }
   .dropdown {
     width: 246px;
+  }
+  .startup_list_box {
+    width: 696px;
+    overflow-x: auto;
+    width: 90vw;
+    padding-bottom: 15px;
   }
 
   .category_kind,

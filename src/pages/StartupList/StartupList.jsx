@@ -122,46 +122,47 @@ function StartupList() {
           </div>
         </div>
       </div>
-
-      <ListHeader headers={companyHeader} type="company" />
-      {loading ? (
-        <Loading />
-      ) : (
-        <>
-          <div className={styles.category_box}>
-            <ul className={styles.category_kind}>
-              {filteredData.length === 0 ? (
-                <li className={styles.no_results}>검색 결과가 없습니다.</li>
-              ) : (
-                filteredData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-                  <li key={index + indexOfFirstItem} className={styles.category_body}>
-                    <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
-                    <Link to={`/details/${info.id}`}>
-                      <span className={styles.category_company_name}>
-                        <img src={info.image} className={styles.logo_img} />
-                        {info.name}
+      <div className={styles.startup_list_box}>
+        <ListHeader headers={companyHeader} type="company" />
+        {loading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className={styles.category_box}>
+              <ul className={styles.category_kind}>
+                {filteredData.length === 0 ? (
+                  <li className={styles.no_results}>검색 결과가 없습니다.</li>
+                ) : (
+                  filteredData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+                    <li key={index + indexOfFirstItem} className={styles.category_body}>
+                      <span className={styles.category_rank}>{index + indexOfFirstItem + 1}위</span>
+                      <Link to={`/details/${info.id}`}>
+                        <span className={styles.category_company_name}>
+                          <img src={info.image} className={styles.logo_img} />
+                          {info.name}
+                        </span>
+                      </Link>
+                      <span className={styles.category_company_info}>{info.description}</span>
+                      <span className={styles.category_category}>{info.category}</span>
+                      <span className={styles.category_investment_amount}>
+                        {info.totalInvestment}억 원
                       </span>
-                    </Link>
-                    <span className={styles.category_company_info}>{info.description}</span>
-                    <span className={styles.category_category}>{info.category}</span>
-                    <span className={styles.category_investment_amount}>
-                      {info.totalInvestment}억 원
-                    </span>
-                    <span className={styles.category_sales}>{info.revenue}억 원</span>
-                    <span className={styles.category_employee_num}>{info.employees}명</span>
-                  </li>
-                ))
-              )}
-            </ul>
-          </div>
-        </>
-      )}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-        hasNext={currentPage < totalPages}
-      />
+                      <span className={styles.category_sales}>{info.revenue}억 원</span>
+                      <span className={styles.category_employee_num}>{info.employees}명</span>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </div>
+          </>
+        )}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+          hasNext={currentPage < totalPages}
+        />
+      </div>
     </div>
   );
 }

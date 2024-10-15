@@ -4,7 +4,7 @@ import styles from "./ListHeader.module.css";
 const ListHeader = ({ headers = [], type }) => {
   return (
     <div className={styles.header_container}>
-      <div className={styles.header_div}>
+      <div className={`${styles.header_div} ${styles.header_div_allcompany}`}>
         {headers.map((header, index) => (
           <div
             key={index}
