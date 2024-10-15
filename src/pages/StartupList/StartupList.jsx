@@ -26,7 +26,7 @@ function StartupList() {
       try {
         setLoading(true);
         const data = await fetchCompanyData();
-        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+        setCompany(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
       } catch (error) {
         console.error(error);
       } finally {
@@ -75,7 +75,7 @@ function StartupList() {
     }
 
     setFilteredData(sorted);
-    setCurrentPage(1); // 검색 시 첫 페이지로 리셋
+    setCurrentPage(1);
   }, [company, searchQuery, orderBy]);
 
   const totalPages = Math.ceil(filteredData.length / VIEW_COMPANY_INFO_NUM);

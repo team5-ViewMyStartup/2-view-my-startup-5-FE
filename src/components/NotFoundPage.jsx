@@ -16,7 +16,7 @@ function NotFoundPage() {
     <div className={styles.container}>
       <h1 className={styles.heading}>4 0 4</h1>
       <p className={styles.text}>Error</p>
-      <p className={styles.text}>Not Fonud</p>
+      <p className={styles.text}>Not Found</p>
       <p className={styles.migration}>5초 후에 이동됩니다.</p>
     </div>
   );

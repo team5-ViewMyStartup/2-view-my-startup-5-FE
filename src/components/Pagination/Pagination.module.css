@@ -8,8 +8,8 @@
 .button {
   width: 48px;
   height: 48px;
-  border-radius: 10px; /* 10px의 반지름을 퍼센트로 변환한 값 */
-  background-color: #2e2e2e; /* 버튼 배경 색상 */
+  border-radius: 10px;
+  background-color: #2e2e2e;
   font-weight: 400;
   border: none;
   color: #747474;

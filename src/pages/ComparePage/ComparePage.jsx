@@ -415,10 +415,5 @@ function ComparePage() {
     </div>
   );
 }
-/**
- * 링크 컴포넌트 빼버리고
- * 핸들컴페어에서 URLSearchParams 가지고 쿼리스트링을 만들어서 네비게이트같은거 사용해서
- * `/compare-result${search}`
- */
 
 export default ComparePage;

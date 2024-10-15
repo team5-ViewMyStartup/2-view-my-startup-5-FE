@@ -18,7 +18,7 @@ function Investment() {
     const fetchCompanies = async () => {
       try {
         const data = await fetchCompanyData();
-        setInvestment(data.sort((a, b) => b.totalInvestment - a.totalInvestment)); // 총 투자금액 기준으로 정렬
+        setInvestment(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
       } catch (error) {
         console.error(error);
       }
