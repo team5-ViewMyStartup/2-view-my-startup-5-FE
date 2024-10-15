@@ -91,21 +91,27 @@ ul.menu a:active {
   }
 
   .container {
-    margin-left: 16px;
+    margin-left: 10px;
     padding: 0;
   }
 
   .menu {
-    padding: 21px 8px;
-    gap: 10px;
+    padding: 21px 0;
+    gap: 0;
   }
 
+  .menu li {
+    font-size: 11px;
+  }
   ul {
     font-weight: 700;
     font-size: 12px;
     line-height: 14.32px;
   }
-
+  ul.menu {
+    padding-left: 10px;
+    white-space: nowrap;
+  }
   .logo {
     display: none;
   }
@@ -113,7 +119,12 @@ ul.menu a:active {
   .m_logo {
     display: block;
   }
-  .user_menu {
-    margin-right: 20px;
+
+  .user_menu span {
+    display: none;
+  }
+  .log_button {
+    font-size: 11px;
+    width: 50px;
   }
 }
