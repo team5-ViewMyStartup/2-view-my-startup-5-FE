@@ -5,6 +5,7 @@
 hr {
   border: solid 1px #2e2e2e;
 }
+
 .corporate {
   padding: 0 200px 100px;
 }
@@ -204,6 +205,12 @@ hr {
   width: 81.23px;
   height: 81.23px;
   border-radius: 50%;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
 }
 
 @media (max-width: 1199px) and (min-width: 744px) {

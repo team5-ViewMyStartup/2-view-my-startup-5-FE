@@ -1,8 +1,0 @@
-POST https://learn.codeit.kr/api/link-servive/auth/login
-Content-Type: application/json
-
-{
-
-"email": "hjbae@codeit.kr",
-"password": "1@2345678",
-}

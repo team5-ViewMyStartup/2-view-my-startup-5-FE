@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Pagination.module.css";
 
-const Pagination = ({ currentPage, totalPages, onPageChange, hasNext }) => {
+const Pagination = ({ currentPage, totalPages, onPageChange, hasNext, type }) => {
   const maxPageNumbers = 5;
   let startPage = Math.max(1, currentPage - Math.floor(maxPageNumbers / 2));
   let endPage = Math.min(totalPages, startPage + maxPageNumbers - 1);
@@ -11,7 +11,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange, hasNext }) => {
   }
 
   return (
-    <div className={styles.pagination}>
+    <div className={`${styles.pagination} ${type === "small" ? styles.small : ""}`}>
       <button
         className={`${styles.button} ${styles.left_button}`}
         onClick={() => onPageChange(currentPage - 1)}

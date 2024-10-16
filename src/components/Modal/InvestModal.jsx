@@ -77,10 +77,12 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
             <p>{company.category}</p>
           </div>
           <form className={styles.investment_form_container}>
-            <label>
-              투자자 이름
-              <h4>{nickname}</h4>
-            </label>
+            <div className={styles.form_name}>
+              <label>
+                투자자 이름
+                <h4>{nickname}</h4>
+              </label>
+            </div>
             <label>
               투자 금액
               <input
@@ -88,7 +90,7 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder="투자 금액을 입력해주세요"
+                placeholder="투자 금액을 입력해주세요. (단위: 억 원)"
               />
             </label>
             <label>

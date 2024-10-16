@@ -49,6 +49,15 @@
   color: white;
 }
 
+.pagination.small .button,
+.pagination.small .page_button {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 743px) and (min-width: 375px) {
   .page_button {
     width: 32px;
