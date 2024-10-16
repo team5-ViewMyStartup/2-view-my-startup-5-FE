@@ -22,7 +22,7 @@ function Investment() {
       try {
         setLoading(true);
         const data = await fetchCompanyData();
-        setInvestment(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+        setInvestment(data.sort((a, b) => b.startupTotal - a.startupTotal));
         setTimeout(() => {
           setLoading(false);
         }, 2000);
@@ -45,10 +45,10 @@ function Investment() {
     let sorted = [...investment];
     switch (orderBy) {
       case "startup-investment-high":
-        sorted = sorted.sort((a, b) => b.revenue - a.revenue);
+        sorted = sorted.sort((a, b) => b.startupTotal - a.startupTotal);
         break;
       case "startup-investment-low":
-        sorted = sorted.sort((a, b) => a.revenue - b.revenue);
+        sorted = sorted.sort((a, b) => a.startupTotal - b.startupTotal);
         break;
       case "actual-investment-high":
         sorted = sorted.sort((a, b) => b.totalInvestment - a.totalInvestment);
