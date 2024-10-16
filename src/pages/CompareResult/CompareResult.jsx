@@ -12,7 +12,6 @@ import {
   fetchMyCompanyData,
 } from "../../api/api";
 import InvestModal from "../../components/Modal/InvestModal";
-import Loading from "../../components/Loading";
 
 function CompareResult() {
   const VIEW_COMPANY_INFO_NUM = 5;
@@ -45,6 +44,7 @@ function CompareResult() {
     const fetchData = async () => {
       try {
         const companyData = await fetchDetailCompanyData(companyId);
+        console.log(1111);
         setCompany(companyData);
 
         const investmentData = await fetchInvestmentsData(companyId);
@@ -82,23 +82,24 @@ function CompareResult() {
       const id = searchParams.get("baseCompanyId");
 
       const baseData = await fetchMyCompanyData(id);
+      console.log(baseData);
 
       if (companyOrderBy === "매출액 높은순" || companyOrderBy === "sales-high") {
         setTopCompany(baseData.revenue.gte.sort((a, b) => b.revenue - a.revenue));
         setBottomCompany(baseData.revenue.lt.sort((a, b) => b.revenue - a.revenue));
-        setMyCompanyRank(baseData.companyRevenueRank);
+        setMyCompanyRank(baseData.companyGreatRevenueRank);
       } else if (companyOrderBy === "sales-low") {
         setTopCompany(baseData.revenue.lt.sort((a, b) => a.revenue - b.revenue));
         setBottomCompany(baseData.revenue.gte.sort((a, b) => a.revenue - b.revenue));
-        setMyCompanyRank(baseData.companyRevenueRank);
+        setMyCompanyRank(baseData.companyLessRevenueRank);
       } else if (companyOrderBy === "employeeNum-high") {
         setTopCompany(baseData.employee.gte.sort((a, b) => b.employees - a.employees));
         setBottomCompany(baseData.employee.lt.sort((a, b) => b.employees - a.employees));
-        setMyCompanyRank(baseData.companyEmployeesRank);
+        setMyCompanyRank(baseData.companyGreatEmployeesRank);
       } else if (companyOrderBy === "employeeNum-low") {
         setTopCompany(baseData.employee.lt.sort((a, b) => a.revenue - b.revenue));
         setBottomCompany(baseData.employee.gte.sort((a, b) => a.revenue - b.revenue));
-        setMyCompanyRank(baseData.companyEmployeesRank);
+        setMyCompanyRank(baseData.companyLessEmployeesRank);
       }
     };
     fetchData();
