@@ -74,7 +74,10 @@ function Details() {
         setCompany(companyData);
 
         const investmentData = await fetchInvestmentsData(companyId);
-        setInvestments(Array.isArray(investmentData) ? investmentData : []);
+        console.log(investmentData);
+        console.log(typeof investmentData);
+
+        setInvestments(Array.isArray(investmentData.investments) ? investmentData.investments : []);
         setTimeout(() => {
           setLoading(false);
         }, 2000);
