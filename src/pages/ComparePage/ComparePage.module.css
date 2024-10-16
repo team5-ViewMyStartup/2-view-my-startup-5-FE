@@ -31,7 +31,7 @@
 
 .all_reset_btn {
   height: 40px;
-  width: auto;
+  width: 149px;
   border-radius: 50px;
   background-color: #eb5230;
   color: #ffffff;
@@ -667,11 +667,17 @@
   .select_compare_company_container {
     width: calc(100% - 40px);
   }
+
+  .select_compare_company_container {
+    height: 350px;
+  }
+
   .select_my_company_box,
   .compare_company_select_page,
   .compare_page_header {
     width: 100%;
   }
+
   .select_company_text,
   .select_compare_company_text {
     font-size: 16px;
@@ -692,6 +698,7 @@
     padding: 0;
     font-size: 13px;
   }
+
   .cancel_select {
     font-size: 12px;
   }
@@ -701,6 +708,7 @@
     height: 64px;
     margin-bottom: 10px;
   }
+
   .selected_company_name,
   .selected_company_category {
     font-size: 14px;

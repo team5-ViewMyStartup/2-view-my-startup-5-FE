@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "../../components/Style/style.module.css";
 import { compareOptions } from "../../components/Dropdown/DropdownOption";
 import ListHeader from "../../components/List/ListHeader";
@@ -86,16 +87,17 @@ function CompareStatus() {
         <>
           <div className={styles.mobile_scroll}>
             <ListHeader headers={compareHeader} type="status" />
-
             <div className={styles.compare_body}>
               <ul className={styles.category_classification}>
                 {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
                   <li key={index + indexOfFirstItem} className={styles.category_body}>
                     <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-                    <span className={styles.category_company_name}>
-                      <img src={info.image} className={styles.logo_img} />
-                      {info.name}
-                    </span>
+                    <Link to={`/details/${info.id}`}>
+                      <span className={styles.category_company_name}>
+                        <img src={info.image} className={styles.logo_img} />
+                        {info.name}
+                      </span>
+                    </Link>
                     <span className={styles.category_company_info}>{info.description}</span>
                     <span className={styles.category_category}>{info.category}</span>
                     <span className={styles.category_selection}>{info.selectMyCount}</span>
