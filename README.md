@@ -23,7 +23,7 @@
 <pre>
 <code>
 git clone https://github.com/team5-ViewMyStartup/2-view-my-startup-5-FE.git  // 레포지토리를 클론합니다.
-cd 2-view-my-startup-5-BE  // 프로젝트 디렉토리로 이동합니다.
+cd 2-view-my-startup-5-FE  // 프로젝트 디렉토리로 이동합니다.
 npm install // 의존성을 설치합니다.
 npm start // 프로젝트를 개발 모드로 실행합니다.
 </code>
