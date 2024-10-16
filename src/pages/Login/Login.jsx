@@ -31,7 +31,7 @@ function Login() {
   useEffect(() => {
     const token = getToken();
     if (token) {
-      navigate("/all-company");
+      // navigate("/all-company");
     }
   }, [navigate]);
 
