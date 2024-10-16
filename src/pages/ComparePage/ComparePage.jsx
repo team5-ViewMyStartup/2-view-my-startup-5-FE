@@ -80,22 +80,18 @@ function ComparePage() {
   };
 
   const handleSelectedCompareCompany = (info) => {
-    if (selectedCompareCompany.length < 5 && !selectedCompareCompany.includes(info)) {
+    if (info.id === selectedMyCompany?.id) {
+      setErrorMessage("*이미 나의 기업으로 선택한 기업입니다.");
+    } else if (selectedCompareCompany.length < 5 && !selectedCompareCompany.includes(info)) {
       setSelectedCompareCompany((prev) => [...prev, info]);
+      setErrorMessage("");
+    } else {
+      setErrorMessage("*비교할 기업은 최대 5개까지 선택 가능합니다."); // 최대 선택 기업 수 초과 시 오류 메시지 설정
     }
-    setErrorMessage("");
   };
 
   const handleRemoveCompareCompany = (info) => {
     setSelectedCompareCompany((prev) => prev.filter((company) => company !== info));
-  };
-
-  const handleDisabledButtonClick = (info) => {
-    if (selectedMyCompany === info) {
-      setErrorMessage("*이미 나의 기업으로 선택한 기업입니다.");
-    } else {
-      setErrorMessage("*비교할 기업은 최대 5개까지 선택 가능합니다.");
-    }
   };
 
   const handleCancelMySelect = () => {
@@ -442,7 +438,7 @@ function ComparePage() {
                                   selectedCompareCompany.length >= 5 ||
                                   selectedMyCompany === info
                                 ) {
-                                  handleDisabledButtonClick(info);
+                                  handleSelectedCompareCompany(info);
                                 } else {
                                   handleSelectedCompareCompany(info);
                                 }
