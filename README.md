@@ -1,20 +1,32 @@
-{팀 이름}
-(팀 협업 문서 링크 게시)
+## 코드잇 풀스택 2기 파트2 5팀 초급 프로젝트
+>**2-view-my-startup-5-FE**
 
-팀원 구성
-웨인 (개인 Github 링크)
+**개발기간:** 24.09.25 ~ 24.10.16
 
-제이든 (개인 Github 링크)
+[팀 협업 문서](https://rune-echinodon-d07.notion.site/2942192ef9ea4e77a2133d0be26ed56d?v=fff0f3d28b85813ba6c2000c6457ff84)
 
-마크 (개인 Github 링크)
+<br>
 
-데이지 (개인 Github 링크)
+## 팀원
+>**본 프로젝트는 다음 팀원들에 의해 개발되었습니다:**
+- [양가현](https://github.com/gahyeon-yang)
+- [이동훈](https://github.com/ciin1411)
+- [현준배](https://github.com/junbaehyun)
+- [박효빈](https://github.com/hyobiin9)
 
-제이 (개인 Github 링크)
+<br>
 
-프로젝트 소개
-배움의 기쁨을 세상 모두에게 전할 수 있는 프로그래밍 교육 사이트 제작
-프로젝트 기간: 2024.08.13 ~ 2024.09.03
+## View My Startup
+>**프로젝트 개요**
+
+**View My Startup**는 개인 투자자들이 스타트업 정보를 검토하고 비교할 수 있도록 설계된 스타트업 기업 정보 및 모의 투자 서비스입니다.
+
+이 프로젝트는 개인 투자자들이 보다 쉽게 스타트업을 평가하고 투자 결정을 내릴 수 있도록 돕기 위해 설계되었습니다.
+<br><br>
+
+## 배포 주소
+**프론트엔드 서버:** https://two-view-my-startup-5-be.onrender.com](https://d284jixdxcxc4f.cloudfront.net
+<br><br>
 기술 스택
 Frontend: JavaScript, React.js, scss
 Backend: Express.js, PrismaORM
