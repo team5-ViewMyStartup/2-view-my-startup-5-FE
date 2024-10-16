@@ -54,7 +54,6 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
       onClose();
     } catch (e) {
       setErrorType("incorrectInvestPw");
-      console.log("errorModalOpen state:", errorModalOpen);
       setErrorModalOpen(true);
     }
   };
