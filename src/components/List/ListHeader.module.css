@@ -82,7 +82,7 @@
 
 @media (max-width: 1199px) and (min-width: 375px) {
   .header_container {
-    width: 696px;
+    width: 695px;
   }
 
   .header_list.status:nth-child(1) {
@@ -119,5 +119,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .header_div_allcompany {
+    width: 696px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .hideRank {
+    display: none;
   }
 }

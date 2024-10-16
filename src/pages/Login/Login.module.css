@@ -117,7 +117,7 @@ input {
     width: 343px;
   }
 
-  .signup_button {
+  .login_button {
     width: 343px;
   }
 
@@ -131,5 +131,8 @@ input {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+  .error {
+    white-space: pre-line;
   }
 }

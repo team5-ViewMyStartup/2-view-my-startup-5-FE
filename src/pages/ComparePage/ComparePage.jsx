@@ -2,15 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import styles from "./ComparePage.module.css";
-import plus from "../../assets/btn_plus.svg";
-import restart from "../../assets/ic_restart.svg";
-import close from "../../assets/close.svg";
-import reset from "../../assets/ic_delete_circle_small.svg";
-import search from "../../assets/ic_search.svg";
-import codeitIcon from "../../assets/icon_codeit.jpg";
-import checkIcon from "../../assets/ic_check.svg";
-import companyDelete from "../../assets/company_card_close_icon.svg";
 import { fetchCompanyData, fetchCompareData } from "../../api/api";
+
+const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
 function ComparePage() {
   const navigate = useNavigate();
@@ -181,7 +175,11 @@ function ComparePage() {
               disabled={selectedMyCompany === null || selectedCompareCompany.length < 1}
               onClick={handleAllReset}
             >
-              <img src={restart} className={styles.restart_img} alt="restart image" />
+              <img
+                src={`${S3_BASE_URL}/restart.svg`}
+                className={styles.restart_img}
+                alt="restart image"
+              />
               전체 초기화
             </button>
           </div>
@@ -202,7 +200,11 @@ function ComparePage() {
           ) : (
             <div className={styles.select_my_company_container}>
               <div className={styles.add_company}>
-                <img src={plus} className={styles.plus_icon} onClick={openMyModal} />
+                <img
+                  src={`${S3_BASE_URL}/btn_plus.svg`}
+                  className={styles.plus_icon}
+                  onClick={openMyModal}
+                />
                 <p className={styles.add_company_text}>기업 추가</p>
               </div>
             </div>
@@ -214,7 +216,11 @@ function ComparePage() {
           <div className={styles.modal}>
             <div className={styles.modal_header}>
               <p className={styles.select_my_company}>나의 기업 선택하기</p>
-              <img src={close} className={styles.close_icon} onClick={closeMyModal} />
+              <img
+                src={`${S3_BASE_URL}/closed.svg`}
+                className={styles.close_icon}
+                onClick={closeMyModal}
+              />
             </div>
             <div className={styles.search_bar}>
               <input
@@ -223,9 +229,13 @@ function ComparePage() {
                 onKeyDown={handleKeyDown}
               />
               {isMyCompanyModalInput && (
-                <img src={reset} className={styles.reset_icon} onClick={handleTextReset} />
+                <img
+                  src={`${S3_BASE_URL}/reset.svg`}
+                  className={styles.reset_icon}
+                  onClick={handleTextReset}
+                />
               )}
-              <img src={search} className={styles.search_icon} />
+              <img src={`${S3_BASE_URL}/search_icon.svg`} className={styles.search_icon} />
             </div>
             <div className={styles.all_company}>
               {recentCompanies.length > 0 && (
@@ -324,7 +334,7 @@ function ComparePage() {
               selectedCompareCompany.map((info, index) => (
                 <div key={index} className={styles.selected_company}>
                   <img
-                    src={companyDelete}
+                    src={`${S3_BASE_URL}/company_close_icon.svg`}
                     className={styles.delete_company_btn}
                     onClick={() => handleRemoveCompareCompany(info)}
                   />
@@ -343,7 +353,11 @@ function ComparePage() {
               <div className={styles.compare_modal}>
                 <div className={styles.compare_modal_header}>
                   <p className={styles.select_compare_company}>비교할 기업 선택하기</p>
-                  <img src={close} className={styles.close_icon} onClick={closeCompareModal} />
+                  <img
+                    src={`${S3_BASE_URL}/closed.svg`}
+                    className={styles.close_icon}
+                    onClick={closeCompareModal}
+                  />
                 </div>
                 <div className={styles.search_bar}>
                   <input
@@ -352,9 +366,13 @@ function ComparePage() {
                     onKeyDown={handleBottomKeyDown}
                   />
                   {isCompareCompanyModalInput && (
-                    <img src={reset} className={styles.reset_icon} onClick={handleTextReset} />
+                    <img
+                      src={`${S3_BASE_URL}/reset.svg`}
+                      className={styles.reset_icon}
+                      onClick={handleTextReset}
+                    />
                   )}
-                  <img src={search} className={styles.search_icon} />
+                  <img src={`${S3_BASE_URL}/search_icon.svg`} className={styles.search_icon} />
                 </div>
                 {selectedCompareCompany && (
                   <div className={styles.selected_company_list}>
@@ -433,7 +451,7 @@ function ComparePage() {
                               selectedMyCompany === info ? (
                                 <>
                                   <img
-                                    src={checkIcon}
+                                    src={`${S3_BASE_URL}/check.svg`}
                                     alt="check icon"
                                     className={styles.check_icon}
                                   />

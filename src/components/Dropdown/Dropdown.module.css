@@ -76,4 +76,15 @@
   .dropdown {
     width: 277px;
   }
+  .company_dropdown_page_allcompany {
+
+    width: 169px;
+  }
+  .dropdown_list {
+    font-size: 12px;
+  }
+  .dropdown_select {
+    font-size: 12px;
+    height: 40px;
+  }
 }

@@ -16,6 +16,7 @@ body {
   height: 100%;
   margin: 0 auto;
   margin-top: 40px;
+  margin-bottom: 100px;
 }
 
 .selected_company_result_header {
@@ -395,30 +396,104 @@ body {
   display: flex;
   border: none;
 }
+@media (max-width: 1199px) {
+  .my_company_name {
+    width: 200px;
+    margin-right: 25px;
+  }
+  .my_company_info {
+    width: 250px;
+  }
+  .compare_company_name {
+    width: 245px;
+  }
+  .compare_company_info {
+    width: 250px;
+  }
 
-@media (min-width: 375px) and (max-width: 743px) {
+  .compare_my_company_name {
+    width: 240px;
+  }
+  .company_info {
+    width: 210px;
+  }
+
+  .category_company_name {
+    width: 210px;
+  }
+
+  .category_company_info {
+    width: 180px;
+    height: 64px;
+    font-weight: 400;
+    margin-left: 10px;
+  }
+
+  .category_category {
+    width: 84px;
+    height: 64px;
+    font-weight: 400;
+    margin-left: 40px;
+  }
+
+  .category_startup_investment,
+  .category_total_investment,
+  .category_selection,
+  .category_compare_selection {
+    width: 116px;
+    height: 64px;
+    font-weight: 400;
+  }
+}
+@media (max-width: 1199px) and (min-width: 744px) {
   .selected_company_result {
-    width: calc(100% - 20px);
+    width: 696px;
   }
-  .selected_company_result_header {
-    width: calc(100% - 20px);
-  }
+  .selected_company_result_header,
   .selected_company_middle_header,
   .selected_company_bottom_header {
-    width: calc(100% - 20px);
+    width: 695px;
+  }
+  .compare_section,
+  .company_section {
+    width: 695px;
   }
 
   .selected_company_box {
-    width: calc(100% - 20px);
+    width: 695px;
   }
-  .selected_company_result_middle,
-  .selected_company_bottom {
-    margin: 0 20px;
-    width: calc(100% - 40px);
+  .category_box_compare,
+  .category_box_rank {
+    width: 695px;
+  }
+}
+@media (min-width: 375px) and (max-width: 743px) {
+  .selected_company_result {
+    width: 343px;
+  }
+  .selected_company_result_header {
+    width: 343px;
+  }
+  .selected_company_middle_header,
+  .selected_company_bottom_header {
+    width: 343px;
   }
 
-  .section_one,
-  .section_two {
+  .selected_company_box {
+    width: 343px;
+  }
+
+  .compare_section,
+  .company_section {
+    width: 343px;
     overflow-x: auto;
+  }
+
+  .category_box_compare,
+  .category_box_rank {
+    width: 695px;
+  }
+  .category_body {
+    width: 695px;
   }
 }

@@ -531,16 +531,23 @@
 }
 
 @media (max-width: 1199px) and (min-width: 744px) {
-  .compare_page_header,
-  .select_my_company_box,
-  .compare_company_select_page,
+  .compare_page {
+    margin: 30px 0 0 0;
+  }
+  .not_modal_page,
   .compare_company_select_page_header,
   .select_compare_company_container {
-    width: 664px;
+    width: calc(100% - 80px);
+  }
+  .select_my_company_box,
+  .compare_company_select_page,
+  .compare_page_header {
+    width: 100%;
   }
 }
 
 @media (max-width: 743px) and (min-width: 375px) {
+
   .select_my_company {
     font-weight: 700;
     font-size: 16px;
@@ -656,23 +663,32 @@
   .compare_page_header,
   .select_my_company_box,
   .compare_company_select_page,
+
   .compare_company_select_page_header,
   .select_compare_company_container {
-    width: 343px;
+    width: calc(100% - 40px);
+  }
+  .select_my_company_box,
+  .compare_company_select_page,
+  .compare_page_header {
+    width: 100%;
   }
   .select_company_text,
   .select_compare_company_text {
     font-size: 16px;
   }
+
   .select_compare_company_text,
   .all_reset_btn {
     width: 116px;
     font-weight: 600;
     font-size: 14px;
     line-height: 16.71px;
+
   }
 
-  .add_company_btn {
+  .add_company_btn,
+  .all_reset_btn {
     width: 120px;
     height: 32px;
     padding: 0;

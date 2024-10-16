@@ -6,6 +6,7 @@ import { compareHeader } from "../../components/List/HeaderOption";
 import Pagination from "../../components/Pagination/Pagination";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { fetchCompanyData } from "../../api/api";
+import Loading from "../../components/Loading";
 
 function CompareStatus() {
   const VIEW_COMPANY_INFO_NUM = 10;
@@ -13,12 +14,18 @@ function CompareStatus() {
   const [compare, setCompare] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortedData, setSortedData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
+        setLoading(true);
         const data = await fetchCompanyData();
         setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000);
       } catch (error) {
         console.error(error);
       }
@@ -73,26 +80,35 @@ function CompareStatus() {
           />
         </div>
       </div>
-      <div className={styles.mobile_scroll}>
-        <ListHeader headers={compareHeader} type="status" />
-        <div className={styles.compare_body}>
-          <ul className={styles.category_classification}>
-            {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
-              <li key={index + indexOfFirstItem} className={styles.category_body}>
-                <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
-                <span className={styles.category_company_name}>
-                  <img src={info.image} className={styles.logo_img} />
-                  {info.name}
-                </span>
-                <span className={styles.category_company_info}>{info.description}</span>
-                <span className={styles.category_category}>{info.category}</span>
-                <span className={styles.category_selection}>{info.selectMyCount}</span>
-                <span className={styles.category_compare_selection}>{info.selectOtherCount}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className={styles.mobile_scroll}>
+            <ListHeader headers={compareHeader} type="status" />
+
+            <div className={styles.compare_body}>
+              <ul className={styles.category_classification}>
+                {sortedData.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
+                  <li key={index + indexOfFirstItem} className={styles.category_body}>
+                    <span className={styles.category_rank}>{index + indexOfFirstItem + 1} 위</span>
+                    <span className={styles.category_company_name}>
+                      <img src={info.image} className={styles.logo_img} />
+                      {info.name}
+                    </span>
+                    <span className={styles.category_company_info}>{info.description}</span>
+                    <span className={styles.category_category}>{info.category}</span>
+                    <span className={styles.category_selection}>{info.selectMyCount}</span>
+                    <span className={styles.category_compare_selection}>
+                      {info.selectOtherCount}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </>
+      )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
