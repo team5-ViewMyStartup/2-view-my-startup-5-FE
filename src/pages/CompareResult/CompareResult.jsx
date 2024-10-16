@@ -27,11 +27,11 @@ function CompareResult() {
   const [topCompany, setTopCompany] = useState([]);
   const [bottomCompany, setBottomCompany] = useState([]);
   const [myCompanyRank, setMyCompanyRank] = useState(1);
-
   const [investModalOpen, setInvestModalOpen] = useState(false);
   const [investments, setInvestments] = useState([]);
   const { companyId } = useParams();
   const [company, setCompany] = useState(null);
+
   const openInvestModal = () => {
     setInvestModalOpen(true);
   };
