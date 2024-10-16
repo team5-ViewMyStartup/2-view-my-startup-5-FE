@@ -7,12 +7,6 @@ import { getToken } from "../utils/jwtUtils";
 
 const S3_BASE_URL = process.env.REACT_APP_S3_BASE_URL;
 
-function getLinkStyle({ isActive }) {
-  return {
-    color: isActive ? "white" : "#747474",
-  };
-}
-
 function Nav() {
   const [nickname, setNickname] = useState(null);
   const navigate = useNavigate();
@@ -53,17 +47,32 @@ function Nav() {
         </div>
         <ul className={styles.menu}>
           <li>
-            <NavLink style={getLinkStyle} to="/compare">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.inactiveLink || ""
+              }
+              to="/compare"
+            >
               나의 기업 비교
             </NavLink>
           </li>
           <li>
-            <NavLink style={getLinkStyle} to="/compare-status">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.inactiveLink || ""
+              }
+              to="/compare-status"
+            >
               비교 현황
             </NavLink>
           </li>
           <li>
-            <NavLink style={getLinkStyle} to="/invest-status">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.inactiveLink || ""
+              }
+              to="/invest-status"
+            >
               투자 현황
             </NavLink>
           </li>
@@ -77,7 +86,10 @@ function Nav() {
           </div>
         ) : (
           <div className={styles.user_menu}>
-            <Link styles={getLinkStyle} to="/login">
+            <Link
+              className={({ isActive }) => (isActive ? styles.activeLink : styles.inactiveLink)}
+              to="/login"
+            >
               <div className={styles.log_button}>로그인</div>
             </Link>
           </div>

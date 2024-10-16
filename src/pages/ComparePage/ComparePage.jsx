@@ -20,6 +20,7 @@ function ComparePage() {
   const [isCompareCompanyModalInput, setIsCompareCompanyModalInput] = useState("");
   const [selectedCompareCompany, setSelectedCompareCompany] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [recentCompanies, setRecentCompanies] = useState([]);
 
   const VIEW_COMPANY_INFO_NUM = 5;
 
@@ -28,6 +29,9 @@ function ComparePage() {
 
   const openMyModal = () => {
     setIsMyModalOpen(true);
+
+    const storedRecentCompanies = JSON.parse(localStorage.getItem("recentCompanies")) || [];
+    setRecentCompanies(storedRecentCompanies);
   };
 
   const closeMyModal = () => {
@@ -72,6 +76,7 @@ function ComparePage() {
   const handleSelectedMyCompany = (info) => {
     setSelectedMyCompany(info);
     closeMyModal();
+    updateRecentCompanies(info);
   };
 
   const handleSelectedCompareCompany = (info) => {
@@ -85,8 +90,12 @@ function ComparePage() {
     setSelectedCompareCompany((prev) => prev.filter((company) => company !== info));
   };
 
-  const handleDisabledButtonClick = () => {
-    setErrorMessage("*비교할 기업은 최대 5개까지 선택 가능합니다.");
+  const handleDisabledButtonClick = (info) => {
+    if (selectedMyCompany === info) {
+      setErrorMessage("*이미 나의 기업으로 선택한 기업입니다.");
+    } else {
+      setErrorMessage("*비교할 기업은 최대 5개까지 선택 가능합니다.");
+    }
   };
 
   const handleCancelMySelect = () => {
@@ -100,6 +109,8 @@ function ComparePage() {
   const handleAllReset = () => {
     setSelectedMyCompany(null);
     setSelectedCompareCompany([]);
+    setSearchQuery("");
+    setBottomSearchQuery("");
   };
 
   const handleTextReset = () => {
@@ -142,6 +153,16 @@ function ComparePage() {
   const compareFilteredCompanies = company.filter((info) =>
     info.name.toLowerCase().includes(bottomSearchQuery.toLowerCase()),
   );
+
+  const updateRecentCompanies = (selectedCompany) => {
+    let recentCompanies = JSON.parse(localStorage.getItem("recentCompanies")) || [];
+    recentCompanies = recentCompanies.filter((company) => company.id !== selectedCompany.id);
+    recentCompanies.unshift(selectedCompany);
+    if (recentCompanies.length > 5) {
+      recentCompanies = recentCompanies.slice(0, 5);
+    }
+    localStorage.setItem("recentCompanies", JSON.stringify(recentCompanies));
+  };
 
   return (
     <div className={styles.compare_page}>
@@ -217,6 +238,38 @@ function ComparePage() {
               <img src={`${S3_BASE_URL}/search_icon.svg`} className={styles.search_icon} />
             </div>
             <div className={styles.all_company}>
+              {recentCompanies.length > 0 && (
+                <>
+                  <div className={styles.recent_company_header}>
+                    <p className={styles.recent_company_title}>최근 선택된 기업</p>
+                    <p className={styles.recent_company_num}>({recentCompanies.length})</p>
+                  </div>
+                  <div className={styles.recent_company_body}>
+                    <ul className={styles.recent_company_list}>
+                      {recentCompanies.map((company, index) => (
+                        <li key={index} className={styles.recent_company_item}>
+                          <div className={styles.gap}>
+                            <img
+                              src={company.image}
+                              className={styles.codeit_icon}
+                              alt={company.name}
+                            />
+                            <span className={styles.category_company_name}>{company.name}</span>
+                            <span className={styles.category_category}>{company.category}</span>
+                          </div>
+                          <button
+                            className={styles.selected_button}
+                            onClick={() => handleSelectedMyCompany(company)}
+                          >
+                            선택하기
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              )}
+              <hr />
               <div className={styles.all_company_header}>
                 {isMyCompanyModalInput ? (
                   <p className={styles.search_result}>검색 결과</p>
@@ -225,6 +278,7 @@ function ComparePage() {
                 )}
                 <p className={styles.all_company_num}>({filteredCompanies.length})</p>
               </div>
+
               <div className={styles.all_company_list_container}>
                 <ul className={styles.all_company_list}>
                   {filteredCompanies.slice(indexOfFirstItem, indexOfLastItem).map((info, index) => (
@@ -352,6 +406,7 @@ function ComparePage() {
                     </div>
                   </div>
                 )}
+                <hr />
                 <div className={styles.all_company}>
                   <div className={styles.all_company_header}>
                     {isCompareCompanyModalInput ? (
@@ -386,7 +441,7 @@ function ComparePage() {
                                   selectedCompareCompany.length >= 5 ||
                                   selectedMyCompany === info
                                 ) {
-                                  handleDisabledButtonClick();
+                                  handleDisabledButtonClick(info);
                                 } else {
                                   handleSelectedCompareCompany(info);
                                 }
@@ -400,7 +455,7 @@ function ComparePage() {
                                     alt="check icon"
                                     className={styles.check_icon}
                                   />
-                                  선택 완료
+                                  선택완료
                                 </>
                               ) : (
                                 "선택하기"

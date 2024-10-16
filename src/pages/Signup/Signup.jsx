@@ -13,6 +13,7 @@ function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [showCheckPassword, setShowCheckPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -42,7 +43,7 @@ function Signup() {
         if (!value) {
           newErrors.email = "이메일을 입력해주세요";
         } else if (!/\S+@\S+\.\S+/.test(value)) {
-          newErrors.email = "이메일 형식을 확인해주세요 :)";
+          newErrors.email = "잘못된 이메일 형식입니다.";
         } else {
           delete newErrors.email;
         }
@@ -115,6 +116,10 @@ function Signup() {
     setShowPassword(!showPassword);
   };
 
+  const toggleCheckPasswordVisibility = () => {
+    setShowCheckPassword(!showCheckPassword);
+  };
+
   return (
     <div className={styles.signup}>
       <Link to="/">
@@ -178,7 +183,7 @@ function Signup() {
             className={styles.pw_check_input}
             id="confirmPassword"
             placeholder="비밀번호를 다시 한 번 입력해주세요"
-            type={showPassword ? "text" : "password"}
+            type={showCheckPassword ? "text" : "password"}
             value={confirmPassword}
             onChange={handleChange}
           />
@@ -188,12 +193,12 @@ function Signup() {
           <img
             className={styles.toggle_img}
             src={
-              showPassword
+              showCheckPassword
                 ? `${S3_BASE_URL}/btn_visibility_on.png`
                 : `${S3_BASE_URL}/btn_visibility_off.png`
             }
             alt="eye Image"
-            onClick={togglePasswordVisibility}
+            onClick={toggleCheckPasswordVisibility}
           />
         </div>
         <button className={styles.signup_button} type="submit" disabled={!isFormValid()}>
