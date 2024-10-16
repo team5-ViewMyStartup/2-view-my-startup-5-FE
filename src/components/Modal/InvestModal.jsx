@@ -88,7 +88,7 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder="투자 금액을 입력해주세요"
+                placeholder="투자 금액을 입력해주세요. (단위: 억 원)"
               />
             </label>
             <label>
