@@ -16,6 +16,10 @@ input {
   border: none;
 }
 
+input:focus {
+  outline: none;
+}
+
 .login {
   display: flex;
   justify-content: center;
