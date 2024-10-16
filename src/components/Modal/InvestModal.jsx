@@ -25,7 +25,9 @@ function InvestModal({ isOpen, onClose, company, onAdd }) {
   if (!company) {
     return null;
   }
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (!isOpen) return null;
 
     if (!nickname) {
