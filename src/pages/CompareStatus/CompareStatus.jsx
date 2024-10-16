@@ -22,7 +22,7 @@ function CompareStatus() {
       try {
         setLoading(true);
         const data = await fetchCompanyData();
-        setCompare(data.sort((a, b) => b.totalInvestment - a.totalInvestment));
+        setCompare(data.sort((a, b) => b.selectMyCount - a.selectMyCount));
 
         setTimeout(() => {
           setLoading(false);
