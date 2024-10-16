@@ -31,7 +31,6 @@ function StartupList() {
         setTimeout(() => {
           setLoading(false);
         }, 2000);
-
       } catch (error) {
         console.error(error);
       }
@@ -128,12 +127,12 @@ function StartupList() {
           </div>
         </div>
       </div>
-      <div className={styles.startup_list_box}>
-        <ListHeader headers={companyHeader} type="company" />
-        {loading ? (
-          <Loading />
-        ) : (
-          <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className={styles.startup_list_box}>
+            <ListHeader headers={companyHeader} type="company" />
             <div className={styles.category_box}>
               <ul className={styles.category_kind}>
                 {filteredData.length === 0 ? (
@@ -160,9 +159,9 @@ function StartupList() {
                 )}
               </ul>
             </div>
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
