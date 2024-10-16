@@ -15,7 +15,7 @@
 <br>
 
 ## Deployed URL
-**프론트엔드 서버:** https://d39pkzrrotjvwy.cloudfront.net
+**프론트엔드 서버:** [https://d39pkzrrotjvwy.cloudfront.net](https://d284jixdxcxc4f.cloudfront.net)
 <br><br>
 
 ## Getting Started Guide
