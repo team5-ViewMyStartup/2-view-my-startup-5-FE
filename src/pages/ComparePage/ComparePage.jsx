@@ -304,6 +304,7 @@ function ComparePage() {
               totalPages={Math.ceil(filteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
               onPageChange={handlePageChange}
               hasNext={currentPage < Math.ceil(filteredCompanies.length / VIEW_COMPANY_INFO_NUM)}
+              type="small"
             />
           </div>
         </div>
@@ -474,6 +475,7 @@ function ComparePage() {
                   hasNext={
                     currentPage < Math.ceil(compareFilteredCompanies.length / VIEW_COMPANY_INFO_NUM)
                   }
+                  type="small"
                 />
               </div>
             </div>
