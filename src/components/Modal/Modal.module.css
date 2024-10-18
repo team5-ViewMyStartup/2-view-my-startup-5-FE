@@ -1,0 +1,160 @@
+.modal_container {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal_content {
+  background-color: #212121;
+  padding: 30px;
+  border-radius: 20px;
+  width: 500px;
+  max-width: 90%;
+  z-index: 1001;
+}
+
+.title_wrapper {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.close:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.company_information {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.company_information p {
+  color: #747474;
+}
+
+.investment_form_container {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.input {
+  background-color: #212121;
+  border: solid 1px #747474;
+  width: 448px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 16px;
+}
+
+.button_container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button {
+  background-color: #eb5230;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  width: 200px;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel_button {
+  background-color: #212121;
+  border-color: #eb5230;
+  color: #eb5230;
+  font-size: 16px;
+  font-weight: 700;
+  width: 200px;
+  border-radius: 20px;
+}
+
+.textarea {
+  border-radius: 10px;
+  height: 108px;
+  resize: none;
+  padding: 15px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input,
+.textarea {
+  margin-top: 20px;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.company_img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.authentification {
+  position: relative;
+}
+
+.toggle_img {
+  position: absolute;
+  top: 75px;
+  right: 16px;
+  bottom: 16px;
+}
+
+.toggle_img_invest {
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  bottom: 16px;
+}
+.form_name {
+  width: 100%;
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .investment_form_container {
+    width: 100%;
+  }
+  .investment_form_container label {
+    width: 100%;
+  }
+  .button_container {
+    gap: 20px;
+  }
+  .input,
+  .textarea,
+  .button_container {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}

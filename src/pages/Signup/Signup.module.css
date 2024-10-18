@@ -1,0 +1,117 @@
+body {
+  background-color: #131313;
+  width: 100%;
+  height: 100%;
+}
+
+label,
+p {
+  color: white;
+}
+
+input {
+  border-radius: 12px;
+  padding: 16px 24px;
+  width: 640px;
+  border: none;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  height: 100vh;
+}
+
+.email,
+.nick,
+.pw,
+.pw_check {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.toggle_img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.signup_button {
+  width: 640px;
+  border-radius: 40px;
+  padding: 16px 124px;
+  border: none;
+  gap: 10px;
+  background-color: #eb5230;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.info {
+  display: flex;
+  gap: 4px;
+}
+
+.go_to_login {
+  color: #eb5230;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.5px;
+}
+
+.pw,
+.pw_check {
+  position: relative;
+}
+
+.toggle_img {
+  position: absolute;
+  top: 45px;
+  right: 16px;
+  bottom: 16px;
+}
+
+.error_message {
+  color: red;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 17.9px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.signup_button:disabled {
+  background-color: #9ca3af;
+  color: #ffffff;
+}
+
+@media (max-width: 1199px) and (min-width: 744px) {
+  .signup_logo_img {
+    width: 475px;
+    height: auto;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 743px) {
+  .signup_logo_img {
+    width: 340.7px;
+    height: auto;
+  }
+
+  input {
+    width: 343px;
+  }
+
+  .signup_button {
+    width: 343px;
+  }
+  .signup_button {
+    font-size: 16px;
+  }
+}

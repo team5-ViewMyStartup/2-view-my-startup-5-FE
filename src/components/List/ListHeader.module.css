@@ -1,0 +1,132 @@
+.header_container {
+  background-color: #2e2e2e;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  align-items: center;
+}
+
+.header_div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.header_list {
+  text-align: center;
+  color: white;
+}
+
+.header_list.company:nth-child(1) {
+  width: 68px;
+}
+
+.header_list.company:nth-child(2) {
+  width: 213px;
+}
+
+.header_list.company:nth-child(3) {
+  width: 304px;
+}
+
+.header_list.company:nth-child(4),
+.header_list.company:nth-child(5),
+.header_list.company:nth-child(6) {
+  width: 153.75px;
+}
+
+.header_list.company:nth-child(7) {
+  width: 153.75px;
+}
+
+.header_list.status:nth-child(1) {
+  width: 68px;
+}
+
+.header_list.status:nth-child(2) {
+  width: 213px;
+}
+
+.header_list.status:nth-child(3) {
+  width: 304px;
+}
+
+.header_list.status:nth-child(4) {
+  width: 153.75px;
+}
+
+.header_list.status:nth-child(5),
+.header_list.status:nth-child(6) {
+  width: 230.63px;
+}
+
+.header_list.result:nth-child(1) {
+  width: 213px;
+}
+
+.header_list.result:nth-child(2) {
+  width: 304px;
+}
+
+.header_list.result:nth-child(3),
+.header_list.result:nth-child(4),
+.header_list.result:nth-child(5),
+.header_list.result:nth-child(6) {
+  width: 170.75px;
+}
+
+@media (max-width: 1199px) and (min-width: 375px) {
+  .header_container {
+    width: 695px;
+  }
+
+  .header_list.status:nth-child(1) {
+    width: 60x;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header_list.status:nth-child(2) {
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header_list.status:nth-child(3) {
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header_list.status:nth-child(4) {
+    width: 84px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header_list.status:nth-child(5),
+  .header_list.status:nth-child(6) {
+    width: 116px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .header_div_allcompany {
+    width: 696px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .hideRank {
+    display: none;
+  }
+}

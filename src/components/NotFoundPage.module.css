@@ -1,0 +1,28 @@
+.container {
+  text-align: center;
+  padding-top: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #212121;
+}
+
+.heading {
+  font-size: 200px;
+  margin: 0;
+  color: #b95139;
+  text-shadow: 5px 5px 5px #ffe869;
+}
+
+.text {
+  margin: 0;
+  font-size: 70px;
+  color: #b95139;
+  font-weight: 700;
+}
+
+.migration {
+  font-size: 30px;
+  color: #747474;
+}
