@@ -63,14 +63,6 @@ npm test // 테스트를 실행합니다.
 ![React Router](https://img.shields.io/badge/React_Router_DOM-CA4245?logo=react-router&logoColor=white&style=for-the-badge)
 ![Classnames](https://img.shields.io/badge/Classnames-0082C9?logo=javascript&logoColor=white&style=for-the-badge)
 ![JWT Decode](https://img.shields.io/badge/JWT_Decode-000000?logo=json-web-tokens&logoColor=white&style=for-the-badge)
-![UUID](https://img.shields.io/badge/UUID-007ACC?logo=uuid&logoColor=white&style=for-the-badge)
-![Web Vitals](https://img.shields.io/badge/Web_Vitals-4285F4?logo=google&logoColor=white&style=for-the-badge)
-
-### Testing Libraries
-
-![React Testing Library](https://img.shields.io/badge/React_Testing_Library-E33332?logo=testing-library&logoColor=white&style=for-the-badge)
-![Jest DOM](https://img.shields.io/badge/Jest_DOM-C21325?logo=jest&logoColor=white&style=for-the-badge)
-![User Event](https://img.shields.io/badge/User_Event-15AABF?logo=javascript&logoColor=white&style=for-the-badge)
 
 ### Deployment
 
